@@ -27,10 +27,10 @@ const swaggerDocument = swaggerJsDoc({
                 name: "Ankete",
                 description: "",
             }, {
-                name: "Naročniki",
+                name: "Anketarji",
                 description: "",
             }, {
-                name: "Anketarji",
+                name: "Naročniki",
                 description: "",
             }
         ],
