@@ -1,0 +1,16 @@
+[
+  {
+    "_id": {
+      "$oid": "45a25e54cc55e42a456bdb32"
+    },
+    "ime": "Ninamedia",
+    "opis": "Ustanovljena leta 1991, Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o., pogosto izdeluje ankete za Večer in Dnevnik",
+    "opombe": "Njihove javno-mnenjske ankete se pogosto imenujejo Vox Populi"
+  },
+  {
+    "_id": {
+      "$oid": "14dcac4803f6df6ffe905704"
+    },
+    "ime": "Mediana"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "_id": {
+      "$oid": "13153ec4d64ceb8d276eae42"
+    },
+    "ime": "Delo",
+    "opis": "Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.",
+    "opombe": "Delo izvede veliko splošnih anket, ki jih bolj redkeje vključimo na naši spletni strani. Spletna in tiskana izdaja se pogosto razlikujeta."
+  },
+  {
+    "_id": {
+      "$oid": "5f8024542bc87c975ffc1a70"
+    },
+    "ime": "Dnevnik"
+  }
+]

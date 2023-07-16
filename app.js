@@ -1,16 +1,10 @@
-/**
- * Load environment variables
- */
+// Naložimo okoljske spremenljivke
 require("dotenv").config();
 
-/**
- * Database connection
- */
+// Povezava s podatkovno bazo
 require("./api/models/db.js");
 
-/**
- * Swagger and OpenAPI
- */
+// Swagger in OpenAPI
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = swaggerJsDoc({
@@ -30,31 +24,31 @@ const swaggerDocument = swaggerJsDoc({
                 name: "Anketarji",
                 description: "",
             }, {
-                name: "Naročniki",
+                name: "Narocniki",
                 description: "",
             }
         ],
         servers: [
             {
-                url: "http://localhost:3000/api",
-                description: "Strežnik za razvoj in testiranje",
+                url: "http://localhost:4000/api",
+                description: "Lokalni strežnik za razvoj in testiranje",
             },
             {
                 url: "https://interval-zaupanja.onrender.com/api",
-                description: "Produkcijski strežnik gostovan na oblaku Render",
+                description: "Produkcijski strežnik gostujoč na oblaku Render",
             },
         ],
         components: {
             schemas: {
-                SporočiloNapake: {
+                SporociloNapake: {
                     type: "object",
                     properties: {
-                        sporočilo: {
+                        sporocilo: {
                             type: "string",
                             description: "Napaka o sporočilu",
                         },
                     },
-                    required: ["sporočilo"],
+                    required: ["sporocilo"],
                 },
             },
         },
@@ -62,9 +56,7 @@ const swaggerDocument = swaggerJsDoc({
     apis: ["./api/models/schemas.js", "./api/controllers/*.js"],
 });
 
-/**
- * Strežba
- */
+// Strežba
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -72,7 +64,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const http = require("http");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
@@ -81,31 +73,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use('/', indexRouter);
 
 app.get("/", function (req, res) {
     app.engine("html", require("ejs").renderFile);
     app.set("view engine", "html");
     app.set('views', path.join(__dirname, 'public'));
-    res.render("dokumenti.html");
+    res.render("framework.html");
 });
 
-app.get("/db", function (req, res) {
-    app.engine("html", require("ejs").renderFile);
-    app.set("view engine", "html");
-    app.set('views', path.join(__dirname, 'public'));
-    res.render("db.html");
-});
-
-/**
- * API routing
- */
+// API routing
 var indexApi = require("./api/routes/index"); // usmerjevalnik za API
 app.use('/api', indexApi);
 
-/**
- * Swagger file and explorer
- */
+// Swagger JSON specifikacija in GUI (oboje znotraj /api)
 indexApi.get("/swagger.json", (req, res) =>
     res.status(200).json(swaggerDocument)
 );
@@ -117,9 +97,7 @@ indexApi.use(
     })
 );
 
-/**
- * Start server
- */
+// Server start
 app.listen(port, () => {
     console.log(
         `App started in '${

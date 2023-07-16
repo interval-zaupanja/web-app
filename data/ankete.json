@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "873c017fc587d5ade7830b7a"
+    },
+    "anketar_id": "45a25e54cc55e42a456bdb32",
+    "narocnik_id": "13153ec4d64ceb8d276eae42",
+    "velikost_vzorca": 800,
+    "metoda": "CATI",
+    "zacetek": "2023-02-16",
+    "konec": "2023-02-20",
+    "opis": "Anketa je bila izvedena v času razgretih družbenopolitičnih razmer",
+    "opombe": "Malo več kot polovica ljudi se na klic ni odzvalo"
+  },
+  {
+    "_id": {
+      "$oid": "8de77b45a6a5236288aa264f"
+    },
+    "anketar_id": "14dcac4803f6df6ffe905704",
+    "narocnik_id": "5f8024542bc87c975ffc1a70",
+    "velikost_vzorca": 900,
+    "metoda": "CATI",
+    "zacetek": "2023-03-16",
+    "konec": "2023-03-20"
+  }
+]
