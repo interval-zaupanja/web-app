@@ -9,7 +9,7 @@ body {
 header {
     /*background-color: #f10056;*/
     /*background-color: #0080ff;*/
-    /*background-color: #f6caca;*/
+    background-color: #f6caca;
     /*background-image: linear-gradient(to bottom right, rgba(255, 166, 0, 0.8), rgba(255, 0, 59, 0.75));*/
     /*background-image: linear-gradient(to bottom right, rgba(29, 29, 31, 0.02), #f6caca);*/
     background-image: linear-gradient(to right, rgb(255, 255, 255), #f6caca);
@@ -78,4 +78,31 @@ body {
 
 view {
     margin: auto 0;
+}
+
+/* Sidebar */
+
+#zadnje-ankete {
+    padding: 10px;
+    /*background-color: #f6caca;*/
+    background-image: linear-gradient(to right, #f6caca, #fcabab);
+    /*background-image: linear-gradient(to right, #f6caca, rgba(255, 229, 200, 0.91));*/
+    border-radius: 15px;
+}
+
+.zadnja-anketa {
+    padding: 10px;
+    margin: 10px;
+    background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.zadnja-anketa:hover {
+    border: 2px solid #ae1813;
+}
+
+.zadnja-anketa a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
 }

@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Interval zaupanja</title>
 
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Agdasima&display=swap" rel="stylesheet">
@@ -31,8 +34,32 @@
 	</header>
 
 	<view style="display: block; padding: 5% 10%; margin-top: 60px" class="content">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer eget aliquet nibh praesent tristique magna sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Ac tortor vitae purus faucibus ornare suspendisse. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Cursus euismod quis viverra nibh cras pulvinar mattis nunc. Gravida neque convallis a cras. Sed faucibus turpis in eu mi. Augue mauris augue neque gravida in fermentum et sollicitudin. Lacinia at quis risus sed vulputate. Sed viverra tellus in hac.
+		<main style="display: inline-block; width: 70%">
+			<p id="placeholder">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer eget aliquet nibh praesent tristique magna sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Ac tortor vitae purus faucibus ornare suspendisse. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Cursus euismod quis viverra nibh cras pulvinar mattis nunc. Gravida neque convallis a cras. Sed faucibus turpis in eu mi. Augue mauris augue neque gravida in fermentum et sollicitudin. Lacinia at quis risus sed vulputate. Sed viverra tellus in hac.
+			</p>
+		</main>
+		<sidebar style="display: inline-block; float: right">
+			<!--	Vue components-->
+			<div id="zadnje-ankete">
+				<h1>Zadnje ankete</h1>
+				<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
+					<a :href="getLinkUrl(anketa._id)" style="display: block"> <!-- iffy implementacija !-->
+						Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
+						<br>
+						Anketar: {{ anketa.anketar_ime }}
+						<br>
+						Naročnik: {{ anketa.narocnik_id }}
+						<br>
+						Metoda: {{ anketa.metoda }}
+						<br>
+					</a>
+				</div>
+			</div>
+			<script src="js/zadnje-ankete.js"></script>
+		</sidebar>
 	</view>
+
 	<footer style="display: block; height: 50px;">
 		<div style="display:flex; justify-content:center; align-items: center; height: inherit">
 			© Interval zaupanja 2023

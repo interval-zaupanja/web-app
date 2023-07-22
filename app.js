@@ -78,7 +78,7 @@ app.get("/", function (req, res) {
     app.engine("html", require("ejs").renderFile);
     app.set("view engine", "html");
     app.set('views', path.join(__dirname, 'public'));
-    res.render("framework.html");
+    res.render("domov.html");
 });
 
 // API routing

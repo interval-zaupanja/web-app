@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false); // dodano zaradi opozorila in istega delovanja v Mongoose 7
 
-var dbURI = "mongodb://localhost/interval-zaupanja/web-app"; // development
+var dbURI = "mongodb://localhost/interval-zaupanja/web-zadnjeAnkete"; // development
 if (process.env.NODE_ENV === "production")
     dbURI = process.env.MONGODB_ATLAS_URI;
 else if (process.env.NODE_ENV === "test")
-    dbURI = "mongodb://interval-zaupanja/web-app";
+    dbURI = "mongodb://interval-zaupanja/web-zadnjeAnkete";
 mongoose.connect(dbURI);
 
 mongoose.connection.on("connected", () => {
@@ -32,12 +32,12 @@ process.once("SIGUSR2", () => {
     });
 });
 process.on("SIGINT", () => {
-    gracefulShutdown("app termination", () => {
+    gracefulShutdown("zadnjeAnkete termination", () => {
         process.exit(0);
     });
 });
 process.on("SIGTERM", () => {
-    gracefulShutdown("Cloud-based app shutdown", () => {
+    gracefulShutdown("Cloud-based zadnjeAnkete shutdown", () => {
         process.exit(0);
     });
 });
