@@ -10,7 +10,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Agdasima&display=swap" rel="stylesheet">
-	<link href="styles/framework.css" rel="stylesheet">
+	<link href="styles/global.css" rel="stylesheet">
 </head>
 <body>
 	<header style="display: block; height: 70px" class="sticky">
@@ -33,11 +33,16 @@
 		</div>
 	</header>
 
-	<view style="display: block; padding: 5% 10%; margin-top: 60px" class="content">
+	<view style="display: block; padding: 5% 10%; margin-top: 70px" class="content">
 		<main style="display: inline-block; width: 70%">
 			<p id="placeholder">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer eget aliquet nibh praesent tristique magna sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Ac tortor vitae purus faucibus ornare suspendisse. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Cursus euismod quis viverra nibh cras pulvinar mattis nunc. Gravida neque convallis a cras. Sed faucibus turpis in eu mi. Augue mauris augue neque gravida in fermentum et sollicitudin. Lacinia at quis risus sed vulputate. Sed viverra tellus in hac.
 			</p>
+			<div>
+				<canvas id="chart-line-dz"></canvas>
+				<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+				<!--				mogoče ta script prestavi drugam-->
+			</div>
 		</main>
 		<sidebar style="display: inline-block; float: right">
 			<!--	Vue components-->
@@ -68,6 +73,5 @@
 			<a href="kontakt.html">Kontakt</a>
 		</div>
 	</footer>
-
 </body>
 </html>

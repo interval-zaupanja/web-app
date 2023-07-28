@@ -15,7 +15,7 @@ new Vue({
                 .then(response => this.ankete = response.data)
                 .catch(error => {console.error(error)});
         },
-        async imenaAnketarjev() { // imena anketarjev se dodajo šele nakndadno; lahko bi jih sicer dodal tudi med samim klicem podatkov!!!
+        async imenaAnketarjev() { // imena anketarjev se dodajo šele naknadno; lahko bi jih sicer dodal tudi med samim klicem podatkov!!!
             for (let i = 0; i < this.ankete.length; i++) {
                 await axios
                     .get("http://localhost:4000/api/anketarji/" + this.ankete[i].anketar_id)
