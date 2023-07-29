@@ -14,6 +14,6 @@ export default {
 #placeholder {
   margin: 0px;
   display: inline-block;
-  width: 70%;
+  width: 60%;
 }
 </style>

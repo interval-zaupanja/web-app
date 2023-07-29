@@ -1,5 +1,6 @@
 * {
-    font-family: 'Agdasima', sans-serif;
+    /*font-family: 'Agdasima', sans-serif;*/
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     /* color: #000000; */
 }
 
@@ -13,6 +14,7 @@ body {
     /* display: inline-block; (to se zaradi float ignorira; drugače tudi s tem ne dela dobro) */
     float: right;
     padding: 10px;
+    margin: 10px;
     border-radius: 15px;
 
     /*background-color: #f6caca;*/
