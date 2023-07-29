@@ -1,25 +1,28 @@
 <template>
-  <app-content>
-<!--    <placeholder-component></placeholder-component>-->
-<!--    <div style="display: inline-block; float: right">-->
-<!--    </div>-->
-    To, da se vidi, da se je page-body insertiral!!!
-  </app-content>
+    <div class="content">
+        <Placeholder/>
+        <ZadnjeAnkete/>
+    </div>
 </template>
 
 <script>
-// import PlaceholderComponent from "@/components/Placeholder.vue";
-// import ListZadnjeAnkete from "./lists/zadnje-ankete.vue"
+import Placeholder from './Placeholder.vue'
+import ZadnjeAnkete from './lists/ZadnjeAnkete.vue'
 
 export default {
-  name: "Content",
-  components: {
-    // PlaceholderComponent
-    // ListZadnjeAnkete
-  }
+    name: 'Content',
+    components: {
+        Placeholder,
+        ZadnjeAnkete
+    }
 }
 </script>
 
 <style scoped>
-
+.content {
+    margin: auto 0;
+    margin-top: 70px;
+    display: block;
+    padding: 30px 10%;
+}
 </style>
