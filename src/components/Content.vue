@@ -1,7 +1,9 @@
 <template>
     <div class="content">
-        <Placeholder/>
-        <ZadnjeAnkete/>
+        <div style="display: block">
+            <Placeholder/>
+            <ZadnjeAnkete/>
+        </div>
         <DZ/>
     </div>
 </template>
