@@ -2,12 +2,12 @@
 	<div class="zadnje-ankete sidebar">
 		<h1>Zadnje ankete</h1>
 		<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
-			<a :href="getLinkUrl(anketa._id)" style="display: block"> <!-- iffy implementacija !-->
+			<a :href="getUrl(anketa._id)" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
 				<br>
 				Anketar: {{ anketa.anketar_ime }}
 				<br>
-				Naročnik: {{ anketa.narocnik_id }}
+				Naročnik: {{ anketa.narocnik_ime }}
 				<br>
 				Metoda: {{ anketa.metoda }}
 				<br>
@@ -17,41 +17,42 @@
 </template>
 
 <script>
-import axios from "axios"; // pri SPA to ni bilo potrebno ???; poleg tega je že CDN v index.html
+import axios from "axios";
 
 export default {
 	name: "ZadnjeAnkete",
-	// el: '#zadnje-ankete',
 	data() {
 		return {
 			ankete: []
 		}
 	},
 	async mounted() {
-		await this.getData();
-		await this.imenaAnketarjev();
-		// Vue.set(this.ankete); // osveži pogled, kar za sam getData() očitno ni potrebno; v komponentni shemi to sploh ni potrebno
+		this.getData();
 	},
 	methods: {
 		async getData() {
-			await axios
-				.get("http://localhost:4000/api/ankete")
-				.then(response => this.ankete = response.data)
-				.catch(error => {
-					console.error(error)
-				});
-		},
-		async imenaAnketarjev() { // imena anketarjev se dodajo šele naknadno; lahko bi jih sicer dodal tudi med samim klicem podatkov!!!
-			for (let i = 0; i < this.ankete.length; i++) {
-				await axios
-					.get("http://localhost:4000/api/anketarji/" + this.ankete[i].anketar_id)
-					.then(response => {
-						this.ankete[i].anketar_ime = response.data.ime;
-					})
-					.catch(error => console.error(error));
+			const { data } = await axios.get("http://localhost:4000/api/ankete");
+			for (let i = 0; i < data.length; i++) { // s forEach ne deluje, ker ni async funkcija
+				const {
+					zacetek,
+					konec,
+					metoda,
+					anketar_id,
+					narocnik_id,
+					_id
+				} = data[i];
+				this.ankete.push({_id, zacetek, konec, metoda, anketar_ime: await this.imeAnketarja(anketar_id), narocnik_ime: await this.imeNarocnika(narocnik_id)});
 			}
 		},
-		getLinkUrl(id) {
+		async imeAnketarja(anketar_id) {
+			const { data } = await axios.get("http://localhost:4000/api/anketarji/" + anketar_id);
+			return data.ime;
+		},
+		async imeNarocnika(narocnik_id) {
+			const { data } = await axios.get("http://localhost:4000/api/narocniki/" + narocnik_id);
+			return data.ime;
+		},
+		getUrl(id) {
 			return 'ankete/' + id;
 		}
 	}
