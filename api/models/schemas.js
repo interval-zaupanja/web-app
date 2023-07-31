@@ -61,14 +61,11 @@ const ankete_shema = new mongoose.Schema({
  *    properties:
  *     _id:
  *      type: ObjectId
- *      description: notranji <b>enolični identifikator</b> vprašanja
+ *      description: <b>enolični identifikator</b> vprašanja (podatkovna baza ga določi sama ob vsakem uvozu podatkov)
  *      example: 635a62f5dc5d7968e68464be
- *     eid:
- *      type: number
- *      description: zunanji enolični identifikator vprašanja
- *     anketa_eid:
- *      type: string
- *      description: zunanji enolični identifikator ankete, kateri pripada vprašanje
+ *     anketa_id:
+ *      type: ObjectId
+ *      description: enolični identifikator ankete, kateri pripada vprašanje
  *     vprasanje:
  *      type: string
  *      description: vprašanje, ki je bilo postavljeno anketirancem
@@ -77,31 +74,35 @@ const ankete_shema = new mongoose.Schema({
  *      description: tip vprašanja
  *     glasovalno_tip:
  *      type: string
- *      description: tip glasovalnega vprašanja
- *     odgovori:
+ *      description: če je vprašanje glasovalnega tipa, ta glasovalni tip dodatno specificira, za kakšno vprašanje gre
+ *     zaupanje_tip:
  *      type: string
- *      description: tip glasovalnega vprašanja
+ *      description: če je vprašanje glede zaupanja, ta tip zaupanja dodatno specificira, za kakšno vprašanje gre
  *     opis:
  *      type: string
  *      description: opis vprašanja
  *     opombe:
  *      type: string
  *      description: opombe vprašanja
+ *     odgovori:
+ *      type: string
+ *      description: opombe vprašanja
  *    required:
  *     - _id
- *     - eid
  *     - anketa_eid
  *     - tip
  */
-const odgovori_shema = new mongoose.Schema({
+
+// MANJKAJOČA SHEMA!!!!!
+const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     odgovor_tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
-    odgovor: { type: String, required: false },
+    odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih; vrednost lahko le DA ali NE
     odgovor_stranka_id: {
         type: ObjectId,
         required:
             [
-                this.tip === "glasovalno" && this.odgovor_tip === "BG-VEM" && this.glasovalno_tip === "dz",
-                "Če je tip odgovora VEM, potem mora biti izbrana stranka"
+                this.tip === "glasovalno" && this.odgovor_tip === "BG-V" && this.glasovalno_tip === "dz",
+                "Če je tip odgovora BG-V, potem mora biti izbrana stranka"
             ]
     },
     procent_anketar: { type: Number, required: false },
@@ -110,6 +111,12 @@ const odgovori_shema = new mongoose.Schema({
     procent_spodnja_meja_iz_calculated: { type: Number, required: false },
     procent_zgornja_meja_anketar: { type: Number, required: false },
     procent_zgornja_meja_iz_calculated: { type: Number, required: false },
+    st_mandatov_anketar: { type: Number, required: false },
+    st_mandatov_iz_calculated: { type: Number, required: false },
+    st_mandatov_spodnja_meja_anketar: { type: Number, required: false },
+    st_mandatov_spodnja_meja_iz_calculated: { type: Number, required: false },
+    st_mandatov_zgornja_meja_anketar: { type: Number, required: false },
+    st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
     stevilo_anketirancev_anketar: { type: Number, required: false },
     stevilo_anketirancev_iz_calculated: { type: Number, required: false }
 });
@@ -119,9 +126,9 @@ const vprasanja_shema = new mongoose.Schema({
     vprasanje: { type: String, required: false },
     tip: { type: String, required: [true, "Tip vprašanja je zahtevano polje"] },
     glasovalno_tip: { type: String, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },
-    odgovori: { type: odgovori_shema, required: [true, "Vprašanje mora vsebovati odgovore!"] },
     opis: { type: String, required: false },
-    opombe: { type: String, required: false }
+    opombe: { type: String, required: false },
+    odgovori: { type: [odgovori_shema], required: [true, "Vprašanje mora vsebovati odgovore!"] }
 });
 
 /**
