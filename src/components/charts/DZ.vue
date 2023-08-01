@@ -1,21 +1,29 @@
 <template>
   <!-- <div style="height: 400px"> to je povzročalo probleme-->
-    <Line id="drzavni-zbor" :options="options" :data="data" style="max-height: 400px"/>
+  <Line
+    id="drzavni-zbor"
+    v-if="loaded"
+    :options="options"
+    :data="data"
+    style="max-height: 400px"
+  />
   <!-- </div> -->
 </template>
 
 <script>
-import { Line } from 'vue-chartjs'
+import axios from "axios";
+
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
+  Tooltip
+} from "chart.js";
+import { Line } from "vue-chartjs";
 
 ChartJS.register(
   CategoryScale,
@@ -25,35 +33,69 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-)
+);
 
 export default {
-  name: 'DZ',
+  name: "DZ",
   components: {
-    Line
+    Line,
   },
   data() {
     return {
+      type: "line",
       data: {
-        labels: ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij'],
-        datasets: [
-            {
-              label: 'SDS',
-              backgroundColor: '#f87979',
-              data: [40, 39, 10, 40, 39, 80, 40]
-            },
-            {
-              label: 'SD',
-              backgroundColor: '#E33A45',
-              data: [20, 19, 18, 21, 22, 17, 18]
-            }
-        ]
+        labels: [],
+        datasets: [],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false
+      },
+      loaded: false,
+    };
+  },
+  async mounted() {
+    await this.getData();
+    this.loaded = true;
+  },
+  methods: {
+    async getData() {
+      const { data } = await axios.get(
+        "http://localhost:4000/api/vprasanja/glasovalna/dz"
+      );
+      for (let i = 0; i < data.length; i++) {
+        // ne vem, če se vse doda v pravilnem zaporedju
+        const { anketa_id, odgovori } = data[i];
+        this.data.labels.push(await this.getDate(anketa_id));
+        for (let j = 0; j < odgovori.length; j++) {
+          if (odgovori[j].odgovor_tip === "BG-V") {
+            if (
+              undefined ===
+              this.data.datasets.find(
+                (element) => element.label === odgovori[j].odgovor_stranka_id
+              )
+            ) {
+              this.data.datasets.push({
+                label: odgovori[j].odgovor_stranka_id,
+                backgroundColor: "#f87979",
+                data: [odgovori[j].procent_anketar],
+              });
+            } else {
+              const obstojeciVnos = this.data.datasets.find(
+                (element) => element.label === odgovori[j].odgovor_stranka_id
+              );
+              obstojeciVnos.data.push(odgovori[j].procent_anketar);
+            }
+          }
+        }
       }
-    }
-  }
-}
+    },
+    async getDate(anketa_id) {
+      const { data } = await axios.get(
+        "http://localhost:4000/api/ankete/" + anketa_id
+      );
+      return data.konec;
+    },
+  },
+};
 </script>

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { isConstructorDeclaration } = require("typescript");
+const { isConstructorDeclaration } = require("typescript"); // od kje to?
 const Vprasanja = mongoose.model("Vprasanje");
 
 // TU MANJKA ŠE DOKUMENTACIJA
@@ -178,7 +178,6 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
-            console.log("To je seznam vprašanj", seznam);
             res.status(200).json(seznam);
         }
     });
