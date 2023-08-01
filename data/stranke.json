@@ -4,15 +4,19 @@
       "$oid": "c32ae76a892c5c270a7acb1f"
     },
     "ime": "Slovenska demokratska stranka",
-    "kratica": "SDS"
+    "ime_kratica": "SDS",
+    "barva": "#FFF204",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/SDS_logotype.svg/2560px-SDS_logotype.svg.png"
   },
   {
     "_id": {
       "$oid": "a79677ebd4dbd3bd7642deca"
     },
     "ime": "Gibanje svoboda",
-    "kratica": "GS",
-    "opis": "Gibanje svoboda je stranka, ki je nastala za državnozborske volitve leta 2022",
+    "ime_kratica": "GS",
+    "barva": "#015CA4",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gibanje_Svoboda_logo.svg/2880px-Gibanje_Svoboda_logo.svg.png",
+    "opis": "Gibanje svoboda je stranka, ki je nastala pred državnozborskimi volitvami leta 2022",
     "opombe": "Včasih se je imenovala Stranka zelenih dejanj"
   }
 ]

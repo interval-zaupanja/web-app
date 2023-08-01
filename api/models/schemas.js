@@ -209,9 +209,15 @@ const narocniki_shema = new mongoose.Schema({
  *      type: string
  *      description: ime stranke
  *      example: Slovenska demokratska stranka
- *     kratica:
+ *     ime_kratica:
  *      type: string
  *      description: kratica imena stranke
+ *     barva:
+ *      type: string
+ *      description: barva določena stranki
+ *     logo_uri:
+ *      type: string
+ *      description: povezava do logota stranke
  *     opis:
  *      type: string
  *      description: opis stranke
@@ -224,7 +230,9 @@ const narocniki_shema = new mongoose.Schema({
  */
 const stranke_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
-    kratica: { type: String, required: false},
+    ime_kratica: { type: String, required: false},
+    barva: { type: String, required: false},
+    logo_uri: { type: String, required: false},
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
 });

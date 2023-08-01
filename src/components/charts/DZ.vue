@@ -1,17 +1,18 @@
 <template>
-  <!-- <div style="height: 400px"> to je povzročalo probleme-->
-  <Line
-    id="drzavni-zbor"
-    v-if="loaded"
-    :options="options"
-    :data="data"
-    style="max-height: 400px"
-  />
-  <!-- </div> -->
+  <div style="height: 400px" class="stick-to-the-left">
+    <Line
+      id="drzavni-zbor"
+      v-if="loaded"
+      :options="options"
+      :data="data"
+      style="max-height: 400px"
+    />
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 import {
   CategoryScale,
@@ -91,11 +92,13 @@ export default {
       }
     },
     async getDate(anketa_id) {
-      const { data } = await axios.get(
-        "http://localhost:4000/api/ankete/" + anketa_id
-      );
-      return data.konec;
+      const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
+      return moment(data.konec,"YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
+    async getPartyName(stranka_id) {
+      const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
+      return data.ime;
+    }
   },
 };
 </script>

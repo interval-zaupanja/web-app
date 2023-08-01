@@ -4,6 +4,7 @@ const router = express.Router();
 const ctrlAnkete = require('../controllers/ankete');
 const ctrlAnketarji =  require('../controllers/anketarji');
 const ctrlNarocniki = require('../controllers/narocniki');
+const ctrlStranke = require('../controllers/stranke');
 const ctrlVprasanja = require('../controllers/vprasanja');
 
 // Ankete storitve
@@ -26,6 +27,13 @@ router.get('/narocniki/:id', ctrlNarocniki.podrobnostiNarocnika);
 router.delete('/narocniki/:id', ctrlNarocniki.izbrisiNarocnika);
 router.post('/narocniki/', ctrlNarocniki.ustvariNarocnika);
 router.put('/narocniki/:id', ctrlNarocniki.posodobiNarocnika);
+
+// Stranke storitve
+router.get('/stranke', ctrlStranke.seznamStrank);
+router.get('/stranke/:id', ctrlStranke.podrobnostiStranke);
+router.delete('/stranke/:id', ctrlStranke.izbrisiStranko);
+router.post('/stranke/', ctrlStranke.ustvariStranko);
+router.put('/stranke/:id', ctrlStranke.posodobiStranko);
 
 // Vprasanja storitve
 router.get('/vprasanja', ctrlVprasanja.seznamVprasanj);
