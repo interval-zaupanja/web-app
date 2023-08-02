@@ -57,6 +57,7 @@ export default {
   },
   async mounted() {
     await this.getData();
+    await this.getPartyNamesAndColors();
     this.loaded = true;
   },
   methods: {
@@ -78,7 +79,6 @@ export default {
             ) {
               this.data.datasets.push({
                 label: odgovori[j].odgovor_stranka_id,
-                backgroundColor: "#f87979",
                 data: [odgovori[j].procent_anketar],
               });
             } else {
@@ -95,9 +95,12 @@ export default {
       const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
       return moment(data.konec,"YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
-    async getPartyName(stranka_id) {
-      const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
-      return data.ime;
+    async getPartyNamesAndColors() { // dejansko se doda kratica imena (ime_kratica)
+      for (let i = 0; i < this.data.datasets.length; i++) {
+        const { data } = await axios.get("http://localhost:4000/api/stranke/" + this.data.datasets[i].label);
+        this.data.datasets[i].label = data.ime_kratica;
+        this.data.datasets[i].backgroundColor = data.barva;
+      }
     }
   },
 };

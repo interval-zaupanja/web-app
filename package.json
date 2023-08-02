@@ -25,7 +25,8 @@
     "swagger-ui-express": "^4.6.0",
     "utf8-encoder": "^1.0.1",
     "vue": "^3.3.4",
-    "vue-chartjs": "^5.2.0"
+    "vue-chartjs": "^5.2.0",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
