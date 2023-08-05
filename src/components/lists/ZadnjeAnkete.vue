@@ -2,7 +2,7 @@
 	<div class="zadnje-ankete sidebar">
 		<h1>Zadnje ankete</h1>
 		<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
-			<a :href="getUrl(anketa._id)" style="display: block">
+			<router-link :to="'ankete/' + anketa._id" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
 				<br>
 				Anketar: {{ anketa.anketar_ime }}
@@ -11,7 +11,7 @@
 				<br>
 				Metoda: {{ anketa.metoda }}
 				<br>
-			</a>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -51,9 +51,6 @@ export default {
 		async imeNarocnika(narocnik_id) {
 			const { data } = await axios.get("http://localhost:4000/api/narocniki/" + narocnik_id);
 			return data.ime;
-		},
-		getUrl(id) {
-			return 'ankete/' + id;
 		}
 	}
 }

@@ -37,7 +37,8 @@ router.put('/stranke/:id', ctrlStranke.posodobiStranko);
 
 // Vprasanja storitve
 router.get('/vprasanja', ctrlVprasanja.seznamVprasanj);
-router.get('/vprasanja/:id', ctrlVprasanja.podrobnostiVprasanj);
+router.get('/vprasanja/:id', ctrlVprasanja.podrobnostiVprasanja);
+router.get('/vprasanja/anketa/:id', ctrlVprasanja.seznamVprasanjAnketa);
 router.get('/vprasanja/glasovalna/dz', ctrlVprasanja.seznamVprasanjGlasovalnaDZ);
 // router.delete('/vprasanja/:id', ctrlVprasanja.izbrisiVprasanje);
 // router.post('/vprasanja/', ctrlVprasanja.ustvariVprasanje);

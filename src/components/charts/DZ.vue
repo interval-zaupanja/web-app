@@ -61,7 +61,7 @@ export default {
     this.loaded = true;
   },
   methods: {
-    async getData() {
+    async getData() { // potrebno pravilno posortirati in razpeti po datumih !!!!
       const { data } = await axios.get(
         "http://localhost:4000/api/vprasanja/glasovalna/dz"
       );

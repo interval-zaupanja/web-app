@@ -2,7 +2,9 @@
   <div>
     <Header/>
     <div id="full-height">
-      <Content/>
+      <div class="view">
+        <router-view></router-view>
+      </div>
       <Footer/>
     </div>
   </div>
@@ -10,15 +12,12 @@
 
 <script>
 import Header from './components/Header.vue'
-import Content from './components/Content.vue'
 import Footer from './components/Footer.vue'
-
 
 export default {
   name: 'App',
   components: {
     Header,
-    Content,
     Footer
   }
 }
@@ -38,5 +37,12 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.view {
+  margin: auto 0;
+  margin-top: 70px;
+  display: block;
+  padding: 30px 10%;
 }
 </style>

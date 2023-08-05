@@ -122,7 +122,7 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
 });
 
 const vprasanja_shema = new mongoose.Schema({
-    anketa_id: { type: ObjectId, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] },
+    anketa_id: { type: String, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
     tip: { type: String, required: [true, "Tip vprašanja je zahtevano polje"] },
     glasovalno_tip: { type: String, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },

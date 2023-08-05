@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var ObjectId = require('mongoose').Types.ObjectId; 
 const { isConstructorDeclaration } = require("typescript"); // od kje to?
 const Vprasanja = mongoose.model("Vprasanje");
 
@@ -97,7 +98,6 @@ const seznamVprasanj = (req, res) => {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
-            console.log("To je seznam vprašanj", seznam);
             res.status(200).json(seznam);
         }
     });
@@ -152,7 +152,7 @@ const seznamVprasanj = (req, res) => {
 //  *       example:
 //  *        sporocilo: "Napaka na strežniku: <opis napake>"
 //  */
-const podrobnostiVprasanj = (req, res) => {
+const podrobnostiVprasanja = (req, res) => {
     const idVprasanja = req.params.id;
 
     Vprasanja.findById(idVprasanja).exec(function (
@@ -168,6 +168,26 @@ const podrobnostiVprasanj = (req, res) => {
             res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
         } else {
             res.status(200).json(vprasanje);
+        }
+    });
+};
+
+// MANJKA DOKUMENTACIJA
+const seznamVprasanjAnketa = (req, res) => {
+    const idAnkete = req.params.id;
+    Vprasanja.find({anketa_id: idAnkete}).exec(function (
+        error,
+        vprasanja
+    ) {
+        if (!vprasanja) {
+            res.status(404).json({
+                sporocilo:
+                    "Ne najdem vprašanj pripadajočih anketi s podanim enoličnim identifikatorjem",
+            });
+        } else if (error) {
+            res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
+        } else {
+            res.status(200).json(vprasanja);
         }
     });
 };
@@ -463,7 +483,8 @@ const izbrisiAnketo = (req, res) => {
 
 module.exports = {
     seznamVprasanj,
-    podrobnostiVprasanj,
+    podrobnostiVprasanja,
+    seznamVprasanjAnketa,
     seznamVprasanjGlasovalnaDZ,
     ustvariAnketo,
     posodobiAnketo,
