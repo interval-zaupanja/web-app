@@ -11,9 +11,9 @@
       <div id="nav" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
         <div style="display:flex; justify-content:center; align-items: center; line-height: 70px;"> <!-- *line*-height!!!-->
           <router-link to="/glasovanja" class="droppable">Glasovanja ⏷</router-link>
-          <router-link to="/priljubljenost-politikov" class="droppable">Priljubljenost politikov ⏷</router-link>
-          <router-link to="/zaupanje" class="droppable">Zaupanje ⏷</router-link>
-          <router-link to="/socialni-pulz" class="droppable">Ostalo ⏷</router-link>
+          <!-- <router-link to="/priljubljenost-politikov" class="droppable">Priljubljenost politikov ⏷</router-link> -->
+          <!-- <router-link to="/zaupanje" class="droppable">Zaupanje ⏷</router-link> -->
+          <!-- <router-link to="/socialni-pulz" class="droppable">Ostalo ⏷</router-link> -->
           <router-link to="/podatki" class="droppable">Podatki ⏷</router-link>
           <router-link to="/o-nas" class="undroppable">O nas</router-link>
         </div>

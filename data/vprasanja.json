@@ -4,8 +4,6 @@
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
     "glasovalno_tip": "DZ",
-    "opis": "",
-    "opombe": "",
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
@@ -72,8 +70,6 @@
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
     "glasovalno_tip": "DZ",
-    "opis": "",
-    "opombe": "",
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
@@ -140,12 +136,10 @@
     "vprasanje": "Ali zaupate v delo vlade?",
     "tip": "zaupanje",
     "zaupanje_tip": "vlada",
-    "opis": "",
-    "opombe": "",
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "DA",
+        "odgovor": "Zaupam",
         "procent_anketar": 24.7,
         "procent_iz_calculated": 101,
         "procent_spodnja_meja_anketar": 101,
@@ -157,7 +151,7 @@
       },
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "NE",
+        "odgovor": "Ne zaupam",
         "procent_anketar": 24.7,
         "procent_iz_calculated": 101,
         "procent_spodnja_meja_anketar": 101,

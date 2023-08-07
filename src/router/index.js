@@ -3,6 +3,7 @@ import Domov from '../views/Domov.vue';
 import ONas from '../views/ONas.vue';
 import Ankete from '../views/Ankete/Ankete.vue';
 import Anketa from '../views/Ankete/Anketa.vue';
+import NotFound from '../views/NiNajdeno.vue'
 
 const router = new createRouter({
     history: createWebHistory(process.env.BASE_URL),
@@ -27,7 +28,14 @@ const router = new createRouter({
             name: 'Anketa',
             component: Anketa,
             props: true
+        },
+        // Catch all not found
+        {
+            path: '/:catchAll(.*)', // to je regex
+            name: 'NotFound',
+            component: NotFound
         }
+
     ]
 })
 

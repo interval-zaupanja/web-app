@@ -12,27 +12,27 @@
             </tr>
             <tr class="anketa" v-for="anketa in ankete" :key="anketa._id">
                     <th>
-                        <router-link :to="anketa._id">
+                        <router-link :to="'/ankete/' + anketa._id">
                             {{ new Date(anketa.zacetek).toLocaleDateString() }}
                         </router-link>
                     </th>
                     <th>
-                        <router-link :to="anketa._id">
+                        <router-link :to="'/ankete/' + anketa._id">
                             {{ new Date(anketa.konec).toLocaleDateString() }}
                         </router-link>
                     </th>
                     <th>
-                        <router-link :to="anketa._id">
+                        <router-link :to="'/ankete/' + anketa._id">
                             {{ anketa.anketar_ime }}
                         </router-link>
                     </th>
                     <th>
-                        <router-link :to="anketa._id">
+                        <router-link :to="'/ankete/' + anketa._id">
                             {{ anketa.narocnik_ime }}
                         </router-link>
                     </th>
                     <th>
-                        <router-link :to="anketa._id">
+                        <router-link :to="'/ankete/' + anketa._id">
                             {{ anketa.metoda }}
                         </router-link>
                     </th>
