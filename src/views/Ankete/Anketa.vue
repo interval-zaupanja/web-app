@@ -24,8 +24,10 @@
             <div>
                 <h1>Vprašanja</h1>
                 <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="vprasanje">
+                    <span class="anchor-vprasanje" :id="vprasanje._id"></span>
                     <div>
                         <div>
+                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id"/>
                             <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                             <p>
                                 Tip vprašanja: {{vprasanje.tip}}
@@ -42,33 +44,37 @@
                         <div>
                             <h2>Odgovori</h2>
                             <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="odgovor">
-                                <p>Tip odgovora: {{ this.odgovorTip(odgovor.odgovor_tip)}}</p>
-                                <span>
-                                    <span v-if="odgovor.odgovor_stranka_id">
-                                        <span v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
-                                            <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
-                                                <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px"/>
-                                            </a>
+                                <span class="anchor-odgovor" :id="odgovor._id"></span>
+                                <div>
+                                    <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id"/>
+                                    <p>Tip odgovora: {{ this.odgovorTip(odgovor.odgovor_tip)}}</p>
+                                    <span>
+                                        <span v-if="odgovor.odgovor_stranka_id">
+                                            <span v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
+                                                <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                                    <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px"/>
+                                                </a>
+                                            </span>
+                                            <p>
+                                                Stranka:
+                                                <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                                    {{ odgovor.odgovor_stranka_ime}}
+                                                    <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
+                                                </a>
+                                            </p>
                                         </span>
-                                        <p>
-                                            Stranka:
-                                            <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
-                                                {{ odgovor.odgovor_stranka_ime}}
-                                                <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
-                                            </a>
-                                        </p>
+                                        <span v-if="odgovor.odgovor">
+                                            Odgovor: {{ odgovor.odgovor }}
+                                        </span>
                                     </span>
-                                    <span v-if="odgovor.odgovor">
-                                        Odgovor: {{ odgovor.odgovor }}
-                                    </span>
-                                </span>
-                                <p>
-                                    {{ odgovor.procent_anketar }}%
-                                    <span v-if="(odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) > 0">
-                                        ± {{ (odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) / 2 }}%
-                                        ({{ odgovor.procent_spodnja_meja_anketar }}% - {{ odgovor.procent_zgornja_meja_anketar }}%)
-                                    </span>
-                                </p>
+                                    <p>
+                                        {{ odgovor.procent_anketar }}%
+                                        <span v-if="(odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) > 0">
+                                            ± {{ (odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) / 2 }}%
+                                            ({{ odgovor.procent_spodnja_meja_anketar }}% - {{ odgovor.procent_zgornja_meja_anketar }}%)
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,11 +92,13 @@ import axios from 'axios';
 
 import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
+import CopyLink from '../../components/CopyLink.vue'
 
 export default {
     components: {
         Nalaganje,
-        NeObstaja
+        NeObstaja,
+        CopyLink
     },
     props: ['id'],
     data() {
@@ -242,5 +250,21 @@ export default {
 	margin: 10px;
 	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
 	border-radius: 15px;
+}
+
+.anchor-vprasanje {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 100px; /* header height and margin and padding of container */
+    margin-top: -100px; /* negative header height and margin and padding of container */
+    visibility: hidden;
+}
+
+.anchor-odgovor {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 95px; /* header height and margin and padding of container */
+    margin-top: -95px; /* negative header height and margin and padding of container */
+    visibility: hidden;
 }
 </style>
