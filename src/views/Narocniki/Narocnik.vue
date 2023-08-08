@@ -5,12 +5,19 @@
     <div v-if="loaded && !not_found">
         <Breadcrumbs previous="Naročniki" previousLink="/narocniki" current="Podrobnosti naročnika" />
         <div>
-            <img :src="this.logo_uri"/>
-            <h1 :style="'color: ' + this.barva">
-                {{this.ime}}
-            </h1>
-            <p v-if="this.opis != null">Opis: {{this.opis}}</p>
-            <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
+            <div>
+                <h1>{{this.ime}}</h1>
+            </div>
+            <div style="display: inline-block" class="side-panel">
+                <div>
+                    <img :src="this.logo_uri"/>
+                </div>
+                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija"/>
+            </div>
+            <div style="display: inline-block" class="main">
+                <p v-if="this.opis != null">Opis: {{this.opis}}</p>
+                <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
+            </div>
         </div>
     </div>
     <div v-if="not_found && loaded">
@@ -24,13 +31,15 @@ import axios from 'axios';
 import Nalaganje from '../../components/Nalaganje.vue';
 import NeObstaja from '../../components/NeObstaja.vue';
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
+import ExternalLink from '@/components/ExternalLink.vue';
 
 export default {
     name: 'Narocnik',
     components: {
         Nalaganje,
         NeObstaja,
-        Breadcrumbs
+        Breadcrumbs,
+        ExternalLink
     },
     props: ['id'],
     data() {
@@ -38,6 +47,7 @@ export default {
             ime: null,
             barva: null,
             logo_uri: null,
+            wikipedia_uri: null,
             opis: null,
             opombe: null,
             loaded: false,
@@ -58,6 +68,7 @@ export default {
                 this.ime = data.ime;
                 this.barva = data.barva;
                 this.logo_uri = data.logo_uri;
+                this.wikipedia_uri = data.wikipedia_uri;
                 this.opis = data.opis;
                 this.opombe = data.opombe;
                 return true;
@@ -71,8 +82,15 @@ export default {
 </script>
 
 <style scoped>
-img {
+.main {
+    width: 60%;
+}
+
+.side-panel {
     float: right;
+}
+
+img {
     max-height: 200px;
     max-width: 300px;
 }

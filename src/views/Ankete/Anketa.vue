@@ -7,10 +7,14 @@
         <div>
             <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
             <p>
-                Anketar: <router-link :to="'/anketar/' + this.anketar_id">{{ this.anketar_ime}}</router-link>
+                Anketar: <router-link :to="'/anketarji/' + this.anketar_id">{{ this.anketar_ime}}</router-link>
             </p>
             <p>
-                Naročnik: <router-link :to="'/narocnik/' + this.narocnik_id">{{ this.narocnik_ime}}</router-link>
+                Naročnik:
+                <router-link :to="'/narocniki/' + this.narocnik_id">
+                    {{ this.narocnik_ime}} <img v-if="this.narocnik_logo_uri != null" :src="this.narocnik_logo_uri" style="max-height: 12px"/>
+                    <!-- Mogoče je this.narocnik_ime za pobrisati -->
+                </router-link>
             </p>
             <p>Velikost vzorca: {{ this.velikost_vzorca }}</p>
             <p>Metoda: {{ this.metoda }}</p>
@@ -104,8 +108,10 @@ export default {
         return {
             anketar_id: null,
             anketar_ime: null,
+            anketar_logo_uri: null,
             narocnik_id: null,
             narocnik_ime: null,
+            narocnik_logo_uri: null,
             velikost_vzorca: null,
             metoda: null,
             zacetek: null,
@@ -121,8 +127,8 @@ export default {
     async mounted() {
         const status = await this.getData();
         if (status) {
-            await this.getAnketarIme();
-            await this.getNarocnikIme();
+            await this.getAnketarImeLogo();
+            await this.getNarocnikImeLogo();
             await this.getVprasanja();
 
             // Dodajanje imen strank
@@ -169,19 +175,21 @@ export default {
                 return false;
             }
         },
-        async getAnketarIme() {
+        async getAnketarImeLogo() {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/anketarji/" + this.anketar_id);
                 this.anketar_ime = data.ime;
+                this.anketar_logo_uri = data.logo_uri;
             } catch (error) {
                 console.log(error);
                 this.narocnik_ime = "Ne najdem specificiranega anketarja"
             }
 		},
-		async getNarocnikIme() {
+		async getNarocnikImeLogo() {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/narocniki/" + this.narocnik_id);
                 this.narocnik_ime = data.ime;
+                this.narocnik_logo_uri = data.logo_uri;
             } catch (error) {
                 console.log(error);
                 this.narocnik_ime = "Ne najdem specificiranega naročnika";
