@@ -1,5 +1,5 @@
 <template>
-        <h2>
+    <h2>
         <router-link :to="this.previousLink">{{this.previous}}</router-link>
         ⏵
         {{this.current}}

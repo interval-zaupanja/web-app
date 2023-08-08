@@ -146,6 +146,15 @@ const vprasanja_shema = new mongoose.Schema({
  *     ime:
  *      type: string
  *      description: ime anketarja
+ *     barva:
+ *      type: string
+ *      description: barva določena anketarju
+ *     logo_uri:
+ *      type: string
+ *      description: povezava do logota anketarja
+ *     wikipedia_uri:
+ *      type: string
+ *      description: povezava do Wikipedia strani anketarja
  *     opis:
  *      type: string
  *      description: opis anketarja
@@ -158,6 +167,9 @@ const vprasanja_shema = new mongoose.Schema({
  */
 const anketarji_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    barva: { type: String, required: false },
+    logo_uri: { type: String, required: false },
+    wikipedia_uri: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
 });
@@ -177,6 +189,15 @@ const anketarji_shema = new mongoose.Schema({
  *     ime:
  *      type: string
  *      description: ime naročnika
+ *     barva:
+ *      type: string
+ *      description: barva določena naročniku
+ *     logo_uri:
+ *      type: string
+ *      description: povezava do logota naročnika
+ *     wikipedia_uri:
+ *      type: string
+ *      description: povezava do Wikipedia strani naročnika
  *     opis:
  *      type: string
  *      description: opis naročnika
@@ -189,6 +210,9 @@ const anketarji_shema = new mongoose.Schema({
  */
 const narocniki_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    barva: { type: String, required: false },
+    logo_uri: { type: String, required: false },
+    wikipedia_uri: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
 });
@@ -218,6 +242,9 @@ const narocniki_shema = new mongoose.Schema({
  *     logo_uri:
  *      type: string
  *      description: povezava do logota stranke
+ *     wikipedia_uri:
+ *      type: string
+ *      description: povezava do Wikipedia strani stranke
  *     opis:
  *      type: string
  *      description: opis stranke
@@ -230,9 +257,10 @@ const narocniki_shema = new mongoose.Schema({
  */
 const stranke_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
-    ime_kratica: { type: String, required: false},
-    barva: { type: String, required: false},
-    logo_uri: { type: String, required: false},
+    ime_kratica: { type: String, required: false },
+    barva: { type: String, required: false },
+    logo_uri: { type: String, required: false },
+    wikipedia_uri: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
 });
@@ -258,6 +286,12 @@ const stranke_shema = new mongoose.Schema({
  *     stranka_id:
  *      type: number
  *      description: enolični identifikator stranke kandidata
+ *     slika_uri:
+ *      type: string
+ *      description: povezava do slike kandidata
+ *     wikipedia_uri:
+ *      type: string
+ *      description: povezava do Wikipedia strani kandidata
  *     opis:
  *      type: string
  *      description: opis kandidata
@@ -274,6 +308,8 @@ const kandidati_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     priimek: { type: String, required: [true, "Priimek je zahtevano polje"] },
     stranka_id : { type: ObjectId, required: false },
+    slika_uri: { type: String, required: false },
+    wikipedia_uri: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
 });
