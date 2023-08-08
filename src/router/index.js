@@ -4,6 +4,7 @@ import ONas from '../views/ONas.vue';
 import Ankete from '../views/Ankete/Ankete.vue';
 import Anketa from '../views/Ankete/Anketa.vue';
 import Stranke from '../views/Stranke/Stranke.vue';
+import Stranka from '../views/Stranke/Stranka.vue';
 import NotFound from '../views/NiNajdeno.vue';
 
 const router = new createRouter({
@@ -34,6 +35,12 @@ const router = new createRouter({
             path: '/stranke',
             name: 'Stranke',
             component: Stranke
+        },
+        {
+            path: '/stranke/:id',
+            name: 'Stranka',
+            component: Stranka,
+            props: true
         },
         // Catch all not found
         {

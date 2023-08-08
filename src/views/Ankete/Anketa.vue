@@ -3,10 +3,7 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded && !not_found">
-        <h2>
-            <router-link to="/ankete">Ankete</router-link>
-            ⏵
-            Podrobnosti ankete</h2>
+        <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
         <div>
             <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
             <p>
@@ -93,12 +90,14 @@ import axios from 'axios';
 import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
 import CopyLink from '../../components/CopyLink.vue'
+import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
 
 export default {
     components: {
         Nalaganje,
         NeObstaja,
-        CopyLink
+        CopyLink,
+        Breadcrumbs
     },
     props: ['id'],
     data() {
@@ -155,8 +154,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const response = await axios.get("http://localhost:4000/api/ankete/" + this.id);
-                const data = response.data;
+                const { data } = await axios.get("http://localhost:4000/api/ankete/" + this.id);
                 this.anketar_id = data.anketar_id;
                 this.narocnik_id = data.narocnik_id;
                 this.velikost_vzorca = data.velikost_vzorca;
