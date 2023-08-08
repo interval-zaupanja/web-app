@@ -115,7 +115,8 @@ export default {
             opombe: null,
             vprasanja: [],
             loaded: false,
-            not_found: false
+            not_found: false,
+            hash: this.$route.hash
         }
     },
     async mounted() {
@@ -142,6 +143,14 @@ export default {
             this.not_found = true;
         }
         this.loaded = true;
+        // setTimeout(function (hash) { // ne deluje oz. samo občasno
+        //     console.log(hash);
+        //     if (hash) {
+        //         const el_id = hash.replace('#', '')
+        //         const el = document.getElementById(el_id);
+        //         el.scrollIntoView({ behavior: 'smooth' })
+        //     }
+        // }, 1000, this.hash);
     },
     methods: {
         async getData() {

@@ -1,23 +1,29 @@
 <template>
-    <a :href="'http://localhost:8080' + path">
+    <button @click="copyURL()">
         <img src="https://icon-library.com/images/copy-link-icon/copy-link-icon-3.jpg"/>
-    </a>
+    </button>
 </template>
 
 <script>
 export default {
     name: 'CopyLink',
-    props: [ "path"]
+    props: [ "path"],
+    methods: {
+        copyURL() {
+            const url = 'http://localhost:8080' + this.path;
+            navigator.clipboard.writeText(url);
+        }
+    }
 }
 </script>
 
 <style scoped>
-img, a {
+img, button {
     height: 15px;
     float: right;
 }
 
-a {
+button {
     padding: 5px;
     border: 2px solid black;
     border-radius: 5px;

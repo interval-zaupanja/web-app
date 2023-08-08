@@ -69,8 +69,24 @@ export default {
 	border: 2px solid #ae1813;
 }
 
-.zadnja-anketa a {
-	color: inherit; /* blue colors for links too */
-	text-decoration: inherit; /* no underline */
+/* Removing link styles */
+a:link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a:active {
+    color: inherit;
+    text-decoration: inherit;
 }
 </style>
