@@ -41,6 +41,17 @@
                             </p>
                             <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                             <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
+                            <div class="charts">
+                                <PieChart
+                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_anketar')"
+                                    style="display: inline-block"
+                                />
+                                <PieChart
+                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovalno_tip === 'DZ'"
+                                    :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_anketar')"
+                                    style="display: inline-block"
+                                />
+                            </div>
                         </div>
                         <div>
                             <h3>Odgovori</h3>
@@ -95,13 +106,15 @@ import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
 import CopyLink from '../../components/CopyLink.vue'
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
+import PieChart from '@/components/charts/PieChart.vue';
 
 export default {
     components: {
         Nalaganje,
         NeObstaja,
         CopyLink,
-        Breadcrumbs
+        Breadcrumbs,
+        PieChart
     },
     props: ['id'],
     data() {
@@ -137,9 +150,11 @@ export default {
                     const odgovori = this.vprasanja[i].odgovori;
                     for (let j = 0; j < odgovori.length; j++) {
                         if (odgovori[j].odgovor_stranka_id) {
-                            odgovori[j].odgovor_stranka_ime = await this.getStrankaIme(odgovori[j].odgovor_stranka_id);
-                            odgovori[j].odgovor_stranka_ime_kratica = await this.getStrankaImeKratica(odgovori[j].odgovor_stranka_id);
-                            odgovori[j].odgovor_stranka_logo_uri = await this.getStrankaLogoURI(odgovori[j].odgovor_stranka_id);
+                            const podatki = await this.getStranka(odgovori[j].odgovor_stranka_id)
+                            odgovori[j].odgovor_stranka_ime = podatki.ime;
+                            odgovori[j].odgovor_stranka_ime_kratica = podatki.ime_kratica;
+                            odgovori[j].odgovor_stranka_logo_uri = podatki.logo_uri;
+                            odgovori[j].odgovor_stranka_barva = podatki.barva;
                         }
                     }
                 }
@@ -221,32 +236,52 @@ export default {
                 return "ne želim odgovoriti";
             }
         },
-        async getStrankaIme(stranka_id) {
+        async getStranka(stranka_id) {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
-                return data.ime;
+                return data;
             } catch (error) {
                 console.log(error);
                 return "Ne najdem specificiarne stranke";
             }
         },
-        async getStrankaImeKratica(stranka_id) {
-            try {
-                const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
-                return data.ime_kratica;
-            } catch (error) {
-                console.log(error);
-                return null;
+        predelajOdgovore(vprasanje, podatek) {
+            const podatki = {
+                labels: [],
+                backgroundColor: [],
+                data: []
             }
-        },
-        async getStrankaLogoURI(stranka_id) {
-            try {
-                const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
-                return data.logo_uri;
-            } catch (error) {
-                console.log(error);
-                return null;
+            for (let i = 0; i < vprasanje.odgovori.length; i++) {
+                if (vprasanje.odgovori[i].odgovor_tip === 'BG-V') {
+                    if (vprasanje.tip === 'glasovalno') {
+                        podatki.labels.push(vprasanje.odgovori[i].odgovor_stranka_ime_kratica)
+                        podatki.backgroundColor.push(vprasanje.odgovori[i].odgovor_stranka_barva)
+                    } else if (vprasanje.tip === 'zaupanje') {
+                        podatki.labels.push(vprasanje.odgovori[i].odgovor)
+                        if (vprasanje.odgovori[i].odgovor === 'Zaupam') {
+                            podatki.backgroundColor.push('#18C10A')
+                        } else if (vprasanje.odgovori[i].odgovor === 'Ne zaupam') {
+                            podatki.backgroundColor.push('#E71F1F')
+                        }
+                    }
+                } else if (vprasanje.odgovori[i].odgovor_tip === 'BG-NV' && podatek.indexOf('st_mandatov') === -1) {
+                    podatki.labels.push("Ne vem");
+                    podatki.backgroundColor.push('#7e848c')
+                } else if (vprasanje.odgovori[i].odgovor_tip === 'NBG' && podatek.indexOf('st_mandatov') === -1) {
+                    podatki.labels.push("Ne bom glasoval");
+                    podatki.backgroundColor.push('#acaeb0')
+                } else if (vprasanje.odgovori[i].odgovor_tip === 'NŽO' && podatek.indexOf('st_mandatov') === -1) {
+                    podatki.labels.push("Ne želim odgovoriti");
+                    podatki.backgroundColor.push('#dcdfe3')
+                }
+
+                if (podatek === 'procent_anketar') {
+                    podatki.data.push(vprasanje.odgovori[i].procent_anketar)
+                } else if (podatek === 'st_mandatov_anketar') {
+                    podatki.data.push(vprasanje.odgovori[i].st_mandatov_anketar)
+                }
             }
+            return podatki;
         }
     }
 }
@@ -281,5 +316,10 @@ export default {
     height: 95px; /* header height and margin and padding of container */
     margin-top: -95px; /* negative header height and margin and padding of container */
     visibility: hidden;
+}
+
+.charts {
+    display: flex;
+    justify-content: center;
 }
 </style>

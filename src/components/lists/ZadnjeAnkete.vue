@@ -1,6 +1,6 @@
 <template>
 	<div class="zadnje-ankete sidebar">
-		<h1>Zadnje ankete</h1>
+		<h3>Zadnje ankete</h3>
 		<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
 			<router-link :to="'ankete/' + anketa._id" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
@@ -57,6 +57,10 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+	text-align: center;
+}
+
 .zadnja-anketa {
 	padding: 10px;
 	margin: 10px;
