@@ -256,7 +256,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         },
         {
             $sort: {
-                'anketa_sredina': 1 // ne -1, zato, da se pravilno razporedi v graf
+                'anketa_sredina': 1 // ni -1, zato, da se pravilno razporedi v graf
             }
         },
         {

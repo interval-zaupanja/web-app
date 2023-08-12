@@ -25,7 +25,8 @@ const router = new createRouter({
         {
             path: '/ankete',
             name: 'Ankete',
-            component: Ankete
+            component: Ankete,
+            props: true
         },
         {
             path: '/ankete/:id',

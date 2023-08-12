@@ -19,6 +19,10 @@
                 <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
             </div>
         </div>
+        <div>
+            <h3>Naročene ankete</h3>
+            <SeznamAnket :parametri="{narocnik: this.id}"/>
+        </div>
     </div>
     <div v-if="not_found && loaded">
         <NeObstaja ime="Naročnik"/>
@@ -32,6 +36,7 @@ import Nalaganje from '../../components/Nalaganje.vue';
 import NeObstaja from '../../components/NeObstaja.vue';
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
+import SeznamAnket from '@/components/lists/SeznamAnket.vue';
 
 export default {
     name: 'Narocnik',
@@ -39,7 +44,8 @@ export default {
         Nalaganje,
         NeObstaja,
         Breadcrumbs,
-        ExternalLink
+        ExternalLink,
+        SeznamAnket
     },
     props: ['id'],
     data() {

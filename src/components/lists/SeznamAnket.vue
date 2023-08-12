@@ -1,39 +1,33 @@
 <template>
-    <table cellspacing="0" cellpadding="0">
-        <tr>
-            <th>Začetek anketiranja</th>
-            <th>Konec anketiranja</th>
-            <th>Anketar</th>
-            <th>Naročnik</th>
-            <th>Metoda anketiranja</th>
-        </tr>
-        <tr class="anketa" v-for="anketa in ankete" :key="anketa._id">
-                <th>
-                    <router-link :to="'/ankete/' + anketa._id">
+    <table cellspacing="0" cellpadding="0" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Začetek anketiranja</th>
+                <th scope="col">Konec anketiranja</th>
+                <th scope="col">Anketar</th>
+                <th scope="col">Naročnik</th>
+                <th scope="col">Metoda anketiranja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
+                    <th>
                         {{ new Date(anketa.zacetek).toLocaleDateString() }}
-                    </router-link>
-                </th>
-                <th>
-                    <router-link :to="'/ankete/' + anketa._id">
+                    </th>
+                    <th>
                         {{ new Date(anketa.konec).toLocaleDateString() }}
-                    </router-link>
-                </th>
-                <th>
-                    <router-link :to="'/ankete/' + anketa._id">
+                    </th>
+                    <th>
                         {{ anketa.anketar_ime }}
-                    </router-link>
-                </th>
-                <th>
-                    <router-link :to="'/ankete/' + anketa._id">
+                    </th>
+                    <th>
                         {{ anketa.narocnik_ime }}
-                    </router-link>
-                </th>
-                <th>
-                    <router-link :to="'/ankete/' + anketa._id">
+                    </th>
+                    <th>
                         {{ anketa.metoda }}
-                    </router-link>
-                </th>
-        </tr>
+                    </th>
+            </tr>
+        </tbody>
     </table>
 </template>
 
@@ -41,7 +35,8 @@
 import axios from "axios";
 
 export default {
-	name: "SeznamAnkets",
+	name: "SeznamAnket",
+    props: ["parametri"],
 	data() {
 		return {
 			ankete: []
@@ -52,7 +47,13 @@ export default {
 	},
 	methods: {
 		async getData() {
-			const { data } = await axios.get("http://localhost:4000/api/ankete");
+            var urlParametri = {}
+            if (this.parametri) {
+                urlParametri = this.parametri
+            }
+			const { data } = await axios.get("http://localhost:4000/api/ankete", {
+                params: urlParametri
+            });
 			for (let i = 0; i < data.length; i++) { // s forEach ne deluje, ker ni async funkcija
 				const {
 					zacetek,
@@ -79,34 +80,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-.anketa {
-	padding: 10px;
-	margin: 10px;
-	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
-	border-radius: 15px;
-	border: 2px solid rgba(255, 255, 255, 0.55);
-}
-
-tr .anketa:hover {
-	border: 2px solid #ae1813;
-}
-
-.anketa a {
-	color: inherit; /* blue colors for links too */
-	text-decoration: inherit; /* no underline */
-}
-
-tr {
-    border: none;
-}
-
-th {
-    padding: 0px;
-}
-table {
-    width: 100%;
-    border: 0px;
-}
-</style>

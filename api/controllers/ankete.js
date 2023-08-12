@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var ObjectId = require('mongoose').Types.ObjectId;
 const Ankete = mongoose.model("Anketa");
 
 /**
@@ -22,6 +23,7 @@ const Ankete = mongoose.model("Anketa");
  *           velikost_vzorca: 800
  *           metoda: CATI
  *           zacetek: 2023-02-16
+ *           sredina: 2023-02-18
  *           konec: 2023-02-20
  *           opis: Anketa je bila izvedena v času razgretih družbenopolitičnih razmer
  *           opombe: Malo več kot polovica ljudi se na klic ni odzvalo
@@ -35,7 +37,15 @@ const Ankete = mongoose.model("Anketa");
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
 const seznamAnket = (req, res) => {
-    Ankete.find().sort('-konec').exec(function (error, seznam) {
+    const query = {};
+    if (req.query.anketar) {
+        query.anketar_id = new ObjectId(req.query.anketar);
+    }
+    if (req.query.narocnik) {
+        query.narocnik_id = new ObjectId(req.query.narocnik);
+    }
+    // če je req.query.limit undefined, se limit() ignorira
+    Ankete.find(query).sort('-sredina').limit(req.query.limit).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -71,6 +81,7 @@ const seznamAnket = (req, res) => {
  *          velikost_vzorca: 800
  *          metoda: CATI
  *          zacetek: 2023-02-16
+ *          sredina: 2023-02-18
  *          konec: 2023-02-20
  *          opis: Anketa je bila izvedena v času razgretih družbenopolitičnih razmer
  *          opombe: Malo več kot polovica ljudi se na klic ni odzvalo
@@ -140,6 +151,9 @@ const podrobnostiAnkete = (req, res) => {
  *        zacetek:
  *          required: false
  *          example: 2023-02-16
+ *        sredina:
+ *          required: false
+ *          example: 2023-02-18
  *        konec:
  *          required: false
  *          example: 2023-02-28
@@ -236,6 +250,8 @@ const ustvariAnketo = (req, res) => {
  *          example: CATI
  *        zacetek:
  *          example: 2023-02-16
+ *        sredina:
+ *          example: 2023-02-18
  *        konec:
  *          example: 2023-02-28
  *        opis:

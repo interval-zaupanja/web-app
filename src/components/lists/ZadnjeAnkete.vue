@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		async getData() {
-			const { data } = await axios.get("http://localhost:4000/api/ankete");
+			const { data } = await axios.get("http://localhost:4000/api/ankete?limit=3");
 			for (let i = 0; i < data.length; i++) { // s forEach ne deluje, ker ni async funkcija
 				const {
 					zacetek,
