@@ -13,12 +13,12 @@ const ObjectId = mongoose.Types.ObjectId;
  *      type: ObjectId
  *      description: <b>enolični identifikator</b> ankete
  *      example: 873c017fc587d5ade7830b7a
- *     anketar_id:
- *      type: ObjectId
- *      description: enolični identifikator ankete
- *     narocnik_id:
- *      type: ObjectId
- *      description: enolični identifikator ankete
+ *     anketarji_id:
+ *      type: [ObjectId]
+ *      description: enolični identifikatorji anketarjev
+ *     narocniki_id:
+ *      type: [ObjectId]
+ *      description: enolični identifikatorji naročnikov
  *     velikost_vzorca:
  *      type: string
  *      description: velikost vzorca ankete
@@ -44,8 +44,8 @@ const ObjectId = mongoose.Types.ObjectId;
  *     - _id
  */
 const ankete_shema = new mongoose.Schema({
-    anketar_id: { type: ObjectId, required: false },
-    narocnik_id: { type: ObjectId, required: false },
+    anketarji_id: { type: [ObjectId], required: false },
+    narocniki_id: { type: [ObjectId], required: false },
     velikost_vzorca: { type: Number, required: false },
     metoda: { type: String, required: false },
     zacetek: { type: Date, required: false },

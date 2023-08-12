@@ -18,8 +18,8 @@ const Ankete = mongoose.model("Anketa");
  *         $ref: '#/components/schemas/Anketa'
  *        example:
  *         - _id: 873c017fc587d5ade7830b7a
- *           anketar_id: 45a25e54cc55e42a456bdb32
- *           narocnik_id: 13153ec4d64ceb8d276eae42
+ *           anketarji_id: [45a25e54cc55e42a456bdb32]
+ *           narocniki_id: [13153ec4d64ceb8d276eae42]
  *           velikost_vzorca: 800
  *           metoda: CATI
  *           zacetek: 2023-02-16
@@ -39,10 +39,10 @@ const Ankete = mongoose.model("Anketa");
 const seznamAnket = (req, res) => {
     const query = {};
     if (req.query.anketar) {
-        query.anketar_id = new ObjectId(req.query.anketar);
+        query.anketarji_id = [new ObjectId(req.query.anketar)]
     }
     if (req.query.narocnik) {
-        query.narocnik_id = new ObjectId(req.query.narocnik);
+        query.narocniki_id = [new ObjectId(req.query.narocnik)]
     }
     // če je req.query.limit undefined, se limit() ignorira
     Ankete.find(query).sort('-sredina').limit(req.query.limit).exec(function (error, seznam) {
@@ -53,6 +53,7 @@ const seznamAnket = (req, res) => {
         }
     });
 };
+
 /**
  * @openapi
  * /ankete/{id}:
@@ -76,8 +77,8 @@ const seznamAnket = (req, res) => {
  *        $ref: '#/components/schemas/Anketa'
  *       example:
  *        - _id: 873c017fc587d5ade7830b7a
- *          anketar_id: 45a25e54cc55e42a456bdb32
- *          narocnik_id: 13153ec4d64ceb8d276eae42
+ *          anketarji_id: [45a25e54cc55e42a456bdb32]
+ *          narocniki_id: [13153ec4d64ceb8d276eae42]
  *          velikost_vzorca: 800
  *          metoda: CATI
  *          zacetek: 2023-02-16
@@ -136,12 +137,12 @@ const podrobnostiAnkete = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        anketar_id:
+ *        anketarji_id:
  *          required: false
- *          example: 45a25e54cc55e42a456bdb32
- *        narocnik_id:
+ *          example: [45a25e54cc55e42a456bdb32]
+ *        narocniki_id:
  *          required: false
- *          example: 13153ec4d64ceb8d276eae42
+ *          example: [13153ec4d64ceb8d276eae42]
  *        velikost_vzorca:
  *          required: false
  *          example: 800
@@ -182,11 +183,12 @@ const podrobnostiAnkete = (req, res) => {
 const ustvariAnketo = (req, res) => {
     const novaAnketa = {};
 
-    if (req.body.anketar_id) {
-        novaAnketa.anketar_id = req.body.anketar_id;
+    // POTREBNO POSODOBITI
+    if (req.body.anketarji_id) {
+        novaAnketa.anketarji_id = req.body.anketarji_id;
     }
-    if (req.body.narocnik_id) {
-        novaAnketa.narocnik_id = req.body.narocnik_id;
+    if (req.body.narocniki_id) {
+        novaAnketa.narocniki_id = req.body.narocniki_id;
     }
     if (req.body.velikost_vzorca) {
         novaAnketa.velikost_vzorca = req.body.velikost_vzorca;
@@ -240,10 +242,10 @@ const ustvariAnketo = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        anketar_id:
- *          example: 45a25e54cc55e42a456bdb32
- *        narocnik_id:
- *          example: 13153ec4d64ceb8d276eae42
+ *        anketarji_id:
+ *          example: [45a25e54cc55e42a456bdb32]
+ *        narocniki_id:
+ *          example: [13153ec4d64ceb8d276eae42]
  *        velikost_vzorca:
  *          example: 800
  *        metoda:
@@ -297,11 +299,11 @@ const posodobiAnketo = (req, res) => {
                     "Ne najdem ankete s podanim enoličnim identifikatorjem",
             });
         } else {
-            if (req.body.anketar_id) {
-                anketa.anketar_id = req.body.anketar_id;
+            if (req.body.anketarji_id) {
+                anketa.anketarji_id = req.body.anketarji_id;
             }
-            if (req.body.narocnik_id) {
-                anketa.narocnik_id = req.body.narocnik_id;
+            if (req.body.narocniki_id) {
+                anketa.narocniki_id = req.body.narocniki_id;
             }
             if (req.body.velikost_vzorca) {
                 anketa.velikost_vzorca = req.body.velikost_vzorca;

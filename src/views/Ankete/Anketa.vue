@@ -6,15 +6,29 @@
         <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
         <div>
             <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
-            <p>
-                Anketar: <router-link :to="'/anketarji/' + this.anketar_id">{{ this.anketar_ime}}</router-link>
+            <p v-if="this.anketarji.length > 0">
+                <span v-if="this.anketarji.length == 1">Anketar: </span>
+                <span v-else-if="this.anketarji.length == 2">Anketarja: </span>
+                <span v-else>Anketarji: </span>
+
+                <span v-for="(anketar, indeks) in this.anketarji" :key="anketar.id">
+                    <router-link :to="'/anketarji/' + anketar.id">
+                        {{ anketar.ime}}<span v-if="anketar.logo_uri != null">&nbsp;<img v-if="anketar.logo_uri != null" :src="anketar.logo_uri" style="max-height: 12px"/></span>
+                    </router-link>
+                    <span v-if="indeks + 1 < this.anketarji.length">, </span>
+                </span>
             </p>
-            <p>
-                Naročnik:
-                <router-link :to="'/narocniki/' + this.narocnik_id">
-                    {{ this.narocnik_ime}} <img v-if="this.narocnik_logo_uri != null" :src="this.narocnik_logo_uri" style="max-height: 12px"/>
-                    <!-- Mogoče je this.narocnik_ime za pobrisati -->
-                </router-link>
+            <p v-if="this.narocniki.length > 0">
+                <span v-if="this.narocniki.length == 1">Naročnik: </span>
+                <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
+                <span v-else>Naročniki: </span>
+
+                <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
+                    <router-link :to="'/narocniki/' + narocnik.id">
+                        {{ narocnik.ime}}<span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" style="max-height: 12px"/></span>
+                    </router-link>
+                    <span v-if="indeks + 1 < this.narocniki.length">, </span>
+                </span>
             </p>
             <p>Velikost vzorca: {{ this.velikost_vzorca }}</p>
             <p>Metoda: {{ this.metoda }}</p>
@@ -119,12 +133,8 @@ export default {
     props: ['id'],
     data() {
         return {
-            anketar_id: null,
-            anketar_ime: null,
-            anketar_logo_uri: null,
-            narocnik_id: null,
-            narocnik_ime: null,
-            narocnik_logo_uri: null,
+            anketarji: [],
+            narocniki: [],
             velikost_vzorca: null,
             metoda: null,
             zacetek: null,
@@ -140,11 +150,11 @@ export default {
     async mounted() {
         const status = await this.getData();
         if (status) {
-            await this.getAnketarImeLogo();
-            await this.getNarocnikImeLogo();
+            await this.getAnketarji();
+            await this.getNarocniki();
             await this.getVprasanja();
 
-            // Dodajanje imen strank
+            // Dodajanje podrobnosti strank
             for (let i = 0; i < this.vprasanja.length; i++) {
                 if (this.vprasanja[i].tip === 'glasovalno') {
                     const odgovori = this.vprasanja[i].odgovori;
@@ -176,8 +186,12 @@ export default {
         async getData() {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/ankete/" + this.id);
-                this.anketar_id = data.anketar_id;
-                this.narocnik_id = data.narocnik_id;
+                for (let i = 0; i < data.anketarji_id.length; i++) {
+                    this.anketarji.push({id: data.anketarji_id[i]})
+                }
+                for (let i = 0; i < data.narocniki_id.length; i++) {
+                    this.narocniki.push({id: data.narocniki_id[i]})
+                }
                 this.velikost_vzorca = data.velikost_vzorca;
                 this.metoda = data.metoda;
                 this.zacetek = data.zacetek;
@@ -190,24 +204,28 @@ export default {
                 return false;
             }
         },
-        async getAnketarImeLogo() {
-            try {
-                const { data } = await axios.get("http://localhost:4000/api/anketarji/" + this.anketar_id);
-                this.anketar_ime = data.ime;
-                this.anketar_logo_uri = data.logo_uri;
-            } catch (error) {
-                console.log(error);
-                this.narocnik_ime = "Ne najdem specificiranega anketarja"
+        async getAnketarji() {
+            // Dodajanje podrobnosti anketarjev
+            for (let i = 0; i < this.anketarji.length; i++) {
+                try {
+                    const { data } =  await axios.get("http://localhost:4000/api/anketarji/" + this.anketarji[i].id);
+                    this.anketarji[i].ime = data.ime;
+                    this.anketarji[i].logo_uri = data.logo_uri
+                } catch (error) {
+                    this.anketarji[i].ime = "Ne najdem anketarja";
+                }
             }
 		},
-		async getNarocnikImeLogo() {
-            try {
-                const { data } = await axios.get("http://localhost:4000/api/narocniki/" + this.narocnik_id);
-                this.narocnik_ime = data.ime;
-                this.narocnik_logo_uri = data.logo_uri;
-            } catch (error) {
-                console.log(error);
-                this.narocnik_ime = "Ne najdem specificiranega naročnika";
+        async getNarocniki() {
+            // Dodajanje podrobnosti naročnikov
+            for (let i = 0; i < this.narocniki.length; i++) {
+                try {
+                    const { data } =  await axios.get("http://localhost:4000/api/narocniki/" + this.narocniki[i].id);
+                    this.narocniki[i].ime = data.ime;
+                    this.narocniki[i].logo_uri = data.logo_uri
+                } catch (error) {
+                    this.narocniki[i].ime = "Ne najdem naročnika";
+                }
             }
 		},
         async getVprasanja() {

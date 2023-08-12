@@ -5,9 +5,19 @@
 			<router-link :to="'ankete/' + anketa._id" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
 				<br>
-				Anketar: {{ anketa.anketar_ime }}
+				<span v-if="anketa.anketarji_ime.length > 0">
+					<span v-if="anketa.anketarji_ime.length == 1">Anketar: </span>
+					<span v-else-if="anketa.anketarji_ime.length == 2">Anketarja: </span>
+					<span v-else>Anketarji: </span>
+					{{ anketa.anketarji_ime.join(', ') }}
+				</span>
 				<br>
-				Naročnik: {{ anketa.narocnik_ime }}
+				<span v-if="anketa.narocniki_ime.length > 0">
+					<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
+					<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
+					<span v-else>Naročniki: </span>
+					{{ anketa.narocniki_ime.join(', ') }}
+				</span>
 				<br>
 				Metoda: {{ anketa.metoda }}
 				<br>
@@ -37,20 +47,28 @@ export default {
 					zacetek,
 					konec,
 					metoda,
-					anketar_id,
-					narocnik_id,
+					anketarji_id,
+					narocniki_id,
 					_id
 				} = data[i];
-				this.ankete.push({_id, zacetek, konec, metoda, anketar_ime: await this.imeAnketarja(anketar_id), narocnik_ime: await this.imeNarocnika(narocnik_id)});
+				this.ankete.push({_id, zacetek, konec, metoda, anketarji_ime: await this.getAnketarjiIme(anketarji_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
 			}
 		},
-		async imeAnketarja(anketar_id) {
-			const { data } = await axios.get("http://localhost:4000/api/anketarji/" + anketar_id);
-			return data.ime;
+		async getAnketarjiIme(anketarji_id) {
+            var anketarji_ime = []
+            for (let i = 0; i < anketarji_id.length; i++) {
+                const { data } = await axios.get("http://localhost:4000/api/anketarji/" + anketarji_id[i]);
+                anketarji_ime.push(data.ime)
+            }
+            return anketarji_ime
 		},
-		async imeNarocnika(narocnik_id) {
-			const { data } = await axios.get("http://localhost:4000/api/narocniki/" + narocnik_id);
-			return data.ime;
+		async getNarocnikiIme(narocniki_id) {
+			var narocniki_ime = []
+            for (let i = 0; i < narocniki_id.length; i++) {
+                const { data } = await axios.get("http://localhost:4000/api/narocniki/" + narocniki_id[i]);
+                narocniki_ime.push(data.ime)
+            }
+            return narocniki_ime
 		}
 	}
 }
