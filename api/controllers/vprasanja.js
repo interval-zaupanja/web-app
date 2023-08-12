@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 var ObjectId = require('mongoose').Types.ObjectId; 
-const { isConstructorDeclaration } = require("typescript"); // od kje to?
 const Vprasanja = mongoose.model("Vprasanje");
 
 // TU MANJKA ŠE DOKUMENTACIJA
@@ -93,18 +92,7 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *        example:
 //  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
 //  */
-// BREZ SORTIRANJA PO DATUMU
-// const seznamVprasanj = (req, res) => {
-//     Vprasanja.find().exec(function (error, seznam) {
-//         if (error) {
-//             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
-//         } else {
-//             res.status(200).json(seznam);
-//         }
-//     });
-// };
-
-// S SORTIRANJEM PO DATUMU
+// Vključitev in padajoče sortiranje po datumu
 const seznamVprasanj = (req, res) => {
     Vprasanja.aggregate([
         {
@@ -237,8 +225,46 @@ const seznamVprasanjAnketa = (req, res) => {
 };
 
 // MANJKA DOKUMENTACIJA
+// Vključitev in naraščajoče sortiranje po datumu
 const seznamVprasanjGlasovalnaDZ = (req, res) => {
-    Vprasanja.find({glasovalno_tip: "DZ"}).exec(function (error, seznam) {
+    Vprasanja.aggregate([
+        {
+            $lookup: {
+                from: 'Ankete',
+                localField: 'anketa_id',
+                foreignField: '_id',
+                as: 'anketa_details'
+            }
+        },
+        {
+            $unwind: '$anketa_details'
+        },
+        {
+            $project: {
+                '_id': 1,
+                'anketa_id': 1,
+                'anketa_zacetek': "$anketa_details.zacetek",
+                'anketa_sredina': "$anketa_details.sredina",
+                'anketa_konec': "$anketa_details.konec",
+                'vprasanje': 1,
+                'tip': 1,
+                'glasovalno_tip': 1,
+                'opis': 1,
+                'opombe': 1,
+                'odgovori': 1
+            }
+        },
+        {
+            $sort: {
+                'anketa_sredina': 1 // ne -1, zato, da se pravilno razporedi v graf
+            }
+        },
+        {
+            $match: {
+                "glasovalno_tip": "DZ"
+            }
+        }
+    ]).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -246,6 +272,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         }
     });
 };
+
 /**
  * @openapi
  * /ankete:

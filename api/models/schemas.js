@@ -14,10 +14,10 @@ const ObjectId = mongoose.Types.ObjectId;
  *      description: <b>enolični identifikator</b> ankete
  *      example: 873c017fc587d5ade7830b7a
  *     anketar_id:
- *      type: number
+ *      type: ObjectId
  *      description: enolični identifikator ankete
  *     narocnik_id:
- *      type: number
+ *      type: ObjectId
  *      description: enolični identifikator ankete
  *     velikost_vzorca:
  *      type: string
@@ -89,8 +89,8 @@ const ankete_shema = new mongoose.Schema({
  *      type: string
  *      description: opombe vprašanja
  *     odgovori:
- *      type: string
- *      description: opombe vprašanja
+ *      type: odgovori_shema
+ *      description: odgovori na vprašanja
  *    required:
  *     - _id
  *     - anketa_eid
@@ -278,7 +278,7 @@ const stranke_shema = new mongoose.Schema({
  *    description:
  *    properties:
  *     _id:
- *      type: string
+ *      type: ObjectId
  *      description: <b>enolični identifikator</b> kandidata
  *      example: 635a62f5dc5d7968e68464be
  *     ime:
@@ -288,7 +288,7 @@ const stranke_shema = new mongoose.Schema({
  *      type: string
  *      description: priimek kandidata
  *     stranka_id:
- *      type: number
+ *      type: ObjectId
  *      description: enolični identifikator stranke kandidata
  *     slika_uri:
  *      type: string
@@ -327,7 +327,7 @@ const kandidati_shema = new mongoose.Schema({
  *    description:
  *    properties:
  *     _id:
- *      type: string
+ *      type: ObjectId
  *      description: <b>enolični identifikator</b> glasovanja
  *      example: 635a62f5dc5d7968e68464be
  *     ime:
