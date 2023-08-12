@@ -28,6 +28,9 @@ const ObjectId = mongoose.Types.ObjectId;
  *     zacetek:
  *      type: date
  *      description: datum začetka anketiranja
+ *     sredina:
+ *      type: date
+ *      description: datum na sredini med začetkom in koncem anketiranja (povprečje)
  *     konec:
  *      type: date
  *      description: datum konca anketiranja
@@ -46,6 +49,7 @@ const ankete_shema = new mongoose.Schema({
     velikost_vzorca: { type: Number, required: false },
     metoda: { type: String, required: false },
     zacetek: { type: Date, required: false },
+    sredina: { type: Date, required: false },
     konec: { type: Date, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
@@ -122,7 +126,7 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
 });
 
 const vprasanja_shema = new mongoose.Schema({
-    anketa_id: { type: String, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
+    anketa_id: { type: ObjectId, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
     tip: { type: String, required: [true, "Tip vprašanja je zahtevano polje"] },
     glasovalno_tip: { type: String, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },

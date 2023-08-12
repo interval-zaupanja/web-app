@@ -43,7 +43,7 @@
                             <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
                         </div>
                         <div>
-                            <h2>Odgovori</h2>
+                            <h3>Odgovori</h3>
                             <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="odgovor">
                                 <span class="anchor-odgovor" :id="odgovor._id"></span>
                                 <div>

@@ -6,7 +6,7 @@ const Ankete = mongoose.model("Anketa");
  *  /ankete:
  *   get:
  *    summary: Pridobi seznam vseh anket.
- *    description: Pridobi seznam vseh anket, ki se nahajajo v podatkovni bazi.
+ *    description: Pridobi seznam vseh anket, začenši s tistimi, ki so zadnje končale z anketiranjem.
  *    tags: [Ankete]
  *    responses:
  *     '200':
@@ -35,7 +35,7 @@ const Ankete = mongoose.model("Anketa");
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
 const seznamAnket = (req, res) => {
-    Ankete.find().exec(function (error, seznam) {
+    Ankete.find().sort('-konec').exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {

@@ -1,6 +1,8 @@
 <template>
   <div id="header" class="sticky">
     <div style="margin-left: 50px; margin-right: 30px; height: inherit">
+
+      <!-- logo -->
       <router-link to="/" style="display: inline-block; height: inherit">
         <div style="display: inline-block; margin-left: 10px; margin-right: 10px; font-size: 40px; height: inherit">
           <div style="display:flex; justify-content:center; align-items: center; height: inherit">
@@ -8,6 +10,8 @@
           </div>
         </div>
       </router-link>
+
+      <!-- navbar -->
       <div id="nav" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
         <div style="display:flex; justify-content:center; align-items: center; line-height: 70px;"> <!-- *line*-height!!!-->
           <router-link to="/glasovanja" class="droppable">Glasovanja ⏷</router-link>
@@ -18,6 +22,7 @@
           <router-link to="/o-nas" class="undroppable">O nas</router-link>
         </div>
       </div>
+      
     </div>
   </div>
 </template>

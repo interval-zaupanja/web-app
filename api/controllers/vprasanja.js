@@ -9,7 +9,7 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *  /vprasanja:
 //  *   get:
 //  *    summary: Pridobi seznam vseh vprašanj.
-//  *    description: Pridobi seznam vseh vprašanj, ki se nahajajo v podatkovni bazi.
+//  *    description: Pridobi seznam vseh vprašanj, ki se nahajajo v podatkovni bazi. Vprašanja so sortirana po datumu
 //  *    tags: [Vprašanja]
 //  *    responses:
 //  *     '200':
@@ -93,8 +93,52 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *        example:
 //  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
 //  */
+// BREZ SORTIRANJA PO DATUMU
+// const seznamVprasanj = (req, res) => {
+//     Vprasanja.find().exec(function (error, seznam) {
+//         if (error) {
+//             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
+//         } else {
+//             res.status(200).json(seznam);
+//         }
+//     });
+// };
+
+// S SORTIRANJEM PO DATUMU
 const seznamVprasanj = (req, res) => {
-    Vprasanja.find().exec(function (error, seznam) {
+    Vprasanja.aggregate([
+        {
+            $lookup: {
+                from: 'Ankete',
+                localField: 'anketa_id',
+                foreignField: '_id',
+                as: 'anketa_details'
+            }
+        },
+        {
+            $unwind: '$anketa_details'
+        },
+        {
+            $project: {
+                '_id': 1,
+                'anketa_id': 1,
+                'anketa_zacetek': "$anketa_details.zacetek",
+                'anketa_sredina': "$anketa_details.sredina",
+                'anketa_konec': "$anketa_details.konec",
+                'vprasanje': 1,
+                'tip': 1,
+                'glasovalno_tip': 1,
+                'opis': 1,
+                'opombe': 1,
+                'odgovori': 1
+            }
+        },
+        {
+            $sort: {
+                'anketa_sredina': -1
+            }
+        }
+    ]).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -175,7 +219,7 @@ const podrobnostiVprasanja = (req, res) => {
 // MANJKA DOKUMENTACIJA
 const seznamVprasanjAnketa = (req, res) => {
     const idAnkete = req.params.id;
-    Vprasanja.find({anketa_id: idAnkete}).exec(function (
+    Vprasanja.find({anketa_id: new ObjectId(req.params.id)}).exec(function (
         error,
         vprasanja
     ) {
@@ -257,7 +301,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo.
  */
-const ustvariAnketo = (req, res) => {
+const ustvariAnketo = (req, res) => { // !!! še vedno govori o anketah
     const novaAnketa = {};
 
     if (req.body.anketar_id) {
@@ -360,7 +404,7 @@ const ustvariAnketo = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const posodobiAnketo = (req, res) => {
+const posodobiAnketo = (req, res) => { // !!! še vedno govori o anketah
     const idAnkete = req.params.id;
 
     Ankete.findById(idAnkete).exec(function (

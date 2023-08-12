@@ -8,6 +8,7 @@
     "velikost_vzorca": 800,
     "metoda": "CATI",
     "zacetek": "2023-02-16",
+    "sredina": "2023-02-18",
     "konec": "2023-02-20",
     "opis": "Anketa je bila izvedena v času razgretih družbenopolitičnih razmer",
     "opombe": "Malo več kot polovica ljudi se na klic ni odzvalo"
@@ -20,7 +21,8 @@
     "narocnik_id": "5f8024542bc87c975ffc1a70",
     "velikost_vzorca": 900,
     "metoda": "CATI",
-    "zacetek": "2023-03-16",
-    "konec": "2023-03-20"
+    "zacetek": "2023-04-22",
+    "sredina": "2023-04-25",
+    "konec": "2023-04-27"
   }
 ]

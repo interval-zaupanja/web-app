@@ -1,6 +1,8 @@
 [
   {
-    "anketa_id": "873c017fc587d5ade7830b7a",
+    "anketa_id": {
+      "$oid": "873c017fc587d5ade7830b7a"
+    },
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
     "glasovalno_tip": "DZ",
@@ -66,7 +68,9 @@
     ]
   },
   {
-    "anketa_id": "8de77b45a6a5236288aa264f",
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288aa264f"
+    },
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
     "glasovalno_tip": "DZ",
@@ -132,7 +136,9 @@
     ]
   },
   {
-    "anketa_id": "8de77b45a6a5236288aa264f",
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288aa264f"
+    },
     "vprasanje": "Ali zaupate v delo vlade?",
     "tip": "zaupanje",
     "zaupanje_tip": "vlada",
