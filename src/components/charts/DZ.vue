@@ -22,7 +22,7 @@ import {
   LineElement,
   PointElement,
   Title,
-  Tooltip
+  Tooltip,
 } from "chart.js";
 import { Line } from "vue-chartjs";
 
@@ -41,6 +41,7 @@ export default {
   components: {
     Line,
   },
+  props: ["stranka_id"],
   data() {
     return {
       type: "line",
@@ -50,7 +51,7 @@ export default {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
       },
       loaded: false,
     };
@@ -61,47 +62,61 @@ export default {
     this.loaded = true;
   },
   methods: {
-    async getData() { // potrebno pravilno posortirati in razpeti po datumih !!!!
+    async getData() {
+      // potrebno pravilno posortirati in razpeti po datumih !!!!
       const { data } = await axios.get(
         "http://localhost:4000/api/vprasanja/glasovalna/dz"
       );
       for (let i = 0; i < data.length; i++) {
         // ne vem, če se vse doda v pravilnem zaporedju
         const { anketa_id, odgovori } = data[i];
-        this.data.labels.push(await this.getDate(anketa_id));
+        var dodaj = false;
         for (let j = 0; j < odgovori.length; j++) {
-          if (odgovori[j].odgovor_tip === "BG-V") {
-            if (
-              undefined ===
-              this.data.datasets.find(
-                (element) => element.label === odgovori[j].odgovor_stranka_id
-              )
-            ) {
-              this.data.datasets.push({
-                label: odgovori[j].odgovor_stranka_id,
-                data: [odgovori[j].procent_anketar],
-              });
-            } else {
-              const obstojeciVnos = this.data.datasets.find(
-                (element) => element.label === odgovori[j].odgovor_stranka_id
-              );
-              obstojeciVnos.data.push(odgovori[j].procent_anketar);
+          if ((this.stranka_id != null && this.stranka_id == odgovori[j].odgovor_stranka_id) || this.stranka_id == null) { // če želimo podatek le za eno stranko
+          console.log(this.stranka_id, this.stranka_id == odgovori[j].odgovor_stranka_id)
+            if (odgovori[j].odgovor_tip === "BG-V") {
+              if (
+                undefined ===
+                this.data.datasets.find(
+                  (element) => element.label === odgovori[j].odgovor_stranka_id
+                )
+              ) {
+                this.data.datasets.push({
+                  label: odgovori[j].odgovor_stranka_id,
+                  data: [odgovori[j].procent_anketar],
+                });
+              } else {
+                const obstojeciVnos = this.data.datasets.find(
+                  (element) => element.label === odgovori[j].odgovor_stranka_id
+                );
+                obstojeciVnos.data.push(odgovori[j].procent_anketar);
+              }
             }
+            dodaj = true;
           }
+        }
+
+        if (dodaj) { // v primeru, da this.stranka_id != null, poskrbi, da se datum doda, le v primeru, da je stranka med odgovori
+          this.data.labels.push(await this.getDate(anketa_id));
         }
       }
     },
     async getDate(anketa_id) {
-      const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
-      return moment(data.konec,"YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
+      const { data } = await axios.get(
+        "http://localhost:4000/api/ankete/" + anketa_id
+      );
+      return moment(data.konec, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
-    async getPartyNamesAndColors() { // dejansko se doda kratica imena (ime_kratica)
+    async getPartyNamesAndColors() {
+      // dejansko se doda kratica imena (ime_kratica)
       for (let i = 0; i < this.data.datasets.length; i++) {
-        const { data } = await axios.get("http://localhost:4000/api/stranke/" + this.data.datasets[i].label);
+        const { data } = await axios.get(
+          "http://localhost:4000/api/stranke/" + this.data.datasets[i].label
+        );
         this.data.datasets[i].label = data.ime_kratica;
         this.data.datasets[i].backgroundColor = data.barva;
       }
-    }
+    },
   },
 };
 </script>

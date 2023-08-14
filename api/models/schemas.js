@@ -1,6 +1,57 @@
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
+// MANJKA SHEMA
+const tipi_glasovanja_shema = new mongoose.Schema({
+    raven_oblasti: {type: String, required: [true, "Raven oblasti, za katero bo potekalo glasovanje je zahtevano polje"] },
+    tip: { type: String, required: false }, // volitve, referendum
+    volitve_tip: { type: String, required: [this.tip === 'volitve', "Tip volitev je obvesno polje, če je tip glasovanja volitve"] },
+    referendum_tip: { type: String, required: false }
+});
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *   Glasovanje:
+ *    type: object
+ *    description:
+ *    properties:
+ *     _id:
+ *      type: ObjectId
+ *      description: <b>enolični identifikator</b> glasovanja
+ *      example: 635a62f5dc5d7968e68464be
+ *     ime:
+ *      type: string
+ *      description: ime glasovanja
+ *     tip:
+ *      type: string
+ *      description: tip glasovanja
+ *     zacetek:
+ *      type: date
+ *      description: datum začetka glasovanja
+ *     konec:
+ *      type: date
+ *      description: datum konca glasovanja
+ *     opis:
+ *      type: string
+ *      description: opis glasovanja
+ *     opombe:
+ *      type: string
+ *      description: opombe glasovanja
+ *    required:
+ *     - _id
+ *     - ime
+ */
+const glasovanja_shema = new mongoose.Schema({
+    ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    tip_glasovanja: { type: tipi_glasovanja_shema, required: [true, "Tip glasovanja je zahtevano polje"] },
+    zacetek: { type: Date, required: false }, // predčasno glasovanje, začetek glasovanja po pošti
+    konec: { type: Date, required: false }, // datum na katerega se glasovanje začne
+    opis: { type: String, required: false },
+    opombe: { type: String, required: false }
+});
+
 /**
  * @openapi
  * components:
@@ -318,53 +369,10 @@ const kandidati_shema = new mongoose.Schema({
     opombe: { type: String, required: false }
 });
 
-/**
- * @openapi
- * components:
- *  schemas:
- *   Glasovanje:
- *    type: object
- *    description:
- *    properties:
- *     _id:
- *      type: ObjectId
- *      description: <b>enolični identifikator</b> glasovanja
- *      example: 635a62f5dc5d7968e68464be
- *     ime:
- *      type: string
- *      description: ime glasovanja
- *     tip:
- *      type: string
- *      description: tip glasovanja
- *     zacetek:
- *      type: date
- *      description: datum začetka glasovanja
- *     konec:
- *      type: date
- *      description: datum konca glasovanja
- *     opis:
- *      type: string
- *      description: opis glasovanja
- *     opombe:
- *      type: string
- *      description: opombe glasovanja
- *    required:
- *     - _id
- *     - ime
- */
-const glasovanja_shema = new mongoose.Schema({
-    ime: { type: String, required: [true, "Ime je zahtevano polje"] },
-    tip: { type: String, required: false },
-    zacetek: { type: Date, required: false },
-    konec: { type: Date, required: false },
-    opis: { type: String, required: false },
-    opombe: { type: String, required: false }
-});
-
+mongoose.model("Glasovanje", glasovanja_shema, "Glasovanja");
 mongoose.model("Anketa", ankete_shema, "Ankete");
 mongoose.model("Vprasanje", vprasanja_shema, "Vprasanja");
 mongoose.model("Anketar", anketarji_shema, "Anketarji");
 mongoose.model("Narocnik", narocniki_shema, "Narocniki");
 mongoose.model("Stranka", stranke_shema, "Stranke");
 mongoose.model("Kandidat", kandidati_shema, "Kandidati");
-mongoose.model("Glasovanje", glasovanja_shema, "Glasovanja");

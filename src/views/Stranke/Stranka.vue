@@ -20,6 +20,10 @@
                 <p v-if="this.opis != null">Opis: {{this.opis}}</p>
                 <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
             </div>
+            <div>
+                <h2>Volitve v Državni zbor</h2>
+                <DZ :stranka_id="this.id"/>
+            </div>
         </div>
     </div>
     <div v-if="not_found && loaded">
@@ -34,6 +38,7 @@ import Nalaganje from '../../components/Nalaganje.vue';
 import NeObstaja from '../../components/NeObstaja.vue';
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
+import DZ from '@/components/charts/DZ.vue'
 
 export default {
     name: 'Stranka',
@@ -41,7 +46,8 @@ export default {
         Nalaganje,
         NeObstaja,
         Breadcrumbs,
-        ExternalLink
+        ExternalLink,
+        DZ
     },
     props: ['id'],
     data() {
