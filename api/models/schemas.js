@@ -52,7 +52,7 @@ const ankete_shema = new mongoose.Schema({
     sredina: { type: Date, required: false },
     konec: { type: Date, required: false },
     opis: { type: String, required: false },
-    opombe: { type: String, required: false }
+    opombe: { type: String, required: false },
 });
 
 /**

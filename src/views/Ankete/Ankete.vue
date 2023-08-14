@@ -13,4 +13,4 @@ export default {
         SeznamAnket
     }
 }
-</script>
+</script>  

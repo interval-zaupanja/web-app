@@ -4,7 +4,7 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded">
-        <div v-for="narocnik in narocniki" :key="narocnik._id" class="narocnik">
+        <div v-for="narocnik in this.narocniki" :key="narocnik._id" class="narocnik">
             <a :href="'/narocniki/' + narocnik._id">
                 <div class="container">
                     <div class="cell-container">

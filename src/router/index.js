@@ -7,6 +7,8 @@ import Stranke from '../views/Stranke/Stranke.vue';
 import Stranka from '../views/Stranke/Stranka.vue';
 import Narocniki from '../views/Narocniki/Narocniki.vue';
 import Narocnik from '../views/Narocniki/Narocnik.vue';
+import Anketarji from '../views/Anketarji/Anketarji.vue';
+import Anketar from '../views/Anketarji/Anketar.vue';
 import NotFound from '../views/NiNajdeno.vue';
 
 const router = new createRouter({
@@ -54,6 +56,17 @@ const router = new createRouter({
             path: '/narocniki/:id',
             name: 'Narocnik',
             component: Narocnik,
+            props: true
+        },
+        {
+            path: '/anketarji',
+            name: 'Anketarji',
+            component: Anketarji
+        },
+        {
+            path: '/anketarji/:id',
+            name: 'Anketar',
+            component: Anketar,
             props: true
         },
         // Catch all not found
