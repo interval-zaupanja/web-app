@@ -39,13 +39,16 @@ const Ankete = mongoose.model("Anketa");
 const seznamAnket = (req, res) => {
     const query = {};
     if (req.query.anketar) {
-        query.anketarji_id = [new ObjectId(req.query.anketar)]
+        query.anketarji_id = {
+            $all: new ObjectId(req.query.anketar)
+        }
     }
     if (req.query.narocnik) {
-        query.narocniki_id = [new ObjectId(req.query.narocnik)]
+        query.narocniki_id = {
+            $all: new ObjectId(req.query.narocnik)
+        }
     }
-    // če je req.query.limit undefined, se limit() ignorira
-    Ankete.find(query).sort('-sredina').limit(req.query.limit).exec(function (error, seznam) {
+    Ankete.find(query).sort('-sredina').limit(req.query.limit).exec(function (error, seznam) { // če je req.query.limit undefined, se limit() ignorira
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
