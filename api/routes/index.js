@@ -6,6 +6,7 @@ const ctrlAnketarji =  require('../controllers/anketarji');
 const ctrlNarocniki = require('../controllers/narocniki');
 const ctrlStranke = require('../controllers/stranke');
 const ctrlVprasanja = require('../controllers/vprasanja');
+const ctrlGlasovanja = require('../controllers/glasovanja');
 
 // Ankete storitve
 router.get('/ankete', ctrlAnkete.seznamAnket);
@@ -43,5 +44,12 @@ router.get('/vprasanja/glasovalna/dz', ctrlVprasanja.seznamVprasanjGlasovalnaDZ)
 // router.delete('/vprasanja/:id', ctrlVprasanja.izbrisiVprasanje);
 // router.post('/vprasanja/', ctrlVprasanja.ustvariVprasanje);
 // router.put('/vprasanja/:id', ctrlVprasanja.posodobiVprasanje);
+
+// Glasovanja storitve
+router.get('/glasovanja', ctrlGlasovanja.seznamGlasovanj);
+router.get('/glasovanja/:id', ctrlGlasovanja.podrobnostiGlasovanja);
+router.delete('/glasovanja/:id', ctrlGlasovanja.izbrisiGlasovanje);
+router.post('/glasovanja', ctrlGlasovanja.ustvariGlasovanje);
+router.put('/glasovanja/:id', ctrlGlasovanja.posodobiGlasovanje);
 
 module.exports = router;

@@ -11,7 +11,7 @@
                 </h1>
             </div>
             <div style="display: inline-block" class="side-panel">
-                <div>
+                <div v-if="this.logo_uri">
                     <img :src="this.logo_uri"/>
                 </div>
                 <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija" :color="this.barva"/>

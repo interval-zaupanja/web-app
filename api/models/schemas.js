@@ -4,9 +4,9 @@ const ObjectId = mongoose.Types.ObjectId;
 // MANJKA SHEMA
 const tipi_glasovanja_shema = new mongoose.Schema({
     raven_oblasti: {type: String, required: [true, "Raven oblasti, za katero bo potekalo glasovanje je zahtevano polje"] },
-    tip: { type: String, required: false }, // volitve, referendum
-    volitve_tip: { type: String, required: [this.tip === 'volitve', "Tip volitev je obvesno polje, če je tip glasovanja volitve"] },
-    referendum_tip: { type: String, required: false }
+    tip: { type: String, required: [true, "Tip glasovanja je zahtevano polje"] }, // volitve, referendum [delno redundantno]
+    volitve_tip: { type: String, required: [this.tip === 'volitve', "Tip volitev je obvesno polje, če je tip glasovanja volitve"] }, // DZ-S (DZ splošno), DZ-MNS, DZ-INS
+    referendum_tip: { type: String, required: false } // je to sploh smiselno, ker se ne deferencirajo pomembno?
 });
 
 /**
@@ -44,12 +44,13 @@ const tipi_glasovanja_shema = new mongoose.Schema({
  *     - ime
  */
 const glasovanja_shema = new mongoose.Schema({
+    tip: { type: tipi_glasovanja_shema, required: [true, "Tip glasovanja je zahtevano polje"] },
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
-    tip_glasovanja: { type: tipi_glasovanja_shema, required: [true, "Tip glasovanja je zahtevano polje"] },
-    zacetek: { type: Date, required: false }, // predčasno glasovanje, začetek glasovanja po pošti
+    wikipedia_uri: { type: String, required: false },
+    zacetek: { type: Date, required: false }, // predčasno glasovanje, začetek glasovanja po pošti (ZAENKRAT TO ŠETEJEM KOT ZAČETEK PREDČASNEGA GLASOVANJA)
     konec: { type: Date, required: false }, // datum na katerega se glasovanje začne
-    opis: { type: String, required: false },
-    opombe: { type: String, required: false }
+    opis: { type: String, required: false }, // ni v API dokumentaciji
+    opombe: { type: String, required: false } // ni v API dokumentaciji
 });
 
 /**
@@ -180,7 +181,7 @@ const vprasanja_shema = new mongoose.Schema({
     anketa_id: { type: ObjectId, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
     tip: { type: String, required: [true, "Tip vprašanja je zahtevano polje"] },
-    glasovalno_tip: { type: String, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },
+    glasovalno_tip: { type: tipi_glasovanja_shema, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
     odgovori: { type: [odgovori_shema], required: [true, "Vprašanje mora vsebovati odgovore!"] }

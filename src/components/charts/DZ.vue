@@ -73,7 +73,6 @@ export default {
         var dodaj = false;
         for (let j = 0; j < odgovori.length; j++) {
           if ((this.stranka_id != null && this.stranka_id == odgovori[j].odgovor_stranka_id) || this.stranka_id == null) { // če želimo podatek le za eno stranko
-          console.log(this.stranka_id, this.stranka_id == odgovori[j].odgovor_stranka_id)
             if (odgovori[j].odgovor_tip === "BG-V") {
               if (
                 undefined ===

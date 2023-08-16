@@ -47,7 +47,14 @@
                             <p>
                                 Tip vprašanja: {{vprasanje.tip}}
                                 <span v-if="vprasanje.tip === 'glasovalno'">
-                                    - {{ this.glasovalnoTip(vprasanje.glasovalno_tip)}}
+                                    - {{ vprasanje.glasovalno_tip['raven_oblasti']}}
+                                    - {{ vprasanje.glasovalno_tip.tip}}
+                                    <span v-if="vprasanje.glasovalno_tip.tip === 'volitve'">
+                                        - {{ this.glasovalnoTipVolitveTip(vprasanje.glasovalno_tip.volitve_tip)}}
+                                    </span>
+                                    <span v-if="vprasanje.glasovalno_tip.tip === 'referendum'">
+                                        - {{ vprasanje.glasovalno_tip.referendum_tip}}
+                                    </span>
                                 </span>
                                 <span v-if="vprasanje.tip === 'zaupanje'">
                                     - {{ vprasanje.zaupanje_tip}}
@@ -61,7 +68,7 @@
                                     style="display: inline-block"
                                 />
                                 <PieChart
-                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovalno_tip === 'DZ'"
+                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovalno_tip.volitve_tip === 'DZ-S'"
                                     :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_anketar')"
                                     style="display: inline-block"
                                 />
@@ -141,7 +148,7 @@ export default {
             konec: null,
             opis: null,
             opombe: null,
-            vprasanja: [],
+            vprasanja: null,
             loaded: false,
             not_found: false,
             hash: this.$route.hash
@@ -238,9 +245,9 @@ export default {
             }
             
         },
-        glasovalnoTip(glasovalno_tip) {
-            if (glasovalno_tip === "DZ") {
-                return "volitve v Državni zbor";
+        glasovalnoTipVolitveTip(glasovalno_tip) {
+            if (glasovalno_tip === "DZ-S") {
+                return "Državni zbor (splošno - 88 poslancev)";
             }
         },
         odgovorTip(odgovor_tip) {

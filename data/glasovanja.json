@@ -1,0 +1,44 @@
+[
+    {
+        "_id": {
+            "$oid": "64dd0169fc95108f8a064c40"
+        },
+        "tip": {
+            "raven_oblasti": "državno",
+            "tip": "referendum",
+            "referendum_tip": "zakonodajno-zavrnitveni"
+        },
+        "ime": "Referendum o spremembah Zakona o vladi",
+        "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_spremembah_Zakona_o_vladi",
+        "zacetek": "2022-11-22",
+        "konec": "2022-11-27"
+    },
+    {
+        "_id": {
+            "$oid": "64dd0169fc95108f8a064c41"
+        },
+        "tip": {
+            "raven_oblasti": "državno",
+            "tip": "referendum",
+            "referendum_tip": "zakonodajno-zavrnitveni"
+        },
+        "ime": "Referendum o Zakonu o dolgotrajni oskrbi",
+        "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_Zakonu_o_dolgotrajni_oskrbi",
+        "zacetek": "2022-11-22",
+        "konec": "2022-11-27"
+    },
+    {
+        "_id": {
+            "$oid": "64dd0169fc95108f8a064c42"
+        },
+        "tip": {
+            "raven_oblasti": "državno",
+            "tip": "referendum",
+            "referendum_tip": "zakonodajno-zavrnitveni"
+        },
+        "ime": "Referendum o Zakonu o RTV Slovenija",
+        "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_zakonu_o_RTV_Slovenija_(2022)",
+        "zacetek": "2022-11-22",
+        "konec": "2022-11-27"
+    }
+]

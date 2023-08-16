@@ -261,7 +261,11 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         },
         {
             $match: {
-                "glasovalno_tip": "DZ"
+                "glasovalno_tip": {
+                    "raven_oblasti": "državno",
+                    "tip": "volitve",
+                    "volitve_tip": "DZ-S"
+                }
             }
         }
     ]).exec(function (error, seznam) {
