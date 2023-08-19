@@ -90,13 +90,13 @@ export default {
                             this.data.datasets.push({
                                 label: odgovori[j].odgovor ?? this.odgovorTipFull(odgovori[j].odgovor_tip),
                                 backgroundColor: barva,
-                                data: [odgovori[j].procent_anketar],
+                                data: [odgovori[j].procent_izvajalec],
                             })
                         } else {
                             const obstojeciVnos = this.data.datasets.find(
                                 (element) => element.label === odgovori[j].odgovor
                             )
-                            obstojeciVnos.data.push(odgovori[j].procent_anketar)
+                            obstojeciVnos.data.push(odgovori[j].procent_izvajalec)
                         }
                     }
                     this.data.labels.push(await this.getDate(anketa_id));

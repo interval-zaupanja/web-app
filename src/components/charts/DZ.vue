@@ -79,13 +79,13 @@ export default {
               ) {
                 this.data.datasets.push({
                   label: odgovori[j].odgovor_stranka_id,
-                  data: [odgovori[j].procent_anketar],
+                  data: [odgovori[j].procent_izvajalec],
                 });
               } else {
                 const obstojeciVnos = this.data.datasets.find(
                   (element) => element.label === odgovori[j].odgovor_stranka_id
                 );
-                obstojeciVnos.data.push(odgovori[j].procent_anketar);
+                obstojeciVnos.data.push(odgovori[j].procent_izvajalec);
               }
             } // KAJ PA TISTI, KI NE VEDO?
             dodaj = true;

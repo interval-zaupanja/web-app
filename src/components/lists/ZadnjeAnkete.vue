@@ -5,11 +5,11 @@
 			<router-link :to="'ankete/' + anketa._id" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
 				<br>
-				<span v-if="anketa.anketarji_ime.length > 0">
-					<span v-if="anketa.anketarji_ime.length == 1">Anketar: </span>
-					<span v-else-if="anketa.anketarji_ime.length == 2">Anketarja: </span>
-					<span v-else>Anketarji: </span>
-					{{ anketa.anketarji_ime.join(', ') }}
+				<span v-if="anketa.izvajalci_ime.length > 0">
+					<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
+					<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
+					<span v-else>Izvajalci: </span>
+					{{ anketa.izvajalci_ime.join(', ') }}
 				</span>
 				<br>
 				<span v-if="anketa.narocniki_ime.length > 0">
@@ -47,20 +47,20 @@ export default {
 					zacetek,
 					konec,
 					metoda,
-					anketarji_id,
+					izvajalci_id,
 					narocniki_id,
 					_id
 				} = data[i];
-				this.ankete.push({_id, zacetek, konec, metoda, anketarji_ime: await this.getAnketarjiIme(anketarji_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
+				this.ankete.push({_id, zacetek, konec, metoda, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
 			}
 		},
-		async getAnketarjiIme(anketarji_id) {
-            var anketarji_ime = []
-            for (let i = 0; i < anketarji_id.length; i++) {
-                const { data } = await axios.get("http://localhost:4000/api/anketarji/" + anketarji_id[i]);
-                anketarji_ime.push(data.ime)
+		async getIzvajalciIme(izvajalci_id) {
+            var izvajalci_ime = []
+            for (let i = 0; i < izvajalci_id.length; i++) {
+                const { data } = await axios.get("http://localhost:4000/api/izvajalci/" + izvajalci_id[i]);
+                izvajalci_ime.push(data.ime)
             }
-            return anketarji_ime
+            return izvajalci_ime
 		},
 		async getNarocnikiIme(narocniki_id) {
 			var narocniki_ime = []

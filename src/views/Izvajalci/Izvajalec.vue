@@ -3,7 +3,7 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded && !not_found">
-        <Breadcrumbs previous="Anketarji" previousLink="/anketarji" current="Podrobnosti anketarja" />
+        <Breadcrumbs previous="Izvajalci" previousLink="/izvajalci" current="Podrobnosti izvajalca" />
         <div>
             <div>
                 <h1>{{this.ime}}</h1>
@@ -21,11 +21,11 @@
         </div>
         <div>
             <h3>Izvedene ankete</h3>
-            <SeznamAnket :parametri="{anketar: this.id}"/>
+            <SeznamAnket :parametri="{izvajalec: this.id}"/>
         </div>
     </div>
     <div v-if="not_found && loaded">
-        <NeObstaja ime="Anketar"/>
+        <NeObstaja ime="Izvajalec"/>
     </div>
 </template>
 
@@ -39,7 +39,7 @@ import ExternalLink from '@/components/ExternalLink.vue';
 import SeznamAnket from '@/components/lists/SeznamAnket.vue';
 
 export default {
-    name: 'Anketar',
+    name: 'Izvajalec',
     components: {
         Nalaganje,
         NeObstaja,
@@ -70,7 +70,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/anketarji/" + this.id);
+                const { data } = await axios.get("http://localhost:4000/api/izvajalci/" + this.id);
                 this.ime = data.ime;
                 this.barva = data.barva;
                 this.logo_uri = data.logo_uri;

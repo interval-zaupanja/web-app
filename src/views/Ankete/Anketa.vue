@@ -6,16 +6,16 @@
         <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
         <div>
             <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
-            <p v-if="this.anketarji.length > 0">
-                <span v-if="this.anketarji.length == 1">Anketar: </span>
-                <span v-else-if="this.anketarji.length == 2">Anketarja: </span>
-                <span v-else>Anketarji: </span>
+            <p v-if="this.izvajalci.length > 0">
+                <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
+                <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
+                <span v-else>Izvajalci: </span>
 
-                <span v-for="(anketar, indeks) in this.anketarji" :key="anketar.id">
-                    <router-link :to="'/anketarji/' + anketar.id">
-                        {{ anketar.ime}}<span v-if="anketar.logo_uri != null">&nbsp;<img v-if="anketar.logo_uri != null" :src="anketar.logo_uri" style="max-height: 12px"/></span>
+                <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
+                    <router-link :to="'/izvajalci/' + izvajalec.id">
+                        {{ izvajalec.ime}}<span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" style="max-height: 12px"/></span>
                     </router-link>
-                    <span v-if="indeks + 1 < this.anketarji.length">, </span>
+                    <span v-if="indeks + 1 < this.izvajalci.length">, </span>
                 </span>
             </p>
             <p v-if="this.narocniki.length > 0">
@@ -69,12 +69,12 @@
                             <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
                             <div class="charts">
                                 <PieChart
-                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_anketar')"
+                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                                     style="display: inline-block"
                                 />
                                 <PieChart
                                     v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovalno_tip.volitve_tip === 'DZ-S'"
-                                    :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_anketar')"
+                                    :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                                     style="display: inline-block"
                                 />
                             </div>
@@ -106,10 +106,10 @@
                                         </span>
                                     </span>
                                     <p>
-                                        {{ odgovor.procent_anketar }}%
-                                        <span v-if="(odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) > 0">
-                                            ± {{ (odgovor.procent_zgornja_meja_anketar - odgovor.procent_spodnja_meja_anketar) / 2 }}%
-                                            ({{ odgovor.procent_spodnja_meja_anketar }}% - {{ odgovor.procent_zgornja_meja_anketar }}%)
+                                        {{ odgovor.procent_izvajalec }}%
+                                        <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
+                                            ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
+                                            ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
                                         </span>
                                     </p>
                                 </div>
@@ -145,7 +145,7 @@ export default {
     props: ['id'],
     data() {
         return {
-            anketarji: [],
+            izvajalci: [],
             narocniki: [],
             velikost_vzorca: null,
             metoda: null,
@@ -162,7 +162,7 @@ export default {
     async mounted() {
         const status = await this.getData();
         if (status) {
-            await this.getAnketarji();
+            await this.getIzvajalci();
             await this.getNarocniki();
             await this.getVprasanja();
 
@@ -201,8 +201,8 @@ export default {
         async getData() {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/ankete/" + this.id);
-                for (let i = 0; i < data.anketarji_id.length; i++) {
-                    this.anketarji.push({id: data.anketarji_id[i]})
+                for (let i = 0; i < data.izvajalci_id.length; i++) {
+                    this.izvajalci.push({id: data.izvajalci_id[i]})
                 }
                 for (let i = 0; i < data.narocniki_id.length; i++) {
                     this.narocniki.push({id: data.narocniki_id[i]})
@@ -219,15 +219,15 @@ export default {
                 return false;
             }
         },
-        async getAnketarji() {
-            // Dodajanje podrobnosti anketarjev
-            for (let i = 0; i < this.anketarji.length; i++) {
+        async getIzvajalci() {
+            // Dodajanje podrobnosti izvajalcev
+            for (let i = 0; i < this.izvajalci.length; i++) {
                 try {
-                    const { data } =  await axios.get("http://localhost:4000/api/anketarji/" + this.anketarji[i].id);
-                    this.anketarji[i].ime = data.ime;
-                    this.anketarji[i].logo_uri = data.logo_uri
+                    const { data } =  await axios.get("http://localhost:4000/api/izvajalci/" + this.izvajalci[i].id);
+                    this.izvajalci[i].ime = data.ime;
+                    this.izvajalci[i].logo_uri = data.logo_uri
                 } catch (error) {
-                    this.anketarji[i].ime = "Ne najdem anketarja";
+                    this.izvajalci[i].ime = "Ne najdem izvajalca";
                 }
             }
 		},
@@ -335,10 +335,10 @@ export default {
                     podatki.backgroundColor.push('#dcdfe3')
                 }
 
-                if (podatek === 'procent_anketar') {
-                    podatki.data.push(vprasanje.odgovori[i].procent_anketar)
-                } else if (podatek === 'st_mandatov_anketar') {
-                    podatki.data.push(vprasanje.odgovori[i].st_mandatov_anketar)
+                if (podatek === 'procent_izvajalec') {
+                    podatki.data.push(vprasanje.odgovori[i].procent_izvajalec)
+                } else if (podatek === 'st_mandatov_izvajalec') {
+                    podatki.data.push(vprasanje.odgovori[i].st_mandatov_izvajalec)
                 }
             }
             return podatki;

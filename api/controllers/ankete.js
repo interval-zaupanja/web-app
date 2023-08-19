@@ -18,7 +18,7 @@ const Ankete = mongoose.model("Anketa");
  *         $ref: '#/components/schemas/Anketa'
  *        example:
  *         - _id: 873c017fc587d5ade7830b7a
- *           anketarji_id: [45a25e54cc55e42a456bdb32]
+ *           izvajalci_id: [45a25e54cc55e42a456bdb32]
  *           narocniki_id: [13153ec4d64ceb8d276eae42]
  *           velikost_vzorca: 800
  *           metoda: CATI
@@ -38,9 +38,9 @@ const Ankete = mongoose.model("Anketa");
  */
 const seznamAnket = (req, res) => {
     const query = {};
-    if (req.query.anketar) {
-        query.anketarji_id = {
-            $all: new ObjectId(req.query.anketar)
+    if (req.query.izvajalec) {
+        query.izvajalci_id = {
+            $all: new ObjectId(req.query.izvajalec)
         }
     }
     if (req.query.narocnik) {
@@ -80,7 +80,7 @@ const seznamAnket = (req, res) => {
  *        $ref: '#/components/schemas/Anketa'
  *       example:
  *        - _id: 873c017fc587d5ade7830b7a
- *          anketarji_id: [45a25e54cc55e42a456bdb32]
+ *          izvajalci_id: [45a25e54cc55e42a456bdb32]
  *          narocniki_id: [13153ec4d64ceb8d276eae42]
  *          velikost_vzorca: 800
  *          metoda: CATI
@@ -140,7 +140,7 @@ const podrobnostiAnkete = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        anketarji_id:
+ *        izvajalci_id:
  *          required: false
  *          example: [45a25e54cc55e42a456bdb32]
  *        narocniki_id:
@@ -187,8 +187,8 @@ const ustvariAnketo = (req, res) => {
     const novaAnketa = {};
 
     // POTREBNO POSODOBITI
-    if (req.body.anketarji_id) {
-        novaAnketa.anketarji_id = req.body.anketarji_id;
+    if (req.body.izvajalci_id) {
+        novaAnketa.izvajalci_id = req.body.izvajalci_id;
     }
     if (req.body.narocniki_id) {
         novaAnketa.narocniki_id = req.body.narocniki_id;
@@ -245,7 +245,7 @@ const ustvariAnketo = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        anketarji_id:
+ *        izvajalci_id:
  *          example: [45a25e54cc55e42a456bdb32]
  *        narocniki_id:
  *          example: [13153ec4d64ceb8d276eae42]
@@ -302,8 +302,8 @@ const posodobiAnketo = (req, res) => {
                     "Ne najdem ankete s podanim enoličnim identifikatorjem",
             });
         } else {
-            if (req.body.anketarji_id) {
-                anketa.anketarji_id = req.body.anketarji_id;
+            if (req.body.izvajalci_id) {
+                anketa.izvajalci_id = req.body.izvajalci_id;
             }
             if (req.body.narocniki_id) {
                 anketa.narocniki_id = req.body.narocniki_id;

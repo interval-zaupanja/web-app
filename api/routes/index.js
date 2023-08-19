@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const ctrlAnkete = require('../controllers/ankete');
-const ctrlAnketarji =  require('../controllers/anketarji');
+const ctrlIzvajalci =  require('../controllers/izvajalci');
 const ctrlNarocniki = require('../controllers/narocniki');
 const ctrlStranke = require('../controllers/stranke');
 const ctrlVprasanja = require('../controllers/vprasanja');
@@ -15,12 +15,12 @@ router.delete('/ankete/:id', ctrlAnkete.izbrisiAnketo);
 router.post('/ankete', ctrlAnkete.ustvariAnketo);
 router.put('/ankete/:id', ctrlAnkete.posodobiAnketo);
 
-// Anketarji storitve
-router.get('/anketarji', ctrlAnketarji.seznamAnketarjev);
-router.get('/anketarji/:id', ctrlAnketarji.podrobnostiAnketarja);
-router.delete('/anketarji/:id', ctrlAnketarji.izbrisiAnketarja);
-router.post('/anketarji/', ctrlAnketarji.ustvariAnketarja);
-router.put('/anketarji/:id', ctrlAnketarji.posodobiAnketarja);
+// izvajalci storitve
+router.get('/izvajalci', ctrlIzvajalci.seznamIzvajalcev);
+router.get('/izvajalci/:id', ctrlIzvajalci.podrobnostiIzvajalca);
+router.delete('/izvajalci/:id', ctrlIzvajalci.izbrisiIzvajalca);
+router.post('/izvajalci/', ctrlIzvajalci.ustvariIzvajalca);
+router.put('/izvajalci/:id', ctrlIzvajalci.posodobiIzvajalca);
 
 // Narocniki storitve
 router.get('/narocniki', ctrlNarocniki.seznamNarocnikov);

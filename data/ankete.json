@@ -3,7 +3,7 @@
     "_id": {
       "$oid": "873c017fc587d5ade7830b7a"
     },
-    "anketarji_id": [
+    "izvajalci_id": [
       {
         "$oid": "45a25e54cc55e42a456bdb32"
       }
@@ -25,7 +25,7 @@
     "_id": {
       "$oid": "8de77b45a6a5236288aa264f"
     },
-    "anketarji_id": [
+    "izvajalci_id": [
       {
         "$oid": "14dcac4803f6df6ffe905704"
       }
@@ -45,7 +45,7 @@
     "_id": {
       "$oid": "8de77b45a6a5236288ab264a"
     },
-    "anketarji_id": [
+    "izvajalci_id": [
       {
         "$oid": "14dcac4803f6df6ffe905704"
       }

@@ -1,18 +1,18 @@
 <template>
-    <h1>Anketarji</h1>
+    <h1>Izvajalci</h1>
     <div v-if="!loaded">
         <Nalaganje/>
     </div>
     <div v-if="loaded">
-        <div v-for="anketar in this.anketarji" :key="anketar._id" class="anketar">
-            <a :href="'/anketarji/' + anketar._id">
+        <div v-for="izvajalec in this.izvajalci" :key="izvajalec._id" class="izvajalec">
+            <a :href="'/izvajalci/' + izvajalec._id">
                 <div class="container">
                     <div class="cell-container">
-                        <p>{{anketar.ime}}</p>
+                        <p>{{izvajalec.ime}}</p>
                     </div>
                     <div class="cell-container img-cell-container">
                         <div class="img-container">
-                            <img :src="anketar.logo_uri"/>
+                            <img :src="izvajalec.logo_uri"/>
                         </div>
                     </div>
                 </div>
@@ -27,13 +27,13 @@ import axios from 'axios';
 import Nalaganje from '../../components/Nalaganje.vue';
 
 export default {
-    name: 'Anketarji',
+    name: 'Izvajalci',
     components: {
         Nalaganje
     },
     data() {
         return {
-            anketarji: [],
+            izvajalci: [],
             loaded: false,
         }
     },
@@ -43,15 +43,15 @@ export default {
     },
     methods: {
         async getData() {
-            const { data } = await axios.get("http://localhost:4000/api/anketarji");
-            this.anketarji = data;
+            const { data } = await axios.get("http://localhost:4000/api/izvajalci");
+            this.izvajalci = data;
         }
     }
 }
 </script>
 
 <style scoped>
-.anketar {
+.izvajalec {
     padding: 15px;
 	margin: 10px;
 	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));

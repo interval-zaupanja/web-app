@@ -65,9 +65,9 @@ const glasovanja_shema = new mongoose.Schema({
  *      type: ObjectId
  *      description: <b>enolični identifikator</b> ankete
  *      example: 873c017fc587d5ade7830b7a
- *     anketarji_id:
+ *     izvajalci_id:
  *      type: [ObjectId]
- *      description: enolični identifikatorji anketarjev
+ *      description: enolični identifikatorji izvajalcev
  *     narocniki_id:
  *      type: [ObjectId]
  *      description: enolični identifikatorji naročnikov
@@ -88,15 +88,15 @@ const glasovanja_shema = new mongoose.Schema({
  *      description: datum konca anketiranja
  *     opis:
  *      type: string
- *      description: opis anketarja
+ *      description: opis izvajalca
  *     opombe:
  *      type: string
- *      description: opombe anketarja
+ *      description: opombe izvajalca
  *    required:
  *     - _id
  */
 const ankete_shema = new mongoose.Schema({
-    anketarji_id: { type: [ObjectId], required: false },
+    izvajalci_id: { type: [ObjectId], required: false },
     narocniki_id: { type: [ObjectId], required: false },
     velikost_vzorca: { type: Number, required: false },
     metoda: { type: String, required: false },
@@ -161,19 +161,19 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
                 "Če je tip odgovora BG-V, potem mora biti izbrana stranka"
             ]
     },
-    procent_anketar: { type: Number, required: false },
+    procent_izvajalec: { type: Number, required: false },
     procent_iz_calculated: { type: Number, required: false },
-    procent_spodnja_meja_anketar: { type: Number, required: false },
+    procent_spodnja_meja_izvajalec: { type: Number, required: false },
     procent_spodnja_meja_iz_calculated: { type: Number, required: false },
-    procent_zgornja_meja_anketar: { type: Number, required: false },
+    procent_zgornja_meja_izvajalec: { type: Number, required: false },
     procent_zgornja_meja_iz_calculated: { type: Number, required: false },
-    st_mandatov_anketar: { type: Number, required: false },
+    st_mandatov_izvajalec: { type: Number, required: false },
     st_mandatov_iz_calculated: { type: Number, required: false },
-    st_mandatov_spodnja_meja_anketar: { type: Number, required: false },
+    st_mandatov_spodnja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_spodnja_meja_iz_calculated: { type: Number, required: false },
-    st_mandatov_zgornja_meja_anketar: { type: Number, required: false },
+    st_mandatov_zgornja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
-    stevilo_anketirancev_anketar: { type: Number, required: false },
+    stevilo_anketirancev_izvajalec: { type: Number, required: false },
     stevilo_anketirancev_iz_calculated: { type: Number, required: false }
 });
 
@@ -192,37 +192,37 @@ const vprasanja_shema = new mongoose.Schema({
  * @openapi
  * components:
  *  schemas:
- *   Anketar:
+ *   Izvajalec:
  *    type: object
  *    description:
  *    properties:
  *     _id:
  *      type: ObjectId
- *      description: <b>enolični identifikator</b> anketarja
+ *      description: <b>enolični identifikator</b> izvajalca
  *      example: 45a25e54cc55e42a456bdb32
  *     ime:
  *      type: string
- *      description: ime anketarja
+ *      description: ime izvajalca
  *     barva:
  *      type: string
- *      description: barva določena anketarju
+ *      description: barva določena izvajalcu
  *     logo_uri:
  *      type: string
- *      description: povezava do logota anketarja
+ *      description: povezava do logota izvajalca
  *     wikipedia_uri:
  *      type: string
- *      description: povezava do Wikipedia strani anketarja
+ *      description: povezava do Wikipedia strani izvajalca
  *     opis:
  *      type: string
- *      description: opis anketarja
+ *      description: opis izvajalca
  *     opombe:
  *      type: string
- *      description: opombe anketarja
+ *      description: opombe izvajalca
  *    required:
  *     - _id
  *     - ime
  */
-const anketarji_shema = new mongoose.Schema({
+const izvajalci_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     barva: { type: String, required: false },
     logo_uri: { type: String, required: false },
@@ -374,7 +374,7 @@ const kandidati_shema = new mongoose.Schema({
 mongoose.model("Glasovanje", glasovanja_shema, "Glasovanja");
 mongoose.model("Anketa", ankete_shema, "Ankete");
 mongoose.model("Vprasanje", vprasanja_shema, "Vprasanja");
-mongoose.model("Anketar", anketarji_shema, "Anketarji");
+mongoose.model("Izvajalec", izvajalci_shema, "Izvajalci");
 mongoose.model("Narocnik", narocniki_shema, "Narocniki");
 mongoose.model("Stranka", stranke_shema, "Stranke");
 mongoose.model("Kandidat", kandidati_shema, "Kandidati");

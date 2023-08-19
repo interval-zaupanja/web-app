@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
-const Anketarji = mongoose.model("Anketar");
+const Izvajalci = mongoose.model("Izvajalec");
 
 /**
  * @openapi
- *  /anketarji:
+ *  /izvajalci:
  *   get:
- *    summary: Pridobi seznam vseh anketarjev.
- *    description: Pridobi seznam vseh anketarjev, ki se nahajajo v podatkovni bazi.
- *    tags: [Anketarji]
+ *    summary: Pridobi seznam vseh izvajalecev.
+ *    description: Pridobi seznam vseh izvajalecev, ki se nahajajo v podatkovni bazi.
+ *    tags: [Izvajalci]
  *    responses:
  *     '200':
- *      description: <b>OK</b>, s seznamom anketarjev.
+ *      description: <b>OK</b>, s seznamom izvajalecev.
  *      content:
  *       application/json:
  *        schema:
- *         $ref: '#/components/schemas/Anketar'
+ *         $ref: '#/components/schemas/Izvajalec'
  *        example:
  *         - _id: 45a25e54cc55e42a456bdb32
  *           ime: Ninamedia
@@ -29,8 +29,8 @@ const Anketarji = mongoose.model("Anketar");
  *        example:
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
-const seznamAnketarjev = (req, res) => {
-    Anketarji.find().exec(function (error, seznam) {
+const seznamIzvajalcev = (req, res) => {
+    Izvajalci.find().exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -40,21 +40,21 @@ const seznamAnketarjev = (req, res) => {
 };
 /**
  * @openapi
- * /anketarji/{id}:
+ * /izvajalci/{id}:
  *  get:
- *   summary: Vrni podrobnosti anketarja.
- *   description: Vrni podrobnosti anketarja na podlagi njegovega enoličnega identifikatorja.
- *   tags: [Anketarji]
+ *   summary: Vrni podrobnosti izvajalca.
+ *   description: Vrni podrobnosti izvajalca na podlagi njegovega enoličnega identifikatorja.
+ *   tags: [Izvajalci]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
- *      description: <b>enolični identifikator</b> anketarja
+ *      description: <b>enolični identifikator</b> izvajalca
  *      required: true
  *   responses:
  *    '200':
- *     description: <b>OK</b>, anketar najden.
+ *     description: <b>OK</b>, izvajalec najden.
  *     content:
  *      application/json:
  *       schema:
@@ -63,7 +63,7 @@ const seznamAnketarjev = (req, res) => {
  *        - _id: 14dcac4803f6df6ffe905704
  *          ime: Mediana
  *    '404':
- *     description: 'Ne najdem anketarja s podanim enoličnim identifikatorjem.'
+ *     description: 'Ne najdem izvajalca s podanim enoličnim identifikatorjem.'
  *     content:
  *      application/json:
  *       schema:
@@ -79,31 +79,31 @@ const seznamAnketarjev = (req, res) => {
  *       example:
  *        sporocilo: "Napaka na strežniku: <opis napake>"
  */
-const podrobnostiAnketarja = (req, res) => {
-    const idAnketarja = req.params.id;
+const podrobnostiIzvajalca = (req, res) => {
+    const idIzvajalca = req.params.id;
 
-    Anketarji.findById(idAnketarja).exec(function (
+    Izvajalci.findById(idIzvajalca).exec(function (
         error,
-        anketar
+        izvajalec
     ) {
-        if (!anketar) {
-            res.status(404).json({sporocilo: "Ne najdem anketarja s podanim enoličnim identifikatorjem"});
+        if (!izvajalec) {
+            res.status(404).json({sporocilo: "Ne najdem izvajalca s podanim enoličnim identifikatorjem"});
         } else if (error) {
             res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
         } else {
-            res.status(200).json(anketar);
+            res.status(200).json(izvajalec);
         }
     });
 };
 /**
  * @openapi
- * /anketarji:
+ * /izvajalci:
  *  post:
- *   summary: Doda novega anketarja v bazo.
- *   description: Doda novega anketarja z vsemi zahtevanimi podatki v bazo.
- *   tags: [Anketarji]
+ *   summary: Doda novega izvajalca v bazo.
+ *   description: Doda novega izvajalca z vsemi zahtevanimi podatki v bazo.
+ *   tags: [Izvajalci]
  *   requestBody:
- *    description: Anketar
+ *    description: Izvajalec
  *    required: true
  *    content:
  *     application/x-www-form-urlencoded:
@@ -117,11 +117,11 @@ const podrobnostiAnketarja = (req, res) => {
  *        - ime
  *   responses:
  *    '201':
- *     description: Uspešno <b>ustvarjen</b> nov anketar.
+ *     description: Uspešno <b>ustvarjen</b> nov izvajalec.
  *     content:
  *      application/json:
  *       schema:
- *        $ref: '#/components/schemas/Anketar'
+ *        $ref: '#/components/schemas/Izvajalec'
  *    '400':
  *     description: <b>Napaka</b>, niso vneseni vsi zahtevani podatki.
  *     content:
@@ -141,25 +141,25 @@ const podrobnostiAnketarja = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const ustvariAnketarja = (req, res) => {
+const ustvariIzvajalca = (req, res) => {
     if (!req.body.ime) {
         res
             .status(400)
             .json({sporocilo: "Potrebno je vnesti vse obvezne podatke!"});
     } else {
-        const novAnketar = {ime: req.body.ime};
+        const novIzvajalec = {ime: req.body.ime};
         if (req.body.opis) {
-            novAnketar.opis = req.body.opis;
+            novIzvajalec.opis = req.body.opis;
         }
         if (req.body.opombe) {
-            novAnketar.opombe = req.body.opombe;
+            novIzvajalec.opombe = req.body.opombe;
         }
 
-        Anketarji.create(novAnketar, function (error, anketar) {
+        Izvajalci.create(novIzvajalec, function (error, izvajalec) {
             if (error) {
                 res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
             } else {
-                res.status(201).json(anketar);
+                res.status(201).json(izvajalec);
             }
         });
     }
@@ -167,22 +167,22 @@ const ustvariAnketarja = (req, res) => {
 
 /**
  * @openapi
- * /anketarji/{id}:
+ * /izvajalci/{id}:
  *  put:
- *   summary: Posodobi anketarja.
- *   description: Posodobi anketarja z izbranim enoličnim identifikatorjem.
- *   tags: [Anketarji]
+ *   summary: Posodobi izvajalca.
+ *   description: Posodobi izvajalca z izbranim enoličnim identifikatorjem.
+ *   tags: [Izvajalci]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
  *       pattern: '^[a-fA-F\d]{24}$'
- *      description: <b>enolični identifikator</b> anketarja
+ *      description: <b>enolični identifikator</b> izvajalca
  *      required: true
  *      example: 45a25e54cc55e42a456bdb32
  *   requestBody:
- *    description: Anketar
+ *    description: Izvajalec
  *    required: true
  *    content:
  *     application/x-www-form-urlencoded:
@@ -199,11 +199,11 @@ const ustvariAnketarja = (req, res) => {
  *        - ime
  *   responses:
  *    '200':
- *     description: <b>OK</b>, pri posodabljanju anketarja
+ *     description: <b>OK</b>, pri posodabljanju izvajalca
  *     content:
  *      application/json:
  *       schema:
- *        $ref: '#/components/schemas/Anketar'
+ *        $ref: '#/components/schemas/Izvajalec'
  *    '400':
  *     description: <b>Napaka</b>, niso vneseni vsi zahtevani podatki
  *     content:
@@ -215,15 +215,15 @@ const ustvariAnketarja = (req, res) => {
  *         value:
  *          message: Polje 'ime' mora biti obvezno podano
  *    '404':
- *     description: Anketar s tem <b>enoličnim identifikatorjem</b> ne obstaja, s sporočilom napake.
+ *     description: Izvajalec s tem <b>enoličnim identifikatorjem</b> ne obstaja, s sporočilom napake.
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       examples:
- *        anketar ni najden:
+ *        izvajalec ni najden:
  *         value:
- *          message: Ne najdem anketarja s podanim enoličnim identifikatorjem
+ *          message: Ne najdem izvajalca s podanim enoličnim identifikatorjem
  *    '500':
  *     description: <b>Napaka na strežniku</b>, s sporočilom napake.
  *     content:
@@ -233,8 +233,8 @@ const ustvariAnketarja = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const posodobiAnketarja = (req, res) => {
-    const idAnketarja = req.params.id;
+const posodobiIzvajalca = (req, res) => {
+    const idIzvajalca = req.params.id;
 
     if (
         !req.body.ime
@@ -243,31 +243,31 @@ const posodobiAnketarja = (req, res) => {
             sporocilo: "Napaka, niso vneseni vsi zahtevani podatki",
         });
     } else {
-        Anketarji.findById(idAnketarja).exec(function (
+        Izvajalci.findById(idIzvajalca).exec(function (
             error,
-            anketar
+            izvajalec
         ) {
-            if (!anketar) {
+            if (!izvajalec) {
                 res.status(404).json({
                     sporocilo:
                         "Ne najdem ankete s podanim enoličnim identifikatorjem",
                 });
             } else {
-                anketar.ime = req.body.ime;
+                izvajalec.ime = req.body.ime;
                 if (req.body.opis) {
-                    anketar.opis = req.body.opis;
+                    izvajalec.opis = req.body.opis;
                 }
                 if (req.body.opombe) {
-                    anketar.opombe = req.body.opombe;
+                    izvajalec.opombe = req.body.opombe;
                 }
 
-                anketar.save(function (error, anketar) {
+                izvajalec.save(function (error, izvajalec) {
                     if (error) {
                         res
                             .status(500)
                             .json({sporocilo: "Napaka na strežniku: " + error});
                     } else {
-                        res.status(200).json(anketar);
+                        res.status(200).json(izvajalec);
                     }
                 });
             }
@@ -277,40 +277,40 @@ const posodobiAnketarja = (req, res) => {
 
 /**
  * @openapi
- * /anketarji/{id}:
+ * /izvajalci/{id}:
  *  delete:
- *   summary: Izbriše anketarja.
- *   description: Izbriše anketarja s podanim enoličnim identifikatorjem.
- *   tags: [Anketarji]
+ *   summary: Izbriše izvajalca.
+ *   description: Izbriše izvajalca s podanim enoličnim identifikatorjem.
+ *   tags: [Izvajalci]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
- *      description: <b>enolični identifikator</b> anketarja
+ *      description: <b>enolični identifikator</b> izvajalca
  *      required: true
  *      example: 14dcac4803f6df6ffe905704
  *   responses:
  *    '204':
- *     description: Anketar je izbrisan
+ *     description: Izvajalec je izbrisan
  *    '400':
- *     description: <b>Napaka</b>, enolični identifikator anketarja je zahtevan podatek.
+ *     description: <b>Napaka</b>, enolični identifikator izvajalca je zahtevan podatek.
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       example:
- *        message: Enolični identifikator anketarja je obvezen podatek
+ *        message: Enolični identifikator izvajalca je obvezen podatek
  *    '404':
- *     description: Anketar ni bil najden
+ *     description: Izvajalec ni bil najden
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       examples:
- *        Anketar ni bil najden:
+ *        Izvajalec ni bil najden:
  *         value:
- *          message: Ne najdem anketarja s podanim enoličnim identifikatorjem
+ *          message: Ne najdem izvajalca s podanim enoličnim identifikatorjem
  *    '500':
  *     description: '<b>Napaka na strežniku</b>, s sporočilom napake.'
  *     content:
@@ -320,20 +320,20 @@ const posodobiAnketarja = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const izbrisiAnketarja = (req, res) => {
-    const idAnketarja = req.params.id;
-    if (!idAnketarja) {
+const izbrisiIzvajalca = (req, res) => {
+    const idIzvajalca = req.params.id;
+    if (!idIzvajalca) {
         res
             .status(400)
-            .json({sporocilo: "Enolični identifikator anketarja je obvezen podatek"});
+            .json({sporocilo: "Enolični identifikator izvajalca je obvezen podatek"});
     } else {
-        Anketarji.findByIdAndRemove(
-            idAnketarja,
+        Izvajalci.findByIdAndRemove(
+            idIzvajalca,
             function (error, rezultat) {
                 if (!rezultat) {
                     res.status(404).json({
                         sporocilo:
-                            "Ne najdem anketarja s podanim enoličnim identifikatorjem",
+                            "Ne najdem izvajalca s podanim enoličnim identifikatorjem",
                     });
                 } else if (error) {
                     res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
@@ -346,9 +346,9 @@ const izbrisiAnketarja = (req, res) => {
 };
 
 module.exports = {
-    seznamAnketarjev,
-    podrobnostiAnketarja,
-    ustvariAnketarja,
-    posodobiAnketarja,
-    izbrisiAnketarja,
+    seznamIzvajalcev,
+    podrobnostiIzvajalca,
+    ustvariIzvajalca,
+    posodobiIzvajalca,
+    izbrisiIzvajalca,
 };

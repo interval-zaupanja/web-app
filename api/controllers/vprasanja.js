@@ -27,59 +27,59 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *             {
 //  *                odgovor_tip: BG-V
 //  *                odgovor_stranka_id: c32ae76a892c5c270a7acb1f
-//  *                procent_anketar: 24.7
+//  *                procent_izvajalec: 24.7
 //  *                procent_iz_calculated: null
-//  *                procent_spodnja_meja_anketar: null
+//  *                procent_spodnja_meja_izvajalec: null
 //  *                procent_spodnja_meja_iz_calculated: 22.1
-//  *                procent_zgornja_meja_anketar: null
+//  *                procent_zgornja_meja_izvajalec: null
 //  *                procent_zgornja_meja_iz_calculated: 28.2
-//  *                st_mandatov_anketar: 25
+//  *                st_mandatov_izvajalec: 25
 //  *                st_mandatov_iz_calculated: null
-//  *                st_mandatov_spodnja_meja_anketar: null
+//  *                st_mandatov_spodnja_meja_izvajalec: null
 //  *                st_mandatov_spodnja_meja_iz_calculated: 22
-//  *                st_mandatov_zgornja_meja_anketar: null
+//  *                st_mandatov_zgornja_meja_izvajalec: null
 //  *                st_mandatov_zgornja_meja_iz_calculated: 28
-//  *                stevilo_anketirancev_anketar: null
+//  *                stevilo_anketirancev_izvajalec: null
 //  *                stevilo_anketirancev_iz_calculated: 28
 //  *             },
 //  *             {
 //  *                odgovor_tip: BG-V
 //  *                odgovor_stranka_id: a79677ebd4dbd3bd7642deca
-//  *                procent_anketar: 52.3
+//  *                procent_izvajalec: 52.3
 //  *                procent_iz_calculated: null
-//  *                procent_spodnja_meja_anketar: null
+//  *                procent_spodnja_meja_izvajalec: null
 //  *                procent_spodnja_meja_iz_calculated: 48.3
-//  *                procent_zgornja_meja_anketar: null
+//  *                procent_zgornja_meja_izvajalec: null
 //  *                procent_zgornja_meja_iz_calculated: 55.1
-//  *                st_mandatov_anketar: 25
+//  *                st_mandatov_izvajalec: 25
 //  *                st_mandatov_iz_calculated: null
-//  *                st_mandatov_spodnja_meja_anketar: null
+//  *                st_mandatov_spodnja_meja_izvajalec: null
 //  *                st_mandatov_spodnja_meja_iz_calculated: 22
-//  *                st_mandatov_zgornja_meja_anketar: null
+//  *                st_mandatov_zgornja_meja_izvajalec: null
 //  *                st_mandatov_zgornja_meja_iz_calculated: 28
-//  *                stevilo_anketirancev_anketar: null
+//  *                stevilo_anketirancev_izvajalec: null
 //  *                stevilo_anketirancev_iz_calculated: 748
 //  *              }
 //  *              {
 //  *                  odgovor_tip: BG-NV
-//  *                  procent_anketar: 52.3
+//  *                  procent_izvajalec: 52.3
 //  *                  procent_iz_calculated: null
-//  *                  procent_spodnja_meja_anketar: null
+//  *                  procent_spodnja_meja_izvajalec: null
 //  *                  procent_spodnja_meja_iz_calculated: 48.3
-//  *                  procent_zgornja_meja_anketar: null
+//  *                  procent_zgornja_meja_izvajalec: null
 //  *                  procent_zgornja_meja_iz_calculated: 55.1
-//  *                  stevilo_anketirancev_anketar: null
+//  *                  stevilo_anketirancev_izvajalec: null
 //  *                  stevilo_anketirancev_iz_calculated: 748
 //  *              }
 //  *              {
 //  *                  odgovor_tip: NBG
-//  *                  procent_anketar: 52.3
+//  *                  procent_izvajalec: 52.3
 //  *                  procent_iz_calculated: null
-//  *                  procent_spodnja_meja_anketar: null
+//  *                  procent_spodnja_meja_izvajalec: null
 //  *                  procent_spodnja_meja_iz_calculated: 48.3
-//  *                  procent_zgornja_meja_anketar: null
+//  *                  procent_zgornja_meja_izvajalec: null
 //  *                  procent_zgornja_meja_iz_calculated: 55.1
-//  *                  stevilo_anketirancev_anketar: null
+//  *                  stevilo_anketirancev_izvajalec: null
 //  *                  stevilo_anketirancev_iz_calculated: 748
 //  *              }
 //  *              ]
@@ -159,7 +159,7 @@ const seznamVprasanj = (req, res) => {
 //  *        $ref: '#/components/schemas/Anketa'
 //  *       example:
 //  *        - _id: 873c017fc587d5ade7830b7a
-//  *          anketar_id: 45a25e54cc55e42a456bdb32
+//  *          izvajalec_id: 45a25e54cc55e42a456bdb32
 //  *          narocnik_id: 13153ec4d64ceb8d276eae42
 //  *          velikost_vzorca: 800
 //  *          metoda: CATI
@@ -312,7 +312,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        anketar_id:
+ *        izvajalec_id:
  *          required: false
  *          example: 45a25e54cc55e42a456bdb32
  *        narocnik_id:
@@ -355,8 +355,8 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
 const ustvariAnketo = (req, res) => { // !!! še vedno govori o anketah
     const novaAnketa = {};
 
-    if (req.body.anketar_id) {
-        novaAnketa.anketar_id = req.body.anketar_id;
+    if (req.body.izvajalec_id) {
+        novaAnketa.izvajalec_id = req.body.izvajalec_id;
     }
     if (req.body.narocnik_id) {
         novaAnketa.narocnik_id = req.body.narocnik_id;
@@ -413,7 +413,7 @@ const ustvariAnketo = (req, res) => { // !!! še vedno govori o anketah
  *      schema:
  *       type: object
  *       properties:
- *        anketar_id:
+ *        izvajalec_id:
  *          example: 45a25e54cc55e42a456bdb32
  *        narocnik_id:
  *          example: 13153ec4d64ceb8d276eae42
@@ -468,8 +468,8 @@ const posodobiAnketo = (req, res) => { // !!! še vedno govori o anketah
                     "Ne najdem ankete s podanim enoličnim identifikatorjem",
             });
         } else {
-            if (req.body.anketar_id) {
-                anketa.anketar_id = req.body.anketar_id;
+            if (req.body.izvajalec_id) {
+                anketa.izvajalec_id = req.body.izvajalec_id;
             }
             if (req.body.narocnik_id) {
                 anketa.narocnik_id = req.body.narocnik_id;
