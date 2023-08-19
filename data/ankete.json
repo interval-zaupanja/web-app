@@ -40,5 +40,25 @@
     "zacetek": "2023-04-22",
     "sredina": "2023-04-25",
     "konec": "2023-04-27"
+  },
+  {
+    "_id": {
+      "$oid": "8de77b45a6a5236288ab264a"
+    },
+    "anketarji_id": [
+      {
+        "$oid": "14dcac4803f6df6ffe905704"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "5f8024542bc87c975ffc1a76"
+      }
+    ],
+    "velikost_vzorca": 723,
+    "metoda": "CATI+CAWI",
+    "zacetek": "2022-11-21",
+    "sredina": "2022-11-23",
+    "konec": "2022-11-24"
   }
 ]

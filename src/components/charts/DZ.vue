@@ -63,12 +63,9 @@ export default {
   },
   methods: {
     async getData() {
-      // potrebno pravilno posortirati in razpeti po datumih !!!!
-      const { data } = await axios.get(
-        "http://localhost:4000/api/vprasanja/glasovalna/dz"
-      );
+      // potrebno pravilno razpeti po datumih !!!!
+      const { data } = await axios.get("http://localhost:4000/api/vprasanja/glasovalna/dz");
       for (let i = 0; i < data.length; i++) {
-        // ne vem, če se vse doda v pravilnem zaporedju
         const { anketa_id, odgovori } = data[i];
         var dodaj = false;
         for (let j = 0; j < odgovori.length; j++) {
@@ -90,7 +87,7 @@ export default {
                 );
                 obstojeciVnos.data.push(odgovori[j].procent_anketar);
               }
-            }
+            } // KAJ PA TISTI, KI NE VEDO?
             dodaj = true;
           }
         }
@@ -101,9 +98,7 @@ export default {
       }
     },
     async getDate(anketa_id) {
-      const { data } = await axios.get(
-        "http://localhost:4000/api/ankete/" + anketa_id
-      );
+      const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
       return moment(data.konec, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
     async getPartyNamesAndColors() {

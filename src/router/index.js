@@ -10,6 +10,7 @@ import Narocnik from '../views/Narocniki/Narocnik.vue';
 import Anketarji from '../views/Anketarji/Anketarji.vue';
 import Anketar from '../views/Anketarji/Anketar.vue';
 import Glasovanja from '@/views/Glasovanja/Glasovanja.vue'
+import Glasovanje from '@/views/Glasovanja/Glasovanje.vue'
 import NotFound from '../views/NiNajdeno.vue';
 
 const router = new createRouter({
@@ -74,6 +75,12 @@ const router = new createRouter({
             path: '/glasovanja',
             name: 'Glasovanja',
             component: Glasovanja,
+        },
+        {
+            path: '/glasovanja/:id',
+            name: 'Glasovanje',
+            component: Glasovanje,
+            props: true
         },
         // Catch all not found
         {

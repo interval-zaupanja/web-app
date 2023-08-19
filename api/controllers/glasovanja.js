@@ -34,19 +34,22 @@ const Glasovanja = mongoose.model("Glasovanje");
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
 const seznamGlasovanj = (req, res) => {
+    // IZ NEZNANEGA RAZLOGA NE DELA (DELA PA V MONGOSH IN COMPASS)
     const query = {};
+    if (req.query.raven_oblasti) {
+        query.tip = {}
+        query.tip.raven_oblasti = req.query.raven_oblasti
+    }
     if (req.query.tip) {
         query.tip.tip = req.query.tip
     }
-    if (req.query.raven_oblasti) {
-        query.narocniki_id = req.query.raven_oblasti
-    }
     if (req.query.referendum_tip) {
-        query.narocniki_id = req.query.referendum_tip
+        query.tip.referendum_tip = req.query.referendum_tip
     }
     if (req.query.volitve_tip) {
-        query.narocniki_id = req.query.volitve_tip
+        query.tip.volitve_tip = req.query.volitve_tip
     }
+
     Glasovanja.find(query).sort('-konec').limit(req.query.limit).exec(function (error, seznam) { // če je req.query.limit undefined, se limit() ignorira
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});

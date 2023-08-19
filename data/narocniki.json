@@ -18,5 +18,14 @@
     "barva": "#EE4124",
     "logo_uri": "https://www.dnevnik.si/assets/images/dnevnik.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Dnevnik_(%C4%8Dasopis)"
+  },
+  {
+    "_id": {
+      "$oid": "5f8024542bc87c975ffc1a76"
+    },
+    "ime": "24ur",
+    "barva": "#404FB0",
+    "logo_uri": "https://pbs.twimg.com/profile_images/939147043360174081/5NMzTdxs_400x400.jpg",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/24UR"
   }
 ]

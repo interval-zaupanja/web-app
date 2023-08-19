@@ -225,6 +225,26 @@ const seznamVprasanjAnketa = (req, res) => {
 };
 
 // MANJKA DOKUMENTACIJA
+const seznamVprasanjGlasovanje = (req, res) => {
+    const idGlasovanja = req.params.id;
+    Vprasanja.find({glasovanje_id: new ObjectId(req.params.id)}).exec(function (
+        error,
+        vprasanja
+    ) {
+        if (!vprasanja) {
+            res.status(404).json({
+                sporocilo:
+                    "Ne najdem vprašanj za glasovanje s podanim enoličnim identifikatorjem",
+            });
+        } else if (error) {
+            res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
+        } else {
+            res.status(200).json(vprasanja);
+        }
+    });
+};
+
+// MANJKA DOKUMENTACIJA
 // Vključitev in naraščajoče sortiranje po datumu
 const seznamVprasanjGlasovalnaDZ = (req, res) => {
     Vprasanja.aggregate([
@@ -560,6 +580,7 @@ module.exports = {
     seznamVprasanj,
     podrobnostiVprasanja,
     seznamVprasanjAnketa,
+    seznamVprasanjGlasovanje,
     seznamVprasanjGlasovalnaDZ,
     ustvariAnketo,
     posodobiAnketo,

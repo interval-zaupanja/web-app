@@ -46,19 +46,24 @@
                             <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                             <p>
                                 Tip vprašanja: {{vprasanje.tip}}
-                                <span v-if="vprasanje.tip === 'glasovalno'">
-                                    - {{ vprasanje.glasovalno_tip['raven_oblasti']}}
+                                <span v-if="vprasanje.tip === 'zaupanje'">
+                                    - {{ vprasanje.zaupanje_tip}}
+                                </span>
+                            </p>
+                            <p v-if="vprasanje.tip === 'glasovalno'">
+                                Glasovanje:
+                                    <span v-if="vprasanje.glasovanje_id">
+                                        <router-link :to="'/glasovanja/' + vprasanje.glasovanje_id">
+                                            {{vprasanje.glasovanje_ime}}
+                                        </router-link>
+                                    (</span>{{ vprasanje.glasovalno_tip.raven_oblasti}}
                                     - {{ vprasanje.glasovalno_tip.tip}}
                                     <span v-if="vprasanje.glasovalno_tip.tip === 'volitve'">
                                         - {{ this.glasovalnoTipVolitveTip(vprasanje.glasovalno_tip.volitve_tip)}}
                                     </span>
                                     <span v-if="vprasanje.glasovalno_tip.tip === 'referendum'">
-                                        - {{ vprasanje.glasovalno_tip.referendum_tip}}
+                                        - {{ vprasanje.glasovalno_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
                                     </span>
-                                </span>
-                                <span v-if="vprasanje.tip === 'zaupanje'">
-                                    - {{ vprasanje.zaupanje_tip}}
-                                </span>
                             </p>
                             <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                             <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
@@ -165,6 +170,9 @@ export default {
             for (let i = 0; i < this.vprasanja.length; i++) {
                 if (this.vprasanja[i].tip === 'glasovalno') {
                     const odgovori = this.vprasanja[i].odgovori;
+                    if (this.vprasanja[i].glasovanje_id) {
+                        this.vprasanja[i].glasovanje_ime = await this.getGlasovanjeIme(this.vprasanja[i].glasovanje_id)
+                    }
                     for (let j = 0; j < odgovori.length; j++) {
                         if (odgovori[j].odgovor_stranka_id) {
                             const podatki = await this.getStranka(odgovori[j].odgovor_stranka_id)
@@ -261,10 +269,26 @@ export default {
                 return "ne želim odgovoriti";
             }
         },
+        odgovorTipFull(odgovor_tip) {
+            if (odgovor_tip === 'BG-NV') {
+                return "Ne vem"
+            } else if (odgovor_tip === 'NŽO') {
+                return "Ne povem"
+            }
+        },
         async getStranka(stranka_id) {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
                 return data;
+            } catch (error) {
+                console.log(error);
+                return "Ne najdem specificiarne stranke";
+            }
+        },
+        async getGlasovanjeIme(glasovanje_id) {
+            try {
+                const { data } = await axios.get("http://localhost:4000/api/glasovanja/" + glasovanje_id);
+                return data.ime;
             } catch (error) {
                 console.log(error);
                 return "Ne najdem specificiarne stranke";
@@ -279,8 +303,19 @@ export default {
             for (let i = 0; i < vprasanje.odgovori.length; i++) {
                 if (vprasanje.odgovori[i].odgovor_tip === 'BG-V') {
                     if (vprasanje.tip === 'glasovalno') {
-                        podatki.labels.push(vprasanje.odgovori[i].odgovor_stranka_ime_kratica)
-                        podatki.backgroundColor.push(vprasanje.odgovori[i].odgovor_stranka_barva)
+                        if (vprasanje.glasovalno_tip.tip === 'volitve') {
+                            podatki.labels.push(vprasanje.odgovori[i].odgovor_stranka_ime_kratica)
+                            podatki.backgroundColor.push(vprasanje.odgovori[i].odgovor_stranka_barva)
+                        } else if (vprasanje.glasovalno_tip.tip === 'referendum') {
+                            podatki.labels.push(vprasanje.odgovori[i].odgovor ?? this.odgovorTipFull(vprasanje.odgovori[i].odgovor_tip))
+                            var barva = "#FFFFFF";
+                            if (vprasanje.odgovori[i].odgovor === 'ZA') {
+                                barva = "#18C10A"
+                            } else if (vprasanje.odgovori[i].odgovor === 'PROTI') {
+                                barva = "#E71F1F"
+                            }
+                            podatki.backgroundColor.push(barva)
+                        }
                     } else if (vprasanje.tip === 'zaupanje') {
                         podatki.labels.push(vprasanje.odgovori[i].odgovor)
                         if (vprasanje.odgovori[i].odgovor === 'Zaupam') {

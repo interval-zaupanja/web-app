@@ -5,7 +5,11 @@
     },
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
-    "glasovalno_tip": "DZ",
+    "glasovalno_tip": {
+      "raven_oblasti": "državno",
+      "tip": "volitve",
+      "volitve_tip": "DZ-S"
+    },
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
@@ -73,7 +77,11 @@
     },
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
-    "glasovalno_tip": "DZ",
+    "glasovalno_tip": {
+      "raven_oblasti": "državno",
+      "tip": "volitve",
+      "volitve_tip": "DZ-S"
+    },
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
@@ -188,6 +196,41 @@
         "procent_zgornja_meja_iz_calculated": 28.2,
         "stevilo_anketirancev_anketar": 101,
         "stevilo_anketirancev_iz_calculated": 28
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288ab264a"
+    },
+    "vprasanje": "Ali ste za to, da se uveljavi Zakon o spremembah Zakona o dolgotrajni oskrbi, ki ga je sprejel Državni zbor julija 2022?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "odgovori": [
+      {
+        "odgovor_tip": "BG-V",
+        "odgovor": "ZA",
+        "procent_anketar": 43.6
+      },
+      {
+        "odgovor_tip": "BG-V",
+        "odgovor": "PROTI",
+        "procent_anketar": 32.3
+      },
+      {
+        "odgovor_tip": "BG-NV",
+        "procent_anketar": 22.6
+      },
+      {
+        "odgovor_tip": "NŽO",
+        "procent_anketar": 1.5
       }
     ]
   }
