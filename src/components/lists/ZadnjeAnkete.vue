@@ -19,7 +19,12 @@
 					{{ anketa.narocniki_ime.join(', ') }}
 				</span>
 				<br>
-				Metoda: {{ anketa.metoda }}
+				<span v-if="anketa.metode.length > 0">
+					<span v-if="anketa.metode.length == 1">Metoda: </span>
+					<span v-else-if="anketa.metode.length == 2">Metodi: </span>
+					<span v-else>Metode: </span>
+					{{ anketa.metode.join(', ') }}
+				</span>
 				<br>
 			</router-link>
 		</div>
@@ -46,12 +51,12 @@ export default {
 				const {
 					zacetek,
 					konec,
-					metoda,
+					metode,
 					izvajalci_id,
 					narocniki_id,
 					_id
 				} = data[i];
-				this.ankete.push({_id, zacetek, konec, metoda, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
+				this.ankete.push({_id, zacetek, konec, metode, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
 			}
 		},
 		async getIzvajalciIme(izvajalci_id) {

@@ -6,7 +6,7 @@
                 <th scope="col">Konec anketiranja</th>
                 <th scope="col">Izvajalci</th>
                 <th scope="col">Naročniki</th>
-                <th scope="col">Metoda anketiranja</th>
+                <th scope="col">Metode anketiranja</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                         {{ anketa.narocniki_ime.join(', ') }}
                     </th>
                     <th>
-                        {{ anketa.metoda }}
+                        {{ anketa.metode.join(', ') }}
                     </th>
             </tr>
         </tbody>
@@ -57,11 +57,11 @@ export default {
                     _id,
 					zacetek,
 					konec,
-					metoda,
+					metode,
 					izvajalci_id,
                     narocniki_id
                 } = data[i];
-				this.ankete.push({_id, zacetek, konec, metoda, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
+				this.ankete.push({_id, zacetek, konec, metode, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
 			}
 		},
 		async getIzvajalciIme(izvajalci_id) {

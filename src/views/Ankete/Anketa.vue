@@ -30,8 +30,16 @@
                     <span v-if="indeks + 1 < this.narocniki.length">, </span>
                 </span>
             </p>
+            <p v-if="this.metode.length > 0">
+                <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
+                <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
+                <span v-else>Metode anketiranja: </span>
+                
+                <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
+                    {{ metoda }}<span v-if="indeks + 1 < this.metode.length">, </span>
+                </span>
+            </p>
             <p>Velikost vzorca: {{ this.velikost_vzorca }}</p>
-            <p>Metoda: {{ this.metoda }}</p>
             <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString() }}</p>
             <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString() }}</p>
             <p v-if="this.opis">Opis: {{ this.opis }}</p>
@@ -106,7 +114,7 @@
                                                 </p>
                                             </span>
                                             <span v-if="odgovor.odgovor">
-                                                Odgovor: {{ odgovor.odgovor }}
+                                                Odgovor: {{ this.vrniOdgovor(odgovor.odgovor, true, 1) }}
                                             </span>
                                         </span>
                                         <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.odgovor_tip, true, 0)}}</p>
@@ -154,7 +162,7 @@ export default {
             izvajalci: [],
             narocniki: [],
             velikost_vzorca: null,
-            metoda: null,
+            metode: null,
             zacetek: null,
             konec: null,
             opis: null,
@@ -214,7 +222,7 @@ export default {
                     this.narocniki.push({id: data.narocniki_id[i]})
                 }
                 this.velikost_vzorca = data.velikost_vzorca;
-                this.metoda = data.metoda;
+                this.metode = data.metode;
                 this.zacetek = data.zacetek;
                 this.konec = data.konec;
                 this.opis = data.opis;
@@ -284,40 +292,20 @@ export default {
                 data: []
             }
             for (let i = 0; i < vprasanje.odgovori.length; i++) {
-                if (vprasanje.odgovori[i].odgovor_tip === 'BG-V') {
-                    if (vprasanje.tip === 'glasovalno') {
-                        if (vprasanje.glasovalno_tip.tip === 'volitve') {
-                            podatki.labels.push(vprasanje.odgovori[i].odgovor_stranka_ime_kratica)
-                            podatki.backgroundColor.push(vprasanje.odgovori[i].odgovor_stranka_barva)
-                        } else if (vprasanje.glasovalno_tip.tip === 'referendum') {
-                            podatki.labels.push(vprasanje.odgovori[i].odgovor ?? this.vrniOdgovor(vprasanje.odgovori[i].odgovor_tip, false, 1))
-                            var barva;
-                            if (vprasanje.odgovori[i].odgovor === 'ZA') {
-                                barva = this.barve.pozitivno
-                            } else if (vprasanje.odgovori[i].odgovor === 'PROTI') {
-                                barva = this.barve.negativno
-                            }
-                            podatki.backgroundColor.push(barva)
-                        }
-                    } else if (vprasanje.tip === 'zaupanje') {
-                        podatki.labels.push(vprasanje.odgovori[i].odgovor)
-                        if (vprasanje.odgovori[i].odgovor === 'Zaupam') {
-                            podatki.backgroundColor.push(this.barve.pozitivno)
-                        } else if (vprasanje.odgovori[i].odgovor === 'Ne zaupam') {
-                            podatki.backgroundColor.push(this.barve.negativno)
-                        }
-                    }
-                } else if (vprasanje.odgovori[i].odgovor_tip === 'BG-NV' && podatek.indexOf('st_mandatov') === -1) {
-                    podatki.labels.push("Ne vem");
-                    podatki.backgroundColor.push('#7e848c')
-                } else if (vprasanje.odgovori[i].odgovor_tip === 'NBG' && podatek.indexOf('st_mandatov') === -1) {
-                    podatki.labels.push("Ne bom glasoval");
-                    podatki.backgroundColor.push('#acaeb0')
-                } else if (vprasanje.odgovori[i].odgovor_tip === 'NŽO' && podatek.indexOf('st_mandatov') === -1) {
-                    podatki.labels.push("Ne želim odgovoriti");
-                    podatki.backgroundColor.push('#dcdfe3')
-                }
+                // LABELS
+                podatki.labels.push(
+                    vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
+                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_tip, false, 1) ?? // ali ima primat odgovor ali odgovor_tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
+                    vprasanje.odgovori[i].odgovor
+                )
 
+                // COLORS
+                podatki.backgroundColor.push(
+                    vprasanje.odgovori[i].odgovor_stranka_barva ??
+                    this.vrniStdBarvo(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_tip)
+                )
+
+                // DATA
                 if (podatek === 'procent_izvajalec') {
                     podatki.data.push(vprasanje.odgovori[i].procent_izvajalec)
                 } else if (podatek === 'st_mandatov_izvajalec') {

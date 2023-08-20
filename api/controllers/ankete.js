@@ -21,7 +21,7 @@ const Ankete = mongoose.model("Anketa");
  *           izvajalci_id: [45a25e54cc55e42a456bdb32]
  *           narocniki_id: [13153ec4d64ceb8d276eae42]
  *           velikost_vzorca: 800
- *           metoda: CATI
+ *           metode: [CATI]
  *           zacetek: 2023-02-16
  *           sredina: 2023-02-18
  *           konec: 2023-02-20
@@ -83,7 +83,7 @@ const seznamAnket = (req, res) => {
  *          izvajalci_id: [45a25e54cc55e42a456bdb32]
  *          narocniki_id: [13153ec4d64ceb8d276eae42]
  *          velikost_vzorca: 800
- *          metoda: CATI
+ *          metode: [CATI]
  *          zacetek: 2023-02-16
  *          sredina: 2023-02-18
  *          konec: 2023-02-20
@@ -149,9 +149,9 @@ const podrobnostiAnkete = (req, res) => {
  *        velikost_vzorca:
  *          required: false
  *          example: 800
- *        metoda:
+ *        metode:
  *          required: false
- *          example: CATI
+ *          example: [CATI]
  *        zacetek:
  *          required: false
  *          example: 2023-02-16
@@ -196,8 +196,8 @@ const ustvariAnketo = (req, res) => {
     if (req.body.velikost_vzorca) {
         novaAnketa.velikost_vzorca = req.body.velikost_vzorca;
     }
-    if (req.body.metoda) {
-        novaAnketa.metoda = req.body.metoda;
+    if (req.body.metode) {
+        novaAnketa.metode = req.body.metode;
     }
     if (req.body.zacetek) {
         novaAnketa.zacetek = req.body.zacetek;
@@ -251,8 +251,8 @@ const ustvariAnketo = (req, res) => {
  *          example: [13153ec4d64ceb8d276eae42]
  *        velikost_vzorca:
  *          example: 800
- *        metoda:
- *          example: CATI
+ *        metode:
+ *          example: [CATI]
  *        zacetek:
  *          example: 2023-02-16
  *        sredina:
@@ -311,8 +311,8 @@ const posodobiAnketo = (req, res) => {
             if (req.body.velikost_vzorca) {
                 anketa.velikost_vzorca = req.body.velikost_vzorca;
             }
-            if (req.body.metoda) {
-                anketa.metoda = req.body.metoda;
+            if (req.body.metode) {
+                anketa.metode = req.body.metode;
             }
             if (req.body.zacetek) {
                 anketa.zacetek = req.body.zacetek;

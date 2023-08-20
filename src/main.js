@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap.js"
 
 let app = createApp(App)
 
-// GLOBAL VARIABLES
+// STANDARDI
 
 app.config.globalProperties.barve = {
     pozitivno: "#18C10A",
@@ -23,10 +23,18 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) {
         return this.barve.pozitivno
     } else if (kljuc === 'proti') {
         return this.barve.negativno
+    } else if (kljuc === 'zaupam') {
+        return this.barve.pozitivno
+    } else if (kljuc === 'ne zaupam') {
+        return this.barve.negativno
     } else if (kljuc === 'BG-NV') {
         return this.barve.BG_NV
+    } else if (kljuc === 'NBG') {
+    return this.barve.NBG
     } else if (kljuc === 'NŽO') {
         return this.barve.NZO
+    } else {
+        return false
     }
 }
 
@@ -36,7 +44,7 @@ app.config.globalProperties.vrniGlasovalnoTip = function (glasovalno_tip) { // u
     }
 }
 
-app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalization) {
+app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalization) { // velja tako za odgovore kot tipe odgovorov
     var odgovor;
     switch (std_ime) {
         case 'BG-V':
@@ -60,7 +68,7 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
             if (long) {
                 odgovor = "ne želim odgovoriti"
             } else {
-                odgovor = "ne povem"
+                odgovor = "ne povem" // lahko je confusing, ker se na chartih pojavi drugačen odgovor kot med listanimi odgovori
             }
             break;
         case 'za':
@@ -68,6 +76,12 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
             break;
         case 'proti':
             odgovor = 'proti'
+            break;
+        case 'zaupam':
+            odgovor = 'zaupam'
+            break;
+        case 'ne zaupam':
+            odgovor = 'ne zaupam'
             break;
         default:
             return null // odgovor ni standardiziran

@@ -153,7 +153,7 @@
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "Zaupam",
+        "odgovor": "zaupam",
         "procent_izvajalec": 24.7,
         "procent_iz_calculated": 101,
         "procent_spodnja_meja_izvajalec": 101,
@@ -165,7 +165,7 @@
       },
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "Ne zaupam",
+        "odgovor": "ne zaupam",
         "procent_izvajalec": 24.7,
         "procent_iz_calculated": 101,
         "procent_spodnja_meja_izvajalec": 101,

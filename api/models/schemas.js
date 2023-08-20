@@ -74,8 +74,8 @@ const glasovanja_shema = new mongoose.Schema({
  *     velikost_vzorca:
  *      type: string
  *      description: velikost vzorca ankete
- *     metoda:
- *      type: string
+ *     metode:
+ *      type: [string]
  *      description: metoda anketiranja
  *     zacetek:
  *      type: date
@@ -99,7 +99,7 @@ const ankete_shema = new mongoose.Schema({
     izvajalci_id: { type: [ObjectId], required: false },
     narocniki_id: { type: [ObjectId], required: false },
     velikost_vzorca: { type: Number, required: false },
-    metoda: { type: String, required: false },
+    metode: { type: [String], required: false },
     zacetek: { type: Date, required: false },
     sredina: { type: Date, required: false },
     konec: { type: Date, required: false },
