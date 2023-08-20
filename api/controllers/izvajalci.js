@@ -18,6 +18,7 @@ const Izvajalci = mongoose.model("Izvajalec");
  *        example:
  *         - _id: 45a25e54cc55e42a456bdb32
  *           ime: Ninamedia
+ *           ime_polno: Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o.
  *           opis: Ustanovljena leta 1991, Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o., pogosto izdeluje ankete za Večer in Dnevnik
  *           opombe: Njihove javno-mnenjske ankete se pogosto imenujejo Vox Populi
  *     '404':
@@ -62,6 +63,7 @@ const seznamIzvajalcev = (req, res) => {
  *       example:
  *        - _id: 14dcac4803f6df6ffe905704
  *          ime: Mediana
+ *          ime_polno: Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o.
  *    '404':
  *     description: 'Ne najdem izvajalca s podanim enoličnim identifikatorjem.'
  *     content:
@@ -113,6 +115,9 @@ const podrobnostiIzvajalca = (req, res) => {
  *        ime:
  *          required: true
  *          example: Parsifal
+ *        ime_polno:
+ *          required: true
+ *          example: Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o.
  *       required:
  *        - ime
  *   responses:
@@ -148,6 +153,9 @@ const ustvariIzvajalca = (req, res) => {
             .json({sporocilo: "Potrebno je vnesti vse obvezne podatke!"});
     } else {
         const novIzvajalec = {ime: req.body.ime};
+        if (req.body.ime_polno) {
+            novIzvajalec.ime_polno = req.body.ime_polno;
+        }
         if (req.body.opis) {
             novIzvajalec.opis = req.body.opis;
         }
@@ -191,6 +199,8 @@ const ustvariIzvajalca = (req, res) => {
  *       properties:
  *        ime:
  *          example: Ninamedia
+ *        ime_polno:
+ *          example: Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o.
  *        opis:
  *          example: Ustanovljena leta 1991, Ninamedia organizacija za raziskovalno dejavnost, založništvo in distribucijo, d.o.o., pogosto izdeluje ankete za Večer in Dnevnik
  *        opombe:
@@ -254,6 +264,9 @@ const posodobiIzvajalca = (req, res) => {
                 });
             } else {
                 izvajalec.ime = req.body.ime;
+                if (req.body.ime_polno) {
+                    izvajalec.ime_polno = req.body.ime_polno;
+                }
                 if (req.body.opis) {
                     izvajalec.opis = req.body.opis;
                 }

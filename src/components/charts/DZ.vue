@@ -25,6 +25,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "vue-chartjs";
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 ChartJS.register(
   CategoryScale,
@@ -33,7 +34,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  annotationPlugin
 );
 
 export default {
@@ -52,6 +54,31 @@ export default {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+            autocolors: false,
+            annotation: {
+                annotations: {
+                    line1: {
+                        type: 'line',
+                        yMin: 4,
+                        yMax: 4,
+                        borderDash: [6, 6],
+                        borderDashOffset: 0,  
+                        borderColor: this.barve.prag,
+                        borderWidth: 2,
+                        label: {
+                          display: true,
+                          content: "4% parlamentarni prag",
+                          color: this.barve.prag,
+                          backgroundColor: 'rgba(0, 0, 0, 0)',
+                          position: 'middle',
+                          rotation: 0,
+                          yAdjust: 10
+                        }
+                    },
+                },
+            }
+        }
       },
       loaded: false,
     };
@@ -80,6 +107,7 @@ export default {
                 this.data.datasets.push({
                   label: odgovori[j].odgovor_stranka_id,
                   data: [odgovori[j].procent_izvajalec],
+                  tension: 0.4 // SMOOTHENING EXPERIMENT; PREVERI NATO, ĆE DEJANSKO DELA
                 });
               } else {
                 const obstojeciVnos = this.data.datasets.find(
@@ -109,6 +137,7 @@ export default {
         );
         this.data.datasets[i].label = data.ime_kratica;
         this.data.datasets[i].backgroundColor = data.barva;
+        this.data.datasets[i].borderColor = data.barva;
       }
     },
   },

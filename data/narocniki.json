@@ -4,6 +4,7 @@
       "$oid": "13153ec4d64ceb8d276eae42"
     },
     "ime": "Delo",
+    "ime_polno": "Delo d.o.o.",
     "barva": "#0051A2",
     "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Delo_d.o.o.svg/2880px-Delo_d.o.o.svg.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Delo_(%C4%8Dasopis)",
@@ -15,6 +16,7 @@
       "$oid": "5f8024542bc87c975ffc1a70"
     },
     "ime": "Dnevnik",
+    "ime_polno": "Dnevnik, družba medijskih vsebin, d.d.",
     "barva": "#EE4124",
     "logo_uri": "https://www.dnevnik.si/assets/images/dnevnik.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Dnevnik_(%C4%8Dasopis)"

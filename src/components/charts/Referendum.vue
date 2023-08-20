@@ -1,7 +1,6 @@
 <template>
     <div style="height: 400px" class="stick-to-the-left">
         <Line
-        id="drzavni-zbor"
         v-if="loaded"
         :options="options"
         :data="data"

@@ -15,7 +15,8 @@ app.config.globalProperties.barve = {
     negativno: "#E71F1F",
     BG_NV: "#7E848C",
     NBG: "#ACAEB0",
-    NZO: "#DCDFE3"
+    NZO: "#DCDFE3",
+    prag: "#8B8C8F"
 }
 
 app.config.globalProperties.vrniStdBarvo = function (kljuc) {

@@ -17,7 +17,8 @@ const Narocniki = mongoose.model("Narocnik");
  *         $ref: '#/components/schemas/Narocnik'
  *        example:
  *         - _id: 13153ec4d64ceb8d276eae42
- *           ime: Delo,
+ *           ime: Delo
+ *           ime_polno: Delo d.o.o
  *           opis: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *           opombe: Delo izvede veliko splošnih anket, ki jih bolj redkeje vključimo na naši spletni strani. Spletna in tiskana izdaja se pogosto razlikujeta.
  *     '404':
@@ -62,6 +63,7 @@ const seznamNarocnikov = (req, res) => {
  *       example:
  *        - _id: 13153ec4d64ceb8d276eae42
  *          ime: Delo
+ *          ime_polno: Delo d.o.o
  *          opis: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *          opombe: Delo izvede veliko splošnih anket, ki jih bolj redkeje vključimo na naši spletni strani. Spletna in tiskana izdaja se pogosto razlikujeta.
  *    '404':
@@ -118,6 +120,9 @@ const podrobnostiNarocnika = (req, res) => {
  *        ime:
  *          required: true
  *          example: Delo
+ *        ime_polno:
+ *          required: false
+ *          example: Delo d.o.o.
  *        opis:
  *          required: true
  *          example: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
@@ -159,6 +164,9 @@ const ustvariNarocnika = (req, res) => {
             .json({sporocilo: "Potrebno je vnesti vse obvezne podatke!"});
     } else {
         const novNarocnik = {ime: req.body.ime};
+        if (req.body.ime_polno) {
+            novNarocnik.ime_polno = req.body.ime_polno;
+        }
         if (req.body.opis) {
             novNarocnik.opis = req.body.opis;
         }
@@ -202,6 +210,8 @@ const ustvariNarocnika = (req, res) => {
  *       properties:
  *        ime:
  *          example: Delo
+ *        ime_polno:
+ *          example: Delo d.o.o.
  *        opis:
  *          example: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *        opombe:
@@ -263,6 +273,9 @@ const posodobiNarocnika = (req, res) => {
                 });
             } else {
                 narocnik.ime = req.body.ime;
+                if (req.body.ime_polno) {
+                    narocnik.ime_polno = req.body.ime_polno;
+                }
                 if (req.body.opis) {
                     narocnik.opis = req.body.opis;
                 }

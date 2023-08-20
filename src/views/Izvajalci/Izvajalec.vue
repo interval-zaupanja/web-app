@@ -15,6 +15,7 @@
                 <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija"/>
             </div>
             <div style="display: inline-block" class="main">
+                <p v-if="this.ime_polno">{{this.ime_polno}}</p>
                 <p v-if="this.opis != null">Opis: {{this.opis}}</p>
                 <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
             </div>
@@ -51,6 +52,7 @@ export default {
     data() {
         return {
             ime: null,
+            ime_polno: null,
             barva: null,
             logo_uri: null,
             wikipedia_uri: null,
@@ -72,6 +74,7 @@ export default {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/izvajalci/" + this.id);
                 this.ime = data.ime;
+                this.ime_polno = data.ime_polno;
                 this.barva = data.barva;
                 this.logo_uri = data.logo_uri;
                 this.wikipedia_uri = data.wikipedia_uri;

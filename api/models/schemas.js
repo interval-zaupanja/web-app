@@ -203,6 +203,9 @@ const vprasanja_shema = new mongoose.Schema({
  *     ime:
  *      type: string
  *      description: ime izvajalca
+ *     ime_polno:
+ *      type: string
+ *      description: polno ime izvajalca
  *     barva:
  *      type: string
  *      description: barva določena izvajalcu
@@ -224,6 +227,7 @@ const vprasanja_shema = new mongoose.Schema({
  */
 const izvajalci_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    ime_polno: {type: String, required: false },
     barva: { type: String, required: false },
     logo_uri: { type: String, required: false },
     wikipedia_uri: { type: String, required: false },
@@ -246,6 +250,9 @@ const izvajalci_shema = new mongoose.Schema({
  *     ime:
  *      type: string
  *      description: ime naročnika
+ *     ime_polno:
+ *      type: string
+ *      description: polno ime naročnika
  *     barva:
  *      type: string
  *      description: barva določena naročniku
@@ -267,6 +274,7 @@ const izvajalci_shema = new mongoose.Schema({
  */
 const narocniki_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    ime_polno: {type: String, required: false },
     barva: { type: String, required: false },
     logo_uri: { type: String, required: false },
     wikipedia_uri: { type: String, required: false },
