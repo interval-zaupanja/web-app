@@ -77,19 +77,9 @@ export default {
                                 (element) => element.label === odgovori[j].odgovor
                             )
                         ) {
-                            var barva = "#FFFFFF";
-                            if (odgovori[j].odgovor === 'ZA') {
-                                barva = "#18C10A"
-                            } else if (odgovori[j].odgovor === 'PROTI') {
-                                barva = "#E71F1F"
-                            } else if (odgovori[j].odgovor_tip === 'BG-NV') {
-                                barva = "#7e848c"
-                            } else if (odgovori[j].odgovor_tip === 'NŽO') {
-                                barva = "#dcdfe3"
-                            }
                             this.data.datasets.push({
-                                label: odgovori[j].odgovor ?? this.odgovorTipFull(odgovori[j].odgovor_tip),
-                                backgroundColor: barva,
+                                label: this.vrniOdgovor(odgovori[j].odgovor ?? odgovori[j].odgovor_tip, false, true) ?? odgovori[j].odgovor, // preveri, če je odgovor standardiziran in vrne željeno obliko
+                                backgroundColor: this.vrniStdBarvo(odgovori[j].odgovor ?? odgovori[j].odgovor_tip),
                                 data: [odgovori[j].procent_izvajalec],
                             })
                         } else {
@@ -110,13 +100,6 @@ export default {
         async getDate(anketa_id) {
             const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
             return moment(data.konec, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
-        },
-        odgovorTipFull(odgovor_tip) {
-            if (odgovor_tip === 'BG-NV') {
-                return "Ne vem"
-            } else if (odgovor_tip === 'NŽO') {
-                return "Ne povem"
-            }
         }
     }
 }

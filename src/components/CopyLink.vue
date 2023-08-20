@@ -29,15 +29,14 @@ export default {
 </script>
 
 <style scoped>
-img, button {
-    float: right;
-}
-
 img {
     height: 15px;
+    float: right; /* to sicer popravi poravnavo, vendar ne vem točno zakaj */
 }
 
 button {
+    height: 30px;
+    width: 30px;
     padding: 5px;
 
     background-color: transparent;

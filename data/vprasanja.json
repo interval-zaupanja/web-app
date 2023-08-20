@@ -216,12 +216,12 @@
     "odgovori": [
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "ZA",
+        "odgovor": "za",
         "procent_izvajalec": 43.6
       },
       {
         "odgovor_tip": "BG-V",
-        "odgovor": "PROTI",
+        "odgovor": "proti",
         "procent_izvajalec": 32.3
       },
       {

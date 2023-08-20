@@ -42,7 +42,7 @@
                     <span class="anchor-vprasanje" :id="vprasanje._id"></span>
                     <div>
                         <div>
-                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id"/>
+                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" style="float: right"/>
                             <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                             <p>
                                 Tip vprašanja: {{vprasanje.tip}}
@@ -59,7 +59,7 @@
                                     (</span>{{ vprasanje.glasovalno_tip.raven_oblasti}}
                                     - {{ vprasanje.glasovalno_tip.tip}}
                                     <span v-if="vprasanje.glasovalno_tip.tip === 'volitve'">
-                                        - {{ this.glasovalnoTipVolitveTip(vprasanje.glasovalno_tip.volitve_tip)}}
+                                        - {{ this.vrniGlasovalnoTip(vprasanje.glasovalno_tip.volitve_tip)}}
                                     </span>
                                     <span v-if="vprasanje.glasovalno_tip.tip === 'referendum'">
                                         - {{ vprasanje.glasovalno_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
@@ -84,34 +84,40 @@
                             <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="odgovor">
                                 <span class="anchor-odgovor" :id="odgovor._id"></span>
                                 <div>
-                                    <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id"/>
-                                    <p>Tip odgovora: {{ this.odgovorTip(odgovor.odgovor_tip)}}</p>
-                                    <span>
-                                        <span v-if="odgovor.odgovor_stranka_id">
-                                            <span v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
-                                                <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
-                                                    <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px"/>
-                                                </a>
+                                    <div style="float: right">
+                                        <div>
+                                            <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" style="float: right"/>
+                                        </div>
+                                        <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
+                                            <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                                <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            <span v-if="odgovor.odgovor_stranka_id">
+                                                <p>
+                                                    Odgovor:
+                                                    <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                                        {{ odgovor.odgovor_stranka_ime}}
+                                                        <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
+                                                    </a>
+                                                </p>
                                             </span>
-                                            <p>
-                                                Stranka:
-                                                <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
-                                                    {{ odgovor.odgovor_stranka_ime}}
-                                                    <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
-                                                </a>
-                                            </p>
+                                            <span v-if="odgovor.odgovor">
+                                                Odgovor: {{ odgovor.odgovor }}
+                                            </span>
                                         </span>
-                                        <span v-if="odgovor.odgovor">
-                                            Odgovor: {{ odgovor.odgovor }}
-                                        </span>
-                                    </span>
-                                    <p>
-                                        {{ odgovor.procent_izvajalec }}%
-                                        <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
-                                            ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
-                                            ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
-                                        </span>
-                                    </p>
+                                        <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.odgovor_tip, true, 0)}}</p>
+                                        <p>
+                                            {{ odgovor.procent_izvajalec }}%
+                                            <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
+                                                ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
+                                                ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -253,29 +259,6 @@ export default {
             }
             
         },
-        glasovalnoTipVolitveTip(glasovalno_tip) {
-            if (glasovalno_tip === "DZ-S") {
-                return "Državni zbor (splošno - 88 poslancev)";
-            }
-        },
-        odgovorTip(odgovor_tip) {
-            if (odgovor_tip === "BG-V") {
-                return "bom glasoval - vem, kako bom glasoval";
-            } else if (odgovor_tip === "BG-NV") {
-                return "bom glasoval - ne vem, kako bom glasoval";
-            } else if (odgovor_tip === "NBG") {
-                return "ne bom glasoval";
-            } else if (odgovor_tip === "NŽO") {
-                return "ne želim odgovoriti";
-            }
-        },
-        odgovorTipFull(odgovor_tip) {
-            if (odgovor_tip === 'BG-NV') {
-                return "Ne vem"
-            } else if (odgovor_tip === 'NŽO') {
-                return "Ne povem"
-            }
-        },
         async getStranka(stranka_id) {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
@@ -307,21 +290,21 @@ export default {
                             podatki.labels.push(vprasanje.odgovori[i].odgovor_stranka_ime_kratica)
                             podatki.backgroundColor.push(vprasanje.odgovori[i].odgovor_stranka_barva)
                         } else if (vprasanje.glasovalno_tip.tip === 'referendum') {
-                            podatki.labels.push(vprasanje.odgovori[i].odgovor ?? this.odgovorTipFull(vprasanje.odgovori[i].odgovor_tip))
-                            var barva = "#FFFFFF";
+                            podatki.labels.push(vprasanje.odgovori[i].odgovor ?? this.vrniOdgovor(vprasanje.odgovori[i].odgovor_tip, false, 1))
+                            var barva;
                             if (vprasanje.odgovori[i].odgovor === 'ZA') {
-                                barva = "#18C10A"
+                                barva = this.barve.pozitivno
                             } else if (vprasanje.odgovori[i].odgovor === 'PROTI') {
-                                barva = "#E71F1F"
+                                barva = this.barve.negativno
                             }
                             podatki.backgroundColor.push(barva)
                         }
                     } else if (vprasanje.tip === 'zaupanje') {
                         podatki.labels.push(vprasanje.odgovori[i].odgovor)
                         if (vprasanje.odgovori[i].odgovor === 'Zaupam') {
-                            podatki.backgroundColor.push('#18C10A')
+                            podatki.backgroundColor.push(this.barve.pozitivno)
                         } else if (vprasanje.odgovori[i].odgovor === 'Ne zaupam') {
-                            podatki.backgroundColor.push('#E71F1F')
+                            podatki.backgroundColor.push(this.barve.negativno)
                         }
                     }
                 } else if (vprasanje.odgovori[i].odgovor_tip === 'BG-NV' && podatek.indexOf('st_mandatov') === -1) {
