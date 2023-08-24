@@ -1,7 +1,7 @@
 <template>
-	<div class="zadnje-ankete sidebar">
+	<div class="sidebar bubble pink-red">
 		<h3>Zadnje ankete</h3>
-		<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
+		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id">
 			<router-link :to="'ankete/' + anketa._id" style="display: block">
 				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
 				<br>
@@ -82,18 +82,6 @@ export default {
 <style scoped>
 h3 {
 	text-align: center;
-}
-
-.zadnja-anketa {
-	padding: 10px;
-	margin: 10px;
-	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
-	border-radius: 15px;
-	border: 2px solid rgba(255, 255, 255, 0.55);
-}
-
-.zadnja-anketa:hover {
-	border: 2px solid #ae1813;
 }
 
 /* Removing link styles */

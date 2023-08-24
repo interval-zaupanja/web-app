@@ -76,8 +76,25 @@ const vir_shema = new mongoose.Schema({
     lokacije: { type: [lokacija_shema], required: false }
 });
 
+// MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
 const vzorec_shema = new mongoose.Schema({
+    metode: { type: String, required: false }, // navede se le, če se razlikuje od metod navedenih za navadne ankete
     
+    st_izbranih: { type: String, required: false }, // izmed njih...
+        st_nedosegljivih: { type: Number, required: false }, // izmed njih...
+        // st_dosegljivih
+            st_noce_sodelovati: { type: Number, required: false }, // razlikuje od NŽO
+            // st_hoce_sodelovati
+                st_ni_ustrezalo_vzorcnim_dolocilom: { type: Number, required: false },
+                st_sodelujocih: { type: Number, required: false }, // dejanska velikost vzorca (N)
+
+    reprezentativno: { type: [String], required: false },
+    utezeno: { type: [String], required: false }, // prazna tabela: vzorec ni utežen, polja ni: ne vemo nič glede uteženosti
+
+    starost: { type: String, required: false },
+    tip: { type: String, required: false }, // prebivalci ali državljani
+    jurisdikcija: { type: String, required: false }, // Slovenija, izven Slovenije, posamezne pokrajine, mesta, itd.
+    podvzorci: { type: [vzorec_shema], required: false }
 });
 
 /**
@@ -98,9 +115,9 @@ const vzorec_shema = new mongoose.Schema({
  *     narocniki_id:
  *      type: [ObjectId]
  *      description: enolični identifikatorji naročnikov
- *     velikost_vzorca:
- *      type: string
- *      description: velikost vzorca ankete
+ *     vzorec:
+ *      type: [vzorec_shema]
+ *      description: vzorec ankete
  *     metode:
  *      type: [string]
  *      description: metoda anketiranja
@@ -125,14 +142,14 @@ const vzorec_shema = new mongoose.Schema({
 const ankete_shema = new mongoose.Schema({
     izvajalci_id: { type: [ObjectId], required: false },
     narocniki_id: { type: [ObjectId], required: false },
-    velikost_vzorca: { type: Number, required: false },
+    vzorec: { type: [vzorec_shema], required: false },
     metode: { type: [String], required: false },
     zacetek: { type: Date, required: false },
     sredina: { type: Date, required: false },
     konec: { type: Date, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
-    viri: { type: [viri_shema], type: false }
+    viri: { type: [vir_shema], type: false }
 });
 
 /**

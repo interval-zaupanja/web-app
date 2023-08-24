@@ -13,7 +13,9 @@
         "$oid": "13153ec4d64ceb8d276eae42"
       }
     ],
-    "velikost_vzorca": 800,
+    "vzorec": [{
+      "st_sodelujocih": 900
+    }],
     "metode": ["CATI"],
     "zacetek": "2023-02-16",
     "sredina": "2023-02-18",
@@ -35,7 +37,9 @@
         "$oid": "5f8024542bc87c975ffc1a70"
       }
     ],
-    "velikost_vzorca": 900,
+    "vzorec": [{
+      "st_sodelujocih": 900
+    }],
     "metode": ["CATI"],
     "zacetek": "2023-04-22",
     "sredina": "2023-04-25",
@@ -55,7 +59,13 @@
         "$oid": "5f8024542bc87c975ffc1a76"
       }
     ],
-    "velikost_vzorca": 723,
+    "vzorec": [{
+      "st_sodelujocih": 723,
+      "starost": "18+",
+      "tip": "prebivalci",
+      "jurisdikcija": "Slovenija",
+      "reprezentativno": ["spol", "starost", "regija", "izobrazba"]
+    }],
     "metode": ["CATI", "CAWI"],
     "zacetek": "2022-11-21",
     "sredina": "2022-11-23",

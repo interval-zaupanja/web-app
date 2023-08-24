@@ -5,49 +5,54 @@
     <div v-if="loaded && !not_found">
         <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
         <div>
-            <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
-            <p v-if="this.izvajalci.length > 0">
-                <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
-                <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
-                <span v-else>Izvajalci: </span>
+            <div>
+                <div style="display: inline-block">
+                    <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
+                    <p v-if="this.izvajalci.length > 0">
+                        <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
+                        <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
+                        <span v-else>Izvajalci: </span>
 
-                <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
-                    <router-link :to="'/izvajalci/' + izvajalec.id">
-                        {{ izvajalec.ime}}<span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" style="max-height: 12px"/></span>
-                    </router-link>
-                    <span v-if="indeks + 1 < this.izvajalci.length">, </span>
-                </span>
-            </p>
-            <p v-if="this.narocniki.length > 0">
-                <span v-if="this.narocniki.length == 1">Naročnik: </span>
-                <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
-                <span v-else>Naročniki: </span>
+                        <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
+                            <router-link :to="'/izvajalci/' + izvajalec.id">
+                                {{ izvajalec.ime}}<span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" style="max-height: 12px"/></span>
+                            </router-link>
+                            <span v-if="indeks + 1 < this.izvajalci.length">, </span>
+                        </span>
+                    </p>
+                    <p v-if="this.narocniki.length > 0">
+                        <span v-if="this.narocniki.length == 1">Naročnik: </span>
+                        <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
+                        <span v-else>Naročniki: </span>
 
-                <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
-                    <router-link :to="'/narocniki/' + narocnik.id">
-                        {{ narocnik.ime}}<span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" style="max-height: 12px"/></span>
-                    </router-link>
-                    <span v-if="indeks + 1 < this.narocniki.length">, </span>
-                </span>
-            </p>
-            <p v-if="this.metode.length > 0">
-                <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
-                <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
-                <span v-else>Metode anketiranja: </span>
-                
-                <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
-                    {{ metoda }}<span v-if="indeks + 1 < this.metode.length">, </span>
-                </span>
-            </p>
-            <p v-if="this.velikost_vzorca">Velikost vzorca: {{ this.velikost_vzorca }}</p>
-            <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
-            <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
-            <p v-if="this.opis">Opis: {{ this.opis }}</p>
-            <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
+                        <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
+                            <router-link :to="'/narocniki/' + narocnik.id">
+                                {{ narocnik.ime}}<span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" style="max-height: 12px"/></span>
+                            </router-link>
+                            <span v-if="indeks + 1 < this.narocniki.length">, </span>
+                        </span>
+                    </p>
+                    <p v-if="this.metode.length > 0">
+                        <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
+                        <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
+                        <span v-else>Metode anketiranja: </span>
+                        
+                        <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
+                            {{ metoda }}<span v-if="indeks + 1 < this.metode.length">, </span>
+                        </span>
+                    </p>
+                    <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
+                    <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+                    <p v-if="this.opis">Opis: {{ this.opis }}</p>
+                    <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
+                </div>
+                <Vzorec v-if="this.vzorec" class="sidebar" style="margin: 0px 15px" :data="this.vzorec"/>
+            </div>
+            
             <div v-if="this.viri">
-                <span v-if="this.viri.length == 1"><h3>Vir</h3></span>
-                <span v-else-if="this.viri.length == 2"><h3>Vira</h3></span>
-                <span v-else><h3>Viri</h3></span>
+                <h3 v-if="this.viri.length == 1">Vir</h3>
+                <h3 v-else-if="this.viri.length == 2">Vira</h3>
+                <h3 v-else>Viri</h3>
                 <div v-for="vir in this.viri" :key="vir._id" class="vprasanje">
                     <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" style="float: right"/>
                     <div>
@@ -174,6 +179,7 @@ import Breadcrumbs from '@/components/BreadcrumbsBS.vue'
 import PieChart from '@/components/charts/PieChart.vue'
 import ExternalLink from '@/components/ExternalLink.vue'
 import Label from '@/components/Label.vue'
+import Vzorec from '@/components/Vzorec.vue'
 
 export default {
     components: {
@@ -183,14 +189,15 @@ export default {
         Breadcrumbs,
         PieChart,
         ExternalLink,
-        Label
+        Label,
+        Vzorec
     },
     props: ['id'],
     data() {
         return {
             izvajalci: [],
             narocniki: [],
-            velikost_vzorca: null,
+            vzorec: null,
             metode: null,
             zacetek: null,
             konec: null,
@@ -229,7 +236,9 @@ export default {
                 }
             }
 
-            await this.getViriImena();
+            if (this.viri != null) {
+                await this.getViriImena();
+            }
         } else {
             this.not_found = true;
         }
@@ -253,7 +262,7 @@ export default {
                 for (let i = 0; i < data.narocniki_id.length; i++) {
                     this.narocniki.push({id: data.narocniki_id[i]})
                 }
-                this.velikost_vzorca = data.velikost_vzorca;
+                this.vzorec = data.vzorec;
                 this.metode = data.metode;
                 this.zacetek = data.zacetek;
                 this.konec = data.konec;
