@@ -23,7 +23,8 @@
             <span v-else-if="vzorec.st_sodelujocih">Velikost: {{vzorec.st_sodelujocih}}<br/></span>
             <span v-if="vzorec.starost">{{this.starost(vzorec.starost)}}</span> <span v-if="vzorec.tip">{{vzorec.tip}}</span> <span v-if="vzorec.jurisdikcija">{{this.jurisdikcija(vzorec.jurisdikcija)}}<br/></span>
             <span v-if="vzorec.reprezentativno">Reprezentativno po {{this.olepsaj(vzorec.reprezentativno)}}<br/></span>
-            <span v-if="vzorec.utezeno">Uteženo po {{this.olepsaj(vzorec.utezeno)}}<br/></span>    
+            <span v-if="vzorec.utezeno">Uteženo po {{this.olepsaj(vzorec.utezeno)}}<br/></span>
+            <!-- MANJKA PODPORA ZA PODVZORCE -->
         </div>
     </div>
 </template>

@@ -51,6 +51,10 @@ body {
     border-radius: 15px;
 }
 
+.bubble-outer {
+    margin: 15px;
+}
+
 .bubble-list {
     margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
 }

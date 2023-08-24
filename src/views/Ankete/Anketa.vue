@@ -53,8 +53,9 @@
                 <h3 v-if="this.viri.length == 1">Vir</h3>
                 <h3 v-else-if="this.viri.length == 2">Vira</h3>
                 <h3 v-else>Viri</h3>
-                <div v-for="vir in this.viri" :key="vir._id" class="vprasanje">
-                    <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" style="float: right"/>
+                <div v-for="vir in this.viri" :key="vir._id" class="bubble bubble-outer pink-red">
+                    <span class="anchor-outer" :id="vir._id"></span>
+                    <!-- <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" style="float: right"/> -->
                     <div>
                         <p>Založnik: 
                             <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
@@ -63,8 +64,9 @@
                             <Label :tip="vir.zaloznik_tip"/>
                         </p>
                     </div>
-                    <div v-for="lokacija in vir.lokacije" :key="lokacija.id" class="odgovor">
-                        <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" style="float: right"/>
+                    <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
+                        <span class="anchor-inner" :id="lokacija._id"></span>
+                        <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" style="float: right"/> -->
                         <div style="display: inline-block">
                             <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
                         </div>
@@ -76,8 +78,8 @@
             </div>
             <div>
                 <h2>Vprašanja</h2>
-                <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="vprasanje">
-                    <span class="anchor-vprasanje" :id="vprasanje._id"></span>
+                <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
+                    <span class="anchor-outer" :id="vprasanje._id"></span>
                     <div>
                         <div>
                             <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" style="float: right"/>
@@ -119,8 +121,8 @@
                         </div>
                         <div>
                             <h3>Odgovori</h3>
-                            <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="odgovor">
-                                <span class="anchor-odgovor" :id="odgovor._id"></span>
+                            <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="bubble bubble-list yellow-gray">
+                                <span class="anchor-inner" :id="odgovor._id"></span>
                                 <div>
                                     <div style="float: right">
                                         <div>
@@ -375,21 +377,8 @@ export default {
 </script>
 
 <style scoped>
-.vprasanje { /* podobno kot pri komponenti ZadnjeAnkete*/
-    padding: 15px;
-	margin: 15px;
-    background-image: linear-gradient(to right, #f6caca, #fcabab);
-	border-radius: 15px;
-}
 
-.odgovor {
-    padding: 15px;
-	margin: 10px;
-	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
-	border-radius: 15px;
-}
-
-.anchor-vprasanje {
+.anchor-outer {
     /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
     display: block;
     height: 100px; /* header height and margin and padding of container */
@@ -397,7 +386,7 @@ export default {
     visibility: hidden;
 }
 
-.anchor-odgovor {
+.anchor-inner {
     /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
     display: block;
     height: 95px; /* header height and margin and padding of container */

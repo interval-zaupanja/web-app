@@ -4,19 +4,8 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded">
-        <div v-for="narocnik in this.narocniki" :key="narocnik._id" class="narocnik">
-            <a :href="'/narocniki/' + narocnik._id">
-                <div class="container">
-                    <div class="cell-container">
-                        <p>{{narocnik.ime}}</p>
-                    </div>
-                    <div class="cell-container img-cell-container">
-                        <div class="img-container">
-                            <img :src="narocnik.logo_uri"/>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div v-for="narocnik in this.narocniki" :key="narocnik._id" class="bubble-outer grid-bubble">
+            <TextImageBubble :text="narocnik.ime" :image="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik._id)"/>
         </div>
     </div>
 </template>
@@ -24,12 +13,14 @@
 <script>
 import axios from 'axios';
 
-import Nalaganje from '../../components/Nalaganje.vue';
+import Nalaganje from '../../components/Nalaganje.vue'
+import TextImageBubble from '../../components/TextImageBubble.vue'
 
 export default {
     name: 'Narocniki',
     components: {
-        Nalaganje
+        Nalaganje,
+        TextImageBubble
     },
     data() {
         return {
@@ -51,69 +42,9 @@ export default {
 </script>
 
 <style scoped>
-.narocnik {
-    padding: 15px;
-	margin: 10px;
-	background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
-	border-radius: 15px;
-
+.grid-bubble {
     display: inline-block;
     height: 150px;
     width: 250px;
-}
-
-.container {
-    height: inherit;
-    width: inherit;
-    display: table; /* !!! */
-}
-
-.cell-container {
-    display: table-row;
-    height: 0;
-}
-
-.img-cell-container {
-    height: auto;
-}
-
-.img-container {
-    height: auto;
-    width: 160px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
-p {
-    text-align: center; /* to se zaradi <a> poruši; ne vem, kako popraviti */
-}
-
-img {
-    max-height: 80px;
-    max-width: 160px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Removing link styles */
-a:link {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:visited {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:hover {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:active {
-    color: inherit;
-    text-decoration: inherit;
 }
 </style>
