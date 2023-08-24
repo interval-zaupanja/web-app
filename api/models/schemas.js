@@ -53,6 +53,33 @@ const glasovanja_shema = new mongoose.Schema({
     opombe: { type: String, required: false } // ni v API dokumentaciji
 });
 
+// MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
+const lokacija_shema = new mongoose.Schema({
+    tip: { type: String, required: [true, "Potrebno je specificirati tip lokacije vira"] },
+    uri: { type: String, required: [tip === 'splet', "Ker je vir lociran na spletu, je potrebno navesti tudi povezavo do spletne strani"] },
+    tv_kanal: { type: String, required: 
+        [tip === 'tv', "Ker gre za televizijski vir, je potrebno navesti tudi na katerem kanalu je bila anketa objavljena"] 
+    },
+    strani: { type: [Number], required:
+        [
+            tip === 'revija' || tip === 'casopis',
+            "Ker gre za revijski oz. časopisni vir, je potrebno navesti tudi na kateri strani je bila anketa objavljena"
+        ]
+    },
+    datum_in_cas_objave: { type: Date, required: false } // pri nekaterih objavah (npr. pri objavah izvajalcev) ni specifiran
+});
+
+// MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
+const vir_shema = new mongoose.Schema({
+    zaloznik_tip: { type: String, required: [true, "Potrebno je specificirati, če je založnik ali izvajalec"] }, // publisher: lahko naročnik ali izvajalec
+    zaloznik_id: { type: ObjectId, required: [true, "Enolični identifikator založnika je zahtevano polje"] },
+    lokacije: { type: [lokacija_shema], required: false }
+});
+
+const vzorec_shema = new mongoose.Schema({
+    
+});
+
 /**
  * @openapi
  * components:
@@ -105,6 +132,7 @@ const ankete_shema = new mongoose.Schema({
     konec: { type: Date, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
+    viri: { type: [viri_shema], type: false }
 });
 
 /**
@@ -145,7 +173,7 @@ const ankete_shema = new mongoose.Schema({
  *      description: odgovori na vprašanja
  *    required:
  *     - _id
- *     - anketa_eid
+ *     - anketa_id
  *     - tip
  */
 
@@ -178,7 +206,7 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
 });
 
 const vprasanja_shema = new mongoose.Schema({
-    anketa_id: { type: ObjectId, required: [true, "Zunanji enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
+    anketa_id: { type: ObjectId, required: [true, "Enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
     tip: { type: String, required: false },
     glasovalno_tip: { type: tipi_glasovanja_shema, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },
@@ -369,7 +397,6 @@ const stranke_shema = new mongoose.Schema({
  *     - priimek
  */
 const kandidati_shema = new mongoose.Schema({
-    eid: { type: Number, required: [true, "Zunanji enolični identifikator je zahtevano polje"] },
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     priimek: { type: String, required: [true, "Priimek je zahtevano polje"] },
     stranka_id : { type: ObjectId, required: false },

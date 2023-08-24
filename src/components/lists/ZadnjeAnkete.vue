@@ -3,7 +3,7 @@
 		<h3>Zadnje ankete</h3>
 		<div class="zadnja-anketa" v-for="anketa in ankete" :key="anketa._id">
 			<router-link :to="'ankete/' + anketa._id" style="display: block">
-				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString() }} do {{ new Date(anketa.konec).toLocaleDateString() }}
+				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
 				<br>
 				<span v-if="anketa.izvajalci_ime.length > 0">
 					<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>

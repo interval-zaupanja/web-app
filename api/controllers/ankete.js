@@ -302,6 +302,7 @@ const posodobiAnketo = (req, res) => {
                     "Ne najdem ankete s podanim enoličnim identifikatorjem",
             });
         } else {
+            // POTREBNO POSODOBITI
             if (req.body.izvajalci_id) {
                 anketa.izvajalci_id = req.body.izvajalci_id;
             }

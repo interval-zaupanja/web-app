@@ -18,7 +18,7 @@ export default {
 <style scoped>
 a {
     float: right;
-    margin: 30px 0px;
+    margin: 0px;
     width: 100%;
 }
 </style>

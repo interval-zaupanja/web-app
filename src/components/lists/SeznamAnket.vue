@@ -12,10 +12,10 @@
         <tbody>
             <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
                     <th>
-                        {{ new Date(anketa.zacetek).toLocaleDateString() }}
+                        {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}
                     </th>
                     <th>
-                        {{ new Date(anketa.konec).toLocaleDateString() }}
+                        {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
                     </th>
                     <th>
                         {{ anketa.izvajalci_ime.join(', ') }}

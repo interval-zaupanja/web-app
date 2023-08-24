@@ -39,13 +39,38 @@
                     {{ metoda }}<span v-if="indeks + 1 < this.metode.length">, </span>
                 </span>
             </p>
-            <p>Velikost vzorca: {{ this.velikost_vzorca }}</p>
-            <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString() }}</p>
-            <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString() }}</p>
+            <p v-if="this.velikost_vzorca">Velikost vzorca: {{ this.velikost_vzorca }}</p>
+            <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
+            <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
             <p v-if="this.opis">Opis: {{ this.opis }}</p>
             <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
+            <div v-if="this.viri">
+                <span v-if="this.viri.length == 1"><h3>Vir</h3></span>
+                <span v-else-if="this.viri.length == 2"><h3>Vira</h3></span>
+                <span v-else><h3>Viri</h3></span>
+                <div v-for="vir in this.viri" :key="vir._id" class="vprasanje">
+                    <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" style="float: right"/>
+                    <div>
+                        <p>Založnik: 
+                            <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
+                                {{ vir.zaloznik_ime}}<span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" style="max-height: 12px"/></span>
+                            </router-link> 
+                            <Label :tip="vir.zaloznik_tip"/>
+                        </p>
+                    </div>
+                    <div v-for="lokacija in vir.lokacije" :key="lokacija.id" class="odgovor">
+                        <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" style="float: right"/>
+                        <div style="display: inline-block">
+                            <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
+                        </div>
+                        <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right; height: 40px">
+                            <ExternalLink :link="lokacija.uri" label="Odpri spletno stran" style="margin: 5px"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <h1>Vprašanja</h1>
+                <h2>Vprašanja</h2>
                 <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="vprasanje">
                     <span class="anchor-vprasanje" :id="vprasanje._id"></span>
                     <div>
@@ -145,8 +170,10 @@ import axios from 'axios';
 import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
 import CopyLink from '../../components/CopyLink.vue'
-import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
-import PieChart from '@/components/charts/PieChart.vue';
+import Breadcrumbs from '@/components/BreadcrumbsBS.vue'
+import PieChart from '@/components/charts/PieChart.vue'
+import ExternalLink from '@/components/ExternalLink.vue'
+import Label from '@/components/Label.vue'
 
 export default {
     components: {
@@ -154,7 +181,9 @@ export default {
         NeObstaja,
         CopyLink,
         Breadcrumbs,
-        PieChart
+        PieChart,
+        ExternalLink,
+        Label
     },
     props: ['id'],
     data() {
@@ -167,6 +196,7 @@ export default {
             konec: null,
             opis: null,
             opombe: null,
+            viri: null,
             vprasanja: null,
             loaded: false,
             not_found: false,
@@ -198,6 +228,8 @@ export default {
                     }
                 }
             }
+
+            await this.getViriImena();
         } else {
             this.not_found = true;
         }
@@ -227,6 +259,7 @@ export default {
                 this.konec = data.konec;
                 this.opis = data.opis;
                 this.opombe = data.opombe;
+                this.viri = data.viri;
                 return true;
             } catch (error) {
                 console.log(error);
@@ -313,6 +346,20 @@ export default {
                 }
             }
             return podatki;
+        },
+        async getViriImena() {
+            for (let i = 0; i < this.viri.length; i++) {
+                const { data } = await axios.get("http://localhost:4000/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
+                this.viri[i].zaloznik_ime = data.ime;
+                this.viri[i].zaloznik_logo_uri = data.logo_uri;
+            }
+        },
+        getZaloznikPath(tip) {
+            if (tip === 'narocnik') {
+                return "/narocniki/"
+            } else if (tip === 'izvajalec') {
+                return "/izvajalci/"
+            }
         }
     }
 }

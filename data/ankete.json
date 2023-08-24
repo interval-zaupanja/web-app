@@ -59,6 +59,21 @@
     "metode": ["CATI", "CAWI"],
     "zacetek": "2022-11-21",
     "sredina": "2022-11-23",
-    "konec": "2022-11-24"
+    "konec": "2022-11-24",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "5f8024542bc87c975ffc1a76"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.24ur.com/novice/slovenija/zadnja-anketa-kaze-da-bodo-na-trojnem-referendumu-prevladali-argumenti-za.html",
+            "datum_in_cas_objave": "2022-11-25T18:00:00"
+          }
+        ]
+      }
+    ]
   }
 ]
