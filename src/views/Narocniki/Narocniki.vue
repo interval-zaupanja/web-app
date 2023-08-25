@@ -3,24 +3,20 @@
     <div v-if="!loaded">
         <Nalaganje/>
     </div>
-    <div v-if="loaded">
-        <div v-for="narocnik in this.narocniki" :key="narocnik._id" class="bubble-outer grid-bubble">
-            <TextImageBubble :text="narocnik.ime" :image="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik._id)"/>
-        </div>
-    </div>
+    <BubbleGrid v-if="loaded" :items="this.narocniki" path="/narocniki/"/>
 </template>
 
 <script>
 import axios from 'axios';
 
 import Nalaganje from '../../components/Nalaganje.vue'
-import TextImageBubble from '../../components/TextImageBubble.vue'
+import BubbleGrid from '../../components/lists/BubbleGrid.vue'
 
 export default {
     name: 'Narocniki',
     components: {
         Nalaganje,
-        TextImageBubble
+        BubbleGrid
     },
     data() {
         return {
@@ -40,11 +36,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.grid-bubble {
-    display: inline-block;
-    height: 150px;
-    width: 250px;
-}
-</style>

@@ -1,9 +1,8 @@
-/*
 Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spreminjajo glede na to, ali mehurček vsebuje sliko:
   - če je ne vsebuje, se text pozicionira na sredino mehurčka
   - če jo vsebuje, text zasede toliko prostora na vrhu, da se v celoti izpiše, preostali prostor pa zasede slika: posledično je text vedno na vrhu in le centriran, ni pa na sredini mehurčka
 
-*/
+!!! THE IMAGES IN THE FIRST BUBBLE TYPE APPEAR ON TOP, LIKELY BECAUSE OF THE TABLE
 
 <template>
     <div v-if="this.image && this.text" class="bubble yellow-gray">
@@ -11,7 +10,7 @@ Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spremin
             <b>{{this.text}}</b>
         </div>
         <div v-if="this.image" class="img-cell-container">
-            <img class="quick-fix" :src="this.image"/>
+            <img :src="this.image"/>
         </div>
     </div>
     <div v-else-if="this.text" class="bubble yellow-gray vertical-center">
@@ -73,4 +72,7 @@ img {
 }
 
 /* sliko bi lahko centrirali tudi z margin: auto, vendar ta deluje le na bločnih elementih, zato bi morali img pretvoriti v block */ 
+
+/* slika v Safariju je čisto mimo */
+/* Firefox slik sploh ne prikaže */
 </style>
