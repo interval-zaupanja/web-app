@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <DZ/>
+    <div class="container">
+        <DZ class="stretch"/>
         <ZadnjeAnkete/>
     </div>
 </template>
@@ -17,3 +17,14 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container > * {
+    flex-grow: 1;
+}
+</style>

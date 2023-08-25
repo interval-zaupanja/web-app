@@ -55,7 +55,7 @@
                 <h3 v-else>Viri</h3>
                 <div v-for="vir in this.viri" :key="vir._id" class="bubble bubble-outer pink-red">
                     <span class="anchor-outer" :id="vir._id"></span>
-                    <!-- <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" style="float: right"/> -->
+                    <!-- <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
                     <div>
                         <p>Založnik: 
                             <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
@@ -66,7 +66,7 @@
                     </div>
                     <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
                         <span class="anchor-inner" :id="lokacija._id"></span>
-                        <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" style="float: right"/> -->
+                        <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
                         <div style="display: inline-block">
                             <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
                         </div>
@@ -82,7 +82,7 @@
                     <span class="anchor-outer" :id="vprasanje._id"></span>
                     <div>
                         <div>
-                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" style="float: right"/>
+                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" class="side-button"/>
                             <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                             <p>
                                 Tip vprašanja: {{vprasanje.tip}}
@@ -126,7 +126,7 @@
                                 <div>
                                     <div style="float: right">
                                         <div>
-                                            <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" style="float: right"/>
+                                            <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
                                         </div>
                                         <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
                                             <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
@@ -377,7 +377,6 @@ export default {
 </script>
 
 <style scoped>
-
 .anchor-outer {
     /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
     display: block;
@@ -397,5 +396,23 @@ export default {
 .charts {
     display: flex;
     justify-content: center;
+}
+
+/* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
+.side-button {
+    float: right;
+    visibility: hidden;
+}
+
+.bubble:hover .side-button {
+    visibility: visible;
+}
+
+.bubble:hover .bubble .side-button {
+    visibility: hidden;
+}
+
+.bubble .bubble:hover .side-button {
+    visibility: visible;
 }
 </style>

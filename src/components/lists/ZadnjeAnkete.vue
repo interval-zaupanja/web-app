@@ -1,32 +1,30 @@
 <template>
 	<div class="sidebar bubble pink-red">
 		<h3>Zadnje ankete</h3>
-		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id">
-			<router-link :to="'ankete/' + anketa._id" style="display: block">
-				Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
-				<br>
-				<span v-if="anketa.izvajalci_ime.length > 0">
-					<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
-					<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
-					<span v-else>Izvajalci: </span>
-					{{ anketa.izvajalci_ime.join(', ') }}
-				</span>
-				<br>
-				<span v-if="anketa.narocniki_ime.length > 0">
-					<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
-					<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
-					<span v-else>Naročniki: </span>
-					{{ anketa.narocniki_ime.join(', ') }}
-				</span>
-				<br>
-				<span v-if="anketa.metode.length > 0">
-					<span v-if="anketa.metode.length == 1">Metoda: </span>
-					<span v-else-if="anketa.metode.length == 2">Metodi: </span>
-					<span v-else>Metode: </span>
-					{{ anketa.metode.join(', ') }}
-				</span>
-				<br>
-			</router-link>
+		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
+			Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
+			<br>
+			<span v-if="anketa.izvajalci_ime.length > 0">
+				<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
+				<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
+				<span v-else>Izvajalci: </span>
+				{{ anketa.izvajalci_ime.join(', ') }}
+			</span>
+			<br>
+			<span v-if="anketa.narocniki_ime.length > 0">
+				<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
+				<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
+				<span v-else>Naročniki: </span>
+				{{ anketa.narocniki_ime.join(', ') }}
+			</span>
+			<br>
+			<span v-if="anketa.metode.length > 0">
+				<span v-if="anketa.metode.length == 1">Metoda: </span>
+				<span v-else-if="anketa.metode.length == 2">Metodi: </span>
+				<span v-else>Metode: </span>
+				{{ anketa.metode.join(', ') }}
+			</span>
+			<br>
 		</div>
 	</div>
 </template>
@@ -82,26 +80,5 @@ export default {
 <style scoped>
 h3 {
 	text-align: center;
-}
-
-/* Removing link styles */
-a:link {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:visited {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:hover {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a:active {
-    color: inherit;
-    text-decoration: inherit;
 }
 </style>

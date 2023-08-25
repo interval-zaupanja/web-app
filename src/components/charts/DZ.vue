@@ -1,5 +1,6 @@
 <template>
-  <div style="height: 400px" class="stick-to-the-left">
+  <div style="height: 400px; max-width: 100%; margin: 30px">
+    <h3>Volitve v Državni zbor</h3>
     <Line
       id="drzavni-zbor"
       v-if="loaded"
@@ -143,3 +144,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h3 {
+  text-align: center;
+}
+</style>

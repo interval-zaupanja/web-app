@@ -39,7 +39,7 @@ export default {
 .bubble { /* tudi globalen razred */
     height: inherit;
     width: inherit;
-    display: table; /* !!! */
+    display: table; /* https://jsfiddle.net/Victornpb/S8g4E/783/ */
 }
 
 .vertical-center {

@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 400px" class="stick-to-the-left">
+    <div style="height: 400px">
         <Line
         v-if="loaded"
         :options="options"
