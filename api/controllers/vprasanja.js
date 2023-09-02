@@ -22,11 +22,12 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *           anketa_id: 873c017fc587d5ade7830b7a
 //  *           vprasanje: Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?
 //  *           tip: glasovalno
-//  *           glasovalno_tip: dz
+//  *           glasovalno_tip: napoved
+//  *           glasovanje_tip: dz
 //  *           odgovori: [
 //  *             {
-//  *                odgovor_tip: BG-V
-//  *                odgovor_stranka_id: c32ae76a892c5c270a7acb1f
+//  *                tip: BG-V
+//  *                stranka_id: c32ae76a892c5c270a7acb1f
 //  *                procent_izvajalec: 24.7
 //  *                procent_iz_calculated: null
 //  *                procent_spodnja_meja_izvajalec: null
@@ -39,12 +40,12 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *                st_mandatov_spodnja_meja_iz_calculated: 22
 //  *                st_mandatov_zgornja_meja_izvajalec: null
 //  *                st_mandatov_zgornja_meja_iz_calculated: 28
-//  *                stevilo_anketirancev_izvajalec: null
-//  *                stevilo_anketirancev_iz_calculated: 28
+//  *                st_anketirancev_izvajalec: null
+//  *                st_anketirancev_iz_calculated: 28
 //  *             },
 //  *             {
-//  *                odgovor_tip: BG-V
-//  *                odgovor_stranka_id: a79677ebd4dbd3bd7642deca
+//  *                tip: BG-V
+//  *                stranka_id: a79677ebd4dbd3bd7642deca
 //  *                procent_izvajalec: 52.3
 //  *                procent_iz_calculated: null
 //  *                procent_spodnja_meja_izvajalec: null
@@ -57,30 +58,30 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  *                st_mandatov_spodnja_meja_iz_calculated: 22
 //  *                st_mandatov_zgornja_meja_izvajalec: null
 //  *                st_mandatov_zgornja_meja_iz_calculated: 28
-//  *                stevilo_anketirancev_izvajalec: null
-//  *                stevilo_anketirancev_iz_calculated: 748
+//  *                st_anketirancev_izvajalec: null
+//  *                st_anketirancev_iz_calculated: 748
 //  *              }
 //  *              {
-//  *                  odgovor_tip: BG-NV
+//  *                  tip: N
 //  *                  procent_izvajalec: 52.3
 //  *                  procent_iz_calculated: null
 //  *                  procent_spodnja_meja_izvajalec: null
 //  *                  procent_spodnja_meja_iz_calculated: 48.3
 //  *                  procent_zgornja_meja_izvajalec: null
 //  *                  procent_zgornja_meja_iz_calculated: 55.1
-//  *                  stevilo_anketirancev_izvajalec: null
-//  *                  stevilo_anketirancev_iz_calculated: 748
+//  *                  st_anketirancev_izvajalec: null
+//  *                  st_anketirancev_iz_calculated: 748
 //  *              }
 //  *              {
-//  *                  odgovor_tip: NBG
+//  *                  tip: NBG
 //  *                  procent_izvajalec: 52.3
 //  *                  procent_iz_calculated: null
 //  *                  procent_spodnja_meja_izvajalec: null
 //  *                  procent_spodnja_meja_iz_calculated: 48.3
 //  *                  procent_zgornja_meja_izvajalec: null
 //  *                  procent_zgornja_meja_iz_calculated: 55.1
-//  *                  stevilo_anketirancev_izvajalec: null
-//  *                  stevilo_anketirancev_iz_calculated: 748
+//  *                  st_anketirancev_izvajalec: null
+//  *                  st_anketirancev_iz_calculated: 748
 //  *              }
 //  *              ]
 //  *     '404':
@@ -116,6 +117,7 @@ const seznamVprasanj = (req, res) => {
                 'vprasanje': 1,
                 'tip': 1,
                 'glasovalno_tip': 1,
+                'glasovanje_tip': 1,
                 'opis': 1,
                 'opombe': 1,
                 'odgovori': 1
@@ -269,6 +271,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
                 'vprasanje': 1,
                 'tip': 1,
                 'glasovalno_tip': 1,
+                'glasovanje_tip': 1,
                 'opis': 1,
                 'opombe': 1,
                 'odgovori': 1
@@ -281,7 +284,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         },
         {
             $match: {
-                "glasovalno_tip": {
+                "glasovanje_tip": {
                     "raven_oblasti": "državno",
                     "tip": "volitve",
                     "volitve_tip": "DZ-S"

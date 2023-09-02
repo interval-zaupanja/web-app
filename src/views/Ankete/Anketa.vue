@@ -5,7 +5,7 @@
     <div v-if="loaded && !not_found">
         <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
         <div>
-            <div>
+            <div class="infobox">
                 <div style="display: inline-block">
                     <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
                     <p v-if="this.izvajalci.length > 0">
@@ -46,7 +46,9 @@
                     <p v-if="this.opis">Opis: {{ this.opis }}</p>
                     <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
                 </div>
-                <Vzorec v-if="this.vzorec" class="sidebar" style="margin: 0px 15px" :data="this.vzorec"/>
+                <div>
+                    <Vzorec v-if="this.vzorec" style="margin: 0px 15px 15px 15px" :data="this.vzorec"/>
+                </div>
             </div>
             
             <div v-if="this.viri">
@@ -96,13 +98,13 @@
                                         <router-link :to="'/glasovanja/' + vprasanje.glasovanje_id">
                                             {{vprasanje.glasovanje_ime}}
                                         </router-link>
-                                    (</span>{{ vprasanje.glasovalno_tip.raven_oblasti}}
-                                    - {{ vprasanje.glasovalno_tip.tip}}
-                                    <span v-if="vprasanje.glasovalno_tip.tip === 'volitve'">
-                                        - {{ this.vrniGlasovalnoTip(vprasanje.glasovalno_tip.volitve_tip)}}
+                                    (</span>{{ vprasanje.glasovanje_tip.raven_oblasti}}
+                                    - {{ vprasanje.glasovanje_tip.tip}}
+                                    <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
+                                        - {{ this.vrniGlasovanjeTip(vprasanje.glasovanje_tip.volitve_tip)}}
                                     </span>
-                                    <span v-if="vprasanje.glasovalno_tip.tip === 'referendum'">
-                                        - {{ vprasanje.glasovalno_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
+                                    <span v-if="vprasanje.glasovanje_tip.tip === 'referendum'">
+                                        - {{ vprasanje.glasovanje_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
                                     </span>
                             </p>
                             <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
@@ -113,7 +115,7 @@
                                     style="display: inline-block"
                                 />
                                 <PieChart
-                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovalno_tip.volitve_tip === 'DZ-S'"
+                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                                     :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                                     style="display: inline-block"
                                 />
@@ -129,27 +131,27 @@
                                             <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
                                         </div>
                                         <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
-                                            <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                            <a :href="'/stranke/' + odgovor.stranka_id">
                                                 <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>
                                             </a>
                                         </div>
                                     </div>
                                     <div>
                                         <span>
-                                            <span v-if="odgovor.odgovor_stranka_id">
+                                            <span v-if="odgovor.stranka_id">
                                                 <p>
                                                     Odgovor:
-                                                    <a :href="'/stranke/' + odgovor.odgovor_stranka_id">
+                                                    <a :href="'/stranke/' + odgovor.stranka_id">
                                                         {{ odgovor.odgovor_stranka_ime}}
                                                         <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
                                                     </a>
                                                 </p>
                                             </span>
-                                            <span v-if="odgovor.odgovor">
-                                                Odgovor: {{ this.vrniOdgovor(odgovor.odgovor, true, 1) }}
+                                            <span v-if="odgovor.odgovor || odgovor.odgovor_std">
+                                                Odgovor: {{ this.vrniOdgovor(odgovor.odgovor ?? odgovor.odgovor_std, true, 1) }}
                                             </span>
                                         </span>
-                                        <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.odgovor_tip, true, 0)}}</p>
+                                        <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.tip, true, 0)}}</p>
                                         <p>
                                             {{ odgovor.procent_izvajalec }}%
                                             <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
@@ -227,8 +229,8 @@ export default {
                         this.vprasanja[i].glasovanje_ime = await this.getGlasovanjeIme(this.vprasanja[i].glasovanje_id)
                     }
                     for (let j = 0; j < odgovori.length; j++) {
-                        if (odgovori[j].odgovor_stranka_id) {
-                            const podatki = await this.getStranka(odgovori[j].odgovor_stranka_id)
+                        if (odgovori[j].stranka_id) {
+                            const podatki = await this.getStranka(odgovori[j].stranka_id)
                             odgovori[j].odgovor_stranka_ime = podatki.ime;
                             odgovori[j].odgovor_stranka_ime_kratica = podatki.ime_kratica;
                             odgovori[j].odgovor_stranka_logo_uri = podatki.logo_uri;
@@ -339,14 +341,14 @@ export default {
                 // LABELS
                 podatki.labels.push(
                     vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
-                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_tip, false, 1) ?? // ali ima primat odgovor ali odgovor_tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
+                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
                     vprasanje.odgovori[i].odgovor
                 )
 
                 // COLORS
                 podatki.backgroundColor.push(
                     vprasanje.odgovori[i].odgovor_stranka_barva ??
-                    this.vrniStdBarvo(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_tip)
+                    this.vrniStdBarvo(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].tip)
                 )
 
                 // DATA
@@ -377,20 +379,13 @@ export default {
 </script>
 
 <style scoped>
-.anchor-outer {
-    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
-    display: block;
-    height: 100px; /* header height and margin and padding of container */
-    margin-top: -100px; /* negative header height and margin and padding of container */
-    visibility: hidden;
+.infobox {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.anchor-inner {
-    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
-    display: block;
-    height: 95px; /* header height and margin and padding of container */
-    margin-top: -95px; /* negative header height and margin and padding of container */
-    visibility: hidden;
+.infobox > * {
+    flex-grow: 1;
 }
 
 .charts {
@@ -414,5 +409,21 @@ export default {
 
 .bubble .bubble:hover .side-button {
     visibility: visible;
+}
+
+.anchor-outer {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 100px; /* header height and margin and padding of container */
+    margin-top: -100px; /* negative header height and margin and padding of container */
+    visibility: hidden;
+}
+
+.anchor-inner {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 95px; /* header height and margin and padding of container */
+    margin-top: -95px; /* negative header height and margin and padding of container */
+    visibility: hidden;
 }
 </style>

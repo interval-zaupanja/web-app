@@ -33,20 +33,6 @@ body {
     width: 60%;
 }
 
-/* Sidebar */
-
-.sidebar {
-    /* display: inline-block; (to se zaradi float ignorira; drugače tudi s tem ne dela dobro) */
-    float: right;
-    min-width: 350px;
-    max-width: 400px;
-}
-
-.sidebar h1 {
-    text-align: center;
-    margin: 10px;
-}
-
 /* Bubbles */
 .bubble {
     padding: 15px;

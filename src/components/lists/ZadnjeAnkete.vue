@@ -9,22 +9,21 @@
 				<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
 				<span v-else>Izvajalci: </span>
 				{{ anketa.izvajalci_ime.join(', ') }}
+				<br>
 			</span>
-			<br>
 			<span v-if="anketa.narocniki_ime.length > 0">
 				<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
 				<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
 				<span v-else>Naročniki: </span>
 				{{ anketa.narocniki_ime.join(', ') }}
+				<br>
 			</span>
-			<br>
 			<span v-if="anketa.metode.length > 0">
 				<span v-if="anketa.metode.length == 1">Metoda: </span>
 				<span v-else-if="anketa.metode.length == 2">Metodi: </span>
 				<span v-else>Metode: </span>
 				{{ anketa.metode.join(', ') }}
 			</span>
-			<br>
 		</div>
 	</div>
 </template>
@@ -80,5 +79,12 @@ export default {
 <style scoped>
 h3 {
 	text-align: center;
+}
+
+.sidebar {
+    /* display: inline-block; (to se zaradi float ignorira; drugače tudi s tem ne dela dobro) */
+    /* float: right; */
+    min-width: 350px;
+    max-width: 400px;
 }
 </style>

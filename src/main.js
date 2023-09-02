@@ -9,13 +9,17 @@ let app = createApp(App)
 
 // STANDARDI
 
+app.config.globalProperties.razlage = {
+    zakonodajno_zavrnitveni_referendum: "Ker gre za zavrnitveni zakonodajni referendum, ni dovolj le, da (i) proti uveljavitvi zakona glasuje več volilcev (ki so veljavno glasovali) kot jih je glasovalo za uveljavitev zakona, temeveč mora (ii) proti glasovati tudi vsaj petina vseh volilnih upravičencev."
+}
+
 app.config.globalProperties.barve = {
     pozitivno: "#18C10A",
     nevtralno: "#FAA613", // razlikujem od BG-NV, ki se do vprašanja sploh ne opredeli, nevtralno pa lahko odraža npr. delno strinjanje, delno nestrinjanje
     negativno: "#E71F1F",
-    BG_NV: "#7E848C",
+    NO: "#7E848C",
     NBG: "#ACAEB0",
-    NZO: "#DCDFE3",
+    NSO: "#DCDFE3",
     prag: "#8B8C8F"
 }
 
@@ -28,19 +32,19 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) {
         return this.barve.pozitivno
     } else if (kljuc === 'ne zaupam') {
         return this.barve.negativno
-    } else if (kljuc === 'BG-NV') {
-        return this.barve.BG_NV
+    } else if (kljuc === 'NO') {
+        return this.barve.NO
     } else if (kljuc === 'NBG') {
     return this.barve.NBG
-    } else if (kljuc === 'NŽO') {
-        return this.barve.NZO
+    } else if (kljuc === 'NSO') {
+        return this.barve.NSO
     } else {
         return false
     }
 }
 
-app.config.globalProperties.vrniGlasovalnoTip = function (glasovalno_tip) { // uporablja tudi za bolj precizne tipe (npr. volitve_tip)
-    if (glasovalno_tip === "DZ-S") {
+app.config.globalProperties.vrniGlasovanjeTip = function (glasovanje_tip) { // uporablja tudi za bolj precizne tipe (npr. volitve_tip)
+    if (glasovanje_tip === "DZ-S") {
         return "Državni zbor (splošno - 88 poslancev)";
     }
 }
@@ -48,29 +52,32 @@ app.config.globalProperties.vrniGlasovalnoTip = function (glasovalno_tip) { // u
 app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalization) { // velja tako za odgovore kot tipe odgovorov
     var odgovor;
     switch (std_ime) {
-        case 'BG-V':
+        case 'O':
             if (long) {
-                odgovor = "bom glasoval - vem, kako bom glasoval" // nima praktične aplikacije
+                odgovor = "opredeljen"
             } else {
                 odgovor = "vem"
             }
             break;
-        case 'BG-NV':
+        case 'NO':
             if (long) {
-                odgovor = "bom glasoval - ne vem, kako bom glasoval"
+                odgovor = "neopredeljen"
             } else {
                 odgovor = "ne vem"
             }
             break;
-        case 'NBG':
-            odgovor = "ne bom glasoval"
-            break;
-        case 'NŽO':
+        case 'NSO':
             if (long) {
-                odgovor = "ne želim odgovoriti"
+                odgovor = "nočem se opredeliti"
             } else {
                 odgovor = "ne povem" // lahko je confusing, ker se na chartih pojavi drugačen odgovor kot med listanimi odgovori
             }
+            break;
+        case 'BG':
+            odgovor = "bom glasoval" // nima praktične aplikacije
+            break;
+        case 'NBG':
+            odgovor = "ne bom glasoval"
             break;
         case 'za':
             odgovor = 'za'

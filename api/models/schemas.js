@@ -56,13 +56,13 @@ const glasovanja_shema = new mongoose.Schema({
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
 const lokacija_shema = new mongoose.Schema({
     tip: { type: String, required: [true, "Potrebno je specificirati tip lokacije vira"] },
-    uri: { type: String, required: [tip === 'splet', "Ker je vir lociran na spletu, je potrebno navesti tudi povezavo do spletne strani"] },
+    uri: { type: String, required: [this.tip === 'splet', "Ker je vir lociran na spletu, je potrebno navesti tudi povezavo do spletne strani"] },
     tv_kanal: { type: String, required: 
-        [tip === 'tv', "Ker gre za televizijski vir, je potrebno navesti tudi na katerem kanalu je bila anketa objavljena"] 
+        [this.tip === 'tv', "Ker gre za televizijski vir, je potrebno navesti tudi na katerem kanalu je bila anketa objavljena"] 
     },
     strani: { type: [Number], required:
         [
-            tip === 'revija' || tip === 'casopis',
+            this.tip === 'revija' || this.tip === 'casopis',
             "Ker gre za revijski oz. časopisni vir, je potrebno navesti tudi na kateri strani je bila anketa objavljena"
         ]
     },
@@ -77,7 +77,8 @@ const vir_shema = new mongoose.Schema({
 });
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
-const vzorec_shema = new mongoose.Schema({
+var vzorec_shema = null;
+vzorec_shema = new mongoose.Schema({
     metode: { type: String, required: false }, // navede se le, če se razlikuje od metod navedenih za navadne ankete
     
     st_izbranih: { type: String, required: false }, // izmed njih...
@@ -196,13 +197,13 @@ const ankete_shema = new mongoose.Schema({
 
 // MANJKAJOČA SHEMA!!!!!
 const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
-    odgovor_tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
+    tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
     odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih; vrednost lahko le DA/ZA ali NE/PROTI
-    odgovor_stranka_id: {
+    stranka_id: {
         type: ObjectId,
         required:
             [
-                this.tip === "glasovalno" && this.odgovor_tip === "BG-V" && this.glasovalno_tip === "dz",
+                this.tip === "glasovalno" && this.tip === "BG-V" && this.glasovanje_tip === "dz", // POMANKLJIVO
                 "Če je tip odgovora BG-V, potem mora biti izbrana stranka"
             ]
     },
@@ -218,15 +219,15 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     st_mandatov_spodnja_meja_iz_calculated: { type: Number, required: false },
     st_mandatov_zgornja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
-    stevilo_anketirancev_izvajalec: { type: Number, required: false },
-    stevilo_anketirancev_iz_calculated: { type: Number, required: false }
+    st_anketirancev_izvajalec: { type: Number, required: false },
+    st_anketirancev_iz_calculated: { type: Number, required: false }
 });
 
 const vprasanja_shema = new mongoose.Schema({
     anketa_id: { type: ObjectId, required: [true, "Enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
     tip: { type: String, required: false },
-    glasovalno_tip: { type: tipi_glasovanja_shema, required: [this.tip === "glasovalno", "Če je vprašanje glasovalno, potem je tip glasovanja zahtevano polje"] },
+    glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.tip === "glasovalno", "Če se vprašanje nanaša na glasovanje, potem je tip glasovanja zahtevano polje"] },
     glasovanje_id: { type: ObjectId, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },

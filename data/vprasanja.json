@@ -6,68 +6,48 @@
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
     "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid-izrojena-udelezba"
+    },
+    "glasovanje_dolocnost": "hipoteticno",
+    "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "volitve",
       "volitve_tip": "DZ-S"
     },
     "odgovori": [
       {
-        "odgovor_tip": "BG-V",
-        "odgovor_stranka_id": "c32ae76a892c5c270a7acb1f",
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "doloceno_tip": "stranka",
+        "stranka_id": "c32ae76a892c5c270a7acb1f",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
         "st_mandatov_izvajalec": 25,
-        "st_mandatov_iz_calculated": 101,
-        "st_mandatov_spodnja_meja_izvajalec": 101,
-        "st_mandatov_spodnja_meja_iz_calculated": 22,
-        "st_mandatov_zgornja_meja_izvajalec": 101,
-        "st_mandatov_zgornja_meja_iz_calculated": 28,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-V",
-        "odgovor_stranka_id": "a79677ebd4dbd3bd7642deca",
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "doloceno_tip": "stranka",
+        "stranka_id": "a79677ebd4dbd3bd7642deca",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
         "st_mandatov_izvajalec": 25,
-        "st_mandatov_iz_calculated": 101,
-        "st_mandatov_spodnja_meja_izvajalec": 101,
-        "st_mandatov_spodnja_meja_iz_calculated": 22,
-        "st_mandatov_zgornja_meja_izvajalec": 101,
-        "st_mandatov_zgornja_meja_iz_calculated": 28,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-NV",
+        "tip": "NO",
+        "udelezba_tip": "BG",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "NBG",
+        "tip": "O",
+        "udelezba_tip": "NBG",
+        "dolocnost_tip": "nedoloceno",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       }
     ]
   },
@@ -77,69 +57,40 @@
     },
     "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
     "tip": "glasovalno",
-    "glasovalno_tip": {
+    "glasovanje_dolocnost": "hipoteticno",
+    "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "volitve",
       "volitve_tip": "DZ-S"
     },
     "odgovori": [
       {
-        "odgovor_tip": "BG-V",
-        "odgovor_stranka_id": "c32ae76a892c5c270a7acb1f",
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "doloceno_tip": "stranka",
+        "stranka_id": "c32ae76a892c5c270a7acb1f",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
         "st_mandatov_izvajalec": 25,
-        "st_mandatov_iz_calculated": 101,
-        "st_mandatov_spodnja_meja_izvajalec": 101,
-        "st_mandatov_spodnja_meja_iz_calculated": 22,
-        "st_mandatov_zgornja_meja_izvajalec": 101,
-        "st_mandatov_zgornja_meja_iz_calculated": 28,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-V",
-        "odgovor_stranka_id": "a79677ebd4dbd3bd7642deca",
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "doloceno_tip": "stranka",
+        "stranka_id": "a79677ebd4dbd3bd7642deca",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
         "st_mandatov_izvajalec": 25,
-        "st_mandatov_iz_calculated": 101,
-        "st_mandatov_spodnja_meja_izvajalec": 101,
-        "st_mandatov_spodnja_meja_iz_calculated": 22,
-        "st_mandatov_zgornja_meja_izvajalec": 101,
-        "st_mandatov_zgornja_meja_iz_calculated": 28,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-NV",
+        "tip": "NO",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "NBG",
+        "tip": "NBG",
         "procent_izvajalec": 52.3,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 48.3,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 55.1,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 748
+        "st_anketirancev_izvajalec": 101
       }
     ]
   },
@@ -152,50 +103,72 @@
     "zaupanje_tip": "vlada",
     "odgovori": [
       {
-        "odgovor_tip": "BG-V",
-        "odgovor": "zaupam",
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "zaupam",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-V",
-        "odgovor": "ne zaupam",
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "ne zaupam",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "BG-NV",
+        "tip": "NO",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
       },
       {
-        "odgovor_tip": "NŽO",
+        "tip": "NSO",
         "procent_izvajalec": 24.7,
-        "procent_iz_calculated": 101,
-        "procent_spodnja_meja_izvajalec": 101,
-        "procent_spodnja_meja_iz_calculated": 22.1,
-        "procent_zgornja_meja_izvajalec": 101,
-        "procent_zgornja_meja_iz_calculated": 28.2,
-        "stevilo_anketirancev_izvajalec": 101,
-        "stevilo_anketirancev_iz_calculated": 28
+        "st_anketirancev_izvajalec": 101
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288ab264a"
+    },
+    "vprasanje": "Ali ste za to, da se uveljavi Zakon o spremembah Zakona o Vladi Republike Slovenije, ki ga je sprejel Državni zbor junija 2022?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 43.6
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 32.3
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 22.6
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.5
       }
     ]
   },
@@ -206,31 +179,120 @@
     "vprasanje": "Ali ste za to, da se uveljavi Zakon o spremembah Zakona o dolgotrajni oskrbi, ki ga je sprejel Državni zbor julija 2022?",
     "tip": "glasovalno",
     "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 49.2
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 29.8
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 19.6
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.4
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288ab264a"
+    },
+    "vprasanje": "Ali ste za to, da se uveljavi Zakon o spremembah Zakona o RTV Slovenija, ki ga je sprejel Državni zbor julija 2022?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
     "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
     },
     "odgovori": [
       {
-        "odgovor_tip": "BG-V",
-        "odgovor": "za",
-        "procent_izvajalec": 43.6
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 50.0
       },
       {
-        "odgovor_tip": "BG-V",
-        "odgovor": "proti",
-        "procent_izvajalec": 32.3
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 30.1
       },
       {
-        "odgovor_tip": "BG-NV",
-        "procent_izvajalec": 22.6
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 18.5
       },
       {
-        "odgovor_tip": "NŽO",
-        "procent_izvajalec": 1.5
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.3
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "8de77b45a6a5236288ab264a"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zelo verjetno",
+        "odgovor_std": 1,
+        "procent_izvajalec": 44
       }
     ]
   }

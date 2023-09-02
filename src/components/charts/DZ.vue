@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 400px; max-width: 100%; margin: 30px">
+  <div style="height: 100%; max-width: 100%; margin: 30px">
     <h3>Volitve v Državni zbor</h3>
     <Line
       id="drzavni-zbor"
@@ -97,22 +97,22 @@ export default {
         const { anketa_id, odgovori } = data[i];
         var dodaj = false;
         for (let j = 0; j < odgovori.length; j++) {
-          if ((this.stranka_id != null && this.stranka_id == odgovori[j].odgovor_stranka_id) || this.stranka_id == null) { // če želimo podatek le za eno stranko
-            if (odgovori[j].odgovor_tip === "BG-V") {
+          if ((this.stranka_id != null && this.stranka_id == odgovori[j].stranka_id) || this.stranka_id == null) { // če želimo podatek le za eno stranko
+            if (odgovori[j].tip === "O" && odgovori[j].doloceno_tip === 'stranka') {
               if (
                 undefined ===
                 this.data.datasets.find(
-                  (element) => element.label === odgovori[j].odgovor_stranka_id
+                  (element) => element.label === odgovori[j].stranka_id
                 )
               ) {
                 this.data.datasets.push({
-                  label: odgovori[j].odgovor_stranka_id,
+                  label: odgovori[j].stranka_id,
                   data: [odgovori[j].procent_izvajalec],
                   tension: 0.4 // SMOOTHENING EXPERIMENT; PREVERI NATO, ĆE DEJANSKO DELA
                 });
               } else {
                 const obstojeciVnos = this.data.datasets.find(
-                  (element) => element.label === odgovori[j].odgovor_stranka_id
+                  (element) => element.label === odgovori[j].stranka_id
                 );
                 obstojeciVnos.data.push(odgovori[j].procent_izvajalec);
               }
