@@ -45,6 +45,7 @@ body {
 
 .bubble-list {
     margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
+    overflow: hidden;
 }
 
 .bubble-border {

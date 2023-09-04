@@ -15,8 +15,10 @@
 
                         <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
                             <router-link :to="'/izvajalci/' + izvajalec.id">
-                                {{ izvajalec.ime}}<span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" style="max-height: 12px"/></span>
+                                {{ izvajalec.ime}}
                             </router-link>
+                            <span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" @click="$router.push('/izvajalci/' + izvajalec.id)" style="max-height: 20px"/>
+                            </span>
                             <span v-if="indeks + 1 < this.izvajalci.length">, </span>
                         </span>
                     </p>
@@ -27,8 +29,9 @@
 
                         <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
                             <router-link :to="'/narocniki/' + narocnik.id">
-                                {{ narocnik.ime}}<span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" style="max-height: 12px"/></span>
+                                {{ narocnik.ime}}
                             </router-link>
+                            <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik.id)" style="height: 16px"/></span>
                             <span v-if="indeks + 1 < this.narocniki.length">, </span>
                         </span>
                     </p>
@@ -68,12 +71,14 @@
                     </div>
                     <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
                         <span class="anchor-inner" :id="lokacija._id"></span>
-                        <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
-                        <div style="display: inline-block">
-                            <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
-                        </div>
-                        <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right; height: 40px">
-                            <ExternalLink :link="lokacija.uri" label="Odpri spletno stran" style="margin: 5px"/>
+                        <div>
+                           <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
+                            <div style="display: inline-block">
+                                <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
+                            </div>
+                            <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right">
+                                <ExternalLink :link="lokacija.uri" label="Odpri spletno stran"/>
+                            </div> 
                         </div>
                     </div>
                 </div>
