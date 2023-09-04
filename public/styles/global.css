@@ -76,3 +76,22 @@ body {
 .bubble-highlighted { /* v primeru, ko je bil polinkan fragment strani */
 	border: 2px solid #ae1813;
 }
+
+/* Buttons */
+/* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
+.side-button {
+    float: right;
+    visibility: hidden;
+}
+
+.bubble:hover .side-button {
+    visibility: visible;
+}
+
+.bubble:hover .bubble .side-button {
+    visibility: hidden;
+}
+
+.bubble .bubble:hover .side-button {
+    visibility: visible;
+}

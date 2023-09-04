@@ -55,95 +55,8 @@
             </div>
             
             <Viri v-if="this.viri" :viri="this.viri"/>
+            <Vprasanja v-if="this.vprasanja" :vprasanja="this.vprasanja" :id="this.id"/>
                 
-            <div>
-                <h2>Vprašanja</h2>
-                <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
-                    <span class="anchor-outer" :id="vprasanje._id"></span>
-                    <div>
-                        <div>
-                            <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" class="side-button"/>
-                            <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
-                            <p>
-                                Tip vprašanja: {{vprasanje.tip}}
-                                <span v-if="vprasanje.tip === 'zaupanje'">
-                                    - {{ vprasanje.zaupanje_tip}}
-                                </span>
-                            </p>
-                            <p v-if="vprasanje.tip === 'glasovalno'">
-                                Glasovanje:
-                                    <span v-if="vprasanje.glasovanje_id">
-                                        <router-link :to="'/glasovanja/' + vprasanje.glasovanje_id">
-                                            {{vprasanje.glasovanje_ime}}
-                                        </router-link>
-                                    (</span>{{ vprasanje.glasovanje_tip.raven_oblasti}}
-                                    - {{ vprasanje.glasovanje_tip.tip}}
-                                    <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
-                                        - {{ this.vrniGlasovanjeTip(vprasanje.glasovanje_tip.volitve_tip)}}
-                                    </span>
-                                    <span v-if="vprasanje.glasovanje_tip.tip === 'referendum'">
-                                        - {{ vprasanje.glasovanje_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
-                                    </span>
-                            </p>
-                            <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
-                            <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
-                            <div class="charts">
-                                <PieChart
-                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                                    style="display: inline-block"
-                                />
-                                <PieChart
-                                    v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
-                                    :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
-                                    style="display: inline-block"
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <h3>Odgovori</h3>
-                            <div v-for="odgovor in vprasanje.odgovori" :key="odgovor._id" class="bubble bubble-list yellow-gray">
-                                <span class="anchor-inner" :id="odgovor._id"></span>
-                                <div>
-                                    <div style="float: right">
-                                        <div>
-                                            <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
-                                        </div>
-                                        <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
-                                            <a :href="'/stranke/' + odgovor.stranka_id">
-                                                <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            <span v-if="odgovor.stranka_id">
-                                                <p>
-                                                    Odgovor:
-                                                    <a :href="'/stranke/' + odgovor.stranka_id">
-                                                        {{ odgovor.odgovor_stranka_ime }}
-                                                        <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
-                                                    </a>
-                                                </p>
-                                            </span>
-                                            <span v-if="odgovor.odgovor || odgovor.odgovor_std">
-                                                Odgovor: {{ this.vrniOdgovor(odgovor.odgovor ?? odgovor.odgovor_std, true, 1) }}
-                                            </span>
-                                        </span>
-                                        <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.tip, true, 0)}}</p>
-                                        <p>
-                                            {{ odgovor.procent_izvajalec }}%
-                                            <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
-                                                ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
-                                                ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div v-if="not_found && loaded">
@@ -156,21 +69,20 @@ import axios from 'axios';
 
 import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
-import CopyLink from '../../components/CopyLink.vue'
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue'
-import PieChart from '@/components/charts/PieChart.vue'
 import Vzorec from '@/components/Vzorec.vue'
+
 import Viri from '@/views/Ankete/Viri.vue'
+import Vprasanja from '@/views/Ankete/Vprasanja.vue'
 
 export default {
     components: {
         Nalaganje,
         NeObstaja,
-        CopyLink,
         Breadcrumbs,
-        PieChart,
         Vzorec,
-        Viri
+        Viri,
+        Vprasanja
     },
     props: ['id'],
     data() {
@@ -190,7 +102,7 @@ export default {
             hash: this.$route.hash
         }
     },
-    async mounted() {
+    async mounted() { // vse preko API klica pridobljene podatke dobimo v tem pogledu, zato, da se Nalaganje prikaže le enkrat
         const status = await this.getData();
         if (status) {
             await this.getIzvajalci();
@@ -300,49 +212,8 @@ export default {
                 return data.ime;
             } catch (error) {
                 console.log(error);
-                return "Ne najdem specificiarne stranke";
+                return "Ne najdem specificiarnega glasovanja";
             }
-        },
-        predelajOdgovore(vprasanje, podatek) {
-            const podatki = {
-                labels: [],
-                backgroundColor: [],
-                data: []
-            }
-            for (let i = 0; i < vprasanje.odgovori.length; i++) {
-                // LABELS
-                if (vprasanje.odgovori[i].tip === 'O' && vprasanje.odgovori[i].udelezba_tip === 'NBG') {
-                    podatki.labels.push(this.vrniOdgovor('NBG', false, 1))
-                } else {
-                    podatki.labels.push(
-                        vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
-                        vprasanje.odgovori[i].odgovor ??
-                        this.vrniOdgovor(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
-                        vprasanje.odgovori[i].odgovor
-                    )
-                }
-
-                // COLORS
-                if (vprasanje.odgovori[i].tip === 'O' && vprasanje.odgovori[i].udelezba_tip === 'NBG') {
-                    podatki.backgroundColor.push(this.vrniStdBarvo('NBG'))
-                } else {
-                    podatki.backgroundColor.push(
-                        vprasanje.odgovori[i].odgovor_stranka_barva ??
-                        this.vrniStdBarvo(
-                            vprasanje.odgovori[i].odgovor_std ??
-                            vprasanje.odgovori[i].tip
-                        )
-                    )
-                }
-
-                // DATA
-                if (podatek === 'procent_izvajalec') {
-                    podatki.data.push(vprasanje.odgovori[i].procent_izvajalec)
-                } else if (podatek === 'st_mandatov_izvajalec') {
-                    podatki.data.push(vprasanje.odgovori[i].st_mandatov_izvajalec)
-                }
-            }
-            return podatki;
         }
     }
 }
@@ -356,28 +227,5 @@ export default {
 
 .infobox > * {
     flex-grow: 1;
-}
-
-.charts {
-    display: flex;
-    justify-content: center;
-}
-
-/* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
-.side-button {
-    float: right;
-    visibility: hidden;
-}
-
-.bubble:hover .side-button {
-    visibility: visible;
-}
-
-.bubble:hover .bubble .side-button {
-    visibility: hidden;
-}
-
-.bubble .bubble:hover .side-button {
-    visibility: visible;
 }
 </style>
