@@ -198,13 +198,17 @@ const ankete_shema = new mongoose.Schema({
 // MANJKAJOČA SHEMA!!!!!
 const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
-    odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih; vrednost lahko le DA/ZA ali NE/PROTI
+    udelezba_tip: { type: String, required: false }, // tukaj bi sicer lahko napisal bolj kompleksen pogoj, ki referencira vrednost kvalitativna_meritev
+    dolocnost_tip: { type: String, required: [this.tip === 'O', "Potrebno je navesti tip določnosti (doloceno, drugo)"] },
+    doloceno_tip: { type: String, required: [this.dolocnost_tip === 'doloceno', "Potrebno je navesti tip dolocenega odgovora"] },
+    odgovor_std: { type: String, required: false }, // upoštevno le pri določenih vprašanjih 
+    odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih
     stranka_id: {
         type: ObjectId,
         required:
             [
-                this.tip === "glasovalno" && this.tip === "BG-V" && this.glasovanje_tip === "dz", // POMANKLJIVO
-                "Če je tip odgovora BG-V, potem mora biti izbrana stranka"
+                this.doloceno_tip === 'stranka',
+                "Potrebno je navesti identifikator stranke"
             ]
     },
     procent_izvajalec: { type: Number, required: false },
@@ -223,12 +227,20 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     st_anketirancev_iz_calculated: { type: Number, required: false }
 });
 
+const glasovalno_tip_shema = new mongoose.Schema({
+    casovna_komponenta: { type: String, required: [true, "Potrebno je specificirati časovno komponento vprašanja (napoved ali izmeritev)"] },
+    izmeritev_tip: { type: String, required: false },
+    kvalitativna_meritev: { type: String, required: [true, "Potrebno je navesti kvalitativno meritev vprašanja (kaj merimo)"] }
+});
+
 const vprasanja_shema = new mongoose.Schema({
     anketa_id: { type: ObjectId, required: [true, "Enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
-    tip: { type: String, required: false },
-    glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.tip === "glasovalno", "Če se vprašanje nanaša na glasovanje, potem je tip glasovanja zahtevano polje"] },
+    tip: { type: String, required: false }, // splosno, zaupanje, glasovalno
+    glasovalno_tip: { glasovalno_tip_shema, required: [this.tip === 'glasovalno', "Če je vprašanje glasovalnega tipa, potem je potrebno specificirati, točen tip glasovalnega vprašanja"]},
+    glasovanje_dolocnost: { type: String, required: [this.tip === 'glasovalno', "Potrebno je specificrati določnost glasovanja, po katerem vprašanje sprašuje"] },
     glasovanje_id: { type: ObjectId, required: false },
+    glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.glasovanje_id == null , "Če se vprašanje nanaša na glasovanje in ni podan identifikator glasovanja, potem je tip glasovanja zahtevano polje"] },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
     odgovori: { type: [odgovori_shema], default: undefined, required: [true, "Vprašanje mora vsebovati odgovore!"] }
