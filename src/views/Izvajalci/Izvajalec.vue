@@ -9,7 +9,7 @@
                 <div v-if="this.logo_uri">
                     <img :src="this.logo_uri"/>
                 </div>
-                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija" style="margin: 10px 0px"/>
+                <ExternalLink v-if="this.wikipedia_uri" :link="this.wikipedia_uri" :color="this.barva" label="Wikipedija" style="margin: 10px 0px"/>
             </div>
             <div style="display: inline-block" class="main">
                 <h1>{{this.ime}}</h1>
