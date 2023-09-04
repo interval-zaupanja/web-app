@@ -95,3 +95,16 @@ body {
 .bubble .bubble:hover .side-button {
     visibility: visible;
 }
+
+/* Side panel */
+/* max-width in min-width sta specificirana dvakrat zato, da se popravijo težave z vektorskimi slikami */
+.side-panel {
+    float: right;
+    min-width: 150px;
+    max-width: 250px;
+}
+
+.side-panel img {
+    min-width: 150px;
+    max-width: 250px;
+}

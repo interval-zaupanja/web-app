@@ -6,9 +6,7 @@
         <Breadcrumbs previous="Stranke" previousLink="/stranke" current="Podrobnosti stranke" />
         <div style="overflow: hidden">
             <div style="display: inline-block" class="side-panel">
-                <div v-if="this.logo_uri">
-                    <img :src="this.logo_uri"/>
-                </div>
+                <img v-if="this.logo_uri" :src="this.logo_uri"/>
                 <ExternalLink v-if="this.wikipedia_uri" :link="this.wikipedia_uri" :color="this.barva" label="Wikipedija" style="margin: 15px 0px"/>
             </div>
             <div style="display: inline-block" class="main">
@@ -92,14 +90,5 @@ export default {
 <style scoped>
 .main {
     width: 60%;
-}
-
-.side-panel {
-    float: right;
-}
-
-img {
-    max-height: 200px;
-    max-width: 300px;
 }
 </style>
