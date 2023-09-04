@@ -11,17 +11,21 @@ export default {
     props: ['link', 'label', 'color'],
     methods: {
         buttonColor() {
-            const red = parseInt(this.color.substring(1,3), 16)
-            const green = parseInt(this.color.substring(3,5), 16)
-            const blue = parseInt(this.color.substring(5,7), 16)
-            console.log(red, green, blue)
-            var textColor;
-            if ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) { // vir: https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color
-                textColor = "#000000"
-            }  else {
-                textColor = "#ffffff"
+            if (this.color) {
+                const red = parseInt(this.color.substring(1,3), 16)
+                const green = parseInt(this.color.substring(3,5), 16)
+                const blue = parseInt(this.color.substring(5,7), 16)
+                console.log(red, green, blue)
+                var textColor;
+                if ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) { // vir: https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color
+                    textColor = "#000000"
+                }  else {
+                    textColor = "#ffffff"
+                }
+                return "background: " + this.color + "; border-color: " + this.color + "; color: " + textColor
+            } else {
+                return ""
             }
-            return "background: " + this.color + "; border-color: " + this.color + "; color: " + textColor
         },
     }
 }

@@ -33,6 +33,23 @@ body {
     width: 60%;
 }
 
+/* Anchors */
+.anchor-outer {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 100px; /* header height and margin and padding of container */
+    margin-top: -100px; /* negative header height and margin and padding of container */
+    visibility: hidden;
+}
+
+.anchor-inner {
+    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
+    display: block;
+    height: 95px; /* header height and margin and padding of container */
+    margin-top: -95px; /* negative header height and margin and padding of container */
+    visibility: hidden;
+}
+
 /* Bubbles */
 .bubble {
     padding: 15px;

@@ -38,6 +38,6 @@ export default {
     display: inline-block;
     height: 150px;
     width: 250px;
-    vertical-align: top; /* popravi, da se vedno držijo vrha in (verjetno zaradi table znotraj TextImageBubble) ne splavajo stran od vrha */
+    vertical-align: top; /* popravek, da se vedno držijo vrha in (verjetno zaradi table znotraj TextImageBubble) ne splavajo stran od vrha */
 }
 </style>

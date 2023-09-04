@@ -54,37 +54,8 @@
                 </div>
             </div>
             
-            <div v-if="this.viri">
-                <h3 v-if="this.viri.length == 1">Vir</h3>
-                <h3 v-else-if="this.viri.length == 2">Vira</h3>
-                <h3 v-else>Viri</h3>
-                <div v-for="vir in this.viri" :key="vir._id" class="bubble bubble-outer pink-red">
-                    <span class="anchor-outer" :id="vir._id"></span>
-                    <!-- <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
-                    <div>
-                        <p>Založnik: 
-                            <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
-                                {{ vir.zaloznik_ime}}
-                            </router-link>
-                            <span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" @click="$router.push('/zalozniki/' + vir.zaloznik_id)" style="max-height: 12px"/></span>
-                            <Label :tip="vir.zaloznik_tip"/>
-                        </p>
-                    </div>
-                    <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
-                        <span class="anchor-inner" :id="lokacija._id"></span>
-                        <div>
-                           <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
-                            <div style="display: inline-block">
-                                <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
-                            </div>
-                            <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right">
-                                <ExternalLink :link="lokacija.uri" label="Odpri spletno stran"/>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <Viri v-if="this.viri" :viri="this.viri"/>
+                
             <div>
                 <h2>Vprašanja</h2>
                 <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
@@ -149,7 +120,7 @@
                                                 <p>
                                                     Odgovor:
                                                     <a :href="'/stranke/' + odgovor.stranka_id">
-                                                        {{ odgovor.odgovor_stranka_ime}}
+                                                        {{ odgovor.odgovor_stranka_ime }}
                                                         <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
                                                     </a>
                                                 </p>
@@ -188,9 +159,8 @@ import NeObstaja from '../../components/NeObstaja.vue'
 import CopyLink from '../../components/CopyLink.vue'
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue'
 import PieChart from '@/components/charts/PieChart.vue'
-import ExternalLink from '@/components/ExternalLink.vue'
-import Label from '@/components/Label.vue'
 import Vzorec from '@/components/Vzorec.vue'
+import Viri from '@/views/Ankete/Viri.vue'
 
 export default {
     components: {
@@ -199,9 +169,8 @@ export default {
         CopyLink,
         Breadcrumbs,
         PieChart,
-        ExternalLink,
-        Label,
-        Vzorec
+        Vzorec,
+        Viri
     },
     props: ['id'],
     data() {
@@ -245,10 +214,6 @@ export default {
                         }
                     }
                 }
-            }
-
-            if (this.viri != null) {
-                await this.getViriImena();
             }
         } else {
             this.not_found = true;
@@ -378,20 +343,6 @@ export default {
                 }
             }
             return podatki;
-        },
-        async getViriImena() {
-            for (let i = 0; i < this.viri.length; i++) {
-                const { data } = await axios.get("http://localhost:4000/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
-                this.viri[i].zaloznik_ime = data.ime;
-                this.viri[i].zaloznik_logo_uri = data.logo_uri;
-            }
-        },
-        getZaloznikPath(tip) {
-            if (tip === 'narocnik') {
-                return "/narocniki/"
-            } else if (tip === 'izvajalec') {
-                return "/izvajalci/"
-            }
         }
     }
 }
@@ -428,21 +379,5 @@ export default {
 
 .bubble .bubble:hover .side-button {
     visibility: visible;
-}
-
-.anchor-outer {
-    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
-    display: block;
-    height: 100px; /* header height and margin and padding of container */
-    margin-top: -100px; /* negative header height and margin and padding of container */
-    visibility: hidden;
-}
-
-.anchor-inner {
-    /* glej https://stackoverflow.com/questions/13036142/anchor-links-to-start-below-the-header-which-is-fixed-at-the-top */
-    display: block;
-    height: 95px; /* header height and margin and padding of container */
-    margin-top: -95px; /* negative header height and margin and padding of container */
-    visibility: hidden;
 }
 </style>
