@@ -1,10 +1,16 @@
 <template>
 	<div id="footer">
-		<div style="display:flex; justify-content:center; align-items: center; height: inherit">
-			© Interval zaupanja {{ new Date().getFullYear() }}
-			<a href="/vop.html" style="margin-left: 90px;">Varstvo osebnih podatkov</a>
-			<a href="/pogoji-uporabe.html">Pogoji uporabe</a>
-			<a href="/kontakt.html">Kontakt</a>
+		<div style="display: flex; justify-content: center; flex-wrap: wrap">
+			<div style="display: inline-block; margin: 0px 50px">
+				© Interval zaupanja {{ new Date().getFullYear() }}
+			</div>
+			<div style="display: inline-block; margin: 0px 20px">
+				<div style="display: flex; justify-content: center; flex-wrap: wrap">
+					<router-link to="/vop" class="link" style="display: inline-block">Varstvo osebnih podatkov</router-link>
+					<router-link to="/pogoji-uporabe" class="link" style="display: inline-block">Pogoji uporabe</router-link>
+					<router-link to="/kontakt" class="link" style="display: inline-block">Kontakt</router-link>
+				</div>
+			</div>
 		</div>
   </div>
 </template>
@@ -18,23 +24,23 @@ export default {
 <style scoped>
 #footer {
 	display: block;
-	height: 50px;
 	background-color: #3d3d3d;
 	color: #d0d0d0; /* barva pisave */
 	text-align: center;
+	padding: 15px;
 }
 
-#footer a {
+.link {
 	color: #d0d0d0;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-#footer a:visited {
+.link:visited {
 	color: #d0d0d0;
 }
 
-#footer a:active {
+.link:active {
 	color: #d0d0d0;
 }
 </style>
