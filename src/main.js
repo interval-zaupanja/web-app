@@ -23,7 +23,7 @@ app.config.globalProperties.barve = {
     prag: "#8B8C8F"
 }
 
-app.config.globalProperties.vrniStdBarvo = function (kljuc) {
+app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za standardizirane odgovore (torej ne za 'odgovor')
     if (kljuc === 'za') {
         return this.barve.pozitivno
     } else if (kljuc === 'proti') {

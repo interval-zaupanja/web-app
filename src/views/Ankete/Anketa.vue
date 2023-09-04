@@ -78,6 +78,7 @@
                     </div>
                 </div>
             </div>
+
             <div>
                 <h2>Vprašanja</h2>
                 <div v-for="vprasanje in vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
@@ -339,17 +340,29 @@ export default {
             }
             for (let i = 0; i < vprasanje.odgovori.length; i++) {
                 // LABELS
-                podatki.labels.push(
-                    vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
-                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
-                    vprasanje.odgovori[i].odgovor
-                )
+                if (vprasanje.odgovori[i].tip === 'O' && vprasanje.odgovori[i].udelezba_tip === 'NBG') {
+                    podatki.labels.push(this.vrniOdgovor('NBG', false, 1))
+                } else {
+                    podatki.labels.push(
+                        vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
+                        vprasanje.odgovori[i].odgovor ??
+                        this.vrniOdgovor(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
+                        vprasanje.odgovori[i].odgovor
+                    )
+                }
 
                 // COLORS
-                podatki.backgroundColor.push(
-                    vprasanje.odgovori[i].odgovor_stranka_barva ??
-                    this.vrniStdBarvo(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].odgovor ?? vprasanje.odgovori[i].tip)
-                )
+                if (vprasanje.odgovori[i].tip === 'O' && vprasanje.odgovori[i].udelezba_tip === 'NBG') {
+                    podatki.backgroundColor.push(this.vrniStdBarvo('NBG'))
+                } else {
+                    podatki.backgroundColor.push(
+                        vprasanje.odgovori[i].odgovor_stranka_barva ??
+                        this.vrniStdBarvo(
+                            vprasanje.odgovori[i].odgovor_std ??
+                            vprasanje.odgovori[i].tip
+                        )
+                    )
+                }
 
                 // DATA
                 if (podatek === 'procent_izvajalec') {
