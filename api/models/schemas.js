@@ -60,7 +60,7 @@ const lokacija_shema = new mongoose.Schema({
     tv_kanal: { type: String, required: 
         [this.tip === 'tv', "Ker gre za televizijski vir, je potrebno navesti tudi na katerem kanalu je bila anketa objavljena"] 
     },
-    strani: { type: [Number], required:
+    strani: { type: [Number], default: undefined, required:
         [
             this.tip === 'revija' || this.tip === 'casopis',
             "Ker gre za revijski oz. časopisni vir, je potrebno navesti tudi na kateri strani je bila anketa objavljena"
@@ -73,7 +73,7 @@ const lokacija_shema = new mongoose.Schema({
 const vir_shema = new mongoose.Schema({
     zaloznik_tip: { type: String, required: [true, "Potrebno je specificirati, če je založnik ali izvajalec"] }, // publisher: lahko naročnik ali izvajalec
     zaloznik_id: { type: ObjectId, required: [true, "Enolični identifikator založnika je zahtevano polje"] },
-    lokacije: { type: [lokacija_shema], required: false }
+    lokacije: { type: [lokacija_shema], default: undefined, required: false }
 });
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
@@ -89,13 +89,13 @@ vzorec_shema = new mongoose.Schema({
                 st_ni_ustrezalo_vzorcnim_dolocilom: { type: Number, required: false },
                 st_sodelujocih: { type: Number, required: false }, // dejanska velikost vzorca (N)
 
-    reprezentativno: { type: [String], required: false },
-    utezeno: { type: [String], required: false }, // prazna tabela: vzorec ni utežen, polja ni: ne vemo nič glede uteženosti
+    reprezentativno: { type: [String], default: undefined, required: false },
+    utezeno: { type: [String], default: undefined, required: false }, // prazna tabela: vzorec ni utežen, polja ni: ne vemo nič glede uteženosti
 
     starost: { type: String, required: false },
     tip: { type: String, required: false }, // prebivalci ali državljani
     jurisdikcija: { type: String, required: false }, // Slovenija, izven Slovenije, posamezne pokrajine, mesta, itd.
-    podvzorci: { type: [vzorec_shema], required: false }
+    podvzorci: { type: [vzorec_shema], default: undefined, required: false }
 });
 
 /**
@@ -141,10 +141,10 @@ vzorec_shema = new mongoose.Schema({
  *     - _id
  */
 const ankete_shema = new mongoose.Schema({
-    izvajalci_id: { type: [ObjectId], required: false },
-    narocniki_id: { type: [ObjectId], required: false },
-    vzorec: { type: [vzorec_shema], required: false },
-    metode: { type: [String], required: false },
+    izvajalci_id: { type: [ObjectId], default: undefined, required: false },
+    narocniki_id: { type: [ObjectId], default: undefined, required: false },
+    vzorec: { type: [vzorec_shema], default: undefined, required: false },
+    metode: { type: [String], default: undefined, required: false },
     zacetek: { type: Date, required: false },
     sredina: { type: Date, required: false },
     konec: { type: Date, required: false },
@@ -231,7 +231,7 @@ const vprasanja_shema = new mongoose.Schema({
     glasovanje_id: { type: ObjectId, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
-    odgovori: { type: [odgovori_shema], required: [true, "Vprašanje mora vsebovati odgovore!"] }
+    odgovori: { type: [odgovori_shema], default: undefined, required: [true, "Vprašanje mora vsebovati odgovore!"] }
 });
 
 /**
