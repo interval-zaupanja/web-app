@@ -1,5 +1,5 @@
 <template>
-	<div class="sidebar bubble pink-red">
+	<div class="sidebar bubble bubble-outer pink-red">
 		<h3>Zadnje ankete</h3>
 		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
 			Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
