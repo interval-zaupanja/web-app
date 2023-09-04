@@ -106,7 +106,7 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
 
 app.config.globalProperties.capitalization = function (lowercase_input, option) {
     if (!lowercase_input) {
-        return false;
+        return null
     }
 
     if (option == 0) { // all letters are lowercase (does nothing)
