@@ -102,7 +102,20 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
     } else if (capitalization == 2) { // all letters are uppercase
         return odgovor.toUpperCase()
     }
-    return odgovor;
+}
+
+app.config.globalProperties.capitalization = function (lowercase_input, option) {
+    if (!lowercase_input) {
+        return false;
+    }
+
+    if (option == 0) { // all letters are lowercase (does nothing)
+        return lowercase_input
+    } else if (option == 1) { // starts with an uppercase letter
+        return lowercase_input.charAt(0).toUpperCase() +  lowercase_input.substring(1)
+    } else if (option == 2) { // all letters are uppercase
+        return lowercase_input.toUpperCase()
+    }
 }
 
 app.use(router).mount('#app')
