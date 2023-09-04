@@ -3,33 +3,20 @@
     <div v-if="!loaded">
         <Nalaganje/>
     </div>
-    <div v-if="loaded">
-        <div v-for="stranka in this.stranke" :key="stranka._id" class="stranka">
-            <a :href="'/stranke/' + stranka._id">
-                <div class="container">
-                    <div class="cell-container">
-                        <p>{{stranka.ime}} ({{stranka.ime_kratica}})</p>
-                    </div>
-                    <div class="cell-container img-cell-container">
-                        <div class="img-container">
-                            <img :src="stranka.logo_uri"/>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+    <BubbleGrid v-if="loaded" :items="this.stranke" path="/stranke/"/>
 </template>
 
 <script>
 import axios from 'axios';
 
 import Nalaganje from '../../components/Nalaganje.vue';
+import BubbleGrid from '../../components/lists/BubbleGrid.vue'
 
 export default {
     name: 'Stranke',
     components: {
-        Nalaganje
+        Nalaganje,
+        BubbleGrid
     },
     data() {
         return {

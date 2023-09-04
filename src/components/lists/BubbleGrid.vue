@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div v-for="item in this.items" :key="item._id" class="bubble-outer grid-bubble">
-            <TextImageBubble :text="item.ime" :image="item.logo_uri" @click="$router.push(this.path + item._id)"/>
+            <TextImageBubble :text="this.text(item.ime, item.ime_kratica)" :image="item.logo_uri" @click="$router.push(this.path + item._id)"/>
         </div>
     </div>
 </template>
@@ -14,6 +14,15 @@ export default {
     props: ['items', 'path'],
     components: {
         TextImageBubble
+    },
+    methods: {
+        text(ime, ime_kratica) {
+            if (ime_kratica) {
+                return ime + " (" + ime_kratica + ")"
+            } else {
+                return ime
+            }
+        }
     }
 }
 </script>
