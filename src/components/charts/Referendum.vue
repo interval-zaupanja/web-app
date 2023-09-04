@@ -77,8 +77,8 @@ export default {
                             )
                         ) {
                             this.data.datasets.push({
-                                label: this.vrniOdgovor(odgovori[j].odgovor ?? odgovori[j].tip, false, true) ?? odgovori[j].odgovor, // preveri, če je odgovor standardiziran in vrne željeno obliko
-                                backgroundColor: this.vrniStdBarvo(odgovori[j].odgovor ?? odgovori[j].tip),
+                                label: this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, true) ?? odgovori[j].odgovor, // preveri, če je odgovor standardiziran in vrne željeno obliko
+                                backgroundColor: this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip),
                                 data: [odgovori[j].procent_izvajalec],
                             })
                         } else {
