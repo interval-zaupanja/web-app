@@ -4,26 +4,24 @@
     </div>
     <div v-if="loaded && !not_found">
         <Breadcrumbs previous="Stranke" previousLink="/stranke" current="Podrobnosti stranke" />
-        <div>
-            <div>
-                <h1>
-                    {{this.ime}} <span v-if="this.ime_kratica != null">({{this.ime_kratica}})</span>
-                </h1>
-            </div>
+        <div style="overflow: hidden">
             <div style="display: inline-block" class="side-panel">
                 <div v-if="this.logo_uri">
                     <img :src="this.logo_uri"/>
                 </div>
-                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija" :color="this.barva"/>
+                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija" style="margin: 15px 0px" :color="this.barva"/>
             </div>
             <div style="display: inline-block" class="main">
+                <h1>
+                    {{this.ime}} <span v-if="this.ime_kratica != null">({{this.ime_kratica}})</span>
+                </h1>
                 <p v-if="this.opis != null">Opis: {{this.opis}}</p>
                 <p v-if="this.opombe != null">Opombe: {{this.opombe}}</p>
             </div>
-            <div>
-                <h2>Volitve v Državni zbor</h2>
-                <DZ :stranka_id="this.id"/>
-            </div>
+        </div>
+        <div>
+            <h2>Volitve v Državni zbor</h2>
+            <DZ :stranka_id="this.id"/>
         </div>
     </div>
     <div v-if="not_found && loaded">

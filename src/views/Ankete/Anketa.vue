@@ -64,8 +64,9 @@
                     <div>
                         <p>Založnik: 
                             <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
-                                {{ vir.zaloznik_ime}}<span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" style="max-height: 12px"/></span>
-                            </router-link> 
+                                {{ vir.zaloznik_ime}}
+                            </router-link>
+                            <span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" @click="$router.push('/zalozniki/' + vir.zaloznik_id)" style="max-height: 12px"/></span>
                             <Label :tip="vir.zaloznik_tip"/>
                         </p>
                     </div>

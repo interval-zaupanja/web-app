@@ -4,10 +4,10 @@
     </div>
     <div v-if="loaded && !not_found">
         <Breadcrumbs previous="Glasovanja" previousLink="/glasovanja" current="Podrobnosti glasovanja"/>
-        <div>
+        <div style="overflow: hidden">
             <h1>{{this.ime}}</h1>
             <div style="display: inline-block" class="side-panel">
-                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija"/>
+                <ExternalLink v-if="this.wikipedia_uri != null" :link="this.wikipedia_uri" label="Wikipedija" style="margin: 15px 0px"/>
             </div>
             <div style="display: inline-block" class="main">
                 <p>
@@ -21,10 +21,10 @@
                 <p v-if="this.opombe">Opombe: {{this.opombe}}</p>
                 <p v-if="this.tip.referendum_tip === 'zakonodajno-zavrnitveni'">{{this.razlage.zakonodajno_zavrnitveni_referendum}}</p>
             </div>
-            <div>
-                <Referendum :glasovanje_id="this.id"/>
-            </div>
-        </div>      
+        </div>
+        <div>
+            <Referendum :glasovanje_id="this.id"/>
+        </div>     
     </div>
     <div v-if="not_found && loaded">
         <NeObstaja ime="Anketa"/>
