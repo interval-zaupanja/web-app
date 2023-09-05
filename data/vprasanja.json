@@ -291,8 +291,348 @@
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "zelo verjetno",
-        "odgovor_std": 1,
+        "odgovor_std": 2,
         "procent_izvajalec": 44
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "predpostavljena_udelezba_procent": 40,
+    "opombe": "Ti podatki so povzeti iz članka MMC RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v televizijskem programu RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 58
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 39
+      },
+      {
+        "tip": "NO",
+        "procent_izvajalec": 3
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid-izrojena-udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opombe": "Ti podatki so povzeti iz televizijskega programa RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v članku MMC RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 47.6
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 29.4
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "NBG",
+        "odgovor": "ne bom glasoval",
+        "procent_izvajalec": 6.3
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 14.2
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 2.5
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "predpostavljena_udelezba_procent": 40,
+    "opombe": "Ti podatki so povzeti iz članka MMC RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v televizijskem programu RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 51
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 44
+      },
+      {
+        "tip": "NO",
+        "procent_izvajalec": 5
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid-izrojena-udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opombe": "Ti podatki so povzeti iz televizijskega programa RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v članku MMC RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 39.1
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 33.9
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "NBG",
+        "odgovor": "ne bom glasoval",
+        "procent_izvajalec": 6.0
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 18.3
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 2.7
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "predpostavljena_udelezba_procent": 40,
+    "opombe": "Ti podatki so povzeti iz članka MMC RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v televizijskem programu RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 59
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 36
+      },
+      {
+        "tip": "NO",
+        "procent_izvajalec": 5
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid-izrojena-udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opombe": "Ti podatki so povzeti iz televizijskega programa RTV SLO. Odgovori na verjetno isto vprašanje se razlikujejo od podatkov predstavljenih v članku MMC RTV SLO (glej druga vprašanja iz te ankete).",
+    "odgovori": [
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 50.2
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "BG",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 25.2
+      },
+      {
+        "tip": "O",
+        "udelezba_tip": "NBG",
+        "odgovor": "ne bom glasoval",
+        "procent_izvajalec": 5.2
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 16.3
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 3.1
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64f7208dc8a57e76ece0fd1d"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opis": "Iz članka RTV SLO: Po izračunu verjetnosti udeležbe sicer na Valiconu napovedujejo, da se bo v nedeljo glasovanja udeležilo med 40 in 45 odstotki volilnih upravičencev. \"Analiza kaže, da začne pri udeležbi 40 odstotkov občutneje rasti delež neopredeljenih,\" so dodali.",
+    "opombe": "Pri izvajalcu opozarjajo, da so tudi kar se tiče tistih, ki trdijo, da se bodo zagotovo udeležili glasovanja iz izkušenj taka predvidevanja precenjena. Iz članka RTV SLO: \"Poudariti je treba, da je v primeru referendumov, ocena udeležba v bistvu najtežja, ker je pripadnost posamezni opciji bistveno manjša, kot je pripadnost političnim strankam ali posameznemu političnemu taboru. Zato velja opozoriti, da se v nedeljo še marsikaj spremenil, kot se je leta 2015 pri družinskem zakoniku,\" je za Radio Slovenija dejal direktor Valicona Andraž Zorko. Leta 2015 so namreč družinskemu zakoniku javnomnenjske raziskave nakazovale podporo na referendumu, a se podporniki zakona, ki so bili v večini, nato niso tako množično udeležili glasovanja in vladna novela na referendumu ni dobila ustrezne podpore.",
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo da",
+        "odgovor_std": 1,
+        "procent_izvajalec": 45.8,
+        "opombe": "V članku MMC RTV SLO je navedeno, da se zagotovo namerava udeležiti referendumov 44% in ne 45.8% volilnih upravičencev kot je bilo navedeno na televizijskem programu RTV SLO. Zaradi večjega nabora podatkov se uporablja podatek iz televizijskega programa."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "bolj verjetno da",
+        "odgovor_std": 2,
+        "procent_izvajalec": 17.9,
+        "opombe": "V članku MMC RTV SLO je navedeno, da se \"zelo verjetno\" namerava udeležiti referendumov 17.9% volilnih upravičencev, medtem ko televizijski program RTV SLO navaja, da se bo 17.9% volilnih upravičencev \"bolj verjetno da\" udeležilo referendumov. Zaradi večjega nabora podatkov se uporabljajata podatek in oznaka iz televizijskega programa."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "bolj verjetno ne",
+        "odgovor_std": -2,
+        "procent_izvajalec": 18.2
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo ne",
+        "odgovor_std": -1,
+        "procent_izvajalec": 10.7
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "drugo",
+        "odgovor": "že glasoval",
+        "procent_izvajalec": 7.4
       }
     ]
   }

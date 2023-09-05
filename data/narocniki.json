@@ -29,5 +29,15 @@
     "barva": "#404FB0",
     "logo_uri": "https://pbs.twimg.com/profile_images/939147043360174081/5NMzTdxs_400x400.jpg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/24UR"
+  },
+  {
+    "_id": {
+      "$oid": "64f73216ca8707504d29eeb2"
+    },
+    "ime": "RTV Slovenija",
+    "ime_polno": "Radiotelevizija Slovenija",
+    "barva": "#1A307E",
+    "logo_uri": "https://img.rtvcdn.si/_up/upload/2023/06/01/66087893_fp-lg.jpg",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Radiotelevizija_Slovenija"
   }
 ]

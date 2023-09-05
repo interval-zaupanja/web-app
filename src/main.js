@@ -20,7 +20,12 @@ app.config.globalProperties.barve = {
     NO: "#7E848C",
     NBG: "#ACAEB0",
     NSO: "#DCDFE3",
-    prag: "#8B8C8F"
+    prag: "#8B8C8F",
+    spekter_1: "#105074",
+    spekter_2: "#147BB8",
+    spekter_0: "#1E9AD6",
+    spekter_minus1: "#74CFEA",
+    spekter_minus2: "#38C2EC"
 }
 
 app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za standardizirane odgovore (torej ne za 'odgovor')
@@ -38,6 +43,16 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za 
     return this.barve.NBG
     } else if (kljuc === 'NSO') {
         return this.barve.NSO
+    } else if (kljuc === 1) {
+        return this.barve.spekter_1
+    } else if (kljuc === 2) {
+        return this.barve.spekter_2
+    }else if (kljuc === 0) {
+        return this.barve.spekter_0
+    }else if (kljuc === -1) {
+        return this.barve.spekter_minus1
+    }else if (kljuc === -2) {
+        return this.barve.spekter_minus2
     } else {
         return false
     }

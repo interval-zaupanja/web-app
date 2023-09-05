@@ -16,5 +16,13 @@
     "ime": "Mediana",
     "ime_polno": "Inštitut  za raziskovanje trga in medijev, Mediana d.o.o.",
     "logo_uri": "https://www.mediana.si/wp-content/uploads/2019/09/logo-no-text.svg?x46697"
+  },
+  {
+    "_id": {
+      "$oid": "64f720aef77994b86cf138c3"
+    },
+    "ime": "Valicon",
+    "ime_polno": "Valicon, Trženjsko svetovanje in raziskave d.o.o.",
+    "logo_uri": "https://www.valicon.net/wp-content/themes/valicon/assets/img/logo_valicon.png"
   }
 ]

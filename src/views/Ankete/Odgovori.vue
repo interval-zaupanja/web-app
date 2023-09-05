@@ -37,6 +37,8 @@
                             ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
                         </span>
                     </p>
+                    <p v-if="odgovor.opis">Opis: {{ odgovor.opis}}</p>
+                    <p v-if="odgovor.opombe">Opombe: {{ odgovor.opombe}}</p>
                 </div>
             </div>
         </div>

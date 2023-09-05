@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="this.loaded">
         <h3 v-if="this.viri.length == 1">Vir</h3>
         <h3 v-else-if="this.viri.length == 2">Vira</h3>
         <h3 v-else>Viri</h3>
@@ -32,19 +32,28 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import Label from '@/components/Label.vue'
 import ExternalLink from '@/components/ExternalLink.vue'
 
-
 export default {
     name: 'Viri',
-    props: ['viri'],
+    props: ['data'],
     components: {
         Label,
         ExternalLink
     },
+    data() {
+        return {
+            viri: null,
+            loaded: false
+        }
+    },
     async mounted() {
+        this.viri = this.data
         await this.getViriImena();
+        this.loaded = true;
     },
     methods: {
         async getViriImena() {

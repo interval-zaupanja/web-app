@@ -224,7 +224,9 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     st_mandatov_zgornja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
     st_anketirancev_izvajalec: { type: Number, required: false },
-    st_anketirancev_iz_calculated: { type: Number, required: false }
+    st_anketirancev_iz_calculated: { type: Number, required: false },
+    opis: { type: String, required: false },
+    opombe: { type: String, required: false },
 });
 
 const glasovalno_tip_shema = new mongoose.Schema({
@@ -241,6 +243,7 @@ const vprasanja_shema = new mongoose.Schema({
     glasovanje_dolocnost: { type: String, required: [this.tip === 'glasovalno', "Potrebno je specificrati določnost glasovanja, po katerem vprašanje sprašuje"] },
     glasovanje_id: { type: ObjectId, required: false },
     glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.glasovanje_id == null , "Če se vprašanje nanaša na glasovanje in ni podan identifikator glasovanja, potem je tip glasovanja zahtevano polje"] },
+    predpostavljena_udelezba_procent: { type: Number, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
     odgovori: { type: [odgovori_shema], default: undefined, required: [true, "Vprašanje mora vsebovati odgovore!"] }

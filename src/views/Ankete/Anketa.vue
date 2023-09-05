@@ -46,15 +46,17 @@
                     </p>
                     <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
                     <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
-                    <p v-if="this.opis">Opis: {{ this.opis }}</p>
-                    <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
                 </div>
                 <div>
                     <Vzorec v-if="this.vzorec" style="margin: 0px 15px 15px 15px" :data="this.vzorec"/>
                 </div>
             </div>
+            <div>
+                <p v-if="this.opis">Opis: {{ this.opis }}</p>
+                <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
+            </div>
             
-            <Viri v-if="this.viri" :viri="this.viri"/>
+            <Viri v-if="this.viri" :data="this.viri"/>
             <Vprasanja v-if="this.vprasanja" :vprasanja="this.vprasanja" :id="this.id"/>
                 
         </div>
