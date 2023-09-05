@@ -1,6 +1,5 @@
 <template>
-  <div style="height: 100%; max-width: 100%; margin: 30px">
-    <h3>Volitve v Državni zbor</h3>
+  <div style="height: 100%; min-height: 250px; max-width: 100%; margin: 30px">
     <Line
       id="drzavni-zbor"
       v-if="loaded"
@@ -117,7 +116,7 @@ export default {
                 this.data.datasets.push({
                   label: odgovori[j].stranka_id,
                   data: [odgovori[j].procent_izvajalec],
-                  tension: 0.4 // SMOOTHENING EXPERIMENT; PREVERI NATO, ĆE DEJANSKO DELA
+                  tension: 0.4
                 });
               } else {
                 const obstojeciVnos = this.data.datasets.find(
@@ -153,9 +152,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-h3 {
-  text-align: center;
-}
-</style>
