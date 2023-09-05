@@ -12,6 +12,7 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import 'chartjs-adapter-date-fns'; // moment alternative (TEMPORARY!!!)
 
 import {
   CategoryScale,
@@ -20,6 +21,7 @@ import {
   LinearScale,
   LineElement,
   PointElement,
+  TimeScale,
   Title,
   Tooltip,
 } from "chart.js";
@@ -30,6 +32,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  TimeScale,  
   Title,
   Tooltip,
   Legend
@@ -45,21 +48,27 @@ export default {
         return {
             type: 'line',
             data: {
-                labels: [],
+                // labels: [],
                 datasets: []
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        }
+                    },
                     y: {
                         ticks: {
-                        callback: function (value) {
-                            return value + "%"
-                        }
+                            callback: function (value) {
+                                return value + "%"
+                            }
                         }
                     }
-                    }
+                }
             },
             loaded: false,
             not_found: false
@@ -89,26 +98,29 @@ export default {
                         if (undefined === this.data.datasets.find((element) => element.label === label_current)) {
                             this.data.datasets.push({
                                 label: label_current,
+                                data: [{
+                                    x: await this.getDate(anketa_id),
+                                    y: odgovori[j].procent_izvajalec
+                                }],
                                 backgroundColor: color_current,
                                 borderColor: color_current,
-                                data: [odgovori[j].procent_izvajalec],
                                 tension: 0.4
                             })
                         } else {
                             const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
-                            obstojeciVnos.data.push(odgovori[j].procent_izvajalec)
+                            obstojeciVnos.data.push({x: await this.getDate(anketa_id), y: odgovori[j].procent_izvajalec})
                         }
                     }
-                    this.data.labels.push(await this.getDate(anketa_id));
                 }
             } catch (error) {
                 console.log(error)
                 return false;
             }
+            console.log(this.data.datasets)
         },
         async getDate(anketa_id) {
             const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
-            return moment(data.sredina, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
+            return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
         }
     }
 }
