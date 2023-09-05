@@ -79,6 +79,15 @@ export default {
                     },
                 },
             }
+        },
+        scales: {
+          y: {
+            ticks: {
+              callback: function (value, index, values) {
+                return value + "%"
+              }
+            }
+          }
         }
       },
       loaded: false,

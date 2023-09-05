@@ -26,10 +26,10 @@
                             </p>
                         </span>
                         <span v-if="odgovor.odgovor || odgovor.odgovor_std">
-                            Odgovor: {{ this.vrniOdgovor(odgovor.odgovor ?? odgovor.odgovor_std, true, 1) }}
+                            Odgovor: {{ this.vrniOdgovor(odgovor.odgovor ?? odgovor.odgovor_std, true, 1) ?? this.capitalization(odgovor.odgovor,1)}}
                         </span>
                     </span>
-                    <p>Tip odgovora: {{ this.vrniOdgovor(odgovor.tip, true, 0)}}</p>
+                    <p v-if="!(odgovor.odgovor || odgovor.odgovor_std)">Tip odgovora: {{ this.vrniOdgovor(odgovor.tip, true, 0)}}</p>
                     <p>
                         {{ odgovor.procent_izvajalec }}%
                         <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">

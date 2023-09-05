@@ -12,6 +12,10 @@
                         <span v-if="vprasanje.tip === 'zaupanje'">
                             - {{ vprasanje.zaupanje_tip}}
                         </span>
+                        <span v-if="vprasanje.tip === 'glasovalno'">
+                            - {{ vprasanje.glasovalno_tip.casovna_komponenta}}
+                            - {{ this.kvalitativnaMeritev(vprasanje.glasovalno_tip.kvalitativna_meritev)}}
+                        </span>
                     </p>
                     <p v-if="vprasanje.tip === 'glasovalno'">
                         Glasovanje:
@@ -28,6 +32,7 @@
                                 - {{ vprasanje.glasovanje_tip.referendum_tip}}<span v-if="vprasanje.glasovanje_id">)</span>
                             </span>
                     </p>
+                    <p v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</p>
                     <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                     <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
                     <div class="charts">
@@ -105,6 +110,16 @@ export default {
                 }
             }
             return podatki;
+        },
+        kvalitativnaMeritev(oznaka) {
+            switch (oznaka) {
+                case 'izid':
+                    return oznaka
+                case 'udelezba':
+                    return 'udeležba'
+                case 'izid-izrojena-udelezba':
+                    return 'izid z izrojeno udeležbo'                    
+            }
         }
     }
 }
