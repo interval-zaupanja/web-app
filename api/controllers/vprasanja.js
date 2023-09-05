@@ -117,7 +117,10 @@ const seznamVprasanj = (req, res) => {
                 'vprasanje': 1,
                 'tip': 1,
                 'glasovalno_tip': 1,
+                'glasovanje_dolocnost': 1,
+                'glasovanje_id': 1,
                 'glasovanje_tip': 1,
+                'predpostavljena_udelezba_procent': 1,
                 'opis': 1,
                 'opombe': 1,
                 'odgovori': 1
@@ -229,7 +232,48 @@ const seznamVprasanjAnketa = (req, res) => {
 // MANJKA DOKUMENTACIJA
 const seznamVprasanjGlasovanje = (req, res) => {
     const idGlasovanja = req.params.id;
-    Vprasanja.find({glasovanje_id: new ObjectId(req.params.id)}).exec(function (
+    Vprasanja.aggregate([
+        {
+            $lookup: {
+                from: 'Ankete',
+                localField: 'anketa_id',
+                foreignField: '_id',
+                as: 'anketa_details'
+            }
+        },
+        {
+            $unwind: '$anketa_details'
+        },
+        {
+            $project: {
+                '_id': 1,
+                'anketa_id': 1,
+                'anketa_zacetek': "$anketa_details.zacetek",
+                'anketa_sredina': "$anketa_details.sredina",
+                'anketa_konec': "$anketa_details.konec",
+                'vprasanje': 1,
+                'tip': 1,
+                'glasovalno_tip': 1,
+                'glasovanje_dolocnost': 1,
+                'glasovanje_id': 1,
+                'glasovanje_tip': 1,
+                'predpostavljena_udelezba_procent': 1,
+                'opis': 1,
+                'opombe': 1,
+                'odgovori': 1
+            }
+        },
+        {
+            $sort: {
+                'anketa_sredina': 1
+            }
+        },
+        {
+            $match: {
+                "glasovanje_id": new ObjectId(req.params.id)
+            }
+        }
+    ]).exec(function (
         error,
         vprasanja
     ) {
@@ -271,7 +315,10 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
                 'vprasanje': 1,
                 'tip': 1,
                 'glasovalno_tip': 1,
+                'glasovanje_dolocnost': 1,
+                'glasovanje_id': 1,
                 'glasovanje_tip': 1,
+                'predpostavljena_udelezba_procent': 1,
                 'opis': 1,
                 'opombe': 1,
                 'odgovori': 1

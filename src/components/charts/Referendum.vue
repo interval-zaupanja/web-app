@@ -50,7 +50,16 @@ export default {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        ticks: {
+                        callback: function (value) {
+                            return value + "%"
+                        }
+                        }
+                    }
+                    }
             },
             loaded: false,
             not_found: false
@@ -70,27 +79,28 @@ export default {
                 for (let i = 0; i < data.length; i++) {
                     const { anketa_id, odgovori } = data[i];
                     for (let j = 0; j < odgovori.length; j++) {
-                        if (
-                            undefined ===
-                            this.data.datasets.find(
-                                (element) => element.label === odgovori[j].odgovor
-                            )
-                        ) {
+                        var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
+                        var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
+                        if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
+                            label_current = this.vrniOdgovor('NBG', false, 1)
+                            color_current = this.vrniStdBarvo('NBG')
+                        }
+
+                        if (undefined === this.data.datasets.find((element) => element.label === label_current)) {
                             this.data.datasets.push({
-                                label: this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, true) ?? odgovori[j].odgovor, // preveri, če je odgovor standardiziran in vrne željeno obliko
-                                backgroundColor: this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip),
+                                label: label_current,
+                                backgroundColor: color_current,
+                                borderColor: color_current,
                                 data: [odgovori[j].procent_izvajalec],
+                                tension: 0.4
                             })
                         } else {
-                            const obstojeciVnos = this.data.datasets.find(
-                                (element) => element.label === odgovori[j].odgovor
-                            )
+                            const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
                             obstojeciVnos.data.push(odgovori[j].procent_izvajalec)
                         }
                     }
                     this.data.labels.push(await this.getDate(anketa_id));
                 }
-
             } catch (error) {
                 console.log(error)
                 return false;
@@ -98,7 +108,7 @@ export default {
         },
         async getDate(anketa_id) {
             const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
-            return moment(data.konec, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
+            return moment(data.sredina, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
         }
     }
 }

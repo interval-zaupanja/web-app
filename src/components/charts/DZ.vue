@@ -83,7 +83,7 @@ export default {
         scales: {
           y: {
             ticks: {
-              callback: function (value, index, values) {
+              callback: function (value) {
                 return value + "%"
               }
             }
@@ -137,7 +137,7 @@ export default {
     },
     async getDate(anketa_id) {
       const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
-      return moment(data.konec, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
+      return moment(data.sredina, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
     async getPartyNamesAndColors() {
       // dejansko se doda kratica imena (ime_kratica)

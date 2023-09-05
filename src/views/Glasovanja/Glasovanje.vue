@@ -17,6 +17,8 @@
                 </p>
                 <p v-if="this.zacetek">Začetek: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
                 <p v-if="this.konec">Konec: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+            </div>
+            <div>
                 <p v-if="this.opis">Opis: {{this.opis}}</p>
                 <p v-if="this.opombe">Opombe: {{this.opombe}}</p>
                 <p v-if="this.tip.referendum_tip === 'zakonodajno-zavrnitveni'">{{this.razlage.zakonodajno_zavrnitveni_referendum}}</p>
