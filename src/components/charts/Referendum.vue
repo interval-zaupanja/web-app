@@ -1,6 +1,6 @@
 <template>
     <div style="height: 400px">
-        <Line
+        <Scatter
         v-if="loaded"
         :options="options"
         :data="data"
@@ -25,7 +25,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Line } from "vue-chartjs";
+import { Scatter } from "vue-chartjs";
 
 ChartJS.register(
   CategoryScale,
@@ -41,14 +41,13 @@ ChartJS.register(
 export default {
     name: 'Referendum',
     components: {
-        Line
+        Scatter
     },
     props: ['glasovanje_id'],
     data() {
         return {
-            type: 'line',
+            type: 'scatter',
             data: {
-                // labels: [],
                 datasets: []
             },
             options: {
@@ -59,7 +58,8 @@ export default {
                         type: 'time',
                         time: {
                             unit: 'day'
-                        }
+                        },
+                        position: 'bottom'
                     },
                     y: {
                         ticks: {
@@ -104,7 +104,8 @@ export default {
                                 }],
                                 backgroundColor: color_current,
                                 borderColor: color_current,
-                                tension: 0.4
+                                borderWidth: 2,
+                                showLine: true,
                             })
                         } else {
                             const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
@@ -116,7 +117,6 @@ export default {
                 console.log(error)
                 return false;
             }
-            console.log(this.data.datasets)
         },
         async getDate(anketa_id) {
             const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);

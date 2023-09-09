@@ -49,7 +49,7 @@ export default {
         NeObstaja,
         Breadcrumbs,
         ExternalLink,
-        Referendum
+        Referendum,
     },
     props: ['id'],
     data() {
