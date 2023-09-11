@@ -74,7 +74,26 @@ export default {
                             }
                         }
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        filter: function (tooltipItem) {
+                            if (tooltipItem.dataset.label.endsWith('_scatter')) {
+                                return false
+                            } else {
+                                return true
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            filter: function(item) {
+                                return !item.text.endsWith('_scatter')
+                            }
+                        }
+                    },
                 }
+                
             },
             loaded: false,
             not_found: false
@@ -154,9 +173,9 @@ export default {
                     data: povrecje,
                     backgroundColor: oznaka.backgroundColor,
                     borderColor: oznaka.borderColor,
-                    pointRadius: 1,
-                    pointHitRadius: 1,
-                    pointHoverRadius: 1,
+                    pointRadius: 0,
+                    pointHitRadius: 0,
+                    pointHoverRadius: 0,
                     borderWidth: 4,
                     showLine: true,
                     tension: 0.4 // to iz neznanega razloga vse poruši
@@ -164,7 +183,7 @@ export default {
 
                 oznaka.backgroundColor += "80"
                 oznaka.borderColor += "80"
-
+                oznaka.label += "_scatter"
             }
         }
     }
