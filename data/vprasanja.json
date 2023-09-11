@@ -632,7 +632,386 @@
         "tip": "O",
         "dolocnost_tip": "drugo",
         "odgovor": "že glasoval",
+        "odgovor_std": "ZG",
         "procent_izvajalec": 7.4
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff3b83a8c0eda9b7d57a6c"
+    },
+    "vprasanje": "Ali ste za uveljavitev sprememb zakona o RTV Slovenija?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 48.2
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 30.2
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 20.1
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.4
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff3b83a8c0eda9b7d57a6c"
+    },
+    "vprasanje": "Ali ste za uveljavitev sprememb zakona o dolgotrajni oskrbi?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 48.8
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 30.7
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 19.3
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.2
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff3b83a8c0eda9b7d57a6c"
+    },
+    "vprasanje": "Ali ste za uveljavitev sprememb zakona o Vladi Republike Slovenije?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 43.9
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 33.0
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 21.7
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 1.3
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako boste glasovali o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 37.1
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 25.7
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 31.6
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 5.6
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako boste glasovali o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 36.1
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 22.9
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 35.4
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 5.6
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako boste glasovali o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 44.1
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 18.2
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 31.9
+      },
+      {
+        "tip": "NSO",
+        "odgovor": "ne želim odgovoriti",
+        "procent_izvajalec": 5.8
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opombe": "Na televizijskem programu RTV SLO, je bilo navedeno, da se bo 'zagotovo' ali '[bolj] verjetno' udeležilo glasovanja 71.5% vprašanih. Seštevek spodnjih odgovorov (vzetih iz spletnega članka) je za desetinko odstotka višji, torej 71.6%.",
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo da",
+        "odgovor_std": 1,
+        "procent_izvajalec": 47.8
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "bolj verjetno da",
+        "odgovor_std": 2,
+        "procent_izvajalec": 23.8
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo da",
+        "odgovor_std": 1,
+        "procent_izvajalec": 47
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "[bolj] verjetno da",
+        "odgovor_std": 2,
+        "procent_izvajalec": 26.9,
+        "opombe": "Meritev je razlika med dvema podatkoma: na televizijskem programu RTV SLO, kjer je bilo navedeno, da se bo 'zagotovo' ali 'verjetno' udeležilo referenduma 73.9% vprašanih, medtem ko spletni članek MMC RTV SLO navaja, da se ga bo zagotovo udeležilo 47% anketirancev.\nNa televizijskem programu RTV SLO so odgovor opisali kot, da se vprašani 'verjetno' bo udeležil volitev. Ker pa so isti tipi odgovora pri drugih vprašanj te ankete glede udeležbe treh referendumov na spletnem članku bolj natančno opredeljeni kot 'bolj verjetno da', se je posledično tudi ta odgovor uvrstil pod isti tip."
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo da",
+        "odgovor_std": 1,
+        "procent_izvajalec": 46.5
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "[bolj] verjetno da",
+        "odgovor_std": 2,
+        "procent_izvajalec": 26.6,
+        "opombe": "Meritev je razlika med dvema podatkoma: na televizijskem programu RTV SLO, kjer je bilo navedeno, da se bo 'zagotovo' ali 'verjetno' udeležilo referenduma 73.1% vprašanih, medtem ko spletni članek MMC RTV SLO navaja, da se ga bo zagotovo udeležilo 46.5% anketirancev.\nNa televizijskem programu RTV SLO so odgovor opisali kot, da se vprašani 'verjetno' bo udeležil volitev. Ker pa so isti tipi odgovora pri drugih vprašanj te ankete glede udeležbe treh referendumov na spletnem članku bolj natančno opredeljeni kot 'bolj verjetno da', se je posledično tudi ta odgovor uvrstil pod isti tip."
       }
     ]
   }

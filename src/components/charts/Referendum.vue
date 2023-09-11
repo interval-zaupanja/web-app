@@ -101,10 +101,12 @@ export default {
         }
     },
     async mounted() {
+        // Pridobivanje podatkov
         const status = await this.getData();
         if (status) {
             this.not_found = true;
         } else {
+            // Izris črt
             this.obdelajPodatkePovprecje();
         }
         this.loaded = true;

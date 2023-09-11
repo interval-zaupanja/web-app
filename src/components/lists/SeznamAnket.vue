@@ -1,49 +1,67 @@
 <template>
-    <table cellspacing="0" cellpadding="0" class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Začetek anketiranja</th>
-                <th scope="col">Konec anketiranja</th>
-                <th scope="col">Izvajalci</th>
-                <th scope="col">Naročniki</th>
-                <th scope="col">Metode anketiranja</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
+    <div>
+        <table cellspacing="0" cellpadding="0" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Začetek anketiranja</th>
+                    <th scope="col">Konec anketiranja</th>
+                    <th scope="col">Izvajalci</th>
+                    <th scope="col">Naročniki</th>
+                    <th scope="col">Metode anketiranja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
                     <th>
-                        {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}
+                        <span v-if="anketa.zacetek">{{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}</span>
+                        <span v-else>Ni podatkov</span>
                     </th>
                     <th>
-                        {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
+                        <span v-if="anketa.konec">{{ new Date(anketa.konec).toLocaleDateString('en-GB') }}</span>
+                        <span v-else>Ni podatkov</span>
                     </th>
                     <th>
-                        {{ anketa.izvajalci_ime.join(', ') }}
+                        <span v-if="anketa.izvajalci_ime">{{ anketa.izvajalci_ime.join(', ') }}</span>
+                        <span v-else>Ni podatkov</span>
                     </th>
                     <th>
-                        {{ anketa.narocniki_ime.join(', ') }}
+                        <span v-if="anketa.narocniki_ime">{{ anketa.narocniki_ime.join(', ') }}</span>
+                        <span v-else>Ni podatkov</span>
                     </th>
                     <th>
-                        {{ anketa.metode.join(', ') }}
+                        <span v-if="anketa.metode">{{ anketa.metode.join(', ') }}</span>
+                        <span v-else>Ni podatkov</span>
                     </th>
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div v-if="!loaded">
+       <Nalaganje size="medium"/>
+    </div>
+    
 </template>
 
 <script>
 import axios from "axios";
 
+import Nalaganje from '../../components/Nalaganje.vue'
+
 export default {
 	name: "SeznamAnket",
     props: ["parametri"],
+    components: {
+        Nalaganje
+    },
 	data() {
 		return {
-			ankete: []
+			ankete: [],
+            loaded: false
 		}
 	},
 	async mounted() {
 		await this.getData();
+        this.loaded = true;
 	},
 	methods: {
 		async getData() {

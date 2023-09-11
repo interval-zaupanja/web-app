@@ -1,6 +1,6 @@
 <template>
     <h1>Ankete</h1>
-    <p>Ankete so razporejene od zadnje izvedene naprej.</p>
+    <p>Ankete so razporejene od zadnje izvedene proti prvi, glede na sredino med začetkom in koncem izvajanja ankete</p>
     <SeznamAnket/>
 </template>
 

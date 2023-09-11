@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div v-if="this.size === 'medium'">
+    <h5 style="text-align: center">Nalaganje...</h5>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" style="height: 100px"/>
+  </div>
+  <div v-else>
     <h1 style="text-align: center">Nalaganje...</h1>
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"/>
   </div>
@@ -7,7 +11,8 @@
 
 <script>
 export default {
-  name: 'Nalaganje'
+  name: 'Nalaganje',
+  props: ['size']
 }
 </script>
 

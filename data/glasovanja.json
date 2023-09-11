@@ -11,7 +11,8 @@
         "ime": "Referendum o spremembah Zakona o vladi",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_spremembah_Zakona_o_vladi",
         "zacetek": "2022-11-22",
-        "konec": "2022-11-27"
+        "konec": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
     },
     {
         "_id": {
@@ -25,7 +26,9 @@
         "ime": "Referendum o Zakonu o dolgotrajni oskrbi",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_Zakonu_o_dolgotrajni_oskrbi",
         "zacetek": "2022-11-22",
-        "konec": "2022-11-27"
+        "konec": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
+
     },
     {
         "_id": {
@@ -39,6 +42,8 @@
         "ime": "Referendum o Zakonu o RTV Slovenija",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_zakonu_o_RTV_Slovenija_(2022)",
         "zacetek": "2022-11-22",
-        "konec": "2022-11-27"
+        "konec": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
+
     }
 ]

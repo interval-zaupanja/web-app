@@ -18,8 +18,9 @@ app.config.globalProperties.barve = {
     nevtralno: "#FAA613", // razlikujem od BG-NV, ki se do vprašanja sploh ne opredeli, nevtralno pa lahko odraža npr. delno strinjanje, delno nestrinjanje
     negativno: "#E71F1F",
     NO: "#7E848C",
-    NBG: "#ACAEB0",
     NSO: "#DCDFE3",
+    NBG: "#ACAEB0",
+    ZG: "#593F62",
     prag: "#8B8C8F",
     spekter_1: "#105074",
     spekter_2: "#147BB8",
@@ -39,19 +40,21 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za 
         return this.barve.negativno
     } else if (kljuc === 'NO') {
         return this.barve.NO
-    } else if (kljuc === 'NBG') {
-    return this.barve.NBG
     } else if (kljuc === 'NSO') {
         return this.barve.NSO
-    } else if (kljuc === 1) {
+    } else if (kljuc === 'NBG') {
+        return this.barve.NBG
+    } else if (kljuc === 'ZG') {
+        return this.barve.ZG
+    } else if (kljuc == 1) {
         return this.barve.spekter_1
-    } else if (kljuc === 2) {
+    } else if (kljuc == 2) {
         return this.barve.spekter_2
-    }else if (kljuc === 0) {
+    }else if (kljuc == 0) {
         return this.barve.spekter_0
-    }else if (kljuc === -1) {
+    }else if (kljuc == -1) {
         return this.barve.spekter_minus1
-    }else if (kljuc === -2) {
+    }else if (kljuc == -2) {
         return this.barve.spekter_minus2
     } else {
         return false
@@ -110,13 +113,7 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
             return null // odgovor ni standardiziran
     }
 
-    if (capitalization == 0) { // all letters are lowercase
-        return odgovor
-    } else if (capitalization == 1) { // starts with an uppercase letter
-        return odgovor.charAt(0).toUpperCase() +  odgovor.substring(1)
-    } else if (capitalization == 2) { // all letters are uppercase
-        return odgovor.toUpperCase()
-    }
+    return this.capitalization(odgovor, capitalization)
 }
 
 app.config.globalProperties.capitalization = function (lowercase_input, option) {
@@ -127,7 +124,11 @@ app.config.globalProperties.capitalization = function (lowercase_input, option) 
     if (option == 0) { // all letters are lowercase (does nothing)
         return lowercase_input
     } else if (option == 1) { // starts with an uppercase letter
-        return lowercase_input.charAt(0).toUpperCase() +  lowercase_input.substring(1)
+        if (lowercase_input.charAt(0) === '[') { // v primerih, kjer je [ prvi znak
+            return lowercase_input.charAt(0) + lowercase_input.charAt(1).toUpperCase() +  lowercase_input.substring(2)
+        } else {
+            return lowercase_input.charAt(0).toUpperCase() +  lowercase_input.substring(1)
+        }
     } else if (option == 2) { // all letters are uppercase
         return lowercase_input.toUpperCase()
     }

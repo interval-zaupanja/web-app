@@ -22,7 +22,7 @@
                             <span v-if="indeks + 1 < this.izvajalci.length">, </span>
                         </span>
                     </p>
-                    <p v-if="this.narocniki.length > 0">
+                    <p v-if="this.narocniki">
                         <span v-if="this.narocniki.length == 1">Naročnik: </span>
                         <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
                         <span v-else>Naročniki: </span>
@@ -35,7 +35,7 @@
                             <span v-if="indeks + 1 < this.narocniki.length">, </span>
                         </span>
                     </p>
-                    <p v-if="this.metode.length > 0">
+                    <p v-if="this.metode">
                         <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
                         <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
                         <span v-else>Metode anketiranja: </span>

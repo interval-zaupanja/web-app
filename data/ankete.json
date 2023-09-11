@@ -126,5 +126,81 @@
         ]
       }
     ]
+  },
+  {
+    "_id": {
+      "$oid": "64ff3b83a8c0eda9b7d57a6c"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "14dcac4803f6df6ffe905704"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "13153ec4d64ceb8d276eae42"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 507
+    }],
+    "zacetek": "2022-11-22",
+    "sredina": "2022-11-23",
+    "konec": "2022-11-24",
+    "opis": "Izvajalec ocenjuje, da bo udeležba 44%",
+    "opombe": "Iz članka Delo: Anketa kaže na 44-odstotno volilno udeležbo, čeprav je treba biti pri tem previden, saj vprašani pogosto v anketi podajo družbeno zaželen odgovor. Lahko se torej zgodi, da bodo volivke in volivci, utrujeni od treh predhodnih letošnjih volilnih nedeljskih opravil, to nedeljo preživeli drugače in na koncu na volišče ne bodo odšli.\nOb velikem deležu še neopredeljenih, pri tem opozarja Delov javnomnenjski analitik Roman Zatler, se zdi anketna napoved udeležbe morda preveč optimistična, še posebno glede na to, da je bila na lokalnih volitvah udeležba 47,6-odstotna.\nUdeležba na referendumih, kažejo izkušnje, je sicer praviloma nižja kot na državnozborskih in predsedniških volitvah. »Po ocenah bi lahko napovedali, da bo udeležba najverjetneje bliže spodnjega roba intervala zaupanja, od 39- do 40-odstotna,« dodaja Zatler.",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "13153ec4d64ceb8d276eae42"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.delo.si/novice/slovenija/najmanj-podpore-ima-zakon-o-vladi/",
+            "datum_in_cas_objave": "2022-11-24T16:00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "64ff4044f3555da2a13279de"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "64f720aef77994b86cf138c3"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "64f73216ca8707504d29eeb2"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 1860,
+      "starost": "18+"
+    }],
+    "metode": ["CAWI"],
+    "zacetek": "2022-11-09",
+    "sredina": "2022-11-10",
+    "konec": "2022-11-11",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "64f73216ca8707504d29eeb2"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.rtvslo.si/slovenija/referendumi-2022/zakonoma-o-rtv-ju-in-dolgotrajni-oskrbi-se-v-nedeljo-obeta-podpora-zakon-o-vladi-v-negotovosti/648696",
+            "datum_in_cas_objave": "2022-11-25T15:43:00"
+          }
+        ]
+      }
+    ]
   }
 ]
