@@ -24,6 +24,7 @@ import {
   TimeScale,
   Title,
   Tooltip,
+  Filler // potrebno, da deluje (in ne skrije linije) tension (glej https://stackoverflow.com/questions/74656851/unable-to-use-line-tension-for-scatter-chart-with-showline-enabled)
 } from "chart.js";
 import { Scatter } from "vue-chartjs";
 
@@ -35,7 +36,8 @@ ChartJS.register(
   TimeScale,  
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 export default {
@@ -78,6 +80,8 @@ export default {
         const status = await this.getData();
         if (status) {
             this.not_found = true;
+        } else {
+            this.obdelajPodatkePovprecje();
         }
         this.loaded = true;
     },
@@ -105,7 +109,7 @@ export default {
                                 backgroundColor: color_current,
                                 borderColor: color_current,
                                 borderWidth: 2,
-                                showLine: true,
+                                pointRadius: 3,
                             })
                         } else {
                             const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
@@ -121,6 +125,45 @@ export default {
         async getDate(anketa_id) {
             const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
             return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
+        },
+        obdelajPodatkePovprecje() {
+            let stOznak = this.data.datasets.length;
+            for (let i = 0; i < stOznak; i++) {
+                let oznaka = this.data.datasets[i]
+                var povrecje = []
+
+                let stX = 0;
+                let sestevek = 0;
+                for (let j = 0; j < oznaka.data.length; j++) {
+                    sestevek += oznaka.data[j].y
+                    stX++
+                    if (j + 1 == oznaka.data.length || oznaka.data[j].x != oznaka.data[j+1].x) { // cikliranje čez točke z istim x
+                        var y_povprecno = sestevek / stX
+                        povrecje.push({x: oznaka.data[j].x, y: y_povprecno})
+
+                        stX = 0
+                        sestevek = 0
+                    }
+                }
+                this.data.datasets.push({
+                    label: oznaka.label,
+                    data: povrecje,
+                    backgroundColor: oznaka.backgroundColor,
+                    borderColor: oznaka.borderColor,
+                    pointRadius: 1,
+                    pointHitRadius: 1,
+                    pointHoverRadius: 1,
+                    borderWidth: 4,
+                    showLine: true,
+                    tension: 0.4 // to iz neznanega razloga vse poruši
+                })
+
+                oznaka.backgroundColor += "80"
+                oznaka.borderColor += "80"
+
+            }
+            console.log(this.data.datasets)
+
         }
     }
 }
