@@ -86,6 +86,7 @@ export default {
                         }
                     },
                     legend: {
+                        onClick: null, // onemogči klikanje na legendo
                         labels: {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')
