@@ -55,6 +55,10 @@ export default {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: { // pokaže se skupni tooltip za vse y vrednosti pri določenem x (začasna rešitev)
+                    intersect: false,
+                    mode: 'index'
+                },
                 scales: {
                     x: {
                         type: 'time',
@@ -162,8 +166,6 @@ export default {
                 oznaka.borderColor += "80"
 
             }
-            console.log(this.data.datasets)
-
         }
     }
 }
