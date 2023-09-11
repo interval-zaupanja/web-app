@@ -1014,5 +1014,303 @@
         "opombe": "Meritev je razlika med dvema podatkoma: na televizijskem programu RTV SLO, kjer je bilo navedeno, da se bo 'zagotovo' ali 'verjetno' udeležilo referenduma 73.1% vprašanih, medtem ko spletni članek MMC RTV SLO navaja, da se ga bo zagotovo udeležilo 46.5% anketirancev.\nNa televizijskem programu RTV SLO so odgovor opisali kot, da se vprašani 'verjetno' bo udeležil volitev. Ker pa so isti tipi odgovora pri drugih vprašanj te ankete glede udeležbe treh referendumov na spletnem članku bolj natančno opredeljeni kot 'bolj verjetno da', se je posledično tudi ta odgovor uvrstil pod isti tip."
       }
     ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako se boste opredelili o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c42"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 41.67
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 26.83
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 31.50
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako se boste opredelili o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c41"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 53.29
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 17.98
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 28.73
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "vprasanje": "V primeru, da se boste udeležili referendumov, kako se boste opredelili o posameznem predlogu zakona?",
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanje_id": {
+      "$oid": "64dd0169fc95108f8a064c40"
+    },
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 35.46
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 27.37
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 37.17
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "kvalitativna_meritev": "drugo"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opis": "Vprašanje je anketirance spraševalo, če menijo, da vedo, o čem se bo odločalo na referendumih", 
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "da, zelo dobro",
+        "odgovor_std": 1,
+        "procent_izvajalec": 28.2,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'zelo dobro', vendar glede na bolj točen in eksplicitno citiran odgovor 'da, zelo dobro' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "da, do neke mere",
+        "odgovor_std": 2,
+        "procent_izvajalec": 46.1,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'do neke mere', vendar glede na bolj točen in eksplicitno citiran odgovor 'da, do neke mere' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "ne, bolj ne",
+        "odgovor_std": -2,
+        "procent_izvajalec": 16.1,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'bolj ne', vendar glede na bolj točen in eksplicitno citiran odgovor 'ne, bolj ne' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "ne, sploh ne",
+        "odgovor_std": -1,
+        "procent_izvajalec": 9.6,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'sploh ne', vendar glede na bolj točen in eksplicitno citiran odgovor 'ne, sploh ne' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "udelezba"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo da",
+        "odgovor_std": 1,
+        "procent_izvajalec": 46.07,
+        "opombe": "Točen odgovor v spletnem članku ni bil podan, glede na druge ankete in odgovore pa se sklepa, da gre za odgovor 'zagotovo da'\nNa televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'da', vendar glede na bolj točen odgovor v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "bolj verjetno da",
+        "odgovor_std": 2,
+        "procent_izvajalec": 30.85,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'verjetno da', vendar glede na bolj točen in eksplicitno citiran odgovor 'bolj verjetno da' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "bolj verjetno ne",
+        "odgovor_std": -2,
+        "procent_izvajalec": 17.13,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'verjetno ne', vendar glede na bolj točen in eksplicitno citiran odgovor 'bolj verjetno ne' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "zagotovo ne",
+        "odgovor_std": -1,
+        "procent_izvajalec": 5.95,
+        "opombe": "Na televizijskem programu RTV SLO je bil odgovor podan kot (skrajšan) 'ne', vendar glede na bolj točen in eksplicitno citiran odgovor 'zagotovo ne' v članku MMC RTV SLO, se ta tudi šteje kot pristen."
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "kvalitativna_meritev": "drugo"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      },
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "opis": "Vprašanje je anketirance spraševalo, kateri izmed zakonov na referendumu (Zakon o dolgotrajni oskrbi, Zakon o RTV in Zakon o Vladi) je za njih najbolj pomemben", 
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "vsi so enako pomembni",
+        "procent_izvajalec": 41.3
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "Zakon o dolgotrajni oskrbi",
+        "procent_izvajalec": 32.0
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "Zakon o RTV",
+        "procent_izvajalec": 14.6
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "Zakon o Vladi",
+        "procent_izvajalec": 7.1
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor": "noben od zakonov ni pomemben",
+        "procent_izvajalec": 4.9
+      }
+    ]
   }
 ]

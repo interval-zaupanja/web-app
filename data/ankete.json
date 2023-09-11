@@ -202,5 +202,43 @@
         ]
       }
     ]
+  },
+  {
+    "_id": {
+      "$oid": "64ff674d84eeb114e12bd118"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "64f720aef77994b86cf138c3"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "64f73216ca8707504d29eeb2"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 1019,
+      "starost": "18+"
+    }],
+    "metode": ["CAWI"],
+    "zacetek": "2022-11-02",
+    "sredina": "2022-11-03",
+    "konec": "2022-11-04",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "64f73216ca8707504d29eeb2"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.rtvslo.si/slovenija/valicon-na-referendumih-vecina-za-sprejetje-vladnih-zakonov-na-volitvah-pa-za-nataso-pirc-musar/646208",
+            "datum_in_cas_objave": "2022-11-06T18:35:00"
+          }
+        ]
+      }
+    ]
   }
 ]

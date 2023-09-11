@@ -56,7 +56,7 @@
                 <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
             </div>
             
-            <Viri v-if="this.viri" :data="this.viri"/>
+            <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
             <Vprasanja v-if="this.vprasanja" :vprasanja="this.vprasanja" :id="this.id"/>
                 
         </div>

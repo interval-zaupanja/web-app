@@ -12,7 +12,10 @@
                         {{ vir.zaloznik_ime}}
                     </router-link>
                     <span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" @click="$router.push(this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id)" style="max-height: 12px"/></span>
-                    <Label :tip="vir.zaloznik_tip"/>
+                    <Label :tip="vir.zaloznik_tip"
+                        v-if="this.izvajalci.filter(e => e.id == vir.zaloznik_id).length > 0 ||
+                        this.narocniki.filter(e => e.id == vir.zaloznik_id).length > 0"
+                    />
                 </p>
             </div>
             <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
@@ -21,6 +24,11 @@
                     <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
                     <div style="display: inline-block">
                         <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
+                        <p v-if="lokacija.datum_in_cas_objave" style="margin: 0px">Objavljeno
+                            {{new Date(lokacija.datum_in_cas_objave).toLocaleDateString('en-GB')}}
+                            ob
+                            {{new Date(lokacija.datum_in_cas_objave).toLocaleTimeString('en-GB',{ timeStyle: 'short' })}}
+                        </p>
                     </div>
                     <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right">
                         <ExternalLink :link="lokacija.uri" label="Odpri spletno stran"/>
@@ -39,7 +47,7 @@ import ExternalLink from '@/components/ExternalLink.vue'
 
 export default {
     name: 'Viri',
-    props: ['data'],
+    props: ['data', 'izvajalci', 'narocniki'],
     components: {
         Label,
         ExternalLink
