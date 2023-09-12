@@ -118,7 +118,7 @@ const seznamVprasanj = (req, res) => {
                 'tip': 1,
                 'glasovalno_tip': 1,
                 'glasovanje_dolocnost': 1,
-                'glasovanje_id': 1,
+                'glasovanja_id': 1,
                 'glasovanje_tip': 1,
                 'predpostavljena_udelezba_procent': 1,
                 'opis': 1,
@@ -255,7 +255,7 @@ const seznamVprasanjGlasovanje = (req, res) => {
                 'tip': 1,
                 'glasovalno_tip': 1,
                 'glasovanje_dolocnost': 1,
-                'glasovanje_id': 1,
+                'glasovanja_id': 1,
                 'glasovanje_tip': 1,
                 'predpostavljena_udelezba_procent': 1,
                 'opis': 1,
@@ -269,8 +269,8 @@ const seznamVprasanjGlasovanje = (req, res) => {
             }
         },
         {
-            $match: {
-                "glasovanje_id": new ObjectId(req.params.id)
+            $match: { // POTREBNO POPRAVITI
+                "glasovanja_id": new ObjectId(req.params.id)
             }
         }
     ]).exec(function (
@@ -316,7 +316,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
                 'tip': 1,
                 'glasovalno_tip': 1,
                 'glasovanje_dolocnost': 1,
-                'glasovanje_id': 1,
+                'glasovanja_id': 1,
                 'glasovanje_tip': 1,
                 'predpostavljena_udelezba_procent': 1,
                 'opis': 1,

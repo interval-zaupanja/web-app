@@ -139,9 +139,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -183,9 +185,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -227,9 +231,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -306,9 +312,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -345,9 +353,11 @@
       "kvalitativna_meritev": "izid-izrojena-udelezba"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -397,9 +407,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -436,9 +448,11 @@
       "kvalitativna_meritev": "izid-izrojena-udelezba"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -488,9 +502,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -527,9 +543,11 @@
       "kvalitativna_meritev": "izid-izrojena-udelezba"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -648,9 +666,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -692,9 +712,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -736,9 +758,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -780,9 +804,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -824,9 +850,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -868,9 +896,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -1026,9 +1056,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c42"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -1065,9 +1097,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c41"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -1104,9 +1138,11 @@
       "kvalitativna_meritev": "izid"
     },
     "glasovanje_dolocnost": "doloceno",
-    "glasovanje_id": {
-      "$oid": "64dd0169fc95108f8a064c40"
-    },
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
     "glasovanje_tip": {
       "raven_oblasti": "državno",
       "tip": "referendum",
@@ -1157,7 +1193,7 @@
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
-    "opis": "Vprašanje je anketirance spraševalo, če menijo, da vedo, o čem se bo odločalo na referendumih", 
+    "opis": "Vprašanje je anketirance spraševalo, če menijo, da vedo, o čem se bo odločalo na referendumih",
     "odgovori": [
       {
         "tip": "O",
@@ -1279,7 +1315,7 @@
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
-    "opis": "Vprašanje je anketirance spraševalo, kateri izmed zakonov na referendumu (Zakon o dolgotrajni oskrbi, Zakon o RTV in Zakon o Vladi) je za njih najbolj pomemben", 
+    "opis": "Vprašanje je anketirance spraševalo, kateri izmed zakonov na referendumu (Zakon o dolgotrajni oskrbi, Zakon o RTV in Zakon o Vladi) je za njih najbolj pomemben",
     "odgovori": [
       {
         "tip": "O",
@@ -1310,6 +1346,138 @@
         "dolocnost_tip": "doloceno",
         "odgovor": "noben od zakonov ni pomemben",
         "procent_izvajalec": 4.9
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "65000504988b2e0585fe1939"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c42"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 50.2
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 30.1
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 17.3
+      },
+      {
+        "tip": "NSO",
+        "procent_izvajalec": 2.5
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "65000504988b2e0585fe1939"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c41"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 41.1
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 28.7
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 27.5
+      },
+      {
+        "tip": "NSO",
+        "procent_izvajalec": 2.8
+      }
+    ]
+  },
+  {
+    "anketa_id": {
+      "$oid": "65000504988b2e0585fe1939"
+    },
+    "tip": "glasovalno",
+    "glasovalno_tip": {
+      "casovna_komponenta": "napoved",
+      "kvalitativna_meritev": "izid"
+    },
+    "glasovanje_dolocnost": "doloceno",
+    "glasovanja_id": [
+      {
+        "$oid": "64dd0169fc95108f8a064c40"
+      }
+    ],
+    "glasovanje_tip": {
+      "raven_oblasti": "državno",
+      "tip": "referendum",
+      "referendum_tip": "zakonodajno-zavrnitveni"
+    },
+    "odgovori": [
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "za",
+        "procent_izvajalec": 38.7
+      },
+      {
+        "tip": "O",
+        "dolocnost_tip": "doloceno",
+        "odgovor_std": "proti",
+        "procent_izvajalec": 33.1
+      },
+      {
+        "tip": "NO",
+        "odgovor": "ne vem",
+        "procent_izvajalec": 25.8
+      },
+      {
+        "tip": "NSO",
+        "procent_izvajalec": 2.4
       }
     ]
   }

@@ -66,14 +66,18 @@ const lokacija_shema = new mongoose.Schema({
             "Ker gre za revijski oz. časopisni vir, je potrebno navesti tudi na kateri strani je bila anketa objavljena"
         ]
     },
-    datum_in_cas_objave: { type: Date, required: false } // pri nekaterih objavah (npr. pri objavah izvajalcev) ni specifiran
+    datum_in_cas_objave: { type: Date, required: false }, // pri nekaterih objavah (npr. pri objavah izvajalcev) ni specifiran
+    opis: { type: String, required: false },
+    opombe: { type: String, required: false }
 });
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
 const vir_shema = new mongoose.Schema({
     zaloznik_tip: { type: String, required: [true, "Potrebno je specificirati, če je založnik ali izvajalec"] }, // publisher: lahko naročnik ali izvajalec
     zaloznik_id: { type: ObjectId, required: [true, "Enolični identifikator založnika je zahtevano polje"] },
-    lokacije: { type: [lokacija_shema], default: undefined, required: false }
+    lokacije: { type: [lokacija_shema], default: undefined, required: false },
+    opis: { type: String, required: false },
+    opombe: { type: String, required: false }
 });
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
@@ -241,8 +245,8 @@ const vprasanja_shema = new mongoose.Schema({
     tip: { type: String, required: false }, // splosno, zaupanje, glasovalno
     glasovalno_tip: { glasovalno_tip_shema, required: [this.tip === 'glasovalno', "Če je vprašanje glasovalnega tipa, potem je potrebno specificirati, točen tip glasovalnega vprašanja"]},
     glasovanje_dolocnost: { type: String, required: [this.tip === 'glasovalno', "Potrebno je specificrati določnost glasovanja, po katerem vprašanje sprašuje"] },
-    glasovanje_id: { type: ObjectId, required: false },
-    glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.glasovanje_id == null , "Če se vprašanje nanaša na glasovanje in ni podan identifikator glasovanja, potem je tip glasovanja zahtevano polje"] },
+    glasovanja_id: { type: [ObjectId], required: false },
+    glasovanje_tip: { type: tipi_glasovanja_shema, required: [this.glasovanja_id == null , "Če se vprašanje nanaša na glasovanje in ni podan identifikator glasovanja, potem je tip glasovanja zahtevano polje"] }, // POTREBNO POPRAVITI
     predpostavljena_udelezba_procent: { type: Number, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },

@@ -240,5 +240,69 @@
         ]
       }
     ]
+  },
+  {
+    "_id": {
+      "$oid": "65000504988b2e0585fe1939"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "14dcac4803f6df6ffe905704"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "13153ec4d64ceb8d276eae42"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 507
+    }],
+    "zacetek": "2022-11-01",
+    "sredina": "2022-11-02",
+    "konec": "2022-11-03",
+    "opis": "Iz članka SiolNET: Spremembam vseh treh zakonov so najbolj naklonjeni podporniki stranke Levica, nekoliko manj pa podporniki strank SD in Gibanja Svoboda, in sicer nekoliko več kot 60-odstotno pri spremembah zakona o vladi, izsledke raziskave povzema Delo. Vsem trem zakonom na drugi strani nasprotuje večina podpornikov stranke NSi, kar je po ugotovitvah časnika presenetljivo, saj stranka v referendumski kampanji sploh ne sodeluje. Po navedbah Dela 58 odstotkov podpornikov SDS odgovarja, da so tako kot njihova stranka proti spremembam zakona o dolgotrajni oskrbi.",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "13153ec4d64ceb8d276eae42"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.delo.si/novice/slovenija/cetrtine-vprasanih-za-zdaj-ni-prepricala-ne-golobova-ne-janseva-stran/",
+            "datum_in_cas_objave": "2022-11-05T05:00:00",
+            "opombe": "Dostop do celotnega članka je plačljiv"
+          }
+        ]
+      },
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "65000eb79ddcf15ae8f653a5"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://siol.net/novice/slovenija/anketa-dela-polovica-naklonjena-noveli-zakona-o-rtvs-591573",
+            "datum_in_cas_objave": "2022-11-05T18:11:00"
+          }
+        ]
+      },
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "65004454132c56346b1ca0f3"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.zurnal24.si/slovenija/raziskava-pred-referendumom-tu-bo-slo-najbolj-na-tesno-395956",
+            "datum_in_cas_objave": "2022-11-05T18:16:00"
+          }
+        ]
+      }
+    ]
   }
 ]

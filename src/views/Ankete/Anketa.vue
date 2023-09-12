@@ -57,7 +57,7 @@
             </div>
             
             <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
-            <Vprasanja v-if="this.vprasanja" :vprasanja="this.vprasanja" :id="this.id"/>
+            <Vprasanja v-if="this.vprasanja" :data="this.vprasanja" :id="this.id"/>
                 
         </div>
     </div>
@@ -115,9 +115,6 @@ export default {
             for (let i = 0; i < this.vprasanja.length; i++) {
                 if (this.vprasanja[i].tip === 'glasovalno') {
                     const odgovori = this.vprasanja[i].odgovori;
-                    if (this.vprasanja[i].glasovanje_id) {
-                        this.vprasanja[i].glasovanje_ime = await this.getGlasovanjeIme(this.vprasanja[i].glasovanje_id)
-                    }
                     for (let j = 0; j < odgovori.length; j++) {
                         if (odgovori[j].stranka_id) {
                             const podatki = await this.getStranka(odgovori[j].stranka_id)
@@ -206,15 +203,6 @@ export default {
             } catch (error) {
                 console.log(error);
                 return "Ne najdem specificiarne stranke";
-            }
-        },
-        async getGlasovanjeIme(glasovanje_id) {
-            try {
-                const { data } = await axios.get("http://localhost:4000/api/glasovanja/" + glasovanje_id);
-                return data.ime;
-            } catch (error) {
-                console.log(error);
-                return "Ne najdem specificiarnega glasovanja";
             }
         }
     }

@@ -39,5 +39,25 @@
     "barva": "#1A307E",
     "logo_uri": "https://img.rtvcdn.si/_up/upload/2023/06/01/66087893_fp-lg.jpg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Radiotelevizija_Slovenija"
+  },
+  {
+    "_id": {
+      "$oid": "65000eb79ddcf15ae8f653a5"
+    },
+    "ime": "SiolNET",
+    "ime_polno": "Radiotelevizija Slovenija",
+    "barva": "#1A307E",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/sl/4/4d/SiolNET_Logo_RGB_200_83.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Siol.net"
+  },
+  {
+    "_id": {
+      "$oid": "65004454132c56346b1ca0f3"
+    },
+    "ime": "Žurnal24",
+    "barva": "#9CCBE6",
+    "logo_uri": "https://styria-media.si/wp-content/themes/styria/images/brands/zurnal24.svg",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/%C5%BDurnal24",
+    "opombe": "Članek Wikipedije se navezuje na časopis Žurnal24, ki ne izhaja več, vendar je vseeno povezan s trenutnim spletnim portalom Žurnal24.si"
   }
 ]

@@ -116,30 +116,32 @@ export default {
             try {
                 const { data } = await axios.get("http://localhost:4000/api/vprasanja/glasovanje/" + this.glasovanje_id)
                 for (let i = 0; i < data.length; i++) {
-                    const { anketa_id, odgovori } = data[i];
-                    for (let j = 0; j < odgovori.length; j++) {
-                        var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
-                        var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
-                        if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
-                            label_current = this.vrniOdgovor('NBG', false, 1)
-                            color_current = this.vrniStdBarvo('NBG')
-                        }
+                    if (data[i].glasovalno_tip.kvalitativna_meritev === 'izid' || data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba') {
+                        const { anketa_id, odgovori } = data[i];
+                        for (let j = 0; j < odgovori.length; j++) {
+                            var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
+                            var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
+                            if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
+                                label_current = this.vrniOdgovor('NBG', false, 1)
+                                color_current = this.vrniStdBarvo('NBG')
+                            }
 
-                        if (undefined === this.data.datasets.find((element) => element.label === label_current)) {
-                            this.data.datasets.push({
-                                label: label_current,
-                                data: [{
-                                    x: await this.getDate(anketa_id),
-                                    y: odgovori[j].procent_izvajalec
-                                }],
-                                backgroundColor: color_current,
-                                borderColor: color_current,
-                                borderWidth: 2,
-                                pointRadius: 3,
-                            })
-                        } else {
-                            const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
-                            obstojeciVnos.data.push({x: await this.getDate(anketa_id), y: odgovori[j].procent_izvajalec})
+                            if (undefined === this.data.datasets.find((element) => element.label === label_current)) {
+                                this.data.datasets.push({
+                                    label: label_current,
+                                    data: [{
+                                        x: await this.getDate(anketa_id),
+                                        y: odgovori[j].procent_izvajalec
+                                    }],
+                                    backgroundColor: color_current,
+                                    borderColor: color_current,
+                                    borderWidth: 2,
+                                    pointRadius: 3,
+                                })
+                            } else {
+                                const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
+                                obstojeciVnos.data.push({x: await this.getDate(anketa_id), y: odgovori[j].procent_izvajalec})
+                            }
                         }
                     }
                 }

@@ -17,6 +17,8 @@
                         this.narocniki.filter(e => e.id == vir.zaloznik_id).length > 0"
                     />
                 </p>
+                <p v-if="vir.opis">Opis: {{vir.opis}}</p>
+                <p v-if="vir.opombe">Opombe: {{vir.opombe}}</p>
             </div>
             <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
                 <span class="anchor-inner" :id="lokacija._id"></span>
@@ -29,6 +31,8 @@
                             ob
                             {{new Date(lokacija.datum_in_cas_objave).toLocaleTimeString('en-GB',{ timeStyle: 'short' })}}
                         </p>
+                        <p v-if="lokacija.opis">Opis: {{lokacija.opis}}</p>
+                        <p v-if="lokacija.opombe">Opombe: {{lokacija.opombe}}</p>
                     </div>
                     <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right">
                         <ExternalLink :link="lokacija.uri" label="Odpri spletno stran"/>
@@ -81,3 +85,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+p {
+    margin: 0px
+}
+</style>
