@@ -100,7 +100,7 @@ export default {
   methods: {
     async getData() {
       // potrebno pravilno razpeti po datumih !!!!
-      const { data } = await axios.get("http://localhost:4000/api/vprasanja/glasovalna/dz");
+      const { data } = await axios.get(this.apiServer + "/api/vprasanja/glasovalna/dz");
       for (let i = 0; i < data.length; i++) {
         const { anketa_id, odgovori } = data[i];
         var dodaj = false;
@@ -135,14 +135,14 @@ export default {
       }
     },
     async getDate(anketa_id) {
-      const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
+      const { data } = await axios.get(this.apiServer + "/api/ankete/" + anketa_id);
       return moment(data.sredina, "YYYY-MM-DD").format("D/M"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
     },
     async getPartyNamesAndColors() {
       // dejansko se doda kratica imena (ime_kratica)
       for (let i = 0; i < this.data.datasets.length; i++) {
         const { data } = await axios.get(
-          "http://localhost:4000/api/stranke/" + this.data.datasets[i].label
+          this.apiServer + "/api/stranke/" + this.data.datasets[i].label
         );
         this.data.datasets[i].label = data.ime_kratica;
         this.data.datasets[i].backgroundColor = data.barva;

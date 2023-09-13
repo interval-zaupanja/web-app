@@ -142,7 +142,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/ankete/" + this.id);
+                const { data } = await axios.get(this.apiServer + "/api/ankete/" + this.id);
                 for (let i = 0; i < data.izvajalci_id.length; i++) {
                     this.izvajalci.push({id: data.izvajalci_id[i]})
                 }
@@ -166,7 +166,7 @@ export default {
             // Dodajanje podrobnosti izvajalcev
             for (let i = 0; i < this.izvajalci.length; i++) {
                 try {
-                    const { data } =  await axios.get("http://localhost:4000/api/izvajalci/" + this.izvajalci[i].id);
+                    const { data } =  await axios.get(this.apiServer + "/api/izvajalci/" + this.izvajalci[i].id);
                     this.izvajalci[i].ime = data.ime;
                     this.izvajalci[i].logo_uri = data.logo_uri
                 } catch (error) {
@@ -178,7 +178,7 @@ export default {
             // Dodajanje podrobnosti naročnikov
             for (let i = 0; i < this.narocniki.length; i++) {
                 try {
-                    const { data } =  await axios.get("http://localhost:4000/api/narocniki/" + this.narocniki[i].id);
+                    const { data } =  await axios.get(this.apiServer + "/api/narocniki/" + this.narocniki[i].id);
                     this.narocniki[i].ime = data.ime;
                     this.narocniki[i].logo_uri = data.logo_uri
                 } catch (error) {
@@ -188,7 +188,7 @@ export default {
 		},
         async getVprasanja() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/vprasanja/anketa/" + this.id);
+                const { data } = await axios.get(this.apiServer + "/api/vprasanja/anketa/" + this.id);
                 this.vprasanja = data;
             } catch (error) {
                 console.log(error);
@@ -198,7 +198,7 @@ export default {
         },
         async getStranka(stranka_id) {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/stranke/" + stranka_id);
+                const { data } = await axios.get(this.apiServer + "/api/stranke/" + stranka_id);
                 return data;
             } catch (error) {
                 console.log(error);

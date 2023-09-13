@@ -68,7 +68,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/narocniki/" + this.id);
+                const { data } = await axios.get(this.apiServer + "/api/narocniki/" + this.id);
                 this.ime = data.ime;
                 this.ime_polno = data.ime_polno;
                 this.barva = data.barva;

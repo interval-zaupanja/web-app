@@ -70,7 +70,7 @@ export default {
     methods: {
         async getViriImena() {
             for (let i = 0; i < this.viri.length; i++) {
-                const { data } = await axios.get("http://localhost:4000/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
+                const { data } = await axios.get(this.apiServer + "/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
                 this.viri[i].zaloznik_ime = data.ime;
                 this.viri[i].zaloznik_logo_uri = data.logo_uri;
             }

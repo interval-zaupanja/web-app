@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         async getData() {
-            const { data } = await axios.get("http://localhost:4000/api/narocniki");
+            const { data } = await axios.get(this.apiServer + "/api/narocniki");
             this.narocniki = data;
         }
     }

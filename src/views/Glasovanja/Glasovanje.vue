@@ -75,7 +75,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/glasovanja/" + this.id)
+                const { data } = await axios.get(this.apiServer + "/api/glasovanja/" + this.id)
                 this.tip = data.tip
                 this.ime = data.ime
                 this.wikipedia_uri = data.wikipedia_uri

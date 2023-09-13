@@ -150,7 +150,7 @@ export default {
                     vprasanje.glasovanja = []
                 }
                 for (let j = 0; j < vprasanje.glasovanja_id.length; j++) {
-                    const { data } = await axios.get("http://localhost:4000/api/glasovanja/" + vprasanje.glasovanja_id[j])
+                    const { data } = await axios.get(this.apiServer + "/api/glasovanja/" + vprasanje.glasovanja_id[j])
                     vprasanje.glasovanja.push({
                       _id: vprasanje.glasovanja_id[j],
                       ime: data.ime

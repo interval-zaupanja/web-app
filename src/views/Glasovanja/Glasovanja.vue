@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         async getData() {
-            const { data } = await axios.get("http://localhost:4000/api/glasovanja")
+            const { data } = await axios.get(this.apiServer + "/api/glasovanja")
             data.forEach((glasovanje) => {
                 if (glasovanje.tip.tip === 'referendum') {
                     this.referendumi.push(glasovanje)

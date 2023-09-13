@@ -43,7 +43,7 @@ export default {
 	},
 	methods: {
 		async getData() {
-			const { data } = await axios.get("http://localhost:4000/api/ankete?limit=3");
+			const { data } = await axios.get(this.apiServer + "/api/ankete?limit=3");
 			for (let i = 0; i < data.length; i++) { // s forEach ne deluje, ker ni async funkcija
 				const {
 					zacetek,
@@ -59,7 +59,7 @@ export default {
 		async getIzvajalciIme(izvajalci_id) {
             var izvajalci_ime = []
             for (let i = 0; i < izvajalci_id.length; i++) {
-                const { data } = await axios.get("http://localhost:4000/api/izvajalci/" + izvajalci_id[i]);
+                const { data } = await axios.get(this.apiServer + "/api/izvajalci/" + izvajalci_id[i]);
                 izvajalci_ime.push(data.ime)
             }
             return izvajalci_ime
@@ -67,7 +67,7 @@ export default {
 		async getNarocnikiIme(narocniki_id) {
 			var narocniki_ime = []
             for (let i = 0; i < narocniki_id.length; i++) {
-                const { data } = await axios.get("http://localhost:4000/api/narocniki/" + narocniki_id[i]);
+                const { data } = await axios.get(this.apiServer + "/api/narocniki/" + narocniki_id[i]);
                 narocniki_ime.push(data.ime)
             }
             return narocniki_ime

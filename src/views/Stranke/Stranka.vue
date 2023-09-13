@@ -69,7 +69,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/stranke/" + this.id);
+                const { data } = await axios.get(this.apiServer + "/api/stranke/" + this.id);
                 this.ime = data.ime;
                 this.ime_kratica = data.ime_kratica;
                 this.barva = data.barva;

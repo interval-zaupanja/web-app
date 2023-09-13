@@ -114,7 +114,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/vprasanja/glasovanje/" + this.glasovanje_id)
+                const { data } = await axios.get(this.apiServer + "/api/vprasanja/glasovanje/" + this.glasovanje_id)
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].glasovalno_tip.kvalitativna_meritev === 'izid' || data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba') {
                         const { anketa_id, odgovori } = data[i];
@@ -151,7 +151,7 @@ export default {
             }
         },
         async getDate(anketa_id) {
-            const { data } = await axios.get("http://localhost:4000/api/ankete/" + anketa_id);
+            const { data } = await axios.get(this.apiServer + "/api/ankete/" + anketa_id);
             return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
         },
         obdelajPodatkePovprecje() {
