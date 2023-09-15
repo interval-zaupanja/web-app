@@ -7,8 +7,11 @@ import "bootstrap/dist/js/bootstrap.js"
 
 let app = createApp(App)
 
-// app.config.globalProperties.apiServer = "http://localhost:4000"
-app.config.globalProperties.apiServer = "https://interval-zaupanja.onrender.com"
+if (process.env.NODE_ENV === "production") {
+    app.config.globalProperties.apiServer = "https://interval-zaupanja.onrender.com"
+} else {
+    app.config.globalProperties.apiServer = "http://localhost:4000"
+}
 
 // STANDARDI
 
