@@ -36,16 +36,15 @@
             </tbody>
         </table>
     </div>
-    <div v-if="!loaded">
-       <Nalaganje size="medium"/>
+    <div v-if="!loaded" style="display: flex; justify-content: center; align-items: center">
+       <Nalaganje size="medium-small"/>
     </div>
-    
 </template>
 
 <script>
 import axios from "axios";
 
-import Nalaganje from '../../components/Nalaganje.vue'
+import Nalaganje from '@/components/Nalaganje.vue'
 
 export default {
 	name: "SeznamAnket",

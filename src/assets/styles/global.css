@@ -1,3 +1,5 @@
+/* Globalni stili so bili premaknjeni sem, ker je vključevanje stilov v index.html povzročalo težave, saj se je deployment verzija zahtevala uporabo brez korena (/ na začetku), razvojna verzija pa ravno obratno */
+
 * {
     /*font-family: 'Agdasima', sans-serif;*/
     font-family: Avenir, Helvetica, Arial, sans-serif;

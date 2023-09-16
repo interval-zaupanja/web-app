@@ -6,6 +6,9 @@
         :data="data"
         style="max-height: 400px"
         />
+        <div v-if="!loaded">
+            <Nalaganje size="medium"/>
+        </div>
     </div>
 </template>
 
@@ -13,6 +16,8 @@
 import axios from "axios";
 import moment from "moment";
 import 'chartjs-adapter-date-fns'; // moment alternative (TEMPORARY!!!)
+
+import Nalaganje from '@/components/Nalaganje.vue'
 
 import {
   CategoryScale,
@@ -43,7 +48,8 @@ ChartJS.register(
 export default {
     name: 'Referendum',
     components: {
-        Scatter
+        Scatter,
+        Nalaganje
     },
     props: ['glasovanje_id'],
     data() {
