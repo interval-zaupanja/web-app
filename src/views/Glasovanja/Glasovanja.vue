@@ -4,6 +4,7 @@
         <div v-if="!loaded">
             <Nalaganje/>
         </div>
+        <BubbleGrid v-if="loaded" :items="this.volitve" path="/glasovanja/"/>
     </div>
     <div>
         <h1>Referendumi</h1>

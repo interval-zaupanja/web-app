@@ -45,5 +45,19 @@
         "konec": "2022-11-27",
         "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
 
+    },
+    {
+        "_id": {
+            "$oid": "64dd0169fc95108f8a064c45"
+        },
+        "tip": {
+            "raven_oblasti": "evropska",
+            "tip": "volitve",
+            "volitve_tip": "EP-SI"
+        },
+        "ime": "Volitve poslancev iz Slovenije v Evropski parlament 2024",
+        "wikipedia_uri": "https://sl.wikipedia.org/wiki/Volitve_poslancev_iz_Slovenije_v_Evropski_parlament_2024",
+        "zacetek": "2024-06-09",
+        "konec": "2024-06-09"
     }
 ]
