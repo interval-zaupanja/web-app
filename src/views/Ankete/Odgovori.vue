@@ -9,9 +9,7 @@
                         <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
                     </div>
                     <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
-                        <a :href="'/stranke/' + odgovor.stranka_id">
-                            <img :src="odgovor.odgovor_stranka_logo_uri" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>
-                        </a>
+                        <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>
                     </div>
                 </div>
                 <div>
@@ -19,10 +17,10 @@
                         <span v-if="odgovor.stranka_id">
                             <p>
                                 Odgovor:
-                                <a :href="'/stranke/' + odgovor.stranka_id">
+                                <router-link :to="'/stranke/' + odgovor.stranka_id">
                                     {{ odgovor.odgovor_stranka_ime }}
                                     <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
-                                </a>
+                                </router-link>
                             </p>
                         </span>
                         <span v-if="odgovor.odgovor || odgovor.odgovor_std">
