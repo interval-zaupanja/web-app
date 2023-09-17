@@ -5,7 +5,7 @@
             <span class="anchor-outer" :id="vprasanje._id"></span>
             <div>
                 <div>
-                    <CopyLink :path="'/ankete/' + this.id + '#' + vprasanje._id" class="side-button"/>
+                    <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" class="side-button"/>
                     <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                     <p>
                         Tip vprašanja: {{vprasanje.tip}}

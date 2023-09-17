@@ -16,7 +16,7 @@ export default {
     props: [ "path"],
     methods: {
         copyURL() {
-            const url = 'http://localhost:8080' + this.path;
+            const url = window.location.origin + process.env.BASE_URL + this.path;
             navigator.clipboard.writeText(url);
         }
     },

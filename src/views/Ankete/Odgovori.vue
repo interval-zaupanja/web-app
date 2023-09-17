@@ -6,7 +6,7 @@
             <div>
                 <div style="float: right">
                     <div>
-                        <CopyLink :path="'/ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
+                        <CopyLink :path="'ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
                     </div>
                     <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="float: right">
                         <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; margin-top: 10px"/>

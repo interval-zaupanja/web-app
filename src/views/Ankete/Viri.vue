@@ -5,7 +5,7 @@
         <h3 v-else>Viri</h3>
         <div v-for="vir in this.viri" :key="vir._id" class="bubble bubble-outer pink-red">
             <span class="anchor-outer" :id="vir._id"></span>
-            <!-- <CopyLink :path="'/ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
+            <!-- <CopyLink :path="'ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
             <div>
                 <p>Založnik: 
                     <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
@@ -23,7 +23,7 @@
             <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
                 <span class="anchor-inner" :id="lokacija._id"></span>
                 <div>
-                    <!-- <CopyLink :path="'/ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
+                    <!-- <CopyLink :path="'ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
                     <div style="display: inline-block">
                         <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
                         <p v-if="lokacija.datum_in_cas_objave" style="margin: 0px">Objavljeno
