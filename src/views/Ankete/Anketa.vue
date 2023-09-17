@@ -41,7 +41,17 @@
                         <span v-else>Metode anketiranja: </span>
                         
                         <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
-                            {{ metoda }}<span v-if="indeks + 1 < this.metode.length">, </span>
+                            {{ metoda }}
+                            <span
+                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                :data-bs-title="this.vrniPojasniloMetode(metoda)"
+                            >
+                                <span class="material-symbols-outlined">
+                                    help
+                                </span>
+                            </span>
+                            <span v-if="indeks + 1 < this.metode.length">, </span>
                         </span>
                     </p>
                     <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
@@ -68,6 +78,8 @@
 
 <script>
 import axios from 'axios';
+import { Tooltip } from 'bootstrap'
+
 
 import Nalaganje from '../../components/Nalaganje.vue'
 import NeObstaja from '../../components/NeObstaja.vue'
@@ -138,6 +150,10 @@ export default {
         //         el.scrollIntoView({ behavior: 'smooth' })
         //     }
         // }, 1000, this.hash);
+
+        new Tooltip(document.body, {
+            selector: "[data-bs-toggle='tooltip']",
+        })
     },
     methods: {
         async getData() {

@@ -1,5 +1,5 @@
 <template>
-    <button type="button" @click="copyURL()" id="tt"
+    <button type="button" @click="copyURL()"
         data-bs-toggle="tooltip" data-bs-placement="top"
         data-bs-custom-class="custom-tooltip"
         data-bs-title="Kopiraj povezavo"
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { Tooltip } from 'bootstrap' // ???
+import { Tooltip } from 'bootstrap'
 
 export default {
     name: 'CopyLink',

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div v-for="item in this.items" :key="item._id" class="bubble-outer grid-bubble">
-            <TextImageBubble :text="this.text(item.ime, item.ime_kratica)" :image="item.logo_uri" @click="$router.push(this.path + item._id)"/>
+            <TextImageBubble :text="this.text(item.ime, item.ime_kratica)" :image="this.vrniLogoUri(item.logo_uri)" @click="$router.push(this.path + item._id)"/>
         </div>
     </div>
 </template>

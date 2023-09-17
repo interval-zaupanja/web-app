@@ -6,7 +6,7 @@
       <router-link to="/" style="display: inline-block; height: inherit">
         <div style="display: inline-block; margin-left: 10px; margin-right: 10px; font-size: 40px; height: inherit">
           <div style="display:flex; justify-content:center; align-items: center; height: inherit">
-            <img src="../assets/logo.png" style="height: 50px"/>
+            <img src="@/assets/logo.png" style="height: 50px"/>
           </div>
         </div>
       </router-link>

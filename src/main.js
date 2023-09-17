@@ -7,6 +7,7 @@ import '@/assets/styles/global.css'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
 
+
 let app = createApp(App)
 
 if (process.env.NODE_ENV === "production") {
@@ -139,6 +140,30 @@ app.config.globalProperties.capitalization = function (lowercase_input, option) 
         }
     } else if (option == 2) { // all letters are uppercase
         return lowercase_input.toUpperCase()
+    }
+}
+
+app.config.globalProperties.pojasnilaMetod = {
+    CATI: "Computer-assisted telephone interviewing (CATI) oz. računalniško podprto telefonsko anketiranje je metoda anketiranja s pomočjo telefonskih klicev in specializirane programske opreme, anketarju poda vprašanja, ki naj jih zastavi anketirancu",
+    CAWI: "Computer-assisted web interviewing (CAWI) oz. računalniško podprto spletno anketiranje je metoda anketiranja, kjer anketiranci odgovarjajo na vprašanja preko posebeno zasnovanega spletnega vmesnika"
+}
+
+app.config.globalProperties.vrniPojasniloMetode = function (metoda) {
+    switch (metoda) {
+        case 'CATI':
+            return this.pojasnilaMetod.CATI
+        case 'CAWI':
+            return this.pojasnilaMetod.CAWI
+    }
+}
+
+app.config.globalProperties.vrniLogoUri = function (uri) {
+    if (uri == undefined) {
+        return undefined
+    } else if (uri.charAt(0) != 'h' || uri.charAt(0) === '/') { // gre za interno povezavo (ker se ne začne s http oz. https); če se začne z '/' to pomeni, da je bila interna predpona v nekem prejšnjem koraku že dodana
+        return process.env.BASE_URL + 'assets/3rd-party-logos/' + uri // v tem primeru je URI le ime datoteke
+    } else {
+        return uri
     }
 }
 

@@ -72,7 +72,7 @@ export default {
                 this.ime = data.ime;
                 this.ime_polno = data.ime_polno;
                 this.barva = data.barva;
-                this.logo_uri = data.logo_uri;
+                this.logo_uri = this.vrniLogoUri(data.logo_uri);
                 this.wikipedia_uri = data.wikipedia_uri;
                 this.opis = data.opis;
                 this.opombe = data.opombe;
