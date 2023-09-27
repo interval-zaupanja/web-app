@@ -10,6 +10,16 @@
             <Nalaganje size="medium"/>
         </div>
     </div>
+    <div v-if="loaded">
+        <input type="checkbox" id="izloci-NV" name="izloci-NV" value="Izloči ne vem" @change="this.seznamIzlocitev.NV = !this.seznamIzlocitev.NV; this.izloci()">
+        <label for="izloci-NV">Izloči 'Ne vem'</label>
+        <br>
+        <input type="checkbox" id="izloci-NSO" name="izloci-NSO" value="Izloči ne želim se opredeliti" @change="this.seznamIzlocitev.NSO = !this.seznamIzlocitev.NSO; this.izloci()">
+        <label for="izloci-NSO">Izloči 'Ne povem'</label>
+        <br>
+        <input type="checkbox" id="izloci-NBG" name="izloci-NBG" value="Izloči ne bom glasoval" @change="this.seznamIzlocitev.NBG = !this.seznamIzlocitev.NBF; this.izloci()">
+        <label for="izloci-NBG">Izloči 'Ne bom glasoval'</label>
+    </div>
 </template>
 
 <script>
@@ -55,7 +65,10 @@ export default {
     data() {
         return {
             type: 'scatter',
-            data: {
+            fullData: { // vsi podatki pridobljeni s strežnika
+                datasets: []
+            },
+            data: { // podatki, ki se dejansko uporabijo v grafu
                 datasets: []
             },
             options: {
@@ -103,7 +116,12 @@ export default {
                 
             },
             loaded: false,
-            not_found: false
+            not_found: false,
+            seznamIzlocitev: {
+                NV: false,
+                NSO: false,
+                NBG: false
+            },
         }
     },
     async mounted() {
@@ -112,8 +130,9 @@ export default {
         if (status) {
             this.not_found = true;
         } else {
-            // Izris črt
-            this.obdelajPodatkePovprecje();
+            // Vstavitev pridobljenih podatkov v graf (tak način zato, da se pravilno kopira)
+            this.data = JSON.parse(JSON.stringify((this.fullData)))
+            this.obdelajPodatkePovprecje() // izris linij
         }
         this.loaded = true;
     },
@@ -123,7 +142,7 @@ export default {
                 const { data } = await axios.get(this.apiServer + "/api/vprasanja/glasovanje/" + this.glasovanje_id)
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].glasovalno_tip.kvalitativna_meritev === 'izid' || data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba') {
-                        const { anketa_id, odgovori } = data[i];
+                        const { anketa_id, odgovori, _id } = data[i];
                         for (let j = 0; j < odgovori.length; j++) {
                             var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
                             var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
@@ -132,12 +151,13 @@ export default {
                                 color_current = this.vrniStdBarvo('NBG')
                             }
 
-                            if (undefined === this.data.datasets.find((element) => element.label === label_current)) {
-                                this.data.datasets.push({
+                            if (undefined === this.fullData.datasets.find((element) => element.label === label_current)) {
+                                this.fullData.datasets.push({
                                     label: label_current,
                                     data: [{
                                         x: await this.getDate(anketa_id),
-                                        y: odgovori[j].procent_izvajalec
+                                        y: odgovori[j].procent_izvajalec,
+                                        vprasanje_id: _id
                                     }],
                                     backgroundColor: color_current,
                                     borderColor: color_current,
@@ -145,8 +165,12 @@ export default {
                                     pointRadius: 3,
                                 })
                             } else {
-                                const obstojeciVnos = this.data.datasets.find((element) => element.label === label_current)
-                                obstojeciVnos.data.push({x: await this.getDate(anketa_id), y: odgovori[j].procent_izvajalec})
+                                const obstojeciVnos = this.fullData.datasets.find((element) => element.label === label_current)
+                                obstojeciVnos.data.push({
+                                    x: await this.getDate(anketa_id),
+                                    y: odgovori[j].procent_izvajalec,
+                                    vprasanje_id: _id
+                                })
                             }
                         }
                     }
@@ -164,7 +188,7 @@ export default {
             let stOznak = this.data.datasets.length;
             for (let i = 0; i < stOznak; i++) {
                 let oznaka = this.data.datasets[i]
-                var povrecje = []
+                var povprecje = []
 
                 let stX = 0;
                 let sestevek = 0;
@@ -173,7 +197,7 @@ export default {
                     stX++
                     if (j + 1 == oznaka.data.length || oznaka.data[j].x != oznaka.data[j+1].x) { // cikliranje čez točke z istim x
                         var y_povprecno = sestevek / stX
-                        povrecje.push({x: oznaka.data[j].x, y: y_povprecno})
+                        povprecje.push({x: oznaka.data[j].x, y: y_povprecno})
 
                         stX = 0
                         sestevek = 0
@@ -181,7 +205,7 @@ export default {
                 }
                 this.data.datasets.push({
                     label: oznaka.label,
-                    data: povrecje,
+                    data: povprecje,
                     backgroundColor: oznaka.backgroundColor,
                     borderColor: oznaka.borderColor,
                     pointRadius: 0,
@@ -196,6 +220,58 @@ export default {
                 oznaka.borderColor += "80"
                 oznaka.label += "_scatter"
             }
+        },
+        izloci() {
+            var newData = JSON.parse(JSON.stringify(this.fullData))
+
+            // Izločanje elementov iz polja
+            for (var i = newData.datasets.length - 1; i >= 0; i--) { // loop od nazaj, da se med odstranjevanjem ne pokvari indeks
+                if (this.seznamIzlocitev.NV && newData.datasets[i].label === 'Ne vem' ||
+                    this.seznamIzlocitev.NSO && newData.datasets[i].label === 'Ne povem' ||
+                    this.seznamIzlocitev.NBG && newData.datasets[i].label === 'Ne bom glasoval'
+                    ) {
+                    newData.datasets.splice(i, 1)
+                }
+            }
+
+            newData.datasets = this.preracunaj(newData.datasets)
+            this.data = newData
+            this.obdelajPodatkePovprecje()
+        },
+        preracunaj(podatki) {
+            // Poiščemo vse podatke za določen x (za določen x in oznako imamo lahko več vrednosti!!!)
+            var obdelanaVprasanja = []
+            // Izbiramo vprašanja, ki jih obdelujemo
+            for (let i = 0; i < podatki.length; i++) {
+                for (let j = 0; j < podatki[i].data.length; j++) {
+                    var izbranoVprasanje = podatki[i].data[j].vprasanje_id
+                    if (!obdelanaVprasanja.includes(izbranoVprasanje)) {
+                        // Seštejemo vse y vrednosti, ki pripadajo tem vprašanju
+                        var sestevek = 0;
+                        for (let i2 = 0; i2 < podatki.length; i2++) {
+                            for (let j2 = 0; j2 < podatki[i2].data.length; j2++) {
+                                if (podatki[i2].data[j2].vprasanje_id === izbranoVprasanje) {
+                                    sestevek += podatki[i2].data[j2].y
+                                    break;
+                                }
+                            }
+                        }
+
+                        // Sedaj y vrednosti spremenimo tako, da bo seštevek 100
+                        for (let i2 = 0; i2 < podatki.length; i2++) {
+                            for (let j2 = 0; j2 < podatki[i2].data.length; j2++) {
+                                if (podatki[i2].data[j2].vprasanje_id === izbranoVprasanje) {
+                                    podatki[i2].data[j2].y = (podatki[i2].data[j2].y / sestevek) * 100
+                                    break;
+                                }
+                            }
+                        }
+
+                        obdelanaVprasanja.push(izbranoVprasanje)
+                    }
+                }
+            }
+            return podatki
         }
     }
 }
