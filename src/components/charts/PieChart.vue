@@ -17,7 +17,7 @@ export default {
     components: {
         Pie
     },
-    props: ['podatki', 'caption', 'caption_condition'],
+    props: ['podatki', 'caption', 'caption_condition', 'enota'],
     data() {
         return {
             type: "pie",
@@ -43,6 +43,15 @@ export default {
                         color: "#404040",
                         font: {
                             size: 13
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: context => {
+                                const dataPoint = context.dataIndex
+                                return " " + context.dataset.data[dataPoint] + this.enota
+                            }
                         }
                     }
                 }

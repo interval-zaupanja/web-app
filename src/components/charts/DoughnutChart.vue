@@ -17,7 +17,7 @@ export default {
     components: {
         Doughnut
     },
-    props: ['podatki', 'caption', 'caption_condition'],
+    props: ['podatki', 'caption', 'caption_condition', 'enota'],
     data() {
         return {
             type: "doughnut",
@@ -43,6 +43,25 @@ export default {
                         color: "#404040",
                         font: {
                             size: 13
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: context => {
+                                const dataPoint = context.dataIndex
+                                var enota = this.enota
+                                if (this.enota === ' mandatov (sedežev)') {
+                                    if (context.dataset.data[dataPoint] == 1) {
+                                        enota = ' mandat (sedež)'
+                                    } else if (context.dataset.data[dataPoint] == 2) {
+                                        enota = ' mandata (sedeža)'
+                                    } else if (context.dataset.data[dataPoint] == 3 || context.dataset.data[dataPoint] == 4) {
+                                        enota = ' mandati (sedeži)'
+                                    }
+                                }
+                                return " " + context.dataset.data[dataPoint] + enota
+                            }
                         }
                     }
                 }

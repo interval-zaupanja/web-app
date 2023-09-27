@@ -51,6 +51,7 @@
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                             caption="Delež odgovorov"
                             :caption_condition="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
+                            enota="%"
                             style="display: inline-block"
                         />
                         <DoughnutChart
@@ -58,6 +59,7 @@
                             :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                             :caption_condition="true"
                             caption="Število mandatov (sedežev)"
+                            enota=" mandatov (sedežev)"
                             style="display: inline-block"
                         />
                         <PieChart
@@ -65,6 +67,7 @@
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                             caption="Delež odgovorov"
                             :caption_condition="false"
+                            enota="%"
                             style="display: inline-block"
                         />
                     </div>
