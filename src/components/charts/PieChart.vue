@@ -17,23 +17,32 @@ export default {
     components: {
         Pie
     },
-    props: ['podatki'],
+    props: ['podatki', 'caption', 'caption_condition'],
     data() {
         return {
             type: "pie",
             data: {
                 labels: this.podatki.labels,
-            datasets: [
-                {
-                backgroundColor: this.podatki.backgroundColor,
-                data: this.podatki.data
-                }
-            ]
+                datasets: [
+                    {
+                    backgroundColor: this.podatki.backgroundColor,
+                    data: this.podatki.data
+                    }
+                ]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false
-            },
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: this.caption_condition,
+                        text: this.caption
+                    }
+                }
+            }
         }
     }
 };

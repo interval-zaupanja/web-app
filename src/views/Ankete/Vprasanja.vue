@@ -48,11 +48,15 @@
                     <div class="charts">
                         <PieChart
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                            caption="Delež odgovorov"
+                            :caption_condition="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             style="display: inline-block"
                         />
                         <PieChart
                             v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
+                            :caption_condition="true"
+                            caption="Število mandatov (sedežev)"
                             style="display: inline-block"
                         />
                     </div>
