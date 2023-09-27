@@ -1,10 +1,10 @@
 <template>
     <div style="height: 400px">
         <Scatter
-        v-if="loaded"
-        :options="options"
-        :data="data"
-        style="max-height: 400px"
+            v-if="loaded"
+            :options="options"
+            :data="data"
+            style="max-height: 400px"
         />
         <div v-if="!loaded">
             <Nalaganje size="medium"/>
@@ -140,10 +140,10 @@ export default {
         async getData() {
             try {
                 const { data } = await axios.get(this.apiServer + "/api/vprasanja/glasovanje/" + this.glasovanje_id)
-                for (let i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) { // vprašanja
                     if (data[i].glasovalno_tip.kvalitativna_meritev === 'izid' || data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba') {
                         const { anketa_id, odgovori, _id } = data[i];
-                        for (let j = 0; j < odgovori.length; j++) {
+                        for (let j = 0; j < odgovori.length; j++) { // odgovori
                             var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
                             var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
                             if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {

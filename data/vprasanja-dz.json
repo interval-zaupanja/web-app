@@ -57,6 +57,10 @@
         },
         "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
         "tip": "glasovalno",
+        "glasovalno_tip": {
+            "casovna_komponenta": "napoved",
+            "kvalitativna_meritev": "izid-izrojena-udelezba"
+        },
         "glasovanje_dolocnost": "hipoteticno",
         "glasovanje_tip": {
             "raven_oblasti": "državna",
