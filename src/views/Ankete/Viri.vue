@@ -72,7 +72,7 @@ export default {
             for (let i = 0; i < this.viri.length; i++) {
                 const { data } = await axios.get(this.apiServer + "/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
                 this.viri[i].zaloznik_ime = data.ime;
-                this.viri[i].zaloznik_logo_uri = data.logo_uri;
+                this.viri[i].zaloznik_logo_uri = this.vrniLogoUri(data.logo_uri);
             }
         },
         getZaloznikPath(tip) {

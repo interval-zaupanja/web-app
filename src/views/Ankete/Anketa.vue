@@ -132,7 +132,7 @@ export default {
                             const podatki = await this.getStranka(odgovori[j].stranka_id)
                             odgovori[j].odgovor_stranka_ime = podatki.ime;
                             odgovori[j].odgovor_stranka_ime_kratica = podatki.ime_kratica;
-                            odgovori[j].odgovor_stranka_logo_uri = podatki.logo_uri;
+                            odgovori[j].odgovor_stranka_logo_uri = this.vrniLogoUri(podatki.logo_uri);
                             odgovori[j].odgovor_stranka_barva = podatki.barva;
                         }
                     }
@@ -184,7 +184,7 @@ export default {
                 try {
                     const { data } =  await axios.get(this.apiServer + "/api/izvajalci/" + this.izvajalci[i].id);
                     this.izvajalci[i].ime = data.ime;
-                    this.izvajalci[i].logo_uri = data.logo_uri
+                    this.izvajalci[i].logo_uri = this.vrniLogoUri(data.logo_uri)
                 } catch (error) {
                     this.izvajalci[i].ime = "Ne najdem izvajalca";
                 }
@@ -196,7 +196,7 @@ export default {
                 try {
                     const { data } =  await axios.get(this.apiServer + "/api/narocniki/" + this.narocniki[i].id);
                     this.narocniki[i].ime = data.ime;
-                    this.narocniki[i].logo_uri = data.logo_uri
+                    this.narocniki[i].logo_uri = this.vrniLogoUri(data.logo_uri)
                 } catch (error) {
                     this.narocniki[i].ime = "Ne najdem naročnika";
                 }
