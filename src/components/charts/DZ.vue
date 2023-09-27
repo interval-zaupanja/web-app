@@ -18,17 +18,17 @@
                 <div style="display: inline-block">
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNV">Ne vem</label>
                     </div>
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNSO">Ne povem</label>
                     </div>
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
                     </div>
                 </div>
@@ -179,12 +179,7 @@ export default {
         if (status) {
             this.not_found = true;
         } else {
-            // Vstavitev pridobljenih podatkov v graf (tak način zato, da se pravilno kopira)
-            this.data = JSON.parse(JSON.stringify((this.fullData)))
-            if (!this.stranka_id) {
-                this.izloci()
-            }
-            this.obdelajPodatkePovprecje()
+            this.render()
         }
         this.loaded = true;
     },
@@ -261,7 +256,7 @@ export default {
                 stranka_barva: data.barva
             }
         },
-        izloci() {
+        render() {
             var newData = JSON.parse(JSON.stringify(this.fullData))
 
             // Izločanje elementov iz polja
@@ -275,8 +270,11 @@ export default {
                 }
             }
 
-            newData.datasets = this.preracunaj(newData.datasets)
+            if (!this.stranka_id) {
+                newData.datasets = this.preracunaj(newData.datasets)
+            }
             this.data = newData
+            this.obdelajPodatkePovprecje()
         },
         preracunaj(podatki) {
             // Poiščemo vse podatke za določen x (za določen x in oznako imamo lahko več vrednosti!!!)

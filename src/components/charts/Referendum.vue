@@ -17,17 +17,17 @@
                 <div style="display: inline-block">
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNV">Ne vem</label>
                     </div>
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNSO">Ne povem</label>
                     </div>
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                        @change="this.izloci()">
+                        @change="this.render()">
                         <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
                     </div>
                 </div>
@@ -144,9 +144,7 @@ export default {
         if (status) {
             this.not_found = true;
         } else {
-            // Vstavitev pridobljenih podatkov v graf (tak način zato, da se pravilno kopira)
-            this.data = JSON.parse(JSON.stringify((this.fullData)))
-            this.obdelajPodatkePovprecje() // izris linij
+            this.render()
         }
         this.loaded = true;
     },
@@ -198,44 +196,7 @@ export default {
             const { data } = await axios.get(this.apiServer + "/api/ankete/" + anketa_id);
             return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD"); // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
         },
-        obdelajPodatkePovprecje() {
-            let stOznak = this.data.datasets.length;
-            for (let i = 0; i < stOznak; i++) {
-                let oznaka = this.data.datasets[i]
-                var povprecje = []
-
-                let stX = 0;
-                let sestevek = 0;
-                for (let j = 0; j < oznaka.data.length; j++) {
-                    sestevek += oznaka.data[j].y
-                    stX++
-                    if (j + 1 == oznaka.data.length || oznaka.data[j].x != oznaka.data[j+1].x) { // cikliranje čez točke z istim x
-                        var y_povprecno = sestevek / stX
-                        povprecje.push({x: oznaka.data[j].x, y: y_povprecno})
-
-                        stX = 0
-                        sestevek = 0
-                    }
-                }
-                this.data.datasets.push({
-                    label: oznaka.label,
-                    data: povprecje,
-                    backgroundColor: oznaka.backgroundColor,
-                    borderColor: oznaka.borderColor,
-                    pointRadius: 0,
-                    pointHitRadius: 0,
-                    pointHoverRadius: 0,
-                    borderWidth: 4,
-                    showLine: true,
-                    tension: 0.4 // to iz neznanega razloga vse poruši
-                })
-
-                oznaka.backgroundColor += "80"
-                oznaka.borderColor += "80"
-                oznaka.label += "_scatter"
-            }
-        },
-        izloci() {
+        render() {
             var newData = JSON.parse(JSON.stringify(this.fullData))
 
             // Izločanje elementov iz polja
@@ -287,7 +248,44 @@ export default {
                 }
             }
             return podatki
-        }
+        },
+        obdelajPodatkePovprecje() {
+            let stOznak = this.data.datasets.length;
+            for (let i = 0; i < stOznak; i++) {
+                let oznaka = this.data.datasets[i]
+                var povprecje = []
+
+                let stX = 0;
+                let sestevek = 0;
+                for (let j = 0; j < oznaka.data.length; j++) {
+                    sestevek += oznaka.data[j].y
+                    stX++
+                    if (j + 1 == oznaka.data.length || oznaka.data[j].x != oznaka.data[j+1].x) { // cikliranje čez točke z istim x
+                        var y_povprecno = sestevek / stX
+                        povprecje.push({x: oznaka.data[j].x, y: y_povprecno})
+
+                        stX = 0
+                        sestevek = 0
+                    }
+                }
+                this.data.datasets.push({
+                    label: oznaka.label,
+                    data: povprecje,
+                    backgroundColor: oznaka.backgroundColor,
+                    borderColor: oznaka.borderColor,
+                    pointRadius: 0,
+                    pointHitRadius: 0,
+                    pointHoverRadius: 0,
+                    borderWidth: 4,
+                    showLine: true,
+                    tension: 0.4 // to iz neznanega razloga vse poruši
+                })
+
+                oznaka.backgroundColor += "80"
+                oznaka.borderColor += "80"
+                oznaka.label += "_scatter"
+            }
+        },
     }
 }
 </script>
