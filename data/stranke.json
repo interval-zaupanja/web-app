@@ -20,5 +20,114 @@
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Gibanje_Svoboda",
     "opis": "Gibanje svoboda je stranka, ki je nastala pred državnozborskimi volitvami leta 2022",
     "opombe": "Včasih se je imenovala Stranka zelenih dejanj"
+  },
+  {
+    "_id": {
+      "$oid": "651450a3a3e11c09560bfb8b"
+    },
+    "ime": "Socialni demokrati",
+    "ime_kratica": "SD",
+    "barva": "#EE161F",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Socialni_demokrati_Logo.svg/2560px-Socialni_demokrati_Logo.svg.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Socialni_demokrati"
+  },
+  {
+    "_id": {
+      "$oid": "6514510050b03011ded8e2b3"
+    },
+    "ime": "Nova Slovenija",
+    "ime_kratica": "NSi",
+    "barva": "#019BC9",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Nova_Slovenija_Logo.svg/2560px-Nova_Slovenija_Logo.svg.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Nova_Slovenija"
+  },
+  {
+    "_id": {
+      "$oid": "6514520bf8a6846662381457"
+    },
+    "ime": "Levica",
+    "barva": "#E82D26",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Logo_of_The_Left_%28Slovenia%29.svg/2560px-Logo_of_The_Left_%28Slovenia%29.svg.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Levica_(politi%C4%8Dna_stranka)"
+  },
+  {
+    "_id": {
+      "$oid": "651452a092e72fa5c3f55801"
+    },
+    "ime": "Državljansko gibanje Resni.ca",
+    "ime_kratica": "Resni.ca",
+    "barva": "#7C5199",
+    "logo_uri": "https://stranka-resnica.si/file/2022/02/RESNI.CA_LOGO_FA1-768x543.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Resni.ca"
+  },
+  {
+    "_id": {
+      "$oid": "6514530284aa0a370b88f03b"
+    },
+    "ime": "Piratska stranka Slovenije",
+    "ime_kratica": "Pirati",
+    "barva": "#F78F36",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/5/57/Piratska_stranka_slovenije_1.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Piratska_stranka_Slovenije"
+  },
+  {
+    "_id": {
+      "$oid": "651453d4b60a64cb30fff273"
+    },
+    "ime": "Slovenska nacionalna stranka",
+    "ime_kratica": "SNS",
+    "barva": "#FFE627",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Logo_of_the_Slovenian_National_Party.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Slovenska_nacionalna_stranka"
+  },
+  {
+    "_id": {
+      "$oid": "651453fcb786220eab76b308"
+    },
+    "ime": "Vesna - zelena stranka",
+    "ime_kratica": "Vesna",
+    "barva": "#00A75E",
+    "logo_uri": "https://www.vesnazelenastranka.si/wp-content/uploads/2022/02/vesna-horizontal-header-150.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/VESNA_%E2%80%93_zelena_stranka"
+  },
+  {
+    "_id": {
+      "$oid": "65145528adad7c12492ee936"
+    },
+    "ime": "Slovenska ljudska stranka",
+    "ime_kratica": "SLS",
+    "barva": "#76CA37",
+    "logo_uri": "https://www.sls.si/wp-content/themes/sls/img/slovenska_ljudska_stranka_sls_logo.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Slovenska_ljudska_stranka"
+  },
+  {
+    "_id": {
+      "$oid": "651455d6b0c6d028a79f18d6"
+    },
+    "ime": "Konkretno",
+    "barva": "#A23454",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Konkretno_logo.svg/2560px-Konkretno_logo.svg.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Konkretno"
+  },
+  {
+    "_id": {
+      "$oid": "651456f87dbf0e2bdd474496"
+    },
+    "ime": "Naša dežela",
+    "ime_kratica": "ND",
+    "barva": "#408A30",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Logotip-Nasa-Dezela-barvni.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Na%C5%A1a_de%C5%BEela"
+  },
+  {
+    "_id": {
+      "$oid": "651457ac265fff6dd193793d"
+    },
+    "ime": "Stranka Naša prihodnost",
+    "ime_kratica": "SNP",
+    "barva": "#9DBE4C",
+    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Logotip-Nasa-Dezela-barvni.png",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Na%C5%A1a_prihodnost",
+    "opombe": "'Stranka' se v imenu pogosto izpušča. SNP je kratica, ki si jo je stranka izbrala sama."
   }
 ]
