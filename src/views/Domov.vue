@@ -1,9 +1,6 @@
 <template>
     <div class="container">
-        <div>
-            <h3>Volitve v Državni zbor</h3>
-            <DZ/>
-        </div>
+        <DZ/>
         <ZadnjeAnkete/>
     </div>
 </template>
@@ -29,9 +26,5 @@ export default {
 
 .container > * {
     flex-grow: 1;
-}
-
-h3 {
-  text-align: center;
 }
 </style>

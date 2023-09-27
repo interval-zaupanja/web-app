@@ -17,7 +17,7 @@
         <input type="checkbox" id="izloci-NSO" name="izloci-NSO" value="Izloči ne želim se opredeliti" @change="this.seznamIzlocitev.NSO = !this.seznamIzlocitev.NSO; this.izloci()">
         <label for="izloci-NSO">Izloči 'Ne povem'</label>
         <br>
-        <input type="checkbox" id="izloci-NBG" name="izloci-NBG" value="Izloči ne bom glasoval" @change="this.seznamIzlocitev.NBG = !this.seznamIzlocitev.NBF; this.izloci()">
+        <input type="checkbox" id="izloci-NBG" name="izloci-NBG" value="Izloči ne bom glasoval" @change="this.seznamIzlocitev.NBG = !this.seznamIzlocitev.NBG; this.izloci()">
         <label for="izloci-NBG">Izloči 'Ne bom glasoval'</label>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div id="header" class="sticky">
+  <div id="header" class="sticky white-pink">
     <div style="margin-left: 50px; margin-right: 30px; height: inherit">
 
       <!-- logo -->
@@ -37,13 +37,6 @@ export default {
 #header {
     display: block;
     height: 70px;
-    
-    /*background-color: #f10056;*/
-    /*background-color: #0080ff;*/
-    /*background-color: #f6caca;*/
-    /*background-image: linear-gradient(to bottom right, rgba(255, 166, 0, 0.8), rgba(255, 0, 59, 0.75));*/
-    /*background-image: linear-gradient(to bottom right, rgba(29, 29, 31, 0.02), #f6caca);*/
-    background-image: linear-gradient(to right, rgb(255, 255, 255), #f6caca);
     color: #ae1813;
 }
 
