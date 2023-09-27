@@ -1315,37 +1315,42 @@
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
-    "opis": "Vprašanje je anketirance spraševalo, kateri izmed zakonov na referendumu (Zakon o dolgotrajni oskrbi, Zakon o RTV in Zakon o Vladi) je za njih najbolj pomemben",
+    "opis": "Vprašanje je anketirance spraševalo, kateri izmed referendumskih zakonov (Zakon o dolgotrajni oskrbi, Zakon o RTV in Zakon o Vladi) je za njih najbolj pomemben",
     "odgovori": [
       {
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "vsi so enako pomembni",
-        "procent_izvajalec": 41.3
+        "procent_izvajalec": 41.3,
+        "barva": "#E9ECF5"
       },
       {
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "Zakon o dolgotrajni oskrbi",
-        "procent_izvajalec": 32.0
+        "procent_izvajalec": 32.0,
+        "barva": "#63D471"
       },
       {
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "Zakon o RTV",
-        "procent_izvajalec": 14.6
+        "procent_izvajalec": 14.6,
+        "barva": "#3066BE"
       },
       {
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "Zakon o Vladi",
-        "procent_izvajalec": 7.1
+        "procent_izvajalec": 7.1,
+        "barva": "#D90368"
       },
       {
         "tip": "O",
         "dolocnost_tip": "doloceno",
         "odgovor": "noben od zakonov ni pomemben",
-        "procent_izvajalec": 4.9
+        "procent_izvajalec": 4.9,
+        "barva": "#3C3744"
       }
     ]
   },

@@ -229,6 +229,7 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
     st_anketirancev_izvajalec: { type: Number, required: false },
     st_anketirancev_iz_calculated: { type: Number, required: false },
+    barva: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },
 });

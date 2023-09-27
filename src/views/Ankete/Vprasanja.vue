@@ -115,6 +115,7 @@ export default {
                         podatki.backgroundColor.push(this.vrniStdBarvo('NBG'))
                     } else {
                         podatki.backgroundColor.push(
+                            vprasanje.odgovori[i].barva ??
                             vprasanje.odgovori[i].odgovor_stranka_barva ??
                             this.vrniStdBarvo(
                                 vprasanje.odgovori[i].odgovor_std ??
