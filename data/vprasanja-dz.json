@@ -1,0 +1,131 @@
+[
+    {
+        "anketa_id": {
+            "$oid": "873c017fc587d5ade7830b7a"
+        },
+        "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
+        "tip": "glasovalno",
+        "glasovalno_tip": {
+            "casovna_komponenta": "napoved",
+            "kvalitativna_meritev": "izid-izrojena-udelezba"
+        },
+        "glasovanje_dolocnost": "hipoteticno",
+        "glasovanje_tip": {
+            "raven_oblasti": "državna",
+            "tip": "volitve",
+            "volitve_tip": "DZ-S"
+        },
+        "odgovori": [
+            {
+                "tip": "O",
+                "udelezba_tip": "BG",
+                "dolocnost_tip": "doloceno",
+                "doloceno_tip": "stranka",
+                "stranka_id": "c32ae76a892c5c270a7acb1f",
+                "procent_izvajalec": 24.7,
+                "st_mandatov_izvajalec": 25,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "O",
+                "udelezba_tip": "BG",
+                "dolocnost_tip": "doloceno",
+                "doloceno_tip": "stranka",
+                "stranka_id": "a79677ebd4dbd3bd7642deca",
+                "procent_izvajalec": 52.3,
+                "st_mandatov_izvajalec": 25,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "NO",
+                "udelezba_tip": "BG",
+                "procent_izvajalec": 52.3,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "O",
+                "udelezba_tip": "NBG",
+                "dolocnost_tip": "nedoloceno",
+                "procent_izvajalec": 52.3,
+                "st_anketirancev_izvajalec": 101
+            }
+        ]
+    },
+    {
+        "anketa_id": {
+            "$oid": "8de77b45a6a5236288aa264f"
+        },
+        "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?",
+        "tip": "glasovalno",
+        "glasovanje_dolocnost": "hipoteticno",
+        "glasovanje_tip": {
+            "raven_oblasti": "državna",
+            "tip": "volitve",
+            "volitve_tip": "DZ-S"
+        },
+        "odgovori": [
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "doloceno_tip": "stranka",
+                "stranka_id": "c32ae76a892c5c270a7acb1f",
+                "procent_izvajalec": 24.7,
+                "st_mandatov_izvajalec": 25,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "doloceno_tip": "stranka",
+                "stranka_id": "a79677ebd4dbd3bd7642deca",
+                "procent_izvajalec": 52.3,
+                "st_mandatov_izvajalec": 25,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "NO",
+                "procent_izvajalec": 52.3,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "NBG",
+                "procent_izvajalec": 52.3,
+                "st_anketirancev_izvajalec": 101
+            }
+        ]
+    },
+    {
+        "anketa_id": {
+            "$oid": "8de77b45a6a5236288aa264f"
+        },
+        "vprasanje": "Ali zaupate v delo vlade?",
+        "tip": "zaupanje",
+        "zaupanje_tip": "vlada",
+        "odgovori": [
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "zaupam",
+                "procent_izvajalec": 24.7,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "ne zaupam",
+                "procent_izvajalec": 24.7,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "NO",
+                "procent_izvajalec": 24.7,
+                "st_anketirancev_izvajalec": 101
+            },
+            {
+                "tip": "NSO",
+                "procent_izvajalec": 24.7,
+                "st_anketirancev_izvajalec": 101
+            }
+        ]
+    },
+]

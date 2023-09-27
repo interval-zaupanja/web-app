@@ -46,17 +46,25 @@
                     <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                     <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
                     <div class="charts">
-                        <PieChart
+                        <DoughnutChart
+                            v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                             caption="Delež odgovorov"
                             :caption_condition="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             style="display: inline-block"
                         />
-                        <PieChart
+                        <DoughnutChart
                             v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                             :caption_condition="true"
                             caption="Število mandatov (sedežev)"
+                            style="display: inline-block"
+                        />
+                        <PieChart
+                            v-if="!(vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S')"
+                            :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                            caption="Delež odgovorov"
+                            :caption_condition="false"
                             style="display: inline-block"
                         />
                     </div>
@@ -72,6 +80,7 @@ import axios from 'axios'
 
 import CopyLink from '../../components/CopyLink.vue'
 import PieChart from '@/components/charts/PieChart.vue'
+import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 
 import Odgovori from '@/views/Ankete/Odgovori.vue'
 
@@ -81,6 +90,7 @@ export default {
     components: {
         CopyLink,
         PieChart,
+        DoughnutChart,
         Odgovori
     },
     data() {
