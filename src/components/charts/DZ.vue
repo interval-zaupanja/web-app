@@ -201,7 +201,7 @@ export default {
                                 var stranka_ime = undefined
                                 var stranka_barva = undefined
                                 if (odgovori[j].stranka_id) { // odgovor je v obliki stranke
-                                    ({ stranka_ime, stranka_barva } = await this.getPartyNamesAndColors(odgovori[j].stranka_id))
+                                    ({ stranka_ime, stranka_barva } = await this.getLabelAndColor(odgovori[j].stranka_id))
                                 } 
 
                                 var label_current = stranka_ime ??
@@ -248,8 +248,7 @@ export default {
             const { data } = await axios.get(this.apiServer + "/api/ankete/" + anketa_id)
             return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD") // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
         },
-        async getPartyNamesAndColors(stranka_id) {
-            // dejansko se doda kratica imena (ime_kratica)
+        async getLabelAndColor(stranka_id) {
             const { data } = await axios.get(this.apiServer + "/api/stranke/" + stranka_id);
             return { 
                 stranka_ime: data.ime_kratica ?? data.ime,
