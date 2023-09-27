@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 400px">
+    <div style="height: 100%; min-height: 400px; max-width: 100%">
         <Scatter
             v-if="loaded"
             :options="options"
@@ -9,16 +9,30 @@
         <div v-if="!loaded">
             <Nalaganje size="medium"/>
         </div>
-    </div>
-    <div v-if="loaded">
-        <input type="checkbox" id="izloci-NV" name="izloci-NV" value="Izloči ne vem" @change="this.seznamIzlocitev.NV = !this.seznamIzlocitev.NV; this.izloci()">
-        <label for="izloci-NV">Izloči 'Ne vem'</label>
-        <br>
-        <input type="checkbox" id="izloci-NSO" name="izloci-NSO" value="Izloči ne želim se opredeliti" @change="this.seznamIzlocitev.NSO = !this.seznamIzlocitev.NSO; this.izloci()">
-        <label for="izloci-NSO">Izloči 'Ne povem'</label>
-        <br>
-        <input type="checkbox" id="izloci-NBG" name="izloci-NBG" value="Izloči ne bom glasoval" @change="this.seznamIzlocitev.NBG = !this.seznamIzlocitev.NBG; this.izloci()">
-        <label for="izloci-NBG">Izloči 'Ne bom glasoval'</label>
+        <div v-if="loaded" style="display: flex; justify-content: center; align-items: center; margin: 15px">
+            <div class="bubble bubble-inner yellow-gray">
+                <div style="display: inline-block; margin-right: 20px">
+                    Prikaži:
+                </div>
+                <div style="display: inline-block">
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -117,11 +131,11 @@ export default {
             },
             loaded: false,
             not_found: false,
-            seznamIzlocitev: {
-                NV: false,
+            prikazi: {
+                NV: true,
                 NSO: false,
                 NBG: false
-            },
+            }
         }
     },
     async mounted() {
@@ -226,10 +240,11 @@ export default {
 
             // Izločanje elementov iz polja
             for (var i = newData.datasets.length - 1; i >= 0; i--) { // loop od nazaj, da se med odstranjevanjem ne pokvari indeks
-                if (this.seznamIzlocitev.NV && newData.datasets[i].label === 'Ne vem' ||
-                    this.seznamIzlocitev.NSO && newData.datasets[i].label === 'Ne povem' ||
-                    this.seznamIzlocitev.NBG && newData.datasets[i].label === 'Ne bom glasoval'
-                    ) {
+                if (
+                    !this.prikazi.NV && newData.datasets[i].label === 'Ne vem' ||
+                    !this.prikazi.NSO && newData.datasets[i].label === 'Ne povem' ||
+                    !this.prikazi.NBG && newData.datasets[i].label === 'Ne bom glasoval'
+                ) {
                     newData.datasets.splice(i, 1)
                 }
             }
