@@ -1,43 +1,40 @@
 <template>
-    <div class="bubble bubble-outer yellow-white">
-        <div style="height: 100%; min-height: 400px; max-width: 100%">
-            <h3 style="text-align: center">Volitve v Državni zbor</h3>
-            <Scatter
-                id="drzavni-zbor"
-                v-if="loaded"
-                :options="options"
-                :data="data"
-                style="max-height: 400px"
-            />
-            <div v-if="!loaded">
-                <Nalaganje size="medium"/>
-            </div>
-            <div v-if="loaded" style="display: flex; justify-content: center; align-items: center;">
-                <div class="bubble bubble-inner">
-                    <div style="display: inline-block; margin-right: 20px">
-                        Prikaži:
+    <div style="height: 100%; min-height: 400px; max-width: 100%">
+        <Scatter
+            id="drzavni-zbor"
+            v-if="loaded"
+            :options="options"
+            :data="data"
+            style="max-height: 400px"
+        />
+        <div v-if="!loaded">
+            <Nalaganje size="medium"/>
+        </div>
+        <div v-if="loaded && !this.stranka_id" style="display: flex; justify-content: center; align-items: center">
+            <div class="bubble bubble-inner">
+                <div style="display: inline-block; margin-right: 20px">
+                    Prikaži:
+                </div>
+                <div style="display: inline-block">
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
                     </div>
-                    <div style="display: inline-block">
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                            @change="this.izloci()">
-                            <label class="form-check-label" for="prikaziNV">Ne vem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                            @change="this.izloci()">
-                            <label class="form-check-label" for="prikaziNSO">Ne povem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                            @change="this.izloci()">
-                            <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
-                        </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                        @change="this.izloci()">
+                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
                     </div>
                 </div>
             </div>
-        </div>    
-    </div>
+        </div>
+    </div>    
 </template>
 
 <script>
@@ -125,6 +122,7 @@ export default {
                         }
                     },
                     legend: {
+                        display: this.stranka_id ? false : true,
                         onClick: null, // onemogči klikanje na legendo
                         labels: {
                             filter: function(item) {
@@ -183,7 +181,10 @@ export default {
         } else {
             // Vstavitev pridobljenih podatkov v graf (tak način zato, da se pravilno kopira)
             this.data = JSON.parse(JSON.stringify((this.fullData)))
-            this.izloci()
+            if (!this.stranka_id) {
+                this.izloci()
+            }
+            this.obdelajPodatkePovprecje()
         }
         this.loaded = true;
     },
@@ -276,7 +277,6 @@ export default {
 
             newData.datasets = this.preracunaj(newData.datasets)
             this.data = newData
-            this.obdelajPodatkePovprecje()
         },
         preracunaj(podatki) {
             // Poiščemo vse podatke za določen x (za določen x in oznako imamo lahko več vrednosti!!!)

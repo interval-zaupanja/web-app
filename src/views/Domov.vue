@@ -1,7 +1,12 @@
 <template>
-    <div class="container">
-        <DZ/>
-        <ZadnjeAnkete/>
+    <div class="container" style="display: flex; justify-content: center; align-items: start">
+         <div class="bubble bubble-outer yellow-white" style="max-width: 800px">
+            <h3 style="text-align: center">Volitve v Državni zbor</h3>
+            <DZ/>
+        </div>
+        <div>
+            <ZadnjeAnkete/>
+        </div>
     </div>
 </template>
 
