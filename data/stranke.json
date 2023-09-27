@@ -57,7 +57,7 @@
     "ime": "Državljansko gibanje Resni.ca",
     "ime_kratica": "Resni.ca",
     "barva": "#7C5199",
-    "logo_uri": "https://stranka-resnica.si/file/2022/02/RESNI.CA_LOGO_FA1-768x543.png",
+    "logo_uri": "/Resni.ca.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Resni.ca"
   },
   {
@@ -126,7 +126,7 @@
     "ime": "Stranka Naša prihodnost",
     "ime_kratica": "SNP",
     "barva": "#9DBE4C",
-    "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Logotip-Nasa-Dezela-barvni.png",
+    "logo_uri": "/SNP.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Na%C5%A1a_prihodnost",
     "opombe": "'Stranka' se v imenu pogosto izpušča. SNP je kratica, ki si jo je stranka izbrala sama."
   }
