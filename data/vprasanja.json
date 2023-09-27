@@ -11,7 +11,7 @@
     },
     "glasovanje_dolocnost": "hipoteticno",
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "volitve",
       "volitve_tip": "DZ-S"
     },
@@ -59,7 +59,7 @@
     "tip": "glasovalno",
     "glasovanje_dolocnost": "hipoteticno",
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "volitve",
       "volitve_tip": "DZ-S"
     },
@@ -145,7 +145,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -191,7 +191,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -237,7 +237,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -288,7 +288,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -318,7 +318,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -359,7 +359,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -413,7 +413,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -454,7 +454,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -508,7 +508,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -549,7 +549,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -609,7 +609,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -672,7 +672,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -718,7 +718,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -764,7 +764,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -810,7 +810,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -856,7 +856,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -902,7 +902,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -947,7 +947,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -985,7 +985,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1023,7 +1023,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1062,7 +1062,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1103,7 +1103,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1144,7 +1144,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1189,7 +1189,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1251,7 +1251,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1311,7 +1311,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1365,7 +1365,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1409,7 +1409,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },
@@ -1453,7 +1453,7 @@
       }
     ],
     "glasovanje_tip": {
-      "raven_oblasti": "državno",
+      "raven_oblasti": "državna",
       "tip": "referendum",
       "referendum_tip": "zakonodajno-zavrnitveni"
     },

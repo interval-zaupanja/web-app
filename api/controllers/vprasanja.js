@@ -332,7 +332,7 @@ const seznamVprasanjGlasovalnaDZ = (req, res) => {
         {
             $match: {
                 "glasovanje_tip": {
-                    "raven_oblasti": "državno",
+                    "raven_oblasti": "državna",
                     "tip": "volitve",
                     "volitve_tip": "DZ-S"
                 }

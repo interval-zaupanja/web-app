@@ -4,7 +4,7 @@
             "$oid": "64dd0169fc95108f8a064c40"
         },
         "tip": {
-            "raven_oblasti": "državno",
+            "raven_oblasti": "državna",
             "tip": "referendum",
             "referendum_tip": "zakonodajno-zavrnitveni"
         },
@@ -19,7 +19,7 @@
             "$oid": "64dd0169fc95108f8a064c41"
         },
         "tip": {
-            "raven_oblasti": "državno",
+            "raven_oblasti": "državna",
             "tip": "referendum",
             "referendum_tip": "zakonodajno-zavrnitveni"
         },
@@ -35,7 +35,7 @@
             "$oid": "64dd0169fc95108f8a064c42"
         },
         "tip": {
-            "raven_oblasti": "državno",
+            "raven_oblasti": "državna",
             "tip": "referendum",
             "referendum_tip": "zakonodajno-zavrnitveni"
         },

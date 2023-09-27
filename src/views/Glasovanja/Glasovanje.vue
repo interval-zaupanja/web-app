@@ -11,9 +11,10 @@
             </div>
             <div style="display: inline-block" class="main">
                 <p>
-                    Tip: {{this.tip.tip}} - {{this.tip.raven_oblasti}} - 
+                    Tip: {{this.tip.tip}} - 
                     <span v-if="this.tip.tip === 'referendum'">{{this.tip.referendum_tip}}</span>
-                    <span v-if="this.tip.tip === 'volitve'">{{this.tip.volitve_tip}}</span>
+                    <span v-if="this.tip.tip === 'volitve'">{{this.vrniGlasovanjeTip(this.tip.volitve_tip)}}</span>
+                    ({{this.tip.raven_oblasti}} raven)
                 </p>
                 <p v-if="this.zacetek">Začetek: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
                 <p v-if="this.konec">Konec: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>

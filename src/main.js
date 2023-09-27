@@ -71,8 +71,11 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za 
 }
 
 app.config.globalProperties.vrniGlasovanjeTip = function (glasovanje_tip) { // uporablja tudi za bolj precizne tipe (npr. volitve_tip)
-    if (glasovanje_tip === "DZ-S") {
-        return "Državni zbor (splošno - 88 poslancev)";
+    switch (glasovanje_tip) {
+        case 'DZ-S':
+            return "Državni zbor - nemanjšinski poslanci"
+        case 'EP-SI':
+            return "Evropski parlament - poslanci iz RS"
     }
 }
 

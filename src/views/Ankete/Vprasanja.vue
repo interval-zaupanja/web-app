@@ -33,14 +33,14 @@
                     </p>
                     <p v-else-if="vprasanje.glasovanje_tip">
                         Tip glasovanja:
-                        {{ vprasanje.glasovanje_tip.raven_oblasti }}
-                        - {{ vprasanje.glasovanje_tip.tip}}
+                        {{ vprasanje.glasovanje_tip.tip}}
                         <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
                             - {{ this.vrniGlasovanjeTip(vprasanje.glasovanje_tip.volitve_tip)}}
                         </span>
                         <span v-if="vprasanje.glasovanje_tip.tip === 'referendum'">
                             - {{ vprasanje.glasovanje_tip.referendum_tip}}
                         </span>
+                        ({{ vprasanje.glasovanje_tip.raven_oblasti }} raven)
                     </p>
                     <p v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</p>
                     <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
@@ -140,7 +140,11 @@ export default {
                 case 'udelezba':
                     return 'udeležba'
                 case 'izid-izrojena-udelezba':
-                    return 'izid z izrojeno udeležbo'                    
+                    return 'izid z izrojeno udeležbo'
+                case 'drugo':
+                    return 'drugo'
+                default:
+                    return oznaka
             }
         },
         async getGlasovanja(vprasanja) {
