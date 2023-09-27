@@ -39,7 +39,11 @@ export default {
                     },
                     title: {
                         display: this.caption_condition,
-                        text: this.caption
+                        text: this.caption,
+                        color: "#404040",
+                        font: {
+                            size: 13
+                        }
                     }
                 }
             }
