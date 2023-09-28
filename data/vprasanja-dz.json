@@ -3,7 +3,7 @@
         "anketa_id": {
             "$oid": "873c017fc587d5ade7830b7a"
         },
-        "vprasanje": "Če bi bile volitve v nedeljo, katero stranko bi volili v Državni zbor?Katero stranko bi volili, če bi bile volitve naslednjo nedeljo?",
+        "vprasanje": "Katero stranko bi volili, če bi bile volitve naslednjo nedeljo?",
         "tip": "glasovalno",
         "glasovalno_tip": {
             "casovna_komponenta": "napoved",

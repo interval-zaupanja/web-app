@@ -55,7 +55,7 @@
                             style="display: inline-block"
                         />
                         <DoughnutChart
-                            v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
+                            v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S' && this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                             :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
                             :caption_condition="true"
                             caption="Število mandatov (sedežev)"
@@ -150,7 +150,11 @@ export default {
                     }
                 }
             }
-            return podatki;
+            if (podatki.labels.length == 0) {
+                return false
+            } else {
+                return podatki
+            }
         },
         kvalitativnaMeritev(oznaka) {
             switch (oznaka) {

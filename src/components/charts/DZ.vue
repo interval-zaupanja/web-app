@@ -14,39 +14,37 @@
             <div class="bubble bubble-inner">
                 <div>
                     <div style="display: inline-block; margin-right: 20px">
-                        Vključi in preračunaj:
+                        Vključi v graf in preračunaj:
                     </div>
-                    <div style="display: inline-block">
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziDrugo" v-model="this.prikazi.Drugo"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziDrugo">Drugo</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNobene" v-model="this.prikazi.Nobene"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNobene">Nobene</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziOPNVG">Oddal bi prazno ali neveljavno glasovnico</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNV">Ne vem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNSO">Ne povem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
-                        </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziOPNVG">Oddal bi prazno ali neveljavno glasovnico</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziDrugo" v-model="this.prikazi.Drugo"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziDrugo">Drugo</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNobene" v-model="this.prikazi.Nobene"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNobene">Nobene</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
                     </div>
                 </div>
                 <div class="caption" style="text-align: center">
@@ -143,20 +141,28 @@ export default {
                     },
                     legend: {
                         display: this.stranka_id ? false : true,
+                        onClick: function (e, legendItem, legend) {
+                            const index = legendItem.datasetIndex;
+                            // Delovanje funkcije se zanaša na dejstvo, da imamo dve zrcalni verziji (ena za linijo, ena za točke) elementov v datasets:
+                            // zrcalni kopiji sta si narazen za tolikor kot je elementov v legendi
+                            const legendaDolzina = legend.chart.legend.legendItems.length
+                            const ci = legend.chart;
+                            if (ci.isDatasetVisible(index)) {
+                                ci.hide(index)
+                                ci.hide(index - legendaDolzina)
+                                legendItem.hidden = true;
+                            } else {
+                                ci.show(index)
+                                ci.show(index - legendaDolzina)
+                                legendItem.hidden = false;
+                            }
+                        },
                         labels: {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')
                             }
                         }
                     },
-                    // title: {
-                    //     display: true,
-                    //     text: "Volitve v Državni zbor",
-                    //     color: "#000000",
-                    //     font: {
-                    //         size: 30,
-                    //     }
-                    // },
                     autocolors: false,
                     annotation: {
                         annotations: {
@@ -198,7 +204,6 @@ export default {
     async mounted() {
         // Pridobivanje podatkov
         const status = await this.getData();
-        console.log(this.fullData)
         if (status) {
             this.not_found = true;
         } else {
@@ -236,7 +241,6 @@ export default {
                                     color_current = this.vrniStdBarvo('NBG')
                                 }
                                 
-                                console.log(label_current)
                                 if (undefined === this.fullData.datasets.find((element) => element.label === label_current)) {
                                     this.fullData.datasets.push({
                                         label: label_current,

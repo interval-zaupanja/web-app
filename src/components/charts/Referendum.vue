@@ -13,7 +13,7 @@
             <div class="bubble bubble-inner yellow-gray">
                 <div>
                     <div style="display: inline-block; margin-right: 20px">
-                        Vključi in preračunaj:
+                        Vključi v graf in preračunaj:
                     </div>
                     <div style="display: inline-block">
                         <div class="form-check form-switch form-check-inline">
@@ -124,6 +124,22 @@ export default {
                         }
                     },
                     legend: {
+                        onClick: function (e, legendItem, legend) {
+                            const index = legendItem.datasetIndex;
+                            // Delovanje funkcije se zanaša na dejstvo, da imamo dve zrcalni verziji (ena za linijo, ena za točke) elementov v datasets:
+                            // zrcalni kopiji sta si narazen za tolikor kot je elementov v legendi
+                            const legendaDolzina = legend.chart.legend.legendItems.length
+                            const ci = legend.chart;
+                            if (ci.isDatasetVisible(index)) {
+                                ci.hide(index)
+                                ci.hide(index - legendaDolzina)
+                                legendItem.hidden = true;
+                            } else {
+                                ci.show(index)
+                                ci.show(index - legendaDolzina)
+                                legendItem.hidden = false;
+                            }
+                        }, 
                         labels: {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')
@@ -289,7 +305,7 @@ export default {
                 oznaka.borderColor += "80"
                 oznaka.label += "_scatter"
             }
-        },
+        }
     }
 }
 </script>

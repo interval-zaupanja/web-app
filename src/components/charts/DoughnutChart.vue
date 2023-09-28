@@ -35,7 +35,7 @@ export default {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'bottom'
+                        position: 'top'
                     },
                     title: {
                         display: this.caption_condition,
