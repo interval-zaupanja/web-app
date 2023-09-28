@@ -166,34 +166,33 @@ export default {
                     autocolors: false,
                     annotation: {
                         annotations: {
-                        line1: {
-                            type: "line",
-                            yMin: 4,
-                            yMax: 4,
-                            borderDash: [6, 6],
-                            borderDashOffset: 0,
-                            borderColor: this.barve.prag,
-                            borderWidth: 2,
-                            label: {
-                            display: true,
-                            content: "4% parlamentarni prag",
-                            color: this.barve.prag,
-                            backgroundColor: "rgba(0, 0, 0, 0)",
-                            position: "middle",
-                            rotation: 0,
-                            yAdjust: 10,
+                            line1: {
+                                type: "line",
+                                yMin: 4,
+                                yMax: 4,
+                                borderDash: [6, 6],
+                                borderDashOffset: 0,
+                                borderColor: this.barve.prag,
+                                borderWidth: 2,
+                                label: {
+                                    display: true,
+                                    content: "4% parlamentarni prag",
+                                    color: this.barve.prag,
+                                    backgroundColor: "rgba(0, 0, 0, 0)",
+                                    position: "middle",
+                                    rotation: 0,
+                                    yAdjust: 10,
+                                }
                             },
-                        },
                         },
                     },
                 }
-                
             },
             loaded: false,
             not_found: false,
             prikazi: {
                 Drugo: true,
-                Nobene: true,
+                Nobene: false,
                 OPNVG: false,
                 NV: true,
                 NSO: false,
@@ -251,7 +250,6 @@ export default {
                                         }],
                                         backgroundColor: color_current,
                                         borderColor: color_current,
-                                        borderWidth: 2,
                                         pointRadius: 3,
                                     })
                                 } else {
@@ -367,7 +365,7 @@ export default {
                     pointRadius: 0,
                     pointHitRadius: 0,
                     pointHoverRadius: 0,
-                    borderWidth: 4,
+                    borderWidth: 3,
                     showLine: true,
                     tension: 0.4 // to iz neznanega razloga vse poruši
                 })

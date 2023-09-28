@@ -23,6 +23,16 @@
   },
   {
     "_id": {
+      "$oid": "6515f0b1a004690f7a14b8d8"
+    },
+    "ime": "Večer",
+    "ime_polno": "Večer mediji d.o.o.",
+    "barva": "#FB7600",
+    "logo_uri": "https://vecer.com/images/vecer-logo.svg",
+    "wikipedia_uri": "https://sl.wikipedia.org/wiki/Ve%C4%8Der_(%C4%8Dasopis)"
+  },
+  {
+    "_id": {
       "$oid": "5f8024542bc87c975ffc1a76"
     },
     "ime": "24ur",

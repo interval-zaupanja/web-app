@@ -4,21 +4,21 @@
 		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
 			Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
 			<br>
-			<span v-if="anketa.izvajalci_ime.length > 0">
+			<span v-if="anketa.izvajalci_ime && anketa.izvajalci_ime.length > 0">
 				<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
 				<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
 				<span v-else>Izvajalci: </span>
 				{{ anketa.izvajalci_ime.join(', ') }}
 				<br>
 			</span>
-			<span v-if="anketa.narocniki_ime.length > 0">
+			<span v-if="anketa.narocniki_ime && anketa.narocniki_ime.length > 0">
 				<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
 				<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
 				<span v-else>Naročniki: </span>
 				{{ anketa.narocniki_ime.join(', ') }}
 				<br>
 			</span>
-			<span v-if="anketa.metode.length > 0">
+			<span v-if="anketa.metode && anketa.metode.length > 0">
 				<span v-if="anketa.metode.length == 1">Metoda: </span>
 				<span v-else-if="anketa.metode.length == 2">Metodi: </span>
 				<span v-else>Metode: </span>
@@ -35,11 +35,11 @@ export default {
 	name: "ZadnjeAnkete",
 	data() {
 		return {
-			ankete: []
+			ankete: [],
 		}
 	},
 	async mounted() {
-		this.getData();
+		this.getData()
 	},
 	methods: {
 		async getData() {

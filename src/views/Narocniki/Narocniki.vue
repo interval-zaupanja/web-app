@@ -1,5 +1,5 @@
 <template>
-    <h1>Naročniki</h1>
+    <h1>Naročniki in založniki</h1>
     <div v-if="!loaded">
         <Nalaganje/>
     </div>

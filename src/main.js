@@ -33,7 +33,7 @@ app.config.globalProperties.barve = {
     NSO: "#454545",
     NBG: "#000000",
     ZG: "#593F62",
-    prag: "#8B8C8F",
+    prag: "#000000",
     spekter_1: "#105074",
     spekter_2: "#147BB8",
     spekter_0: "#1E9AD6",
