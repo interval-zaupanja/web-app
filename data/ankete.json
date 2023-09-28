@@ -5,23 +5,41 @@
     },
     "izvajalci_id": [
       {
-        "$oid": "45a25e54cc55e42a456bdb32"
+        "$oid": "14dcac4803f6df6ffe905704"
       }
     ],
     "narocniki_id": [
       {
-        "$oid": "13153ec4d64ceb8d276eae42"
+        "$oid": "5f8024542bc87c975ffc1a76"
       }
     ],
     "vzorec": [{
-      "st_sodelujocih": 900
+      "st_sodelujocih": 715,
+      "starost": "18+",
+      "tip": "prebivalci",
+      "jurisdikcija": "Slovenija",
+      "reprezentativno": ["spol", "starost", "regija", "izobrazba"]
     }],
-    "metode": ["CATI"],
-    "zacetek": "2023-02-16",
-    "sredina": "2023-02-18",
-    "konec": "2023-02-20",
-    "opis": "Anketa je bila izvedena v času razgretih družbenopolitičnih razmer",
-    "opombe": "Malo več kot polovica ljudi se na klic ni odzvalo"
+    "metode": ["CATI", "CAWI"],
+    "zacetek": "2023-09-19",
+    "sredina": "2023-09-20",
+    "konec": "2023-09-21",
+    "opombe": "Nekateri podatki iz ankete še niso bili vneseni",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "5f8024542bc87c975ffc1a76"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.24ur.com/novice/slovenija/podpora-golobovi-vladi-padla-na-pred-poplavne-odstotke.html",
+            "datum_in_cas_objave": "2023-09-24T17:38:00"
+          }
+        ]
+      }
+    ]
   },
   {
     "_id": {

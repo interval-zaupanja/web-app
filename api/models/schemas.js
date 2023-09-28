@@ -203,7 +203,7 @@ const ankete_shema = new mongoose.Schema({
 const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
     udelezba_tip: { type: String, required: false }, // tukaj bi sicer lahko napisal bolj kompleksen pogoj, ki referencira vrednost kvalitativna_meritev
-    dolocnost_tip: { type: String, required: [this.tip === 'O', "Potrebno je navesti tip določnosti (doloceno, drugo)"] },
+    dolocnost_tip: { type: String, required: [this.tip === 'O', "Potrebno je navesti tip določnosti (doloceno, drugo, nobene, OPNVG (oddal bi prazno ali neveljavno glasovnico))"] },
     doloceno_tip: { type: String, required: [this.dolocnost_tip === 'doloceno', "Potrebno je navesti tip dolocenega odgovora"] },
     odgovor_std: { type: String, required: false }, // upoštevno le pri določenih vprašanjih 
     odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih
@@ -243,7 +243,7 @@ const glasovalno_tip_shema = new mongoose.Schema({
 const vprasanja_shema = new mongoose.Schema({
     anketa_id: { type: ObjectId, required: [true, "Enolični identifikator ankete je zahtevano polje"] }, // had to be changed to String from ObjectId because I could otherwise not get /api/vprasanja/anketa/:id to work because Mongoose appeared to sense some conflicts; https://stackoverflow.com/questions/7878557/cant-find-documents-searching-by-objectid-using-mongoose didn't work
     vprasanje: { type: String, required: false },
-    tip: { type: String, required: false }, // splosno, zaupanje, glasovalno
+    tip: { type: String, required: false }, // splosno, zaupanje, podpora, glasovalno
     glasovalno_tip: { glasovalno_tip_shema, required: [this.tip === 'glasovalno', "Če je vprašanje glasovalnega tipa, potem je potrebno specificirati, točen tip glasovalnega vprašanja"]},
     glasovanje_dolocnost: { type: String, required: [this.tip === 'glasovalno', "Potrebno je specificrati določnost glasovanja, po katerem vprašanje sprašuje"] },
     glasovanja_id: { type: [ObjectId], required: false },

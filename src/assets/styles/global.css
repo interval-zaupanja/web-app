@@ -17,6 +17,11 @@ body {
     'opsz' 48
 }
 
+.caption {
+    font-size: 13px;
+    color: rgb(86, 86, 86);
+}
+
 /* Colors */
 .pink-red {
     /*background-color: #f6caca;*/

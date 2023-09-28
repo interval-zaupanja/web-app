@@ -11,25 +11,30 @@
         </div>
         <div v-if="loaded" style="display: flex; justify-content: center; align-items: center; margin: 15px">
             <div class="bubble bubble-inner yellow-gray">
-                <div style="display: inline-block; margin-right: 20px">
-                    Prikaži:
+                <div>
+                    <div style="display: inline-block; margin-right: 20px">
+                        Vključi in preračunaj:
+                    </div>
+                    <div style="display: inline-block">
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNV">Ne vem</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
+                        </div>
+                    </div>
                 </div>
-                <div style="display: inline-block">
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
-                    </div>
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
-                    </div>
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
-                    </div>
+                <div class="caption" style="text-align: center">
+                    Če želite nekatere odgovore le skriti (odgovori se ne preračunajo), jih kliknite v legendi
                 </div>
             </div>
         </div>
@@ -119,7 +124,6 @@ export default {
                         }
                     },
                     legend: {
-                        onClick: null, // onemogči klikanje na legendo
                         labels: {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')

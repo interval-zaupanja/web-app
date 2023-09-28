@@ -12,25 +12,45 @@
         </div>
         <div v-if="loaded && !this.stranka_id" style="display: flex; justify-content: center; align-items: center">
             <div class="bubble bubble-inner">
-                <div style="display: inline-block; margin-right: 20px">
-                    Prikaži:
+                <div>
+                    <div style="display: inline-block; margin-right: 20px">
+                        Vključi in preračunaj:
+                    </div>
+                    <div style="display: inline-block">
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziDrugo" v-model="this.prikazi.Drugo"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziDrugo">Drugo</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNobene" v-model="this.prikazi.Nobene"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNobene">Nobene</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziOPNVG">Oddal bi prazno ali neveljavno glasovnico</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNV">Ne vem</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                        </div>
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                            @change="this.render()">
+                            <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
+                        </div>
+                    </div>
                 </div>
-                <div style="display: inline-block">
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
-                    </div>
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
-                    </div>
-                    <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                        @change="this.render()">
-                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
-                    </div>
+                <div class="caption" style="text-align: center">
+                    Če želite nekatere odgovore le skriti (odgovori se ne preračunajo), jih kliknite v legendi
                 </div>
             </div>
         </div>
@@ -123,7 +143,6 @@ export default {
                     },
                     legend: {
                         display: this.stranka_id ? false : true,
-                        onClick: null, // onemogči klikanje na legendo
                         labels: {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')
@@ -167,6 +186,9 @@ export default {
             loaded: false,
             not_found: false,
             prikazi: {
+                Drugo: true,
+                Nobene: true,
+                OPNVG: false,
                 NV: true,
                 NSO: false,
                 NBG: false
@@ -176,6 +198,7 @@ export default {
     async mounted() {
         // Pridobivanje podatkov
         const status = await this.getData();
+        console.log(this.fullData)
         if (status) {
             this.not_found = true;
         } else {
@@ -203,17 +226,17 @@ export default {
                                 if (odgovori[j].stranka_id) { // odgovor je v obliki stranke
                                     ({ stranka_ime, stranka_barva } = await this.getLabelAndColor(odgovori[j].stranka_id))
                                 } 
-
                                 var label_current = stranka_ime ??
-                                                    this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ??
+                                                    this.vrniOdgovor(odgovori[j].dolocnost_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ??
                                                     odgovori[j].odgovor
                                 var color_current = stranka_barva ??
-                                                    this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
+                                                    this.vrniStdBarvo(odgovori[j].dolocnost_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip)
                                 if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
                                     label_current = this.vrniOdgovor('NBG', false, 1)
                                     color_current = this.vrniStdBarvo('NBG')
                                 }
-
+                                
+                                console.log(label_current)
                                 if (undefined === this.fullData.datasets.find((element) => element.label === label_current)) {
                                     this.fullData.datasets.push({
                                         label: label_current,
@@ -261,6 +284,9 @@ export default {
             // Izločanje elementov iz polja
             for (var i = newData.datasets.length - 1; i >= 0; i--) { // loop od nazaj, da se med odstranjevanjem ne pokvari indeks
                 if (
+                    !this.prikazi.Drugo && newData.datasets[i].label === 'Drugo' ||
+                    !this.prikazi.Nobene && newData.datasets[i].label === 'Nobene' ||
+                    !this.prikazi.OPNVG && newData.datasets[i].label === 'Oddal bi prazno ali neveljavno glasovnico' ||
                     !this.prikazi.NV && newData.datasets[i].label === 'Ne vem' ||
                     !this.prikazi.NSO && newData.datasets[i].label === 'Ne povem' ||
                     !this.prikazi.NBG && newData.datasets[i].label === 'Ne bom glasoval'

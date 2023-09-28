@@ -26,9 +26,12 @@ app.config.globalProperties.barve = {
     pozitivno: "#18C10A",
     nevtralno: "#FAA613", // razlikujem od BG-NV, ki se do vprašanja sploh ne opredeli, nevtralno pa lahko odraža npr. delno strinjanje, delno nestrinjanje
     negativno: "#E71F1F",
+    drugo: "#FFFFFF",
+    nobene: "#C9DDFF",
+    OPNVG: "#ACAEB0",
     NO: "#7E848C",
-    NSO: "#DCDFE3",
-    NBG: "#ACAEB0",
+    NSO: "#454545",
+    NBG: "#000000",
     ZG: "#593F62",
     prag: "#8B8C8F",
     spekter_1: "#105074",
@@ -43,10 +46,24 @@ app.config.globalProperties.vrniStdBarvo = function (kljuc) { // na voljo le za 
         return this.barve.pozitivno
     } else if (kljuc === 'proti') {
         return this.barve.negativno
+    } if (kljuc === 'da') {
+        return this.barve.pozitivno
+    } else if (kljuc === 'ne') {
+        return this.barve.negativno
     } else if (kljuc === 'zaupam') {
         return this.barve.pozitivno
     } else if (kljuc === 'ne zaupam') {
         return this.barve.negativno
+    } else if (kljuc === 'podpiram') {
+        return this.barve.pozitivno
+    } else if (kljuc === 'ne podpiram') {
+        return this.barve.negativno
+    } else if (kljuc === 'drugo') {
+        return this.barve.drugo
+    } else if (kljuc === 'nobene') {
+        return this.barve.nobene
+    } else if (kljuc === 'OPNVG') {
+        return this.barve.OPNVG
     } else if (kljuc === 'NO') {
         return this.barve.NO
     } else if (kljuc === 'NSO') {
@@ -120,6 +137,21 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
             break;
         case 'ne zaupam':
             odgovor = 'ne zaupam'
+            break;
+        case 'da':
+            odgovor = 'da'
+            break;
+        case 'ne':
+            odgovor = 'ne'
+            break; 
+        case 'drugo':
+            odgovor = 'drugo'
+            break; 
+        case 'nobene':
+            odgovor = 'nobene'
+            break; 
+        case 'OPNVG':
+            odgovor = 'Oddal bi prazno ali neveljavno glasovnico'
             break;
         default:
             return null // odgovor ni standardiziran

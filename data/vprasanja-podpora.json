@@ -1,0 +1,57 @@
+[
+    {
+        "anketa_id": {
+            "$oid": "873c017fc587d5ade7830b7a"
+        },
+        "vprasanje": "Ali podpirate delo vlade?",
+        "tip": "podpora",
+        "zaupanje_tip": "vlada",
+        "odgovori": [
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "da",
+                "procent_izvajalec": 44.9
+            },
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "ne",
+                "procent_izvajalec": 38.9
+            },
+            {
+                "tip": "NO",
+                "odgovor": "ne vem",
+                "procent_izvajalec": 16.2,
+                "opis": "24ur navaja, da je to najvišji delež neopredeljenih od volitev v Državni zbor leta 2022"
+            }
+        ]
+    },
+    {
+        "anketa_id": {
+            "$oid": "873c017fc587d5ade7830b7a"
+        },
+        "vprasanje": "Ali podpirate delo parlamenta?",
+        "tip": "podpora",
+        "zaupanje_tip": "parlament",
+        "odgovori": [
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "da",
+                "procent_izvajalec": 37.8
+            },
+            {
+                "tip": "O",
+                "dolocnost_tip": "doloceno",
+                "odgovor_std": "ne",
+                "procent_izvajalec": 40.5
+            },
+            {
+                "tip": "NO",
+                "odgovor": "ne vem",
+                "procent_izvajalec": 21.7
+            }
+        ]
+    }
+]
