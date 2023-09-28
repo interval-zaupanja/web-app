@@ -142,14 +142,16 @@ export default {
             this.not_found = true;
         }
         this.loaded = true;
-        // setTimeout(function (hash) { // ne deluje oz. samo občasno
-        //     console.log(hash);
-        //     if (hash) {
-        //         const el_id = hash.replace('#', '')
-        //         const el = document.getElementById(el_id);
-        //         el.scrollIntoView({ behavior: 'smooth' })
-        //     }
-        // }, 1000, this.hash);
+        /*
+        setTimeout(function (hash) { // ne deluje oz. samo občasno
+            console.log(hash);
+            if (hash) {
+                const el_id = hash.replace('#', '')
+                const el = document.getElementById(el_id);
+                el.scrollIntoView({ behavior: 'smooth' })
+            }
+        }, 1000, this.hash);
+        */
 
         new Tooltip(document.body, {
             selector: "[data-bs-toggle='tooltip']",

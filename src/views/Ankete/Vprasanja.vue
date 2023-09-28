@@ -49,8 +49,6 @@
                         <DoughnutChart
                             v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                            caption="Delež odgovorov"
-                            :caption_condition="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
                             enota="%"
                             style="display: inline-block"
                         />
@@ -65,8 +63,6 @@
                         <PieChart
                             v-if="!(vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S')"
                             :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                            caption="Delež odgovorov"
-                            :caption_condition="false"
                             enota="%"
                             style="display: inline-block"
                         />
