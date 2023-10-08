@@ -16,8 +16,8 @@
                     <span v-if="this.tip.tip === 'volitve'">{{this.vrniGlasovanjeTip(this.tip.volitve_tip)}}</span>
                     ({{this.tip.raven_oblasti}} raven)
                 </p>
-                <p v-if="this.zacetek">Začetek: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
-                <p v-if="this.konec">Konec: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+                <p v-if="this.pg_zacetek && this.pg_konec">Predčasno glasovanje: {{ new Date(this.pg_zacetek).toLocaleDateString('en-GB') }} - {{ new Date(this.pg_konec).toLocaleDateString('en-GB') }}</p>
+                <p v-if="this.gg">Glavno glasovanje: {{ new Date(this.gg).toLocaleDateString('en-GB') }}</p>
             </div>
             <div>
                 <p v-if="this.opis">Opis: {{this.opis}}</p>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div>
-            <Referendum :glasovanje_id="this.id"/>
+            <Referendum :glasovanje_id="this.id" :pg_zacetek="this.pg_zacetek" :pg_konec="this.pg_konec" :gg="this.gg" :izid="this.izid"/>
         </div>     
     </div>
     <div v-if="not_found && loaded">
@@ -58,10 +58,15 @@ export default {
             tip: null,
             ime: null ,
             wikipedia_uri: null,
-            zacetek: null,
-            konec: null,
+            pg_zacetek: null,
+            pg_konec: null,
+            gg: null,
             opis: null,
             opombe: null,
+            st_volilnih_upravicencev: null,
+            udelezba_st_volilnih_upravicencev: null,
+            udelezba_delez_volilnih_upravicencev: null,
+            izid: null,
             loaded: false,
             not_found: false
         }        
@@ -80,10 +85,15 @@ export default {
                 this.tip = data.tip
                 this.ime = data.ime
                 this.wikipedia_uri = data.wikipedia_uri
-                this.zacetek = data.zacetek
-                this.konec = data.konec
+                this.pg_zacetek = data.pg_zacetek
+                this.pg_konec = data.pg_konec
+                this.gg = data.gg
                 this.opis = data.opis
                 this.opombe = data.opombe
+                this.st_volilnih_upravicencev = data.st_volilnih_upravicencev,
+                this.udelezba_st_volilnih_upravicencev = data.udelezba_st_volilnih_upravicencev,
+                this.udelezba_delez_volilnih_upravicencev = data.udelezba_delez_volilnih_upravicencev,
+                this.izid = data.izid
                 return true
             } catch (error) {
                 console.log(error)

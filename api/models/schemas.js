@@ -43,14 +43,40 @@ const tipi_glasovanja_shema = new mongoose.Schema({
  *     - _id
  *     - ime
  */
+
+// MANJKA SHEMA
+const izid_shema = new mongoose.Schema({
+    doloceno_tip: { type: String, required: false},
+    odgovor_std: { type: String, required: false },
+    odgovor: { type: String, required: false },
+    stranka_id: {
+        type: ObjectId,
+        required:
+            [
+                this.doloceno_tip === 'stranka',
+                "Potrebno je navesti identifikator stranke"
+            ]
+    },
+    procent_glasovnic: { type: Number, required: false },
+    st_glasovnic: { type: Number, required: false },
+    barva: { type: String, required: false },
+    opis: { type: String, required: false },
+    opombe: { type: String, required: false }
+})
+
 const glasovanja_shema = new mongoose.Schema({
     tip: { type: tipi_glasovanja_shema, required: [true, "Tip glasovanja je zahtevano polje"] },
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     wikipedia_uri: { type: String, required: false },
-    zacetek: { type: Date, required: false }, // predčasno glasovanje, začetek glasovanja po pošti (ZAENKRAT TO ŠETEJEM KOT ZAČETEK PREDČASNEGA GLASOVANJA)
-    konec: { type: Date, required: false }, // datum na katerega se glasovanje začne
+    pg_zacetek: { type: Date, required: false }, // začetek predčasnega glasovanja
+    pg_konec: { type: Date, required: false }, // konec predčasnega glasovanja
+    gg: { ype: Date, required: false}, // datum glavnega glasovanja, praktično vedno tudi konec glasovanja
     opis: { type: String, required: false }, // ni v API dokumentaciji
-    opombe: { type: String, required: false } // ni v API dokumentaciji
+    opombe: { type: String, required: false }, // ni v API dokumentaciji
+    st_volilnih_upravicencev: { type: Number, required: false },
+    udelezba_st_volilnih_upravicencev: { type: Number, required: false },
+    udelezba_delez_volilnih_upravicencev: { type: Number, required: false },
+    izid: { type: [izid_shema], required: false }
 });
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti

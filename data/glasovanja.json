@@ -10,9 +10,30 @@
         },
         "ime": "Referendum o spremembah Zakona o vladi",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_spremembah_Zakona_o_vladi",
-        "zacetek": "2022-11-22",
-        "konec": "2022-11-27",
-        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
+        "pg_zacetek": "2022-11-22",
+        "pg_konec": "2022-11-24",
+        "gg": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869.",
+        "st_volilnih_upravicencev": 1694361,
+        "udelezba_st_volilnih_upravicencev": 708701,
+        "udelezba_delez_volilnih_upravicencev": 41.83,
+        "izid": [
+            {
+                "odgovor_std": "za",
+                "procent_glasovnic": 56.39,
+                "st_glasovnic": 399588
+            },
+            {
+                "odgovor_std": "proti",
+                "procent_glasovnic": 43.09,
+                "st_glasovnic": 305317
+            },
+            {
+                "odgovor_std": "OPNVG",
+                "procent_glasovnic": 0.52,
+                "st_glasovnic": 3710
+            }
+        ]
     },
     {
         "_id": {
@@ -25,10 +46,30 @@
         },
         "ime": "Referendum o Zakonu o dolgotrajni oskrbi",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_Zakonu_o_dolgotrajni_oskrbi",
-        "zacetek": "2022-11-22",
-        "konec": "2022-11-27",
-        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
-
+        "pg_zacetek": "2022-11-22",
+        "pg_konec": "2022-11-24",
+        "gg": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869.",
+        "st_volilnih_upravicencev": 1694361,
+        "udelezba_st_volilnih_upravicencev": 708856,
+        "udelezba_delez_volilnih_upravicencev": 41.84,
+        "izid": [
+            {
+                "odgovor_std": "za",
+                "procent_glasovnic": 61.99,
+                "st_glasovnic": 439376
+            },
+            {
+                "odgovor_std": "proti",
+                "procent_glasovnic": 37.56,
+                "st_glasovnic": 266206	
+            },
+            {
+                "odgovor_std": "OPNVG",
+                "procent_glasovnic": 0.45,
+                "st_glasovnic": 3209
+            }
+        ]
     },
     {
         "_id": {
@@ -41,10 +82,30 @@
         },
         "ime": "Referendum o Zakonu o RTV Slovenija",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Referendum_o_zakonu_o_RTV_Slovenija_(2022)",
-        "zacetek": "2022-11-22",
-        "konec": "2022-11-27",
-        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869."
-
+        "pg_zacetek": "2022-11-22",
+        "pg_konec": "2022-11-24",
+        "gg": "2022-11-27",
+        "opis": "Skupaj bo lahko glasovalo 1.694.343 volilnih upravičenk in upravičencev, za zavrnitev posameznega zakona morata biti izpolnjena dva pogoja, in sicer da večina volivcev veljavno glasuje proti zakonu in hkrati, da je teh volivcev najmanj 338.869.",
+        "st_volilnih_upravicencev": 1694361,
+        "udelezba_st_volilnih_upravicencev": 709020,
+        "udelezba_delez_volilnih_upravicencev": 41.85,
+        "izid": [
+            {
+                "odgovor_std": "za",
+                "procent_glasovnic": 62.62,
+                "st_glasovnic": 443971
+            },
+            {
+                "odgovor_std": "proti",
+                "procent_glasovnic": 37.05,
+                "st_glasovnic": 262648	
+            },
+            {
+                "odgovor_std": "OPNVG",
+                "procent_glasovnic": 0.33,
+                "st_glasovnic": 2347
+            }
+        ]
     },
     {
         "_id": {
@@ -57,7 +118,8 @@
         },
         "ime": "Volitve poslancev iz Slovenije v Evropski parlament 2024",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Volitve_poslancev_iz_Slovenije_v_Evropski_parlament_2024",
-        "zacetek": "2024-06-09",
-        "konec": "2024-06-09"
+        "pg_zacetek": "2022-11-22",
+        "pg_konec": "2022-11-24",
+        "gg": "2022-11-27"
     }
 ]

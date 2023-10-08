@@ -1,7 +1,6 @@
 <template>
     <div style="height: 100%; min-height: 400px; max-width: 100%">
         <Scatter
-            id="drzavni-zbor"
             v-if="loaded"
             :options="options"
             :data="data"
@@ -126,6 +125,11 @@ export default {
                             callback: function (value) {
                                 return value + "%"
                             }
+                        },
+                        offset: true,
+                        gridLines: {
+                            offsetGridLines: false,
+                            display: true,
                         }
                     }
                 },

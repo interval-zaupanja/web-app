@@ -61,6 +61,7 @@ import {
   Filler // potrebno, da deluje (in ne skrije linije) tension (glej https://stackoverflow.com/questions/74656851/unable-to-use-line-tension-for-scatter-chart-with-showline-enabled)
 } from "chart.js";
 import { Scatter } from "vue-chartjs";
+import annotationPlugin from "chartjs-plugin-annotation";
 
 ChartJS.register(
   CategoryScale,
@@ -71,7 +72,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  annotationPlugin
 );
 
 export default {
@@ -80,7 +82,7 @@ export default {
         Scatter,
         Nalaganje
     },
-    props: ['glasovanje_id'],
+    props: ['glasovanje_id', 'pg_zacetek', 'pg_konec', 'gg', 'izid'],
     data() {
         return {
             type: 'scatter',
@@ -103,13 +105,23 @@ export default {
                         time: {
                             unit: 'day'
                         },
-                        position: 'bottom'
+                        position: 'bottom',
+                        offset: true,
+                        gridLines: {
+                            offsetGridLines: false,
+                            display: true,
+                        }
                     },
                     y: {
                         ticks: {
                             callback: function (value) {
                                 return value + "%"
                             }
+                        },
+                        offset: true,
+                        gridLines: {
+                            offsetGridLines: false,
+                            display: true,
                         }
                     }
                 },
@@ -144,10 +156,69 @@ export default {
                             filter: function(item) {
                                 return !item.text.endsWith('_scatter')
                             }
-                        }
+                        },
+                        
+                    },
+                    autocolors: false,
+                    annotation: {
+                        annotations: {
+                            pg_zacetek: {
+                                type: "line",
+                                xMin: moment(this.pg_zacetek, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                xMax: moment(this.pg_zacetek, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                borderDash: [6, 6],
+                                borderDashOffset: 0,
+                                borderColor: "grey",
+                                borderWidth: 2,
+                                label: {
+                                    display: true,
+                                    content: "Začetek predčasnega glasovanja",
+                                    color: "grey",
+                                    backgroundColor: "rgba(0, 0, 0, 0)",
+                                    position: "right",
+                                    rotation: 90,
+                                    xAdjust: 10
+                                }
+                            },
+                            pg_konec: {
+                                type: "line",
+                                xMin: moment(this.pg_konec, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                xMax: moment(this.pg_konec, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                borderDash: [6, 6],
+                                borderDashOffset: 0,
+                                borderColor: "grey",
+                                borderWidth: 2,
+                                label: {
+                                    display: true,
+                                    content: "Konec predčasnega glasovanja",
+                                    color: "grey",
+                                    backgroundColor: "rgba(0, 0, 0, 0)",
+                                    position: "right",
+                                    rotation: 90,
+                                    xAdjust: 10
+                                }
+                            },
+                            gg: {
+                                type: "line",
+                                xMin: moment(this.gg, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                xMax: this.gg,
+                                borderDash: [6, 6],
+                                borderDashOffset: 0,
+                                borderColor: "grey",
+                                borderWidth: 2,
+                                label: {
+                                    display: true,
+                                    content: "Izid in glavno glasovanje",
+                                    color: "grey",
+                                    backgroundColor: "rgba(0, 0, 0, 0)",
+                                    position: "right",
+                                    rotation: 90,
+                                    xAdjust: 10
+                                }
+                            },
+                        },
                     },
                 }
-                
             },
             loaded: false,
             not_found: false,
@@ -176,8 +247,8 @@ export default {
                     if (data[i].glasovalno_tip.kvalitativna_meritev === 'izid' || data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba') {
                         const { anketa_id, odgovori, _id } = data[i];
                         for (let j = 0; j < odgovori.length; j++) { // odgovori
-                            var label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
-                            var color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
+                            let label_current = this.vrniOdgovor(odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ?? odgovori[j].odgovor
+                            let color_current = this.vrniStdBarvo(odgovori[j].odgovor_std ?? odgovori[j].tip)
                             if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
                                 label_current = this.vrniOdgovor('NBG', false, 1)
                                 color_current = this.vrniStdBarvo('NBG')
@@ -205,6 +276,33 @@ export default {
                                 })
                             }
                         }
+                    }
+                }
+
+                // dodan izid volitev
+                for (let i = 0; i < this.izid.length; i++) {
+                    // lahko bi za OPNVG naredil tudi tako kot pri anketah, vendar sem vsaj začasno poenostavil in dal v odgovor_std
+                    let label_current = this.vrniOdgovor(this.izid[i].odgovor_std, false, 1)
+                    let color_current = this.vrniStdBarvo(this.izid[i].odgovor_std)
+
+                    if (undefined === this.fullData.datasets.find((element) => element.label === label_current)) {
+                        this.fullData.datasets.push({
+                            label: label_current,
+                            data: [{
+                                x: moment(this.gg, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                                y: this.izid[i].procent_glasovnic,
+                            }],
+                            backgroundColor: color_current,
+                            borderColor: color_current,
+                            borderWidth: 2,
+                            pointRadius: 3,
+                        })
+                    } else {
+                        const obstojeciVnos = this.fullData.datasets.find((element) => element.label === label_current)
+                        obstojeciVnos.data.push({
+                            x: moment(this.gg, "YYYY-MM-DD").format("YYYY-MM-DD"),
+                            y: this.izid[i].procent_glasovnic,
+                        })
                     }
                 }
             } catch (error) {
