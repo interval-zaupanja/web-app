@@ -1,8 +1,12 @@
 <template>
-    <button type="button" @click="copyURL()"
-        data-bs-toggle="tooltip" data-bs-placement="top"
+    <button
+        class="side-button"
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
         data-bs-custom-class="custom-tooltip"
         data-bs-title="Kopiraj povezavo"
+        @click="copyURL()"
     >
         <img src="https://icon-library.com/images/copy-link-icon/copy-link-icon-3.jpg"/>
     </button>

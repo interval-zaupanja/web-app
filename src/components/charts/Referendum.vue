@@ -3,6 +3,7 @@
         <Scatter
             v-if="loaded"
             :options="options"
+            :plugins="plugins"
             :data="data"
             style="max-height: 400px"
         />
@@ -218,8 +219,41 @@ export default {
                             },
                         },
                     },
+                },
+                customLine: {
+                    width: 5,
+                    color: 'pink'
                 }
             },
+            plugins: [
+                {
+                    id: 'customLine',
+                    afterDatasetsDraw: (chart, ctx, opts) => {
+                        const width = opts.width || 1;
+                        const color = opts.color || 'black'
+
+                        if (!chart.active || chart.active.length === 0) {
+                            return;
+                        }
+
+                        const {
+                            chartArea: {
+                            top,
+                            bottom
+                            }
+                        } = chart;
+                        const xValue = chart.active[0]._model.x
+
+                        ctx.lineWidth = width;
+                        ctx.strokeStyle = color;
+
+                        ctx.beginPath();
+                        ctx.moveTo(xValue, top);
+                        ctx.lineTo(xValue, bottom);
+                        ctx.stroke();
+                    }
+                }
+            ],
             loaded: false,
             not_found: false,
             prikazi: {

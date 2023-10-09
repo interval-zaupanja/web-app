@@ -5,7 +5,10 @@
             <span class="anchor-outer" :id="vprasanje._id"></span>
             <div>
                 <div>
-                    <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" class="side-button"/>
+                    <div style="float: right">
+                        <Report tip="vprašanje" :id="vprasanje._id"/>
+                        <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id"/>
+                    </div>
                     <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
                     <p>
                         Tip vprašanja: {{vprasanje.tip}}
@@ -78,6 +81,7 @@
 import axios from 'axios'
 
 import CopyLink from '../../components/CopyLink.vue'
+import Report from '../../components/Report.vue'
 import PieChart from '@/components/charts/PieChart.vue'
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 
@@ -88,6 +92,7 @@ export default {
     props: ['data', 'id'],
     components: {
         CopyLink,
+        Report,
         PieChart,
         DoughnutChart,
         Odgovori

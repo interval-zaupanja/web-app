@@ -4,7 +4,7 @@ import router from './router' // ni potrebno specificirati index.js, ker to že 
 
 import '@/assets/styles/global.css'
 
-import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.js"
 
 

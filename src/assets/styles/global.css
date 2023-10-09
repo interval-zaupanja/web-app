@@ -102,8 +102,9 @@ body {
 /* Buttons */
 /* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
 .side-button {
-    float: right;
     visibility: hidden;
+    display: inline-block;
+    margin: 0px 0px 10px 10px;
 }
 
 .bubble:hover .side-button {

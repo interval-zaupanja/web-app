@@ -43,7 +43,7 @@
                         <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
                             {{ metoda }}
                             <span
-                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-toggle="tooltip" data-bs-placement="right"
                                 data-bs-custom-class="custom-tooltip"
                                 :data-bs-title="this.vrniPojasniloMetode(metoda)"
                             >
