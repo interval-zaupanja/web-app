@@ -470,6 +470,54 @@ const kandidati_shema = new mongoose.Schema({
     opombe: { type: String, required: false }
 });
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *   Prijava:
+ *    type: object
+ *    description:
+ *    properties:
+ *     _id:
+ *      type: ObjectId
+ *      description: <b>enolični identifikator</b> prijave
+ *      example: 635a62f5dc5d7968e68464be
+ *     tip:
+ *      type: string
+ *      description: tip napačnega podatka
+ *     id:
+ *      type: string
+ *      description: enolični identifikator napačnega podatka
+ *     opis:
+ *      type: string
+ *      description: opis napake
+ *     razreseno:
+ *      type: boolean
+ *      description: pove, če je bila napaka že razrešena
+ *     upvotes:
+ *      type: number
+ *      description: število gorglasov (upvotes), ki pritrjujejo prijavi (napaka obstaja, lahko tudi indikator, da je pomembna)
+ *     downvotes:
+ *      type: number
+ *      description: število dolglasov (downvotes), ki ne pritrjujejo prijavi (napaka ne obstaja)
+ *     opombe:
+ *      type: string
+ *      description: opombe k prijavi
+ *    required:
+ *     - _id
+ *     - ime
+ *     - priimek
+ */
+const prijave_shema = new mongoose.Schema({
+    tip: { type: String, required: [true, "Tip je zahtevano polje"] },
+    id: { type: ObjectId, required: [true, "Enolični identifikator je zahtevano polje"] },
+    opis : { type: String, required: false },
+    razreseno: { type: Boolean, required: false },
+    upvotes: { type: Number, required: true },
+    downvotes: { type: Number, required: true },
+    opombe: { type: String, required: false }
+});
+
 mongoose.model("Glasovanje", glasovanja_shema, "Glasovanja");
 mongoose.model("Anketa", ankete_shema, "Ankete");
 mongoose.model("Vprasanje", vprasanja_shema, "Vprasanja");
@@ -477,3 +525,4 @@ mongoose.model("Izvajalec", izvajalci_shema, "Izvajalci");
 mongoose.model("Narocnik", narocniki_shema, "Narocniki");
 mongoose.model("Stranka", stranke_shema, "Stranke");
 mongoose.model("Kandidat", kandidati_shema, "Kandidati");
+mongoose.model("Prijava", prijave_shema, "Prijave");
