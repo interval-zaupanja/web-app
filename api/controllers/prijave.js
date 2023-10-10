@@ -19,6 +19,7 @@ const Prijave = mongoose.model("Prijava");
  *         - _id: 65255e7d192b6e67bacc61c5
  *           tip: vprasanje
  *           id: 65158b712fa21d078bc09df1
+ *           pot: /ankete/873c017fc587d5ade7830b7a#65158b712fa21d078bc09df1
  *           opis: Napačen tip glasovanja
  *           razreseno: false
  *           uvpotes: 5
@@ -68,6 +69,7 @@ const seznamPrijav = (req, res) => {
  *         - _id: 65255e7d192b6e67bacc61c5
  *           tip: vprasanje
  *           id: 65158b712fa21d078bc09df1
+ *           pot: /ankete/873c017fc587d5ade7830b7a#65158b712fa21d078bc09df1
  *           opis: Napačen tip glasovanja
  *           razreseno: false
  *           uvpotes: 5
@@ -125,8 +127,11 @@ const podrobnostiPrijave = (req, res) => {
  *          required: true
  *          example: vprasanje
  *        id:
- *          required: true
+ *          required: false
  *          example: 65158b712fa21d078bc09df1
+ *        pot:
+ *          required: false
+ *          example: /ankete/873c017fc587d5ade7830b7a#65158b712fa21d078bc09df1
  *        opis:
  *          required: false
  *          example: Napačen tip glasovanja
@@ -159,9 +164,9 @@ const podrobnostiPrijave = (req, res) => {
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       examples:
- *        ime is required:
+ *        tip is required:
  *         value:
- *          message: Parameter 'ime' je obvezen
+ *          message: Polje 'tip' je obvezno
  *    '401':
  *     description: <b>Napaka</b>, ni pravice dostopa.
  *     content:
@@ -172,15 +177,18 @@ const podrobnostiPrijave = (req, res) => {
  *        message: Podatkovna baza ni na voljo
  */
 const ustvariPrijavo = (req, res) => {
-    if (!req.body.id || !req.body.tip) {
-        console.log(req.body.id)
-        console.log(req.body.tip)
+    if (!req.body.tip) {
         res
             .status(400)
             .json({sporocilo: "Potrebno je vnesti vse obvezne podatke!"});
     } else {
-        const novaPrijava = {tip: req.body.tip, id: req.body.id};
-        
+        const novaPrijava = { tip: req.body.tip };
+        if (req.body.id) {
+            novaPrijava.id = req.body.id;
+        }
+        if (req.body.pot) {
+            novaPrijava.pot = req.body.pot;
+        }
         if (req.body.opis) {
             novaPrijava.opis = req.body.opis;
         }
@@ -214,7 +222,7 @@ const ustvariPrijavo = (req, res) => {
  *       pattern: '^[a-fA-F\d]{24}$'
  *      description: <b>enolični identifikator</b> prijave
  *      required: true
- *      example: a79677ebd4dbd3bd7642deca
+ *      example: 65158b712fa21d078bc09df1
  *   requestBody:
  *    description: Prijava
  *    required: true
@@ -223,20 +231,12 @@ const ustvariPrijavo = (req, res) => {
  *      schema:
  *       type: object
  *       properties:
- *        ime:
- *          example: Gibanje svoboda
- *        ime_kratica:
- *          example: GS
- *        barva:
- *          example: #015CA4
- *        logo_uri:
- *          example: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gibanje_Svoboda_logo.svg/2880px-Gibanje_Svoboda_logo.svg.png
- *        opis:
- *          example: Gibanje svoboda je stranka, ki je nastala pred državnozborskimi volitvami leta 2022
- *        opombe:
- *          example: Včasih se je imenovala Stranka zelenih dejanj
+ *        id:
+ *          example: 65158b712fa21d078bc09df1
+ *        upvotes:
+ *          example: 2
  *       required:
- *        - ime
+ *        - id
  *   responses:
  *    '200':
  *     description: <b>OK</b>, pri posodabljanju prijave
@@ -253,7 +253,7 @@ const ustvariPrijavo = (req, res) => {
  *       examples:
  *        ime ni podano:
  *         value:
- *          message: Polje 'ime' mora biti obvezno podano
+ *          message: Polje 'id' mora biti obvezno podano
  *    '404':
  *     description: Prijava s tem <b>enoličnim identifikatorjem</b> ne obstaja, s sporočilom napake.
  *     content:
@@ -273,11 +273,11 @@ const ustvariPrijavo = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const posodobiPrijavo = (req, res) => {
+const posodobiPrijavo = (req, res) => { // NI IMPLEMENTIRANO!!!
     const idPrijave = req.params.id;
 
     if (
-        !req.body.ime
+        !req.body.id
     ) {
         res.status(400).json({
             sporocilo: "Napaka, niso vneseni vsi zahtevani podatki",
@@ -338,7 +338,7 @@ const posodobiPrijavo = (req, res) => {
  *       type: string
  *      description: <b>enolični identifikator</b> prijave
  *      required: true
- *      example: a79677ebd4dbd3bd7642deca
+ *      example: 65158b712fa21d078bc09df1
  *   responses:
  *    '204':
  *     description: Prijava je izbrisana

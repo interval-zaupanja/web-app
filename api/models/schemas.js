@@ -487,7 +487,10 @@ const kandidati_shema = new mongoose.Schema({
  *      description: tip napačnega podatka
  *     id:
  *      type: string
- *      description: enolični identifikator napačnega podatka
+ *      description: enolični identifikator enitete z napačnim podatkom
+ *     pot:
+ *      type: string
+ *      description: pot do enitete z napačnim podatkom 
  *     opis:
  *      type: string
  *      description: opis napake
@@ -505,14 +508,14 @@ const kandidati_shema = new mongoose.Schema({
  *      description: opombe k prijavi
  *    required:
  *     - _id
- *     - ime
- *     - priimek
+ *     - tip
  */
 const prijave_shema = new mongoose.Schema({
     tip: { type: String, required: [true, "Tip je zahtevano polje"] },
-    id: { type: ObjectId, required: [true, "Enolični identifikator je zahtevano polje"] },
+    id: { type: ObjectId, required: false },
+    pot: { type: String, required: false },
     opis : { type: String, required: false },
-    razreseno: { type: Boolean, required: false },
+    razreseno: { type: Boolean, required: true },
     upvotes: { type: Number, required: true },
     downvotes: { type: Number, required: true },
     opombe: { type: String, required: false }

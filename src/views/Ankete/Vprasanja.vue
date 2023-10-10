@@ -6,7 +6,7 @@
             <div>
                 <div>
                     <div style="float: right">
-                        <Report tip="vprasanje" :id="vprasanje._id"/>
+                        <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id" />
                         <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id"/>
                     </div>
                     <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>

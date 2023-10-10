@@ -21,7 +21,7 @@
                     <div class="modal-body">
                         <div class="input-group mb-3">
                             <span class="input-group-text">Tip</span>
-                            <input type="text" class="form-control" :value="this.tip" disabled required>
+                            <input type="text" class="form-control" :value="this.vrniTipEntitete(this.tip)" disabled required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">ID</span>
@@ -43,21 +43,21 @@
 
     <!-- Toasts -->
     <div :id="'toastSucess' + this.modalID" class="toast align-items-center text-bg-primary border-0 bg-success toast-position" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">Prijava uspešno oddana. Hvala!</div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+        <div class="d-flex">
+            <div class="toast-body">Prijava uspešno oddana. Hvala!</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
+    </div>
 
-        <div :id="'toastFailure' + this.modalID" class="toast align-items-center text-bg-primary border-0 bg-danger toast-position" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <div>Prišlo je do napake. Prosimo poskusite znova.</div>
-                    <div v-if="this.status">Podatki o napaki: {{ this.status }}</div>
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div :id="'toastFailure' + this.modalID" class="toast align-items-center text-bg-primary border-0 bg-danger toast-position" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <div>Prišlo je do napake. Prosimo poskusite znova.</div>
+                <div v-if="this.status">Podatki o napaki: {{ this.status }}</div>
             </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
+    </div>
 </template>
 
 <script>
@@ -67,7 +67,7 @@ import axios from 'axios'
 
 export default {
     name: 'CopyLink',
-    props: [ 'id', 'tip'],
+    props: [ 'id', 'pot', 'tip'],
     data() {
         return {
             modalID: 'prijaviNapakoModal' + this.tip + this.id,
@@ -88,8 +88,9 @@ export default {
         },
         async submit() {
             await axios.post(this.apiServer + '/api/prijave', {
-                tip: this.tip,
+                tip: this.tip, // v modalnem oknu je polje morda preimenovano, da je bolj uporabniku prijazno
                 id: this.id,
+                pot: this.pot, // v modalnem oknu je to skrito polje
                 opis: document.getElementById('opis' + this.modalID).value
             }).then(() => {
                 var toastSucessHTMLElement = document.getElementById('toastSucess' + this.modalID)

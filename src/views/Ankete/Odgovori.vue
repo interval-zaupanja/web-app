@@ -6,7 +6,7 @@
             <div>
                 <div style="float: right">
                     <div style="float: right; display: block">
-                        <Report tip="odgovor" :id="odgovor._id"/>
+                        <Report tip="odgovor" :id="odgovor._id" :pot="'ankete/' + this.id + '#' + odgovor._id"/>
                         <CopyLink :path="'ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
                     </div>
                     <div v-if="odgovor.odgovor_stranka_logo_uri != null">

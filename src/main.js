@@ -202,4 +202,17 @@ app.config.globalProperties.vrniLogoUri = function (uri) {
     }
 }
 
+app.config.globalProperties.vrniTipEntitete = function (std_ime) {
+    switch (std_ime) {
+        case 'vprasanje':
+            return "vprašanje"
+        case 'odgovor':
+            return "odgovor"
+        case 'anketa':
+            return "anketa"
+        case 'vir':
+            return "vir"
+    }
+}
+
 app.use(router).mount('#app')
