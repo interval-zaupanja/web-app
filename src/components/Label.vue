@@ -1,6 +1,6 @@
 <template>
-    <span v-if="tip === 'narocnik'" class="narocnik">NAROČNIK ANKETE</span>
-    <span v-if="tip === 'izvajalec'" class="izvajalec">IZVAJALEC ANKETE</span>
+    <div v-if="tip === 'narocnik'" class="narocnik">NAROČNIK ANKETE</div>
+    <div v-if="tip === 'izvajalec'" class="izvajalec">IZVAJALEC ANKETE</div>
 </template>
 
 <script>
@@ -11,13 +11,14 @@ export default {
 </script>
 
 <style scoped>
-span {
+div {
+    display: inline-block;
+
     font-size: 12px;
     padding: 5px 10px;
     margin: 0px 10px;
     border-radius: 10px;
 }
-
 .narocnik {
     background-color: crimson;
     color: white;
