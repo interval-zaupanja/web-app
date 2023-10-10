@@ -1,23 +1,21 @@
 <template>
-    <!-- Gumb, ki sproži modalno okno -->
-    <button id="prijaviNapakoGumb"
-        class="side-button"
+    <button
+        class="side-button prijaviNapakoGumb"
         type="button"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         data-bs-custom-class="custom-tooltip"
         data-bs-title="Prijavi napako"
-        @click="this.showModal()"
+        @click="this.toggleModal('show')"
     >
         <img src="https://img.icons8.com/ios-filled/100/flag--v1.png"/>
     </button>
 
-    <!-- Modalno okno -->
-    <div class="modal fade" id="prijaviNapakoModal" tabindex="-1" role="dialog" aria-labelledby="prijaviNapakoModal" aria-hidden="true">
+    <div class="modal fade" :id="this.modalID" tabindex="-1" role="dialog" :aria-labelledby="this.modalID" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="prijaviNapakoModal">Prijavi napako</h5>
+                    <h5 class="modal-title" :id="this.modalID" >Prijavi napako</h5>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -36,8 +34,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="this.hideModal()">Zapri</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" @click="this.toggleModal('hide')">Zapri</button>
+                    <button type="button" class="btn btn-primary">Pošlji prijavo</button>
                 </div>
             </div>
         </div>
@@ -48,29 +46,27 @@
 import { Tooltip } from 'bootstrap'
 import bootstrap from 'bootstrap/dist/js/bootstrap.js'
 
-let modal
-
 export default {
     name: 'CopyLink',
     props: [ 'id', 'tip'],
+    data() {
+        return {
+           modalID: 'prijaviNapakoModal' + this.tip + this.id,
+           modal: null
+        }
+    },
     methods: {
-        copyURL() {
-            const url = window.location.origin + process.env.BASE_URL + this.path;
-            navigator.clipboard.writeText(url);
-        },
-        showModal() {
-            modal.show()
-        },
-        hideModal() {
-            modal.hide()
+        toggleModal(toggle) {
+            if (toggle === 'show') {
+                this.modal.show()
+            } else if (toggle === 'hide') {
+                this.modal.hide()
+            }
         }
     },
     mounted() {
-        new Tooltip(document.body, {
-            selector: "[data-bs-toggle='tooltip']",
-        })
-
-        modal = new bootstrap.Modal(document.getElementById('prijaviNapakoModal'))
+        new Tooltip(document.body, {selector: "[data-bs-toggle='tooltip']"})
+        this.modal = new bootstrap.Modal(document.getElementById(this.modalID))
     }
 }
 </script>
@@ -81,7 +77,7 @@ img {
     float: right; /* to sicer popravi poravnavo, vendar ne vem točno zakaj */
 }
 
-button {
+.prijaviNapakoGumb {
     height: 30px;
     width: 30px;
     padding: 5px;
