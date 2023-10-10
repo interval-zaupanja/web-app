@@ -6,7 +6,7 @@
         data-bs-placement="top"
         data-bs-custom-class="custom-tooltip"
         data-bs-title="Prijavi napako"
-        @click="this.toggleModal('show')"
+        @click="this.showModal()"
     >
         <img src="https://img.icons8.com/ios-filled/100/flag--v1.png"/>
     </button>
@@ -19,22 +19,22 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Tip:</label>
-                            <input type="text" class="form-control" id="recipient-name" :value="this.tip" disabled>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Tip</span>
+                            <input type="text" class="form-control" :value="this.tip" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">ID:</label>
-                            <input type="text" class="form-control" id="recipient-name" :value="this.id" disabled>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">ID</span>
+                            <input type="text" class="form-control" :value="this.id" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Sporočilo:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Sporočilo"></textarea>
+                            <label for="floatingTextarea">Sporočilo</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="this.toggleModal('hide')">Zapri</button>
+                    <button type="button" class="btn btn-secondary" @click="this.hideModal()">Zapri</button>
                     <button type="button" class="btn btn-primary">Pošlji prijavo</button>
                 </div>
             </div>
@@ -42,7 +42,7 @@
     </div>
 </template>
 
-<script> // brez setup
+<script>
 import { Tooltip } from 'bootstrap'
 import bootstrap from 'bootstrap/dist/js/bootstrap.js'
 
@@ -56,12 +56,11 @@ export default {
         }
     },
     methods: {
-        toggleModal(toggle) {
-            if (toggle === 'show') {
-                this.modal.show()
-            } else if (toggle === 'hide') {
-                this.modal.hide()
-            }
+        showModal() {
+            this.modal.show()
+        },
+        hideModal() {
+            this.modal.hide()
         }
     },
     mounted() {
