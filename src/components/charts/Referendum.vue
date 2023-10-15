@@ -228,29 +228,42 @@ export default {
             plugins: [
                 {
                     id: 'customLine',
-                    afterDatasetsDraw: (chart, ctx, opts) => {
-                        const width = opts.width || 1;
-                        const color = opts.color || 'black'
+                    // afterDatasetsDraw: (chart, ctx, opts) => {
+                    //     const width = opts.width || 1;
+                    //     const color = opts.color || 'black'
 
-                        if (!chart.active || chart.active.length === 0) {
-                            return;
+                    //     if (!chart.active || chart.active.length === 0) {
+                    //         return;
+                    //     }
+
+                    //     const {
+                    //         chartArea: {
+                    //         top,
+                    //         bottom
+                    //         }
+                    //     } = chart;
+                    //     const xValue = chart.active[0]._model.x
+
+                    //     ctx.lineWidth = width;
+                    //     ctx.strokeStyle = color;
+
+                    //     ctx.beginPath();
+                    //     ctx.moveTo(xValue, top);
+                    //     ctx.lineTo(xValue, bottom);
+                    //     ctx.stroke();
+                    // }
+                    beforeDatasetsDraw(chart) {
+                        const { ctx, tooltip, scales: {x, y}, chartArea: {top, bottom, left, right, width, height}} = chart
+
+                        if (tooltip._active[0]) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'grey'
+                            ctx.lineWidth = 2
+                            ctx.moveTo(tooltip._active[0].element.x, top)
+                            ctx.lineTo(tooltip._active[0].element.x, bottom)
+                            ctx.stroke()
+                            ctx.restore()
                         }
-
-                        const {
-                            chartArea: {
-                            top,
-                            bottom
-                            }
-                        } = chart;
-                        const xValue = chart.active[0]._model.x
-
-                        ctx.lineWidth = width;
-                        ctx.strokeStyle = color;
-
-                        ctx.beginPath();
-                        ctx.moveTo(xValue, top);
-                        ctx.lineTo(xValue, bottom);
-                        ctx.stroke();
                     }
                 }
             ],
