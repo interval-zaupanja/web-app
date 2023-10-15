@@ -1,18 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Domov from '@/views/Domov.vue';
-import ONas from '@/views/ONas.vue';
-import PogojiUporabe from '@/views/PogojiUporabe.vue';
-import Ankete from '@/views/Ankete/Ankete.vue';
-import Anketa from '@/views/Ankete/Anketa.vue';
-import Stranke from '@/views/Stranke/Stranke.vue';
-import Stranka from '@/views/Stranke/Stranka.vue';
-import Narocniki from '@/views/Narocniki/Narocniki.vue';
-import Narocnik from '@/views/Narocniki/Narocnik.vue';
-import Izvajalci from '@/views/Izvajalci/Izvajalci.vue';
-import Izvajalec from '@/views/Izvajalci/Izvajalec.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import Domov from '@/views/Domov.vue'
+import ONas from '@/views/ONas.vue'
+import PogojiUporabe from '@/views/PogojiUporabe.vue'
+import PrijavljeneNapake from '@/views/PrijavljeneNapake.vue'
+import Ankete from '@/views/Ankete/Ankete.vue'
+import Anketa from '@/views/Ankete/Anketa.vue'
+import Stranke from '@/views/Stranke/Stranke.vue'
+import Stranka from '@/views/Stranke/Stranka.vue'
+import Narocniki from '@/views/Narocniki/Narocniki.vue'
+import Narocnik from '@/views/Narocniki/Narocnik.vue'
+import Izvajalci from '@/views/Izvajalci/Izvajalci.vue'
+import Izvajalec from '@/views/Izvajalci/Izvajalec.vue'
 import Glasovanja from '@/views/Glasovanja/Glasovanja.vue'
 import Glasovanje from '@/views/Glasovanja/Glasovanje.vue'
-import NotFound from '@/views/NiNajdeno.vue';
+import NotFound from '@/views/NiNajdeno.vue'
 
 const router = new createRouter({
     history: createWebHistory(process.env.BASE_URL),
@@ -31,6 +32,11 @@ const router = new createRouter({
             path: '/pogoji-uporabe',
             name: 'Pogoji uporabe',
             component: PogojiUporabe
+        },
+        {
+            path: '/prijavljene-napake',
+            name: 'Prijavljene napake',
+            component: PrijavljeneNapake
         },
         {
             path: '/ankete',

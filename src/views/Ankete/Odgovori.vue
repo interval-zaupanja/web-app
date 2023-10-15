@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="this.loaded">
         <h3>Odgovori</h3>
         <div v-for="odgovor in this.odgovori" :key="odgovor._id" class="bubble bubble-list yellow-gray">
             <span class="anchor-inner" :id="odgovor._id"></span>
@@ -50,7 +50,7 @@ import CopyLink from '../../components/CopyLink.vue'
 
 export default {
     name: 'Odgovori',
-    props: ['odgovori', 'id'],
+    props: ['odgovori', 'id', 'loaded'],
     components: {
         Report,
         CopyLink

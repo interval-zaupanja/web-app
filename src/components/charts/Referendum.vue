@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100%; min-height: 400px; max-width: 100%">
+    <div v-if="this.data.datasets.length > 0" style="height: 100%; min-height: 400px; max-width: 100%">
         <Scatter
             v-if="loaded"
             :options="options"

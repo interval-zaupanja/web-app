@@ -71,7 +71,7 @@
                         />
                     </div>
                 </div>
-                <Odgovori v-if="vprasanje.odgovori" :odgovori="vprasanje.odgovori" :id="this.id"/>
+                <Odgovori v-if="vprasanje.odgovori" :odgovori="vprasanje.odgovori" :id="this.id" :loaded="this.loaded"/>
             </div>
         </div>
     </div>

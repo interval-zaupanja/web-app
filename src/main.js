@@ -212,6 +212,10 @@ app.config.globalProperties.vrniTipEntitete = function (std_ime) {
             return "anketa"
         case 'vir':
             return "vir"
+        case 'splosno':
+            return "splošno"
+        default:
+            return "Prišlo je do napake: neznani tip"
     }
 }
 

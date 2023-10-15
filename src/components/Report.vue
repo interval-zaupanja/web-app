@@ -1,5 +1,8 @@
 <template>
-    <button
+    <button type="button" class="btn btn-primary" v-if="this.tip === 'splosno'" @click="this.showModal()">
+        Prijavi splošno napako
+    </button>
+    <button v-else
         class="side-button prijaviNapakoGumb"
         type="button"
         data-bs-toggle="tooltip"
@@ -23,7 +26,7 @@
                             <span class="input-group-text">Tip</span>
                             <input type="text" class="form-control" :value="this.vrniTipEntitete(this.tip)" disabled required>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" v-if="this.id">
                             <span class="input-group-text">ID</span>
                             <input type="text" class="form-control" :value="this.id" disabled required>
                         </div>

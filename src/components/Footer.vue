@@ -8,6 +8,7 @@
 				<div style="display: flex; justify-content: center; flex-wrap: wrap">
 					<router-link to="/vop" class="link" style="display: inline-block">Varstvo osebnih podatkov</router-link>
 					<router-link to="/pogoji-uporabe" class="link" style="display: inline-block">Pogoji uporabe</router-link>
+					<router-link to="/prijavljene-napake" class="link" style="display: inline-block">Prijavljene napake</router-link>
 					<router-link to="/kontakt" class="link" style="display: inline-block">Kontakt</router-link>
 				</div>
 			</div>

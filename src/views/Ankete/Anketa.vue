@@ -142,16 +142,23 @@ export default {
             this.not_found = true;
         }
         this.loaded = true;
-        /*
-        setTimeout(function (hash) { // ne deluje oz. samo občasno
-            console.log(hash);
+
+        // Navigacija do fragmenta
+
+        // IMPLEMENTACIJA 1: ne deluje za odgovore
+        setTimeout(function (hash) {
             if (hash) {
                 const el_id = hash.replace('#', '')
-                const el = document.getElementById(el_id);
+                var el
+                try {
+                    el = document.getElementById(el_id)
+                    console.log("Pravilno prebrano: ", el)
+                } catch (e) {
+                    console.error("Napaka: ", e)
+                }
                 el.scrollIntoView({ behavior: 'smooth' })
             }
-        }, 1000, this.hash);
-        */
+        }, 500, this.hash);
 
         new Tooltip(document.body, {
             selector: "[data-bs-toggle='tooltip']",

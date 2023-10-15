@@ -54,7 +54,7 @@ router.delete('/glasovanja/:id', ctrlGlasovanja.izbrisiGlasovanje);
 router.post('/glasovanja', ctrlGlasovanja.ustvariGlasovanje);
 router.put('/glasovanja/:id', ctrlGlasovanja.posodobiGlasovanje);
 
-// Prijave storitve
+// Prijave storitve (MOGOČE TE POTI NISO RAVNO NAJBOLJ SKLADNE)
 router.get('/prijave', ctrlPrijave.seznamPrijav);
 router.get('/prijave/:id', ctrlPrijave.podrobnostiPrijave);
 router.delete('/prijave/:id', ctrlPrijave.izbrisiPrijavo);
