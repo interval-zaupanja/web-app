@@ -424,11 +424,13 @@ export default {
                     label: oznaka.label,
                     data: povprecje,
                     backgroundColor: oznaka.backgroundColor,
+                    hoverBackgroundColor: 'white',
                     borderColor: oznaka.borderColor,
                     pointRadius: 0,
-                    pointHitRadius: 0,
-                    pointHoverRadius: 0,
+                    pointHitRadius: 5,
+                    pointHoverRadius: 4,
                     borderWidth: 4,
+                    pointHoverBorderWidth: 3,
                     showLine: true,
                     tension: 0.4 // to iz neznanega razloga vse poruši
                 })
