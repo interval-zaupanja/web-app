@@ -98,7 +98,7 @@ export default {
                 maintainAspectRatio: false,
                 interaction: { // pokaže se skupni tooltip za vse y vrednosti pri določenem x (začasna rešitev)
                     intersect: false,
-                    mode: 'index'
+                    mode: 'x'
                 },
                 scales: {
                     x: {
@@ -219,41 +219,13 @@ export default {
                             },
                         },
                     },
-                },
-                customLine: {
-                    width: 5,
-                    color: 'pink'
                 }
             },
             plugins: [
                 {
-                    id: 'customLine',
-                    // afterDatasetsDraw: (chart, ctx, opts) => {
-                    //     const width = opts.width || 1;
-                    //     const color = opts.color || 'black'
-
-                    //     if (!chart.active || chart.active.length === 0) {
-                    //         return;
-                    //     }
-
-                    //     const {
-                    //         chartArea: {
-                    //         top,
-                    //         bottom
-                    //         }
-                    //     } = chart;
-                    //     const xValue = chart.active[0]._model.x
-
-                    //     ctx.lineWidth = width;
-                    //     ctx.strokeStyle = color;
-
-                    //     ctx.beginPath();
-                    //     ctx.moveTo(xValue, top);
-                    //     ctx.lineTo(xValue, bottom);
-                    //     ctx.stroke();
-                    // }
+                    id: 'hoverLine',
                     beforeDatasetsDraw(chart) {
-                        const { ctx, tooltip, scales: {x, y}, chartArea: {top, bottom, left, right, width, height}} = chart
+                        const { ctx, tooltip, chartArea: {top, bottom}} = chart
 
                         if (tooltip._active[0]) {
                             ctx.beginPath();
@@ -264,6 +236,7 @@ export default {
                             ctx.stroke()
                             ctx.restore()
                         }
+
                     }
                 }
             ],
