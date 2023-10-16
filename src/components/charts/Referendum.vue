@@ -82,6 +82,17 @@ ChartJS.register(
   annotationPlugin
 );
 
+Tooltip.positioners.centeredTooltip = function(elements, eventPosition) {
+    // A reference to the tooltip model
+    const tooltip = this;
+
+    const { chartArea: {top, bottom}, scales: {x}} = tooltip.chart
+    return {
+        x: x.getPixelForValue(x.getValueForPixel(eventPosition.x)),
+        y: (top + bottom) / 2
+    }
+}
+
 export default {
     name: 'Referendum',
     components: {
@@ -139,7 +150,20 @@ export default {
                             } else {
                                 return true
                             }
-                        }
+                        },
+                        callbacks: { // ustvari preden se izriše
+                            title: function (context) {
+                                return new Date(context[0].raw.x).toLocaleDateString('en-GB')
+                            },
+                            label: function(context) {
+                                context.formattedValue = context.raw.y.toFixed(2) +  '%'
+                            }
+                        },
+                        boxPadding: 5,
+                        titleAlign: 'center',
+                        caretSize: 0,
+                        caretPadding: 10,
+                        position: 'centeredTooltip'
                     },
                     legend: {
                         onClick: function (e, legendItem, legend) {
