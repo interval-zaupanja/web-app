@@ -151,7 +151,8 @@ app.config.globalProperties.vrniOdgovor = function (std_ime, long, capitalizatio
             odgovor = 'nobene'
             break; 
         case 'OPNVG':
-            odgovor = 'Oddal bi prazno ali neveljavno glasovnico'
+            // odgovor = 'oddal bi prazno ali neveljavno glasovnico' // ta odgovor je bil izločen, ker je spodnja alternativa krajša in kongruentna z istim odgovorovom pri izdih glasovanja
+            odgovor = 'prazna ali neveljavna glasovnica'
             break;
         default:
             return null // odgovor ni standardiziran

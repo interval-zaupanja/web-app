@@ -18,7 +18,7 @@
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
                         @change="this.render()">
-                        <label class="form-check-label" for="prikaziOPNVG">Oddal bi prazno ali neveljavno glasovnico</label>
+                        <label class="form-check-label" for="prikaziOPNVG">Prazna ali neveljavna glasovnica</label>
                     </div>
                     <div class="form-check form-switch form-check-inline">
                         <input class="form-check-input" type="checkbox" id="prikaziDrugo" v-model="this.prikazi.Drugo"
@@ -292,7 +292,7 @@ export default {
                 if (
                     !this.prikazi.Drugo && newData.datasets[i].label === 'Drugo' ||
                     !this.prikazi.Nobene && newData.datasets[i].label === 'Nobene' ||
-                    !this.prikazi.OPNVG && newData.datasets[i].label === 'Oddal bi prazno ali neveljavno glasovnico' ||
+                    !this.prikazi.OPNVG && newData.datasets[i].label === 'Prazna ali neveljavna glasovnica' ||
                     !this.prikazi.NV && newData.datasets[i].label === 'Ne vem' ||
                     !this.prikazi.NSO && newData.datasets[i].label === 'Ne povem' ||
                     !this.prikazi.NBG && newData.datasets[i].label === 'Ne bom glasoval'
