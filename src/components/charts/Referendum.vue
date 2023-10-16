@@ -10,33 +10,31 @@
         <div v-if="!loaded">
             <Nalaganje size="medium"/>
         </div>
-        <div v-if="loaded" style="display: flex; justify-content: center; align-items: center; margin: 15px">
-            <div class="bubble bubble-inner yellow-gray">
-                <div>
-                    <div style="display: inline-block; margin-right: 20px">
+        <div v-if="loaded">
+            <div class="bubble bubble-inner yellow-gray" style="margin: 15px">
+                <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap">
+                    <div style="display: inline-block; margin-right: 20px; white-space: nowrap;">
                         Vključi v graf in preračunaj:
                     </div>
-                    <div style="display: inline-block">
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNV">Ne vem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNSO">Ne povem</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
-                        </div>
-                        <div class="form-check form-switch form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
-                            @change="this.render()">
-                            <label class="form-check-label" for="prikaziOPNVG">Prazna ali neveljavna glasovnica</label>
-                        </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNV" v-model="this.prikazi.NV"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNV">Ne vem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNSO" v-model="this.prikazi.NSO"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNSO">Ne povem</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziNBG" v-model="this.prikazi.NBG"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziNBG">Ne bom glasoval</label>
+                    </div>
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="prikaziOPNVG" v-model="this.prikazi.OPNVG"
+                        @change="this.render()">
+                        <label class="form-check-label" for="prikaziOPNVG">Prazna ali neveljavna glasovnica</label>
                     </div>
                 </div>
                 <div class="caption" style="text-align: center">
@@ -459,3 +457,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.form-check-label {
+    white-space: nowrap;
+}
+</style>
