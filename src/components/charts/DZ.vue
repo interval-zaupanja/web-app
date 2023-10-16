@@ -9,10 +9,10 @@
         <div v-if="!loaded">
             <Nalaganje size="medium"/>
         </div>
-        <div v-if="loaded && !this.stranka_id" style="display: flex; justify-content: center; align-items: center">
+        <div v-if="loaded && !this.stranka_id">
             <div class="bubble bubble-inner">
-                <div>
-                    <div style="display: inline-block; margin-right: 20px">
+                <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <div style="display: inline-block; margin-right: 20px; white-space: nowrap;">
                         Vključi v graf in preračunaj:
                     </div>
                     <div class="form-check form-switch form-check-inline">
@@ -382,3 +382,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.form-check-label {
+    white-space: nowrap;
+}
+</style>
