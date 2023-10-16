@@ -3,6 +3,7 @@
         <Scatter
             v-if="loaded"
             :options="options"
+            :plugins="plugins"
             :data="data"
             style="max-height: 400px"
         />
@@ -110,7 +111,7 @@ export default {
                 maintainAspectRatio: false,
                 interaction: { // pokaže se skupni tooltip za vse y vrednosti pri določenem x (začasna rešitev)
                     intersect: false,
-                    mode: 'index'
+                    mode: 'x'
                 },
                 scales: {
                     x: {
@@ -118,7 +119,12 @@ export default {
                         time: {
                             unit: 'day'
                         },
-                        position: 'bottom'
+                        position: 'bottom',
+                        offset: true,
+                        gridLines: {
+                            offsetGridLines: false,
+                            display: true,
+                        }
                     },
                     y: {
                         ticks: {
@@ -192,6 +198,24 @@ export default {
                     },
                 }
             },
+            plugins: [
+                {
+                    id: 'hoverLine',
+                    beforeDatasetsDraw(chart) {
+                        const { ctx, tooltip, chartArea: {top, bottom}} = chart
+
+                        if (tooltip._active[0]) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'grey'
+                            ctx.lineWidth = 2
+                            ctx.moveTo(tooltip._active[0].element.x, top)
+                            ctx.lineTo(tooltip._active[0].element.x, bottom)
+                            ctx.stroke()
+                            ctx.restore()
+                        }
+                    }
+                }
+            ],
             loaded: false,
             not_found: false,
             prikazi: {
@@ -365,11 +389,13 @@ export default {
                     label: oznaka.label,
                     data: povprecje,
                     backgroundColor: oznaka.backgroundColor,
+                    hoverBackgroundColor: 'white',
                     borderColor: oznaka.borderColor,
                     pointRadius: 0,
-                    pointHitRadius: 0,
-                    pointHoverRadius: 0,
-                    borderWidth: 3,
+                    pointHitRadius: 5,
+                    pointHoverRadius: 4,
+                    borderWidth: 4,
+                    pointHoverBorderWidth: 3,
                     showLine: true,
                     tension: 0.4 // to iz neznanega razloga vse poruši
                 })
