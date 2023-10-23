@@ -48,21 +48,21 @@
                     <p v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</p>
                     <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                     <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
-                    <div class="charts">
-                        <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'">
+                    <div>
+                        <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'" class="charts">
                             <DoughnutChart
                                 :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                                 :caption_condition="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
                                 caption="Delež odgovorov"
                                 enota="%"
-                                style="display: inline-block"
+                                class="chart"
                             />
                             <MandatiChart v-if="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
                                 :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
-                                style="display: inline-block"
+                                class="chart"
                             />
                         </div>
-                        <div v-else>
+                        <div v-else class="charts">
                             <PieChart
                                 :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                                 enota="%"
@@ -153,5 +153,10 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.chart {
+    max-width: 40%;
+    margin: 30px
 }
 </style>

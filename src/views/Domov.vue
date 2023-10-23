@@ -26,10 +26,10 @@ export default {
 <style scoped>
 .container {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
-.container > * {
+.container + div {
     flex-grow: 1;
 }
 </style>
