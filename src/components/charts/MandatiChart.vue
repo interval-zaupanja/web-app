@@ -25,8 +25,8 @@ export default {
                 labels: this.podatki.labels,
                 datasets: [
                     {
-                        backgroundColor: this.podatki.backgroundColor,
-                        data: this.podatki.data
+                    backgroundColor: this.podatki.backgroundColor,
+                    data: this.podatki.data
                     }
                 ]
             },
@@ -38,8 +38,7 @@ export default {
                         position: 'top'
                     },
                     title: {
-                        display: this.caption_condition,
-                        text: this.caption,
+                        text: 'Število mandatov (sedežev)',
                         color: "#404040",
                         font: {
                             size: 13
@@ -49,8 +48,16 @@ export default {
                         enabled: true,
                         callbacks: {
                             label: context => {
-                                const dataPoint = context.dataIndex                        
-                                return " " + context.dataset.data[dataPoint] + this.enota
+                                const dataPoint = context.dataIndex
+                                var enota = ' mandatov (sedežev)'
+                                if (context.dataset.data[dataPoint] == 1) {
+                                    enota = ' mandat (sedež)'
+                                } else if (context.dataset.data[dataPoint] == 2) {
+                                    enota = ' mandata (sedeža)'
+                                } else if (context.dataset.data[dataPoint] == 3 || context.dataset.data[dataPoint] == 4) {
+                                    enota = ' mandati (sedeži)'
+                                }
+                                return " " + context.dataset.data[dataPoint] + enota
                             }
                         }
                     }

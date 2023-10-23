@@ -49,26 +49,26 @@
                     <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
                     <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
                     <div class="charts">
-                        <DoughnutChart
-                            v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'"
-                            :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                            enota="%"
-                            style="display: inline-block"
-                        />
-                        <DoughnutChart
-                            v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S' && this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
-                            :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec')"
-                            :caption_condition="true"
-                            caption="Število mandatov (sedežev)"
-                            enota=" mandatov (sedežev)"
-                            style="display: inline-block"
-                        />
-                        <PieChart
-                            v-if="!(vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S')"
-                            :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                            enota="%"
-                            style="display: inline-block"
-                        />
+                        <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'">
+                            <DoughnutChart
+                                :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                                :caption_condition="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                caption="Delež odgovorov"
+                                enota="%"
+                                style="display: inline-block"
+                            />
+                            <MandatiChart v-if="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                style="display: inline-block"
+                            />
+                        </div>
+                        <div v-else>
+                            <PieChart
+                                :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                                enota="%"
+                                style="display: inline-block"
+                            />
+                        </div>
                     </div>
                 </div>
                 <Odgovori v-if="vprasanje.odgovori" :odgovori="vprasanje.odgovori" :id="this.id" :loaded="this.loaded"/>
@@ -84,6 +84,7 @@ import CopyLink from '../../components/CopyLink.vue'
 import Report from '../../components/Report.vue'
 import PieChart from '@/components/charts/PieChart.vue'
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
+import MandatiChart from '@/components/charts/MandatiChart.vue'
 
 import Odgovori from '@/views/Ankete/Odgovori.vue'
 
@@ -97,6 +98,7 @@ export default {
         Report,
         PieChart,
         DoughnutChart,
+        MandatiChart,
         Odgovori
     },
     data() {
