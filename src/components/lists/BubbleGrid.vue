@@ -22,12 +22,12 @@ export default {
 .container {
     display: flex;
     /* justify-content: center; */
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* justify-content: space-around; (manj prostora pri straneh) */
     /* justify-content: space-evenly; */
     flex-wrap: wrap;
     /* align-content se navezuje na wrap */
-    align-content: space-evenly;
+    /* align-content: space-evenly; */
 }
 
 .grid-bubble {
