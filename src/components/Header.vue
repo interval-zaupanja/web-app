@@ -14,15 +14,25 @@
       <!-- navbar -->
       <div id="nav" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
         <div style="display:flex; justify-content:center; align-items: center; line-height: 70px;"> <!-- *line*-height!!!-->
-          <router-link to="/glasovanja" class="undroppable">Glasovanja</router-link>
-          <!-- <router-link to="/priljubljenost-politikov" class="droppable">Priljubljenost politikov ⏷</router-link> -->
-          <!-- <router-link to="/zaupanje" class="droppable">Zaupanje ⏷</router-link> -->
-          <!-- <router-link to="/socialni-pulz" class="droppable">Ostalo ⏷</router-link> -->
-          <router-link to="" class="droppable">Podatki ⏷</router-link>
-          <router-link to="/o-nas" class="undroppable">O nas</router-link>
+
+          <ul id="menu-list">
+            <li><router-link to="/glasovanja" class="undroppable">Glasovanja</router-link></li>
+            <li><router-link to="/priljubljenost-politikov" class="droppable">Priljubljenost politikov</router-link></li>
+            <li><router-link to="/zaupanje" class="droppable">Zaupanje</router-link></li>
+            <li class="droppable">
+              <router-link to="">Drugo ⏷</router-link>
+              <ul class="dropdown">
+                <li><router-link to="/ankete" class="undroppable">Ankete</router-link></li>
+                <li><router-link to="/izvajalci" class="undroppable">Izvajalci</router-link></li>
+                <li><router-link to="/narocniki" class="undroppable">Naročniki</router-link></li>
+                <li class="zadnji"><router-link to="/stranke" class="undroppable">Stranke</router-link></li>
+              </ul>
+            </li>
+            <li><router-link to="/o-nas" class="undroppable">O nas</router-link></li>
+          </ul>
+
         </div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -34,6 +44,7 @@ export default {
 </script>
 
 <style scoped>
+/* celotna glava */
 #header {
     display: block;
     height: 70px;
@@ -46,26 +57,66 @@ export default {
     width: 100%
 }
 
-#nav a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+/* navbar */
+
+.menu-list > *  {
+  padding: 0;
+  margin: 0;
 }
 
-#nav a:hover {
-    background-color: rgba(29, 29, 31, 0.22);
+ul {
+  list-style: none;
 }
 
-.droppable:hover {
-    margin-top: 7px;
-    margin-bottom: 0px;
-    height: 63px;
-    border-radius: 15px 15px 0px 0px;
+ul li {
+  display: inline-block;
+  position: relative;
 }
 
-.undroppable:hover {
-    border-radius: 0px;
+ul li a {
+  display: block;
+  padding: 0px 20px;
+  text-decoration: none;
+  color: #ae1813;
+  font-size: 20px;
+  text-align: center;
+}
+
+ul li ul.dropdown li {
+  display: block;
+  text-align: center;
+  background: #c8b2b3be;
+  backdrop-filter: blur(5px);
+}
+
+ul li ul.dropdown li a {
+  padding: 0;
+}
+
+ul li ul.dropdown {
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
+
+ul li:hover {
+  background: #1d1d1f38;
+}
+
+ul li ul.dropdown li:hover {
+  background: #a59394be;
+}
+
+ul li:hover ul.dropdown {
+  display: block;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+.zadnji {
+  border-radius: 0px 0px 15px 15px;
 }
 </style>
