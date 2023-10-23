@@ -69,7 +69,6 @@ const predelajRezultat = function (vprasanje, rezultat) {
 }
 
 const poisciStranko = function (odgovori, stranka_id) {
-    console.log(odgovori)
     for (let i = 0; i < odgovori.length; i++) {
         if (odgovori[i].stranka_id == stranka_id) {
             var stranka = {

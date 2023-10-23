@@ -33,6 +33,8 @@ export default {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                circumference: 270,
+                rotation: 225,
                 plugins: {
                     legend: {
                         position: 'top'
