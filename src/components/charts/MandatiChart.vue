@@ -38,7 +38,9 @@ export default {
                         position: 'top'
                     },
                     title: {
+                        display: true,
                         text: 'Število mandatov (sedežev)',
+                        position: 'bottom',
                         color: "#404040",
                         font: {
                             size: 13

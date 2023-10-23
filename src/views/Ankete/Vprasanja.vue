@@ -89,6 +89,7 @@ import MandatiChart from '@/components/charts/MandatiChart.vue'
 import Odgovori from '@/views/Ankete/Odgovori.vue'
 
 import { predelajOdgovore } from '@/scripts/predelajOdgovore.js'
+import { izracunajMandate } from  '@/scripts/izracunajMandate.js'
 
 export default {
     name: 'Vprasanja',
@@ -113,6 +114,7 @@ export default {
     },
     methods: {
         predelajOdgovore,
+        izracunajMandate,
         kvalitativnaMeritev(oznaka) {
             switch (oznaka) {
                 case 'izid':

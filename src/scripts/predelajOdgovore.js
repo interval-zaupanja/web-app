@@ -43,7 +43,7 @@ export const predelajOdgovore = function(vprasanje, podatek) {
         }
     }
     if (podatki.labels.length == 0) {
-        return false // potrebno, da ne prikažemo graf brez podatkov
+        return null // potrebno, da ne prikažemo graf brez podatkov
     } else {
         return podatki
     }

@@ -40,6 +40,7 @@ export default {
                     title: {
                         display: this.caption_condition,
                         text: this.caption,
+                        position: 'bottom',
                         color: "#404040",
                         font: {
                             size: 13
