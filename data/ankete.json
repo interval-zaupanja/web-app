@@ -73,15 +73,7 @@
             "tip": "splet",
             "uri": "https://www.delo.si/novice/slovenija/med-strankami-vodi-sds-delu-vlade-pa-visja-ocena/",
             "datum_in_cas_objave": "2023-08-16T05:00:00"
-          }
-        ]
-      },
-      {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
-          "$oid": "13153ec4d64ceb8d276eae42"
-        },
-        "lokacije": [
+          },
           {
             "tip": "splet",
             "uri": "https://www.delo.si/mnenja/komentarji/prava-ocena-bo-sele-sposobnost-sanacije/",
@@ -434,6 +426,42 @@
             "tip": "splet",
             "uri": "https://www.zurnal24.si/slovenija/raziskava-pred-referendumom-tu-bo-slo-najbolj-na-tesno-395956",
             "datum_in_cas_objave": "2022-11-05T18:16:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6536fa4bd3f1720ca61e7f0f"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "14dcac4803f6df6ffe905704"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "13153ec4d64ceb8d276eae42"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 723,
+      "opombe": "Delo: Nekatera odstopanja sociodemografske sestave anketirancev glede na sestavo odraslega prebivalstva Slovenije popravlja uteževanje s kombiniranimi utežmi"
+    }],
+    "zacetek": "2023-10-02",
+    "sredina": "2023-10-04",
+    "konec": "2023-10-05",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "13153ec4d64ceb8d276eae42"
+        },
+        "lokacije": [
+          {
+            "tip": "časopis",
+            "datum_in_cas_objave": "2023-10-09"
           }
         ]
       }

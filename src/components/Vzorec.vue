@@ -25,6 +25,8 @@
             <span v-if="vzorec.reprezentativno">Reprezentativno po {{this.olepsaj(vzorec.reprezentativno)}}<br/></span>
             <span v-if="vzorec.utezeno">Uteženo po {{this.olepsaj(vzorec.utezeno)}}<br/></span>
             <!-- MANJKA PODPORA ZA PODVZORCE -->
+            <span v-if="vzorec.opis">Opis: {{ vzorec.opis }}</span>
+            <span v-if="vzorec.opombe">Opombe: {{ vzorec.opombe }}</span>
         </div>
     </div>
 </template>
