@@ -47,7 +47,7 @@
     "ime": "RTV Slovenija",
     "ime_polno": "Radiotelevizija Slovenija",
     "barva": "#1A307E",
-    "logo_uri": "RTV.png",
+    "logo_uri": "/logoti/RTV.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Radiotelevizija_Slovenija"
   },
   {
@@ -57,7 +57,7 @@
     "ime": "SiolNET",
     "ime_polno": "Radiotelevizija Slovenija",
     "barva": "#1A307E",
-    "logo_uri": "https://upload.wikimedia.org/wikipedia/sl/4/4d/SiolNET_Logo_RGB_200_83.png",
+    "logo_uri": "/logoti/SiolNET.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Siol.net"
   },
   {

@@ -3,19 +3,16 @@ Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spremin
   - če jo vsebuje, text zasede toliko prostora na vrhu, da se v celoti izpiše, preostali prostor pa zasede slika: posledično je text vedno na vrhu in le centriran, ni pa na sredini mehurčka
 
 <template>
-    <div v-if="this.image && this.text" class="bubble yellow-gray">
-        <div class="cell-container">
-            <b>{{this.text}}</b>
+    <div class="bubble yellow-gray" v-if="this.image">
+        <div v-if="this.text">
+            <b>{{ this.text }}</b>
         </div>
-        <div class="img-cell-container">
-            <img :src="this.image"/>
+        <div v-if="this.image" class="preostali-prostor vsebnik-slike">
+            <img :src="this.image"/> 
         </div>
     </div>
-    <div v-else-if="this.text" class="bubble yellow-gray vertical-center">
-        <b>{{this.text}}</b>
-    </div>
-    <div v-else class="bubble yellow-gray vertical-center">
-        <img :src="this.image"/>
+    <div v-else class="bubble yellow-gray" style="justify-content: center;">
+        <b>{{ this.text }}</b>
     </div>
 </template>
 
@@ -37,40 +34,30 @@ export default {
 .bubble { /* tudi globalen razred */
     height: inherit;
     width: inherit;
-    display: table; /* https://jsfiddle.net/Victornpb/S8g4E/783/ */
-}
 
-.vertical-center {
+    /* to bi lahko bilo tudi v div pod div s tem razredom, vendar ni potrebno */
     display: flex;
+    flex-direction: column;
+}
+
+.preostali-prostor {
+    flex-grow: 1; /* poskrbi, da se ta div višinsko razširi na ves prostor, ki mu preostane */
+    min-height: 0; /* prepreči overflow tega div čez prostor starša */
+
+    padding: 15px; /* dodaten prostor, da je slika bolj odmaknjena od robov */
+}
+
+.vsebnik-slike { /* ta razred bi bil lahko tudi v ločenem div, vendar deluje tudi skupaj z razredom preostali-prostor */
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-.cell-container {
-    display: table-row;
-    height: 0;
-}
-
-.img-cell-container {
-    display: table-row;
-    height: auto;
-    position: relative;
-}
-
-.img-cell-container img { /* rešitev za centriranje znotraj div, ki ima dinamično generirano (auto) višino */
-    position: absolute;
-    z-index: 1;
-    left: 0px;
 }
 
 img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    object-fit: contain; /* preprečuje, raztegovanje slike */
+    min-height: 0; /* preprečuje overflow čez starševski div */
 }
-
-/* sliko bi lahko centrirali tudi z margin: auto, vendar ta deluje le na bločnih elementih, zato bi morali img pretvoriti v block */ 
-
-/* slika v Safariju je čisto mimo */
-/* Firefox slik sploh ne prikaže */
 </style>

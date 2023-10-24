@@ -197,7 +197,7 @@ app.config.globalProperties.vrniLogoUri = function (uri) {
     if (uri == undefined) {
         return undefined
     } else if (uri.charAt(0) != 'h' || uri.charAt(0) === '/') { // gre za interno povezavo (ker se ne začne s http oz. https); če se začne z '/' to pomeni, da je bila interna predpona v nekem prejšnjem koraku že dodana
-        return process.env.BASE_URL + 'assets/3rd-party-logos/' + uri // v tem primeru je URI le ime datoteke
+        return process.env.BASE_URL + 'assets' + uri // v tem primeru je URI le ime datoteke
     } else {
         return uri
     }

@@ -9,7 +9,7 @@
         "stranka_id": {
             "$oid": "651450a3a3e11c09560bfb8b"
         },
-        "slika_uri": "/dominika_svarc_pipan",
+        "slika_uri": "/osebe/dominika_svarc_pipan.png",
         "slika_vir": "https://www.gov.si/en/state-authorities/ministries/ministry-of-justice/about-the-ministry-of-justice/ministers-office/dr-dominika-svarc-pipan/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Dominika_%C5%A0varc_Pipan"
