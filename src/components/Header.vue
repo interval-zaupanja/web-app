@@ -16,19 +16,20 @@
         <div style="display:flex; justify-content:center; align-items: center; line-height: 70px;"> <!-- *line*-height!!!-->
 
           <ul id="menu-list">
-            <li><router-link to="/glasovanja" class="undroppable">Glasovanja</router-link></li>
-            <li><router-link to="/priljubljenost-politikov" class="droppable">Priljubljenost politikov</router-link></li>
-            <li><router-link to="/zaupanje" class="droppable">Zaupanje</router-link></li>
-            <li class="droppable">
+            <li><router-link to="/glasovanja">Glasovanja</router-link></li>
+            <li><router-link to="/priljubljenost-politikov">Priljubljenost</router-link></li>
+            <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+            <li>
               <router-link to="">Drugo ⏷</router-link>
               <ul class="dropdown">
-                <li><router-link to="/ankete" class="undroppable">Ankete</router-link></li>
-                <li><router-link to="/izvajalci" class="undroppable">Izvajalci</router-link></li>
-                <li><router-link to="/narocniki" class="undroppable">Naročniki</router-link></li>
-                <li class="zadnji"><router-link to="/stranke" class="undroppable">Stranke</router-link></li>
+                <li><router-link to="/ankete">Ankete</router-link></li>
+                <li><router-link to="/izvajalci">Izvajalci</router-link></li>
+                <li><router-link to="/narocniki">Naročniki</router-link></li>
+                <li><router-link to="/stranke">Stranke</router-link></li>
+                <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
               </ul>
             </li>
-            <li><router-link to="/o-nas" class="undroppable">O nas</router-link></li>
+            <li><router-link to="/o-nas">O nas</router-link></li>
           </ul>
 
         </div>

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import Domov from '@/views/Domov.vue'
 import ONas from '@/views/ONas.vue'
 import PogojiUporabe from '@/views/PogojiUporabe.vue'
@@ -13,6 +14,7 @@ import Izvajalci from '@/views/Izvajalci/Izvajalci.vue'
 import Izvajalec from '@/views/Izvajalci/Izvajalec.vue'
 import Glasovanja from '@/views/Glasovanja/Glasovanja.vue'
 import Glasovanje from '@/views/Glasovanja/Glasovanje.vue'
+import Osebe from '@/views/Osebe/Osebe.vue'
 import NotFound from '@/views/NiNajdeno.vue'
 
 const router = new createRouter({
@@ -93,6 +95,11 @@ const router = new createRouter({
             name: 'Glasovanje',
             component: Glasovanje,
             props: true
+        },
+        {
+            path: '/osebe',
+            name: 'Osebe',
+            component: Osebe
         },
         // Catch all not found
         {

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div v-for="item in this.items" :key="item._id" class="bubble-outer grid-bubble">
-            <TextImageBubble :text="item.ime" :image="this.vrniLogoUri(item.logo_uri)" @click="$router.push(this.path + item._id)"/>
+            <TextImageBubble :text="getText(item)" :image="this.vrniLogoUri(item.logo_uri ?? item.slika_uri)" @click="$router.push(this.path + item._id)"/>
         </div>
     </div>
 </template>
@@ -14,6 +14,18 @@ export default {
     props: ['items', 'path'],
     components: {
         TextImageBubble
+    },
+    methods: {
+        getText(item) {
+            var text = item.ime
+            if (item.ime_srednje) {
+                text += ' ' + item.ime_srednje.charAt(0) + '.'
+            }
+            if (item.priimek) {
+                text += ' ' + item.priimek
+            }
+            return text
+        }
     }
 }
 </script>

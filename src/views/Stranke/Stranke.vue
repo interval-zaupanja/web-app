@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             stranke: [],
-            loaded: false,
+            loaded: false
         }
     },
     async mounted() {
