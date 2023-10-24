@@ -426,45 +426,57 @@ const stranke_shema = new mongoose.Schema({
  * @openapi
  * components:
  *  schemas:
- *   Kandidat:
+ *   Oseba:
  *    type: object
  *    description:
  *    properties:
  *     _id:
  *      type: ObjectId
- *      description: <b>enolični identifikator</b> kandidata
+ *      description: <b>enolični identifikator</b> osebe
  *      example: 635a62f5dc5d7968e68464be
  *     ime:
  *      type: string
- *      description: ime kandidata
+ *      description: ime osebe
+ *     ime_srednje:
+ *      type: string
+ *      description: srednje ime osebe
  *     priimek:
  *      type: string
- *      description: priimek kandidata
+ *      description: priimek osebe
  *     stranka_id:
  *      type: ObjectId
- *      description: enolični identifikator stranke kandidata
+ *      description: enolični identifikator stranke osebe
  *     slika_uri:
  *      type: string
- *      description: povezava do slike kandidata
+ *      description: povezava do slike osebe
+ *     slika_vir:
+ *      type: string
+ *      description: podatki o viru slike
+ *     slika_avtor:
+ *      type: string
+ *      description: podatki o avtorju slike
  *     wikipedia_uri:
  *      type: string
- *      description: povezava do Wikipedia strani kandidata
+ *      description: povezava do Wikipedia strani osebe
  *     opis:
  *      type: string
- *      description: opis kandidata
+ *      description: opis osebe
  *     opombe:
  *      type: string
- *      description: opombe kandidata
+ *      description: opombe osebe
  *    required:
  *     - _id
  *     - ime
  *     - priimek
  */
-const kandidati_shema = new mongoose.Schema({
+const osebe_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
+    ime_srednje: { type: String, required: false },
     priimek: { type: String, required: [true, "Priimek je zahtevano polje"] },
     stranka_id : { type: ObjectId, required: false },
     slika_uri: { type: String, required: false },
+    slika_vir: { type: String, required: false },
+    slika_avtor: { type: String, required: false },
     wikipedia_uri: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
@@ -527,5 +539,5 @@ mongoose.model("Vprasanje", vprasanja_shema, "Vprasanja");
 mongoose.model("Izvajalec", izvajalci_shema, "Izvajalci");
 mongoose.model("Narocnik", narocniki_shema, "Narocniki");
 mongoose.model("Stranka", stranke_shema, "Stranke");
-mongoose.model("Kandidat", kandidati_shema, "Kandidati");
+mongoose.model("Oseba", osebe_shema, "Osebe");
 mongoose.model("Prijava", prijave_shema, "Prijave");

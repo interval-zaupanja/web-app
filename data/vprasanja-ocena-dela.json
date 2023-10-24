@@ -1,7 +1,7 @@
 [
     {
         "anketa_id": {
-            "$oid": "873c017fc587d5ade7830b7a"
+            "$oid": "6536fa4bd3f1720ca61e7f0f"
         },
         "vprasanje": "Kako ocenjujete delo vlade [in državnega zbora] v zadnjem mesecu?",
         "tip": "ocena-dela",
@@ -52,7 +52,7 @@
     },
     {
         "anketa_id": {
-            "$oid": "873c017fc587d5ade7830b7a"
+            "$oid": "6536fa4bd3f1720ca61e7f0f"
         },
         "vprasanje": "Kako ocenjujete delo [vlade in] državnega zbora v zadnjem mesecu?",
         "tip": "ocena-dela",

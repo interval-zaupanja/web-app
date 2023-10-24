@@ -7,6 +7,7 @@ const ctrlNarocniki = require('../controllers/narocniki');
 const ctrlStranke = require('../controllers/stranke');
 const ctrlVprasanja = require('../controllers/vprasanja');
 const ctrlGlasovanja = require('../controllers/glasovanja');
+const ctrlOsebe = require('../controllers/osebe');
 const ctrlPrijave = require('../controllers/prijave');
 
 // Ankete storitve
@@ -53,6 +54,13 @@ router.get('/glasovanja/:id', ctrlGlasovanja.podrobnostiGlasovanja);
 router.delete('/glasovanja/:id', ctrlGlasovanja.izbrisiGlasovanje);
 router.post('/glasovanja', ctrlGlasovanja.ustvariGlasovanje);
 router.put('/glasovanja/:id', ctrlGlasovanja.posodobiGlasovanje);
+
+// Osebe storitve
+router.get('/osebe', ctrlOsebe.seznamOseb);
+router.get('/osebe/:id', ctrlOsebe.podrobnostiOsebe);
+router.delete('/osebe/:id', ctrlOsebe.izbrisiOsebo);
+router.post('/osebe', ctrlOsebe.ustvariOsebo);
+router.put('/osebe/:id', ctrlOsebe.posodobiOsebo);
 
 // Prijave storitve (MOGOČE TE POTI NISO RAVNO NAJBOLJ SKLADNE)
 router.get('/prijave', ctrlPrijave.seznamPrijav);

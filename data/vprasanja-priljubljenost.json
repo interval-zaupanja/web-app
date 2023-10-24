@@ -1,0 +1,171 @@
+[
+    {
+        "anketa_id": {
+            "$oid": "6536fa4bd3f1720ca61e7f0f"
+        },
+        "tip": "priljubljenost",
+        "odgovori": [
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "NPM"
+                },
+                "ocena": 3.24
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Anže Logar"
+                },
+                "ocena": 3.00
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Boštjan Šefic"
+                },
+                "ocena": 2.96
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Matjaž Han"
+                },
+                "ocena": 2.81
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Marjan Šarec"
+                },
+                "ocena": 2.73
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Robert Golob"
+                },
+                "ocena": 2.66
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Tanja Fajon"
+                },
+                "ocena": 2.63
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Klemen Boštjančič"
+                },
+                "ocena": 2.63
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Dominika Švarc [Š.] Pipan"
+                },
+                "ocena": 2.61
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Janez Cigler Kralj"
+                },
+                "ocena": 2.59
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Matej Tonin"
+                },
+                "ocena": 2.58
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Urška Klakočar Župančič"
+                },
+                "ocena": 2.58
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Jani Prednik"
+                },
+                "ocena": 2.50
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Jelka Godec"
+                },
+                "ocena": 2.48
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Janez Janša"
+                },
+                "ocena": 2.46
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Luka Mesec"
+                },
+                "ocena": 2.45
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Asta Vrečko"
+                },
+                "ocena": 2.45
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Matej Tašner Vatovec"
+                },
+                "ocena": 2.42
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Borut Sajovic"
+                },
+                "ocena": 2.40
+            },
+            {
+                "tip": "priljubljenost",
+                "dolocnost_tip": "doloceno",
+                "oseba_id": {
+                    "$oid": "Alenka Bratušek"
+                },
+                "ocena": 2.33
+            }
+        ]
+
+    }
+]
