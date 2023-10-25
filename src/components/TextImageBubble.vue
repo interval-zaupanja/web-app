@@ -3,11 +3,11 @@ Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spremin
   - če jo vsebuje, text zasede toliko prostora na vrhu, da se v celoti izpiše, preostali prostor pa zasede slika: posledično je text vedno na vrhu in le centriran, ni pa na sredini mehurčka
 
 <template>
-    <div class="bubble yellow-gray" v-if="this.image">
+    <div class="bubble yellow-gray" v-if="this.image" :style="this.stick_to_bottom ? 'padding-bottom: 0px' : ''">
         <div v-if="this.text">
             <b>{{ this.text }}</b>
         </div>
-        <div v-if="this.image" class="preostali-prostor vsebnik-slike">
+        <div v-if="this.image" class="preostali-prostor vsebnik-slike" :style="this.stick_to_bottom ? 'padding-bottom: 0px; justify-content: end' : ''">
             <img :src="this.image"/> 
         </div>
     </div>
@@ -19,7 +19,11 @@ Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spremin
 <script>
 export default {
     name: 'TextImageBubble',
-    props: ['text', 'image']
+    props: ['text', 'image', "stick_to_bottom"],
+    mounted() {
+console.log(this.stick_to_bottom)
+
+    }
 }
 </script>
 

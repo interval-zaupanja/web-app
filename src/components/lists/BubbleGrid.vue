@@ -1,7 +1,13 @@
 <template>
     <div class="container">
         <div v-for="item in this.items" :key="item._id" class="bubble-outer grid-bubble">
-            <TextImageBubble :text="getText(item)" :image="this.vrniLogoUri(item.logo_uri ?? item.slika_uri)" @click="$router.push(this.path + item._id)"/>
+            <TextImageBubble
+            :text="getText(item)"
+            :image="this.vrniLogoUri(item.logo_uri ?? item.slika_uri)"
+            @click="$router.push(this.path + item._id)"
+            :style="'height: ' + this.getHeight(this.size) + '; width: ' +  this.getWidth(this.size)"
+            :stick_to_bottom="this.size === 'large' ? true : false"
+            />
         </div>
     </div>
 </template>
@@ -11,7 +17,7 @@ import TextImageBubble from '../../components/TextImageBubble.vue'
 
 export default {
     name: 'BubbleGrid',
-    props: ['items', 'path'],
+    props: ['items', 'path', 'size'],
     components: {
         TextImageBubble
     },
@@ -25,6 +31,30 @@ export default {
                 text += ' ' + item.priimek
             }
             return text
+        },
+        getHeight(size) {
+            switch (size) {
+                case 'small':
+                    return "150px"
+                case 'medium':
+                    return "200px"
+                case 'large':
+                    return '500px'
+                default:
+                    return "150px"
+            }
+        },
+        getWidth(size) {
+            switch (size) {
+                case 'small':
+                    return "250px"
+                case 'medium':
+                    return "250px"
+                case 'large':
+                    return '350px'
+                default:
+                    return "250px"
+            }
         }
     }
 }
@@ -44,8 +74,6 @@ export default {
 
 .grid-bubble {
     /* display: inline-block; dejansko ni potrebno */
-    height: 150px;
-    width: 250px;
     vertical-align: top; /* popravek, da se vedno držijo vrha in (verjetno zaradi table znotraj TextImageBubble) ne splavajo stran od vrha */
 }
 </style>

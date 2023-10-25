@@ -3,7 +3,7 @@
     <div v-if="!loaded">
         <Nalaganje/>
     </div>
-    <BubbleGrid v-if="loaded" :items="this.stranke" path="/stranke/"/>
+    <BubbleGrid v-if="loaded" :items="this.stranke" path="/stranke/" size="medium"/>
 </template>
 
 <script>
