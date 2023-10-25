@@ -19,11 +19,7 @@ Dejansko imamo dva različna tipa mehurčka, saj se stilistična pravila spremin
 <script>
 export default {
     name: 'TextImageBubble',
-    props: ['text', 'image', "stick_to_bottom"],
-    mounted() {
-console.log(this.stick_to_bottom)
-
-    }
+    props: ['text', 'image', "stick_to_bottom"]
 }
 </script>
 

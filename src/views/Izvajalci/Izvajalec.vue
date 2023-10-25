@@ -29,8 +29,8 @@
 <script>
 import axios from 'axios';
 
-import Nalaganje from '../../components/Nalaganje.vue';
-import NeObstaja from '../../components/NeObstaja.vue';
+import Nalaganje from '@/components/Nalaganje.vue';
+import NeObstaja from '@/components/NeObstaja.vue';
 import Breadcrumbs from '@/components/BreadcrumbsBS.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
 import SeznamAnket from '@/components/lists/SeznamAnket.vue';

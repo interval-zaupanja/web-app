@@ -15,6 +15,7 @@ import Izvajalec from '@/views/Izvajalci/Izvajalec.vue'
 import Glasovanja from '@/views/Glasovanja/Glasovanja.vue'
 import Glasovanje from '@/views/Glasovanja/Glasovanje.vue'
 import Osebe from '@/views/Osebe/Osebe.vue'
+import Oseba from '@/views/Osebe/Oseba.vue'
 import NotFound from '@/views/NiNajdeno.vue'
 
 const router = new createRouter({
@@ -100,6 +101,12 @@ const router = new createRouter({
             path: '/osebe',
             name: 'Osebe',
             component: Osebe
+        },
+        {
+            path: '/osebe/:id',
+            name: 'Oseba',
+            component: Oseba,
+            props: true
         },
         // Catch all not found
         {
