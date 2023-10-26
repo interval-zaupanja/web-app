@@ -43,7 +43,6 @@ router.get('/vprasanja', ctrlVprasanja.seznamVprasanj);
 router.get('/vprasanja/:id', ctrlVprasanja.podrobnostiVprasanja);
 router.get('/vprasanja/anketa/:id', ctrlVprasanja.seznamVprasanjAnketa);
 router.get('/vprasanja/glasovanje/:id', ctrlVprasanja.seznamVprasanjGlasovanje);
-router.get('/vprasanja/glasovalna/dz', ctrlVprasanja.seznamVprasanjGlasovalnaDZ);
 // router.delete('/vprasanja/:id', ctrlVprasanja.izbrisiVprasanje);
 // router.post('/vprasanja/', ctrlVprasanja.ustvariVprasanje);
 // router.put('/vprasanja/:id', ctrlVprasanja.posodobiVprasanje);

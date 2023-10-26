@@ -6,160 +6,180 @@
         "tip": "priljubljenost",
         "odgovori": [
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65391d2adca0a2d74116f2eb"
                 },
                 "ocena": 3.24
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6539211267fe5ea57a4770fc"
                 },
                 "ocena": 3.00
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6539217c7b6b6bdd0f2bf869"
                 },
                 "ocena": 2.96
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653925cf543a4d7b7e826d0d"
                 },
                 "ocena": 2.81
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397b1d4879b162855bf7a9"
                 },
                 "ocena": 2.73
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397c0ecd5016d38cf6061b"
                 },
                 "ocena": 2.66
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397cb8cc0b2a37be8b85a4"
                 },
                 "ocena": 2.63
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397d9397f9e617854c40e3"
                 },
                 "ocena": 2.63
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6537a983686e658414ccb6b1"
                 },
                 "ocena": 2.61
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397e7760874a9ee42dc363"
                 },
                 "ocena": 2.59
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397fdd686aa8a1e43ccd8e"
                 },
                 "ocena": 2.58
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398fab283eab8d0b6346eb"
                 },
                 "ocena": 2.58
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398267ce55735e062a2978"
                 },
                 "ocena": 2.50
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653983530965397bf45deced"
                 },
                 "ocena": 2.48
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398ff464a7711149dbf6ac"
                 },
                 "ocena": 2.46
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653989df7f5eaffcd69ce556"
                 },
                 "ocena": 2.45
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398a9f2b9cb391fdb80869"
                 },
                 "ocena": 2.45
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398b24c76253a3d9776505"
                 },
                 "ocena": 2.42
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398dc8a19b23182c35762c"
                 },
                 "ocena": 2.40
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65399030db67d74a3242463f"
                 },
@@ -174,160 +194,180 @@
         "tip": "priljubljenost",
         "odgovori": [
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65391d2adca0a2d74116f2eb"
                 },
                 "ocena": 3.19
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6539211267fe5ea57a4770fc"
                 },
                 "ocena": 3.13
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6539217c7b6b6bdd0f2bf869"
                 },
                 "ocena": 3.03
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653925cf543a4d7b7e826d0d"
                 },
                 "ocena": 2.94
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397b1d4879b162855bf7a9"
                 },
                 "ocena": 2.89
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397c0ecd5016d38cf6061b"
                 },
                 "ocena": 3.00
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397cb8cc0b2a37be8b85a4"
                 },
                 "ocena": 2.80
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397d9397f9e617854c40e3"
                 },
                 "ocena": 2.72
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "6537a983686e658414ccb6b1"
                 },
                 "ocena": 2.67
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397e7760874a9ee42dc363"
                 },
                 "ocena": 2.74
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65397fdd686aa8a1e43ccd8e"
                 },
                 "ocena": 2.68
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398fab283eab8d0b6346eb"
                 },
                 "ocena": 2.65
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398267ce55735e062a2978"
                 },
                 "ocena": 2.64
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653983530965397bf45deced"
                 },
                 "ocena": 2.57
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398ff464a7711149dbf6ac"
                 },
                 "ocena": 2.65
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "653989df7f5eaffcd69ce556"
                 },
                 "ocena": 2.53
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398a9f2b9cb391fdb80869"
                 },
                 "ocena": 2.63
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398b24c76253a3d9776505"
                 },
                 "ocena": 2.49
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65398dc8a19b23182c35762c"
                 },
                 "ocena": 2.44
             },
             {
-                "tip": "priljubljenost",
-                "dolocnost_tip": "doloceno",
+                "tip": "O",
+                "opredeljen_tip": "doloceno",
+                "doloceno_tip": "oseba",
                 "oseba_id": {
                     "$oid": "65399030db67d74a3242463f"
                 },

@@ -13,7 +13,7 @@ export const izracunajMandate = function (vprasanje, podatek) {
             if (podatek === 'procent_izvajalec') {
                 glasovi.push(odgovori[i].procent_izvajalec * 100) // iz procentov proporcionalno pretvorimo na celo število glasov
             }
-        } else if (odgovori[i].dolocnost_tip === 'OPNVG') { // ni jasno, če je potrebno vključiti tudi druge tipe !!!
+        } else if (odgovori[i].opredeljen_tip === 'OPNVG') { // ni jasno, če je potrebno vključiti tudi druge tipe !!!
             if (podatek === 'procent_izvajalec') {
                 stNeveljavnihGlasov = odgovori[i].procent_izvajalec * 100
             }

@@ -95,7 +95,7 @@ const Vprasanja = mongoose.model("Vprasanje");
 //  */
 // Vključitev in padajoče sortiranje po datumu
 const seznamVprasanj = (req, res) => {
-    Vprasanja.aggregate([
+    var pipeline = [
         {
             $lookup: {
                 from: 'Ankete',
@@ -128,10 +128,32 @@ const seznamVprasanj = (req, res) => {
         },
         {
             $sort: {
-                'anketa_sredina': -1
+                'anketa_sredina': req.query.order === 'asc' ? 1 : -1
             }
         }
-    ]).exec(function (error, seznam) {
+    ]
+
+    if (req.query.tip) {
+        pipeline.push({
+            $match: {
+                "tip": req.query.tip
+            }
+        })
+    }
+    if (req.query.volitve_tip === 'DZ-S') {
+        pipeline.push({
+            $match: {
+                "glasovanje_tip": {
+                    "raven_oblasti": "državna",
+                    "tip": "volitve",
+                    "volitve_tip": "DZ-S"
+                }
+            }
+        })
+    }
+
+
+    Vprasanja.aggregate(pipeline).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -286,63 +308,6 @@ const seznamVprasanjGlasovanje = (req, res) => {
             res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
         } else {
             res.status(200).json(vprasanja);
-        }
-    });
-};
-
-// MANJKA DOKUMENTACIJA
-// Vključitev in naraščajoče sortiranje po datumu
-const seznamVprasanjGlasovalnaDZ = (req, res) => {
-    Vprasanja.aggregate([
-        {
-            $lookup: {
-                from: 'Ankete',
-                localField: 'anketa_id',
-                foreignField: '_id',
-                as: 'anketa_details'
-            }
-        },
-        {
-            $unwind: '$anketa_details'
-        },
-        {
-            $project: {
-                '_id': 1,
-                'anketa_id': 1,
-                'anketa_zacetek': "$anketa_details.zacetek",
-                'anketa_sredina': "$anketa_details.sredina",
-                'anketa_konec': "$anketa_details.konec",
-                'vprasanje': 1,
-                'tip': 1,
-                'glasovalno_tip': 1,
-                'glasovanje_dolocnost': 1,
-                'glasovanja_id': 1,
-                'glasovanje_tip': 1,
-                'predpostavljena_udelezba_procent': 1,
-                'opis': 1,
-                'opombe': 1,
-                'odgovori': 1
-            }
-        },
-        {
-            $sort: {
-                'anketa_sredina': 1 // ni -1, zato, da se pravilno razporedi v graf
-            }
-        },
-        {
-            $match: {
-                "glasovanje_tip": {
-                    "raven_oblasti": "državna",
-                    "tip": "volitve",
-                    "volitve_tip": "DZ-S"
-                }
-            }
-        }
-    ]).exec(function (error, seznam) {
-        if (error) {
-            res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
-        } else {
-            res.status(200).json(seznam);
         }
     });
 };
@@ -631,7 +596,6 @@ module.exports = {
     podrobnostiVprasanja,
     seznamVprasanjAnketa,
     seznamVprasanjGlasovanje,
-    seznamVprasanjGlasovalnaDZ,
     ustvariAnketo,
     posodobiAnketo,
     izbrisiAnketo,

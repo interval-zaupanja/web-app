@@ -265,7 +265,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get(this.apiServer + "/api/vprasanja/glasovalna/dz")
+                const { data } = await axios.get(this.apiServer + "/api/vprasanja?volitve_tip=DZ-S&order=asc")
                 for (let i = 0; i < data.length; i++) { // vprašanja
                     if (
                         data[i].glasovalno_tip.kvalitativna_meritev === 'izid' ||
@@ -283,10 +283,10 @@ export default {
                                     ({ stranka_ime, stranka_barva } = await this.getLabelAndColor(odgovori[j].stranka_id))
                                 } 
                                 var label_current = stranka_ime ??
-                                                    this.vrniOdgovor(odgovori[j].dolocnost_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ??
+                                                    this.vrniOdgovor(odgovori[j].opredeljen_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip, false, 1) ??
                                                     odgovori[j].odgovor
                                 var color_current = stranka_barva ??
-                                                    this.vrniStdBarvo(odgovori[j].dolocnost_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip)
+                                                    this.vrniStdBarvo(odgovori[j].opredeljen_tip ?? odgovori[j].odgovor_std ?? odgovori[j].tip)
                                 if (odgovori[j].tip === 'O' && odgovori[j].udelezba_tip === 'NBG') {
                                     label_current = this.vrniOdgovor('NBG', false, 1)
                                     color_current = this.vrniStdBarvo('NBG')

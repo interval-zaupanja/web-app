@@ -17,7 +17,7 @@
 
           <ul id="menu-list">
             <li><router-link to="/glasovanja">Glasovanja</router-link></li>
-            <li><router-link to="/priljubljenost-politikov">Priljubljenost</router-link></li>
+            <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
             <li><router-link to="/zaupanje">Zaupanje</router-link></li>
             <li>
               <router-link to="">Drugo ⏷</router-link>

@@ -10,35 +10,35 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "zelo pozitivno",
                 "odgovor_std": 1,
                 "procent_izvajalec": 3.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "pozitivno",
                 "odgovor_std": 2,
                 "procent_izvajalec": 18.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "srednje",
                 "odgovor_std": 0,
                 "procent_izvajalec": 34.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "negativno",
                 "odgovor_std": -2,
                 "procent_izvajalec": 23.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "zelo negativno",
                 "odgovor_std": -1,
                 "procent_izvajalec": 18.2
@@ -61,35 +61,35 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "zelo pozitivno",
                 "odgovor_std": 1,
                 "procent_izvajalec": 2.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "pozitivno",
                 "odgovor_std": 2,
                 "procent_izvajalec": 20
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "srednje",
                 "odgovor_std": 0,
                 "procent_izvajalec": 38.4
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "negativno",
                 "odgovor_std": -2,
                 "procent_izvajalec": 19.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "odgovor": "zelo negativno",
                 "odgovor_std": -1,
                 "procent_izvajalec": 12.5

@@ -229,8 +229,8 @@ const ankete_shema = new mongoose.Schema({
 const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
     tip: { type: String, required: [true, "Tip odgovora je zahtevano polje"] },
     udelezba_tip: { type: String, required: false }, // tukaj bi sicer lahko napisal bolj kompleksen pogoj, ki referencira vrednost kvalitativna_meritev
-    dolocnost_tip: { type: String, required: [this.tip === 'O', "Potrebno je navesti tip določnosti (doloceno, drugo, nobene, OPNVG (oddal bi prazno ali neveljavno glasovnico))"] },
-    doloceno_tip: { type: String, required: [this.dolocnost_tip === 'doloceno', "Potrebno je navesti tip dolocenega odgovora"] },
+    opredeljen_tip: { type: String, required: [this.tip === 'O', "Potrebno je navesti tip določnosti (doloceno, drugo, nobene, OPNVG (oddal bi prazno ali neveljavno glasovnico))"] },
+    doloceno_tip: { type: String, required: [this.opredeljen_tip === 'doloceno', "Potrebno je navesti tip dolocenega odgovora"] },
     odgovor_std: { type: String, required: false }, // upoštevno le pri določenih vprašanjih 
     odgovor: { type: String, required: false }, // upoštevno le pri določenih vprašanjih
     stranka_id: {
@@ -241,20 +241,34 @@ const odgovori_shema = new mongoose.Schema({ // tudi ti odgovori imajo svoje _id
                 "Potrebno je navesti identifikator stranke"
             ]
     },
+    oseba_id: {
+        type: ObjectId,
+        required:
+            [
+                this.doloceno_tip === 'oseba',
+                "Potrebno je navesti identifikator osebe"
+            ]
+    },
+
     procent_izvajalec: { type: Number, required: false },
     procent_iz_calculated: { type: Number, required: false },
     procent_spodnja_meja_izvajalec: { type: Number, required: false },
     procent_spodnja_meja_iz_calculated: { type: Number, required: false },
     procent_zgornja_meja_izvajalec: { type: Number, required: false },
     procent_zgornja_meja_iz_calculated: { type: Number, required: false },
+
     st_mandatov_izvajalec: { type: Number, required: false },
     st_mandatov_iz_calculated: { type: Number, required: false },
     st_mandatov_spodnja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_spodnja_meja_iz_calculated: { type: Number, required: false },
     st_mandatov_zgornja_meja_izvajalec: { type: Number, required: false },
     st_mandatov_zgornja_meja_iz_calculated: { type: Number, required: false },
+
     st_anketirancev_izvajalec: { type: Number, required: false },
     st_anketirancev_iz_calculated: { type: Number, required: false },
+
+    ocena: { type: Number, required: false},
+
     barva: { type: String, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false },

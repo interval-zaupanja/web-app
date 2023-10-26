@@ -19,109 +19,109 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 21.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 20.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 5.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 5.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 4.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651452a092e72fa5c3f55801",
                 "procent_izvajalec": 2.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514530284aa0a370b88f03b",
                 "procent_izvajalec": 1.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453fcb786220eab76b308",
                 "procent_izvajalec": 1.7
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651457ac265fff6dd193793d",
                 "procent_izvajalec": 1.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453d4b60a64cb30fff273",
                 "procent_izvajalec": 0.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "65145528adad7c12492ee936",
                 "procent_izvajalec": 0.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651456f87dbf0e2bdd474496",
                 "procent_izvajalec": 0.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651455d6b0c6d028a79f18d6",
                 "procent_izvajalec": 0.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 0.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "nobene",
+                "opredeljen_tip": "nobene",
                 "procent_izvajalec": 7.9,
                 "opis": "Pomeni, da ne bi izbrali nobene obstoječe opcije"
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "OPNVG",
+                "opredeljen_tip": "OPNVG",
                 "odgovor": "oddal-a bi prazno ali neveljavno glasovnico",
                 "procent_izvajalec": 0.4
             },
@@ -157,102 +157,102 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 23.6
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 22.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 6.6
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 6.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 4.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651452a092e72fa5c3f55801",
                 "procent_izvajalec": 2.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514530284aa0a370b88f03b",
                 "procent_izvajalec": 1.7
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453fcb786220eab76b308",
                 "procent_izvajalec": 1.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453d4b60a64cb30fff273",
                 "procent_izvajalec": 0.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "65145528adad7c12492ee936",
                 "procent_izvajalec": 0.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651456f87dbf0e2bdd474496",
                 "procent_izvajalec": 0.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651457ac265fff6dd193793d",
                 "procent_izvajalec": 0.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 1.4
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "nobene",
+                "opredeljen_tip": "nobene",
                 "procent_izvajalec": 6.3,
                 "opis": "Pomeni, da ne bi izbrali nobene obstoječe opcije"
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "OPNVG",
+                "opredeljen_tip": "OPNVG",
                 "odgovor": "oddal-a bi prazno ali neveljavno glasovnico",
                 "procent_izvajalec": 1.3
             },
@@ -287,42 +287,42 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 22.6
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 20.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 8.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 6.7
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 5.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 1.1
             },
             {
@@ -358,109 +358,109 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 23.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 18.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 7.2
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 7.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 5.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651452a092e72fa5c3f55801",
                 "procent_izvajalec": 2.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514530284aa0a370b88f03b",
                 "procent_izvajalec": 1.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "65145528adad7c12492ee936",
                 "procent_izvajalec": 1.6
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453d4b60a64cb30fff273",
                 "procent_izvajalec": 1.4
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453fcb786220eab76b308",
                 "procent_izvajalec": 1.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651457ac265fff6dd193793d",
                 "procent_izvajalec": 0.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651456f87dbf0e2bdd474496",
                 "procent_izvajalec": 0.2
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651455d6b0c6d028a79f18d6",
                 "procent_izvajalec": 0.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 0.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "nobene",
+                "opredeljen_tip": "nobene",
                 "procent_izvajalec": 5.4,
                 "opis": "Pomeni, da ne bi izbrali nobene obstoječe opcije (???)"
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "OPNVG",
+                "opredeljen_tip": "OPNVG",
                 "odgovor": "oddal bi prazno ali neveljavno glasovnico",
                 "procent_izvajalec": 0.7
             },
@@ -495,42 +495,42 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 22.6
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 20.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 8.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 6.7
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 5.0
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 1.1
             },
             {
@@ -566,109 +566,109 @@
         "odgovori": [
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "c32ae76a892c5c270a7acb1f",
                 "procent_izvajalec": 21.1
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "a79677ebd4dbd3bd7642deca",
                 "procent_izvajalec": 24.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514510050b03011ded8e2b3",
                 "procent_izvajalec": 5.8
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651450a3a3e11c09560bfb8b",
                 "procent_izvajalec": 6.7
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514520bf8a6846662381457",
                 "procent_izvajalec": 4.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651452a092e72fa5c3f55801",
                 "procent_izvajalec": 2.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "6514530284aa0a370b88f03b",
                 "procent_izvajalec": 2
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "65145528adad7c12492ee936",
                 "procent_izvajalec": 1.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453d4b60a64cb30fff273",
                 "procent_izvajalec": 1.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651453fcb786220eab76b308",
                 "procent_izvajalec": 1.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651457ac265fff6dd193793d",
                 "procent_izvajalec": 0.3
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651456f87dbf0e2bdd474496",
                 "procent_izvajalec": 0.4
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "doloceno",
+                "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",
                 "stranka_id": "651455d6b0c6d028a79f18d6",
                 "procent_izvajalec": 0.9
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "drugo",
+                "opredeljen_tip": "drugo",
                 "procent_izvajalec": 0.5
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "nobene",
+                "opredeljen_tip": "nobene",
                 "procent_izvajalec": 5.4,
                 "opis": "Pomeni, da ne bi izbrali nobene obstoječe opcije (???)"
             },
             {
                 "tip": "O",
-                "dolocnost_tip": "OPNVG",
+                "opredeljen_tip": "OPNVG",
                 "odgovor": "oddal bi prazno ali neveljavno glasovnico",
                 "procent_izvajalec": 0.1
             },

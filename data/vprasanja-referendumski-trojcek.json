@@ -23,13 +23,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 43.6
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 32.3
       },
@@ -69,13 +69,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 49.2
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 29.8
       },
@@ -115,13 +115,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 50.0
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 30.1
       },
@@ -166,7 +166,7 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zelo verjetno",
         "odgovor_std": 2,
         "procent_izvajalec": 44
@@ -198,13 +198,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 58
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 39
       },
@@ -239,14 +239,14 @@
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 47.6
       },
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 29.4
       },
@@ -293,13 +293,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 51
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 44
       },
@@ -334,14 +334,14 @@
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 39.1
       },
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 33.9
       },
@@ -388,13 +388,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 59
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 36
       },
@@ -429,14 +429,14 @@
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 50.2
       },
       {
         "tip": "O",
         "udelezba_tip": "BG",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 25.2
       },
@@ -489,7 +489,7 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo da",
         "odgovor_std": 1,
         "procent_izvajalec": 45.8,
@@ -497,7 +497,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "bolj verjetno da",
         "odgovor_std": 2,
         "procent_izvajalec": 17.9,
@@ -505,21 +505,21 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "bolj verjetno ne",
         "odgovor_std": -2,
         "procent_izvajalec": 18.2
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo ne",
         "odgovor_std": -1,
         "procent_izvajalec": 10.7
       },
       {
         "tip": "O",
-        "dolocnost_tip": "drugo",
+        "opredeljen_tip": "drugo",
         "odgovor": "že glasoval",
         "odgovor_std": "ZG",
         "procent_izvajalec": 7.4
@@ -550,13 +550,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 48.2
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 30.2
       },
@@ -596,13 +596,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 48.8
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 30.7
       },
@@ -642,13 +642,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 43.9
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 33.0
       },
@@ -688,13 +688,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 37.1
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 25.7
       },
@@ -734,13 +734,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 36.1
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 22.9
       },
@@ -780,13 +780,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 44.1
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 18.2
       },
@@ -826,14 +826,14 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo da",
         "odgovor_std": 1,
         "procent_izvajalec": 47.8
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "bolj verjetno da",
         "odgovor_std": 2,
         "procent_izvajalec": 23.8
@@ -863,14 +863,14 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo da",
         "odgovor_std": 1,
         "procent_izvajalec": 47
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "[bolj] verjetno da",
         "odgovor_std": 2,
         "procent_izvajalec": 26.9,
@@ -901,14 +901,14 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo da",
         "odgovor_std": 1,
         "procent_izvajalec": 46.5
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "[bolj] verjetno da",
         "odgovor_std": 2,
         "procent_izvajalec": 26.6,
@@ -940,13 +940,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 41.67
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 26.83
       },
@@ -981,13 +981,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 53.29
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 17.98
       },
@@ -1022,13 +1022,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 35.46
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 27.37
       },
@@ -1068,7 +1068,7 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "da, zelo dobro",
         "odgovor_std": 1,
         "procent_izvajalec": 28.2,
@@ -1076,7 +1076,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "da, do neke mere",
         "odgovor_std": 2,
         "procent_izvajalec": 46.1,
@@ -1084,7 +1084,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "ne, bolj ne",
         "odgovor_std": -2,
         "procent_izvajalec": 16.1,
@@ -1092,7 +1092,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "ne, sploh ne",
         "odgovor_std": -1,
         "procent_izvajalec": 9.6,
@@ -1129,7 +1129,7 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo da",
         "odgovor_std": 1,
         "procent_izvajalec": 46.07,
@@ -1137,7 +1137,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "bolj verjetno da",
         "odgovor_std": 2,
         "procent_izvajalec": 30.85,
@@ -1145,7 +1145,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "bolj verjetno ne",
         "odgovor_std": -2,
         "procent_izvajalec": 17.13,
@@ -1153,7 +1153,7 @@
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "zagotovo ne",
         "odgovor_std": -1,
         "procent_izvajalec": 5.95,
@@ -1190,35 +1190,35 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "vsi so enako pomembni",
         "procent_izvajalec": 41.3,
         "barva": "#E9ECF5"
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "Zakon o dolgotrajni oskrbi",
         "procent_izvajalec": 32.0,
         "barva": "#63D471"
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "Zakon o RTV",
         "procent_izvajalec": 14.6,
         "barva": "#3066BE"
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "Zakon o Vladi",
         "procent_izvajalec": 7.1,
         "barva": "#D90368"
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor": "noben od zakonov ni pomemben",
         "procent_izvajalec": 4.9,
         "barva": "#3C3744"
@@ -1248,13 +1248,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 50.2
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 30.1
       },
@@ -1292,13 +1292,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 41.1
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 28.7
       },
@@ -1336,13 +1336,13 @@
     "odgovori": [
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "za",
         "procent_izvajalec": 38.7
       },
       {
         "tip": "O",
-        "dolocnost_tip": "doloceno",
+        "opredeljen_tip": "doloceno",
         "odgovor_std": "proti",
         "procent_izvajalec": 33.1
       },

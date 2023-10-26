@@ -14,7 +14,7 @@ export const predelajOdgovore = function(vprasanje, podatek) {
                     vprasanje.odgovori[i].odgovor_stranka_ime_kratica ??
                     vprasanje.odgovori[i].odgovor_stranka_ime ??
                     this.capitalization(vprasanje.odgovori[i].odgovor, 1) ??
-                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].dolocnost_tip ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
+                    this.vrniOdgovor(vprasanje.odgovori[i].odgovor_std ?? vprasanje.odgovori[i].opredeljen_tip ?? vprasanje.odgovori[i].tip, false, 1) ?? // ali ima primat odgovor ali tip lahko, da bo treba pri nekaterih odgovorih potrebno spremeniti
                     vprasanje.odgovori[i].odgovor
                 )
             }
@@ -28,7 +28,7 @@ export const predelajOdgovore = function(vprasanje, podatek) {
                     vprasanje.odgovori[i].odgovor_stranka_barva ??
                     this.vrniStdBarvo(
                         vprasanje.odgovori[i].odgovor_std ??
-                        vprasanje.odgovori[i].dolocnost_tip ??
+                        vprasanje.odgovori[i].opredeljen_tip ??
                         vprasanje.odgovori[i].tip
                     )
                 )
