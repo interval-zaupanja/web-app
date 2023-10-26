@@ -447,6 +447,9 @@
     ],
     "vzorec": [{
       "st_sodelujocih": 723,
+      "starost": "18+",
+      "tip": "prebivalci",
+      "jurisdikcija": "Slovenija",
       "opombe": "Delo: Nekatera odstopanja sociodemografske sestave anketirancev glede na sestavo odraslega prebivalstva Slovenije popravlja uteževanje s kombiniranimi utežmi"
     }],
     "zacetek": "2023-10-02",
@@ -461,7 +464,52 @@
         "lokacije": [
           {
             "tip": "časopis",
-            "datum_in_cas_objave": "2023-10-09"
+            "datum_in_cas_objave": "2023-10-09T00:00:00"
+          },
+          {
+            "tip": "splet",
+            "uri": "https://www.delo.si/novice/slovenija/podpora-gs-in-ocena-dela-vlade-strmo-navzdol/",
+            "datum_in_cas_objave": "2023-10-09T05:00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "653a2d6f884304ced92b2010"
+    },
+    "izvajalci_id": [
+      {
+        "$oid": "14dcac4803f6df6ffe905704"
+      }
+    ],
+    "narocniki_id": [
+      {
+        "$oid": "13153ec4d64ceb8d276eae42"
+      }
+    ],
+    "vzorec": [{
+      "st_sodelujocih": 715,
+      "starost": "18+",
+      "tip": "prebivalci",
+      "jurisdikcija": "Slovenija"
+    }],
+    "zacetek": "2023-09-04",
+    "sredina": "2023-09-06",
+    "konec": "2023-09-07",
+    "opombe": "Podatki ankete so bili vnešeni iz oktobrske ankete Dela, ki jo je izvedla Mediana",
+    "viri": [
+      {
+        "zaloznik_tip": "narocnik",
+        "zaloznik_id": {
+          "$oid": "13153ec4d64ceb8d276eae42"
+        },
+        "lokacije": [
+          {
+            "tip": "splet",
+            "uri": "https://www.delo.si/novice/slovenija/vecina-vprasanih-naklonjena-poenotenju-politike/",
+            "datum_in_cas_objave": "2023-09-11T05:00:00"
           }
         ]
       }

@@ -39,7 +39,7 @@ export default {
                 case 'medium':
                     return "200px"
                 case 'large':
-                    return '500px'
+                    return '350px'
                 default:
                     return "150px"
             }
