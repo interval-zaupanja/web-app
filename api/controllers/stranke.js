@@ -19,6 +19,7 @@ const Stranke = mongoose.model("Stranka");
  *         - _id: a79677ebd4dbd3bd7642deca
  *           ime: Gibanje svoboda
  *           ime_kratica: GS
+ *           indeks_LD: 5
  *           barva: #015CA4
  *           opis: Gibanje svoboda je stranka, ki je nastala pred državnozborskimi volitvami leta 2022
  *           opombe: Včasih se je imenovala Stranka zelenih dejanj
@@ -65,6 +66,7 @@ const seznamStrank = (req, res) => {
  *         - _id: a79677ebd4dbd3bd7642deca
  *           ime: Gibanje svoboda
  *           ime_kratica: GS
+ *           indeks_LD: 5
  *           barva: #015CA4
  *           opis: Gibanje svoboda je stranka, ki je nastala pred državnozborskimi volitvami leta 2022
  *           opombe: Včasih se je imenovala Stranka zelenih dejanj
@@ -157,6 +159,9 @@ const ustvariStranko = (req, res) => {
         if (req.body.ime_kratica) {
             novaStranka.opis = req.body.ime_kratica;
         }
+        if (req.body.indeks_LD) {
+            novaStranka.indeks_LD = req.body.indeks_LD;
+        }
         if (req.body.barva) {
             novaStranka.opis = req.body.barva;
         }
@@ -208,6 +213,8 @@ const ustvariStranko = (req, res) => {
  *          example: Gibanje svoboda
  *        ime_kratica:
  *          example: GS
+ *        indeks_LD:
+ *          example: 5
  *        barva:
  *          example: #015CA4
  *        logo_uri:
@@ -277,6 +284,9 @@ const posodobiStranko = (req, res) => {
                 stranka.ime = req.body.ime;
                 if (req.body.ime_kratica) {
                     novaStranka.opis = req.body.ime_kratica;
+                }
+                if (req.body.indeks_LD) {
+                    novaStranka.indeks_LD = req.body.indeks_LD;
                 }
                 if (req.body.barva) {
                     novaStranka.opis = req.body.barva;

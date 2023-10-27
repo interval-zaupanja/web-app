@@ -17,7 +17,7 @@ export default {
             vprasanja: [],
             data: {
                 labels: [],
-                labelIDs: [],
+                labelIDs: [], // potrebno za povezavo do osebe
                 datasets: []
             },
             loaded: false
@@ -25,21 +25,22 @@ export default {
     },
     async mounted() {
         await this.getData()
-        const { labels, datasets } = this.predelajPodatke(this.vprasanja)
-        this.data.labelIDs = labels
-        this.data.labels = await this.getImenaOseb(labels)
+        const { osebe_ids, datasets } = this.predelajPodatke(this.vprasanja)
+        this.data.labelIDs = osebe_ids
+        const { imenaOseb, imageURIs } = await this.getOsebe(osebe_ids)
+        this.data.labels = imenaOseb
         this.data.datasets = datasets
-        console.log(this.data)
+        this.data.datasets[0].images = imageURIs
         this.loaded = true
     },
     methods: {
         async getData() {
-            const { data } = await axios.get(this.apiServer + '/api/vprasanja?tip=priljubljenost')
+            const { data } = await axios.get(this.apiServer + '/api/vprasanja?tip=priljubljenost&order=asc')
             this.vprasanja = data
         },
         predelajPodatke(vprasanja) {
             var podatki = {
-                labels: [],
+                osebe_ids: [],
                 datasets: []
             }
 
@@ -47,9 +48,10 @@ export default {
                 const vprasanje = vprasanja[i]
 
                 var dataset = {
-                    label: vprasanje.anketa_sredina,
-                    borderColor: this.getBarva(i),
-                    backgroundColor: this.getBarva(i),
+                    label: new Date(vprasanje.anketa_sredina).toLocaleDateString('en-GB'),
+                    borderColor: this.getBarva(i, vprasanja.length),
+                    backgroundColor: this.getBarva(i, vprasanja.length),
+                    images: [],
                     barPercentage: 0.7,
                     categoryPercentage: 1,
                     data: []
@@ -58,14 +60,14 @@ export default {
                 for (let j = 0; j < vprasanje.odgovori.length; j++) {
                     const odgovor = vprasanje.odgovori[j]
                     var zeObstaja = false
-                    podatki.labels.forEach((element) => {
+                    podatki.osebe_ids.forEach((element) => {
                         if (element === odgovor.oseba_id) {
                             zeObstaja = true
                         }
                     })
 
                     if (!zeObstaja) {
-                        podatki.labels.push(odgovor.oseba_id)
+                        podatki.osebe_ids.push(odgovor.oseba_id)
                     }
 
                     dataset.data.push(odgovor.ocena)
@@ -74,8 +76,9 @@ export default {
             }
             return podatki
         },
-        async getImenaOseb(osebe_ids) {
+        async getOsebe(osebe_ids) {
             var imenaOseb = []
+            var imageURIs = []
             for (let i = 0; i < osebe_ids.length; i++) {
                 const { data } = await axios.get(this.apiServer + '/api/osebe/' + osebe_ids[i])
                 var full_name = data.ime
@@ -84,12 +87,13 @@ export default {
                 }
                 full_name += ' ' + data.priimek
                 imenaOseb.push(full_name)
+                imageURIs.push(this.vrniLogoUri(data.slika_uri))
             }
 
-            return imenaOseb
+            return { imenaOseb, imageURIs }
         },
-        getBarva(i) {
-            switch (i) {
+        getBarva(i, stVprasanj) {
+            switch (stVprasanj - i - 1) {
                 case 0:
                     return this.barve.spekter_1
                 case 1:

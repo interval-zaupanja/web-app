@@ -407,6 +407,9 @@ const narocniki_shema = new mongoose.Schema({
  *     ime_kratica:
  *      type: string
  *      description: kratica imena stranke
+ *     indeks_LD:
+ *      type: number
+ *      description: indeks stranke za razpored od leve proti desni
  *     barva:
  *      type: string
  *      description: barva določena stranki
@@ -429,6 +432,7 @@ const narocniki_shema = new mongoose.Schema({
 const stranke_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     ime_kratica: { type: String, required: false },
+    indeks_LD: { type: Number, required: false },
     barva: { type: String, required: false },
     logo_uri: { type: String, required: false },
     wikipedia_uri: { type: String, required: false },
