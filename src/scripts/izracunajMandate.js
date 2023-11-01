@@ -51,9 +51,11 @@ const predelajRezultat = function (vprasanje, rezultat) {
         data: []
     }
 
+    const indeksi_LD = []
     for (let i = 0; i < Object.keys(parties).length; i++) {
         const stranka_id = Object.keys(parties)[i]
         const stranka = poisciStranko(vprasanje.odgovori, stranka_id)
+        indeksi_LD.push(stranka.indeks_LD)
 
         // LABELS
         podatki.labels.push(stranka.ime_kratica ?? stranka.ime)
@@ -65,7 +67,40 @@ const predelajRezultat = function (vprasanje, rezultat) {
         podatki.data.push(parties[stranka_id])
     }
 
+    const razporejeno = razpored(podatki.data, podatki.labels, podatki.backgroundColor, indeksi_LD)
+    podatki.data = razporejeno.stMandatov
+    podatki.labels = razporejeno.imena
+    podatki.backgroundColor = razporejeno.barve
+
     return podatki
+}
+
+const razpored = function (stMandatovUnordered, imenaUnordered, barveUnordered, indeksi_LD) {
+    var tabela = Array(indeksi_LD)
+    for (let i = 0; i < indeksi_LD.length; i++) {
+        tabela[i] = {
+            ime: imenaUnordered[i],
+            barva: barveUnordered[i],
+            stMandatov: stMandatovUnordered[i],
+            indeks_LD: indeksi_LD[i]
+        }
+    }
+
+    tabela.sort( function(a, b) {
+        if (a.indeks_LD > b.indeks_LD) return 1
+        if (a.indeks_LD < b.indeks_LD) return -1
+    })
+
+    var imena = Array(imenaUnordered.length)
+    var barve = Array(imenaUnordered.length)
+    var stMandatov = Array(barveUnordered.length)
+    for (let j = 0; j < tabela.length; j++) {
+        imena[j] = tabela[j].ime
+        barve[j] = tabela[j].barva
+        stMandatov[j] = tabela[j].stMandatov
+    }
+
+    return { stMandatov, imena , barve}
 }
 
 const poisciStranko = function (odgovori, stranka_id) {
@@ -80,6 +115,9 @@ const poisciStranko = function (odgovori, stranka_id) {
             }
             if (odgovori[i].odgovor_stranka_barva) {
                 stranka.barva = odgovori[i].odgovor_stranka_barva
+            }
+            if (odgovori[i].odgovor_stranka_indeks_LD) {
+                stranka.indeks_LD = odgovori[i].odgovor_stranka_indeks_LD
             }
 
             return stranka

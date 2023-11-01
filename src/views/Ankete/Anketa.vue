@@ -134,6 +134,7 @@ export default {
                             odgovori[j].odgovor_stranka_ime_kratica = podatki.ime_kratica;
                             odgovori[j].odgovor_stranka_logo_uri = this.vrniLogoUri(podatki.logo_uri);
                             odgovori[j].odgovor_stranka_barva = podatki.barva;
+                            odgovori[j].odgovor_stranka_indeks_LD = podatki.indeks_LD;
                         }
                     }
                 }
