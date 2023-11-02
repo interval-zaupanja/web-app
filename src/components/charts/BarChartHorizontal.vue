@@ -1,10 +1,14 @@
 <template>
-    <Bar
-        :data="this.data"
-        :options="this.options"
-        :plugins="this.plugins"
-        style="height: 200px;"
-    />
+    <div class="container">
+         <div class="containerBody">
+            <Bar
+                :data="this.data"
+                :options="this.options"
+                :plugins="this.plugins"
+            />
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -35,18 +39,30 @@ export default {
                 indexAxis: 'x',
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        display: false,
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        grid: {
+                            display: false
+                        }
                     }
                 },
                 plugins: {
                     tooltip: {
-                        enabled: true,
+                        enabled: false,
                         callbacks: {
                             label: context => {
                                 const dataPoint = context.dataIndex
                                 return " Povprečna ocena " + context.dataset.data[dataPoint]
                             }
                         }
+                    },
+                    legend: {
+                        display: false
                     }
                 }
             },
@@ -83,7 +99,32 @@ export default {
         }
     },
     mounted() {
-        console.log(this.data.labels)
+        const containerBody = document.querySelector('.containerBody')
+        containerBody.style.width = this.data.labels.length * 100 + 'px'
     }
 }
 </script>
+
+<style scoped>
+.container {
+    max-width: max-content;
+    overflow-x: scroll;
+    margin-bottom: 10px
+}
+
+.containerBody {
+    height: 200px;
+    margin: 0 auto 5px auto;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+</style>
