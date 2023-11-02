@@ -48,6 +48,36 @@ export default {
                         },
                         grid: {
                             display: false
+                        },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 0,
+                            minRotation: 0,
+                            callback: (index) => {
+                                let label = this.data.labels[index]
+                                if(label == null){
+                                    return ''
+                                }
+                                if (label.length > 15) {
+                                    // okoli sredine label iščemo presledek
+                                    let iMiddleChar = Math.floor(label.length / 2)
+                                    let iChar = iMiddleChar
+                                    let offset = 1
+                                    while (label[iChar] != ' ' && (iChar > 0 && iChar < label.length)) {
+                                        iChar = iMiddleChar + offset
+                                        if (offset > 0) {
+                                            offset *= -1
+                                        } else {
+                                            offset = offset * -1 + 1 
+                                        }
+                                    }
+                                    
+                                    // label razdelimo na dva dela
+                                    label = [label.substring(0, iChar), label.substring(iChar)]
+                                }
+                                return label
+                            }
+                            
                         }
                     }
                 },
