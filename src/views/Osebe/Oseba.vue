@@ -6,7 +6,7 @@
         <Breadcrumbs previous="Osebe" previousLink="/osebe" current="Podrobnosti osebe"/>
         <div style="overflow: hidden">
             <div style="display: inline-block" class="side-panel">
-                <img v-if="this.slika_uri" :src="this.slika_uri">
+                <img v-if="this.slika_uri" :src="this.slika_uri" class="portrait">
                 <div v-if="this.slika_avtor && this.slika_vir" style="color: grey; text-align: center">
                     <span v-if="this.slika_avtor">{{ this.slika_avtor }}</span> <a v-if="this.slika_vir" :href="this.slika_vir">Vir</a>
                 </div>
@@ -117,8 +117,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .main {
     width: 60%;
+}
+
+.portrait {
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1) 60%, rgba(0,0,0,0));
 }
 </style>
