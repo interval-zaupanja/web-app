@@ -128,7 +128,7 @@ export default {
 
                             var width = 70 // širina stolpca
                             var height = (width / widthSrc) * heightSrc
-                            ctx.drawImage(slika, x.getPixelForValue(i) - width / 2, x.top - height, width, height) // x, y, h, w
+                            ctx.drawImage(slika, x.getPixelForValue(i) - width / 2, x.top - height, width, height) // x, y, w, h
                         }                        
                     }
                 },

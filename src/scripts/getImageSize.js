@@ -10,6 +10,7 @@ export const getImageDimensions = function (uri) {
     const existingImg = document.getElementById(uri);
     var widthSrc = existingImg.width;
     var heightSrc = existingImg.height;
+    existingImg.remove()
 
     return { widthSrc, heightSrc}
 }

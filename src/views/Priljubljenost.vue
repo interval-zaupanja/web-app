@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BarChart from '@/components/charts/BarChart.vue'
+import BarChart from '@/components/charts/BarChartVertical.vue'
 import BarChartHorizontal from '@/components/charts/BarChartHorizontal.vue'
 
 import axios from 'axios'

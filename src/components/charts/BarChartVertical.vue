@@ -19,6 +19,8 @@ import {
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 
+import { getImageDimensions } from '@/scripts/getImageSize.js'
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 export default {
@@ -56,7 +58,7 @@ export default {
                 }
             },
             plugins: [
-                /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
+                // /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
                 {
                     id: 'imageItems',
                     beforeDatasetsDraw(chart, args, pluginOptions) {
@@ -70,20 +72,24 @@ export default {
                             const slika = new Image()
                             slika.src = imageURI
 
-                            var width
-                            var height
-                            slika.onload = () => {
-                                width = slika.width
-                                height = slika.height
-                            }
+                            const { widthSrc, heightSrc } = getImageDimensions(slike[i])
 
-                            height = (width / options.layout.padding.left) * height
-                            height = 60 // ZAČASNA REŠITEV DOKLER NE NAJDEM NAČINA, DA SE PREBERE VIŠINA SLIKE
-                            ctx.drawImage(slika, 0, y.getPixelForValue(i) - height / 2, height, options.layout.padding.left) // x, y, h, w
+                            var width = options.layout.padding.left // širina stolpca
+                            var height = Math.floor((width / widthSrc) * heightSrc)
+
+                            var xOffset = 0
+                            if (height > 80) { // dodatni popravki, če je slika previsoka
+                                height = 80
+                                let widthPrevious = width
+                                width = (height / heightSrc) * widthSrc
+                                xOffset = (widthPrevious - width) / 2
+                            }
+                            console.log(width, height)
+                            ctx.drawImage(slika, xOffset, y.getPixelForValue(i) - height / 2, width, height) // x, y, w, h
                         }                        
                     }
                 }
-                */
+                // */
             ]
         }
     },
