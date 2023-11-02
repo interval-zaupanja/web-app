@@ -5,9 +5,12 @@
                 :data="this.data"
                 :options="this.options"
                 :plugins="this.plugins"
+                @click="this.onClick"
+                ref="chartRef"
             />
         </div>
     </div>
+    <div class="caption" style="text-align: center;">Klik na stolpec preusmeri na stran tiste osebe</div>
 </template>
 
 <script>
@@ -20,7 +23,7 @@ import {
     CategoryScale,
     LinearScale
 } from 'chart.js'
-import { Bar } from 'vue-chartjs'
+import { Bar, getElementAtEvent } from 'vue-chartjs'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { getImageDimensions } from '@/scripts/getImageSize.js'
@@ -140,6 +143,22 @@ export default {
     mounted() {
         const containerBody = document.querySelector('.containerBody')
         containerBody.style.width = this.data.labels.length * 100 + 'px'
+    },
+    methods: {
+        onClick(event) {
+            const { chart } = this.$refs.chartRef
+
+            if (!chart) {
+                return
+            }
+
+            const element = getElementAtEvent(chart, event)
+            if (element.length > 0) {
+                const datasetIndex = element[0].index
+                const idOsebe = this.data.labelIDs[datasetIndex]
+                this.$router.push('/osebe/' + idOsebe)
+            }
+        }
     }
 }
 </script>

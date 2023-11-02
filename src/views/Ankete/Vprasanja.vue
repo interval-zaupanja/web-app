@@ -77,7 +77,12 @@
                         </div>
                     </div>
                 </div>
-                <Odgovori v-if="vprasanje.odgovori" :odgovori="vprasanje.odgovori" :id="this.id" :loaded="this.loaded"/>
+                <Odgovori
+                    v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'"
+                    :odgovori="vprasanje.odgovori"
+                    :id="this.id"
+                    :loaded="this.loaded"
+                />
             </div>
         </div>
     </div>
