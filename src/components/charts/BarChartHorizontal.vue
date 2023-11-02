@@ -8,7 +8,6 @@
             />
         </div>
     </div>
-
 </template>
 
 <script>
@@ -22,6 +21,9 @@ import {
     LinearScale
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+import { getImageDimensions } from '@/scripts/getImageSize.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -77,7 +79,6 @@ export default {
                                 }
                                 return label
                             }
-                            
                         }
                     }
                 },
@@ -93,39 +94,47 @@ export default {
                     },
                     legend: {
                         display: false
+                    },
+                    datalabels: {
+                        color: '#FFFFFF',
+                        formatter: function (value) {
+                            return value.toLocaleString('sl-SI') // če hočemo decimalno vejico namesto pike
+                        },
+                        font: {
+                            weight: 'bold',
+                            size: 25,
+                            family: 'graphik'
+                        },
+                        anchor: 'end',
+                        align: 'bottom'
                     }
                 }
             },
             plugins: [
-                /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
+                // /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
                 {
                     id: 'imageItems',
-                    beforeDatasetsDraw(chart, args, pluginOptions) {
-                        const { ctx, data, options, scales: { x, y } } = chart
+                    afterDatasetsDraw(chart) {
+                        const { ctx, data, scales: { x } } = chart
 
                         ctx.save()
                         const slike = data.datasets[0].images
                         
                         for (let i = 0; i < slike.length; i++) {
-                            const imageURI = slike[i]
                             const slika = new Image()
-                            slika.src = imageURI
+                            slika.src = slike[i]
 
-                            var width
-                            var height
-                            slika.onload = () => {
-                                width = slika.width
-                                height = slika.height
-                            }
+                            const { widthSrc, heightSrc } = getImageDimensions(slike[i])
 
-                            height = (width / options.layout.padding.left) * height
-                            height = 60 // ZAČASNA REŠITEV DOKLER NE NAJDEM NAČINA, DA SE PREBERE VIŠINA SLIKE
-                            ctx.drawImage(slika, 0, y.getPixelForValue(i) - height / 2, height, options.layout.padding.left) // x, y, h, w
+                            var width = 70 // širina stolpca
+                            var height = (width / widthSrc) * heightSrc
+                            ctx.drawImage(slika, x.getPixelForValue(i) - width / 2, x.top - height, width, height) // x, y, h, w
                         }                        
                     }
-                }
-                */
-            ]
+                },
+                // */
+               ChartDataLabels
+            ],
         }
     },
     mounted() {
@@ -143,8 +152,8 @@ export default {
 }
 
 .containerBody {
-    height: 200px;
-    margin: 0 auto 5px auto;
+    height: 280px;
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {

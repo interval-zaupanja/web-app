@@ -13,6 +13,8 @@
 import BarChart from '@/components/charts/BarChart.vue'
 import BarChartHorizontal from '@/components/charts/BarChartHorizontal.vue'
 
+import axios from 'axios'
+
 export default {
     name: 'Priljubljenost',
     props: ['podatki', 'orientacija'],

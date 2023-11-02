@@ -250,7 +250,7 @@
         "_id": {
             "$oid": "65398dc8a19b23182c35762c"
         },
-        "ime": "Brout",
+        "ime": "Borut",
         "priimek": "Sajovic",
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
