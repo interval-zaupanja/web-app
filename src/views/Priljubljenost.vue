@@ -1,16 +1,24 @@
 <template>
-    <div v-if="loaded">
-        <BarChart :data="this.data"/>
+    <div v-if="this.orientacija === 'horizontalno' && loaded">
+        <BarChartHorizontal :data="this.data"/>
+    </div>
+    <div v-else>
+        <div v-if="loaded">
+            <BarChart :data="this.data"/>
+        </div>
     </div>
 </template>
 
 <script>
 import BarChart from '@/components/charts/BarChart.vue'
+import BarChartHorizontal from '@/components/charts/BarChartHorizontal.vue'
 
 export default {
     name: 'Priljubljenost',
+    props: ['podatki', 'orientacija'],
     components: {
-        BarChart
+        BarChart,
+        BarChartHorizontal
     },
     data() {
         return {
@@ -35,8 +43,12 @@ export default {
     },
     methods: {
         async getData() {
-            const { data } = await axios.get(this.apiServer + '/api/vprasanja?tip=priljubljenost&order=asc')
-            this.vprasanja = data
+            if (this.podatki) {
+                this.vprasanja[0] = this.podatki
+            } else {
+                const { data } = await axios.get(this.apiServer + '/api/vprasanja?tip=priljubljenost&order=asc')
+                this.vprasanja = data
+            }
         },
         predelajPodatke(vprasanja) {
             var podatki = {

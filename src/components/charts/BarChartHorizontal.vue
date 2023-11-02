@@ -3,7 +3,7 @@
         :data="this.data"
         :options="this.options"
         :plugins="this.plugins"
-        style="height: 2000px;"
+        style="height: 200px;"
     />
 </template>
 
@@ -30,16 +30,11 @@ export default {
     data() {
         return {
             options: {
-                layout: {
-                    padding: {
-                        left: 90
-                    }
-                },
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y',
+                indexAxis: 'x',
                 scales: {
-                    x: {
+                    y: {
                         beginAtZero: true
                     }
                 },

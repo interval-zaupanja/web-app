@@ -62,6 +62,12 @@
                                 class="chart"
                             />
                         </div>
+                        <div v-else-if="vprasanje.tip === 'priljubljenost'">
+                            <Priljubljenost
+                                :podatki="vprasanje"
+                                orientacija="horizontalno"
+                            />
+                        </div>
                         <div v-else class="charts">
                             <PieChart
                                 :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
@@ -90,6 +96,7 @@ import Odgovori from '@/views/Ankete/Odgovori.vue'
 
 import { predelajOdgovore } from '@/scripts/predelajOdgovore.js'
 import { izracunajMandate } from  '@/scripts/izracunajMandate.js'
+import Priljubljenost from '../Priljubljenost.vue'
 
 export default {
     name: 'Vprasanja',
@@ -100,7 +107,8 @@ export default {
         PieChart,
         DoughnutChart,
         MandatiChart,
-        Odgovori
+        Odgovori,
+        Priljubljenost
     },
     data() {
         return {
