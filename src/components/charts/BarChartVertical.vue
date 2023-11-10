@@ -61,8 +61,8 @@ export default {
                 // /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
                 {
                     id: 'imageItems',
-                    beforeDatasetsDraw(chart, args, pluginOptions) {
-                        const { ctx, data, options, scales: { x, y } } = chart
+                    beforeDatasetsDraw(chart) {
+                        const { ctx, data, options, scales: { y } } = chart
 
                         ctx.save()
                         const slike = data.datasets[0].images
@@ -84,7 +84,6 @@ export default {
                                 width = (height / heightSrc) * widthSrc
                                 xOffset = (widthPrevious - width) / 2
                             }
-                            console.log(width, height)
                             ctx.drawImage(slika, xOffset, y.getPixelForValue(i) - height / 2, width, height) // x, y, w, h
                         }                        
                     }
@@ -92,9 +91,6 @@ export default {
                 // */
             ]
         }
-    },
-    mounted() {
-        console.log(this.data.labels)
     }
 }
 </script>

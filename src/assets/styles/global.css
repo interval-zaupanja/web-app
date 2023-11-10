@@ -39,7 +39,9 @@ body {
     /*background-color: #f6caca;*/
     /*background-image: linear-gradient(to bottom right, rgba(255, 166, 0, 0.8), rgba(255, 0, 59, 0.75));*/
     /*background-image: linear-gradient(to bottom right, rgba(29, 29, 31, 0.02), #f6caca);*/
-    background-image: linear-gradient(to right, rgb(255, 255, 255), #f6caca);
+    background-image: linear-gradient(to right, #ffffff, #e7acac);
+    /* background-image: linear-gradient(to right, #ffffffab, #e49595ab); */
+    /* backdrop-filter: blur(25px); */
 }
 
 .yellow-white {

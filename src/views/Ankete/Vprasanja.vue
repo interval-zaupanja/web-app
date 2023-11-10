@@ -9,8 +9,8 @@
                         <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id" />
                         <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id"/>
                     </div>
-                    <p v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</p>
-                    <p>
+                    <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
+                    <div>
                         Tip vprašanja: {{vprasanje.tip}}
                         <span v-if="vprasanje.zaupanje_tip">
                             - {{ vprasanje.zaupanje_tip}}
@@ -21,8 +21,8 @@
                         <span v-if="vprasanje.glasovalno_tip.kvalitativna_meritev">
                             - {{ this.kvalitativnaMeritev(vprasanje.glasovalno_tip.kvalitativna_meritev)}}
                         </span>
-                    </p>
-                    <p v-if="vprasanje.glasovanja">
+                    </div>
+                    <div v-if="vprasanje.glasovanja">
                         <span v-if="vprasanje.glasovanja.length == 1">Glasovanje: </span>
                         <span v-else-if="vprasanje.glasovanja.length == 2">Glasovanji: </span>
                         <span v-else>Glasovanja: </span>
@@ -33,8 +33,8 @@
                             </router-link>
                             <span v-if="indeks + 1 < vprasanje.glasovanja.length">, </span>
                         </span>
-                    </p>
-                    <p v-else-if="vprasanje.glasovanje_tip">
+                    </div>
+                    <div v-else-if="vprasanje.glasovanje_tip">
                         Tip glasovanja:
                         {{ vprasanje.glasovanje_tip.tip}}
                         <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
@@ -44,10 +44,10 @@
                             - {{ vprasanje.glasovanje_tip.referendum_tip}}
                         </span>
                         ({{ vprasanje.glasovanje_tip.raven_oblasti }} raven)
-                    </p>
-                    <p v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</p>
-                    <p v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</p>
-                    <p v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</p>
+                    </div>
+                    <div v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</div>
+                    <div v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</div>
+                    <div v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</div>
                     <div>
                         <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'" class="charts">
                             <DoughnutChart

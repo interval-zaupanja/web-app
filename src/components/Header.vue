@@ -87,7 +87,7 @@ ul li ul.dropdown li {
   display: block;
   text-align: center;
   background: #c8b2b3be;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
 }
 
 ul li ul.dropdown li a {
