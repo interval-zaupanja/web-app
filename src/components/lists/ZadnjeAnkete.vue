@@ -67,7 +67,7 @@ export default {
 		async getNarocnikiIme(narocniki_id) {
 			var narocniki_ime = []
             for (let i = 0; i < narocniki_id.length; i++) {
-                const { data } = await axios.get(this.apiServer + "/api/narocniki/" + narocniki_id[i]);
+                const { data } = await axios.get(this.apiServer + "/api/zalozniki/" + narocniki_id[i]);
                 narocniki_ime.push(data.ime)
             }
             return narocniki_ime

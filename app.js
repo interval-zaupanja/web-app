@@ -24,7 +24,7 @@ const swaggerDocument = swaggerJsDoc({
                 name: "Izvajalci",
                 description: "",
             }, {
-                name: "Narocniki",
+                name: "Zalozniki",
                 description: "",
             }
         ],

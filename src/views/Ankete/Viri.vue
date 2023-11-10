@@ -7,14 +7,14 @@
             <span class="anchor-outer" :id="vir._id"></span>
             <!-- <CopyLink :path="'ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
             <div>
-                <p>Založnik: 
-                    <router-link :to="this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id">
-                        {{ vir.zaloznik_ime}}
+                <p>Objavitelj: 
+                    <router-link :to="this.getObjaviteljPath(vir.objavitelj_tip) + vir.objavitelj_id">
+                        {{ vir.objavitelj_ime}}
                     </router-link>
-                    <span v-if="vir.zaloznik_logo_uri != null">&nbsp;<img v-if="vir.zaloznik_logo_uri != null" :src="vir.zaloznik_logo_uri" @click="$router.push(this.getZaloznikPath(vir.zaloznik_tip) + vir.zaloznik_id)" style="max-height: 12px"/></span>
-                    <Label :tip="vir.zaloznik_tip"
-                        v-if="this.izvajalci.filter(e => e.id == vir.zaloznik_id).length > 0 ||
-                        this.narocniki.filter(e => e.id == vir.zaloznik_id).length > 0"
+                    <span v-if="vir.objavitelj_logo_uri != null">&nbsp;<img v-if="vir.objavitelj_logo_uri != null" :src="vir.objavitelj_logo_uri" @click="$router.push(this.getObjaviteljPath(vir.objavitelj_tip) + vir.objavitelj_id)" style="max-height: 12px"/></span>
+                    <Label :tip="vir.objavitelj_tip"
+                        v-if="this.izvajalci.filter(e => e.id == vir.objavitelj_id).length > 0 ||
+                        this.narocniki.filter(e => e.id == vir.objavitelj_id).length > 0"
                     />
                 </p>
                 <p v-if="vir.opis">Opis: {{vir.opis}}</p>
@@ -70,14 +70,14 @@ export default {
     methods: {
         async getViriImena() {
             for (let i = 0; i < this.viri.length; i++) {
-                const { data } = await axios.get(this.apiServer + "/api" + this.getZaloznikPath(this.viri[i].zaloznik_tip) + this.viri[i].zaloznik_id)
-                this.viri[i].zaloznik_ime = data.ime;
-                this.viri[i].zaloznik_logo_uri = this.vrniLogoUri(data.logo_uri);
+                const { data } = await axios.get(this.apiServer + "/api" + this.getObjaviteljPath(this.viri[i].objavitelj_tip) + this.viri[i].objavitelj_id)
+                this.viri[i].objavitelj_ime = data.ime;
+                this.viri[i].objavitelj_logo_uri = this.vrniLogoUri(data.logo_uri);
             }
         },
-        getZaloznikPath(tip) {
-            if (tip === 'narocnik') {
-                return "/narocniki/"
+        getObjaviteljPath(tip) {
+            if (tip === 'zaloznik') {
+                return "/zalozniki/"
             } else if (tip === 'izvajalec') {
                 return "/izvajalci/"
             }

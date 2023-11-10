@@ -5,6 +5,7 @@
     },
     "ime": "Delo",
     "ime_polno": "Delo d.o.o.",
+    "tip": "narocnik",
     "barva": "#0051A2",
     "logo_uri": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Delo_d.o.o.svg/2880px-Delo_d.o.o.svg.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Delo_(%C4%8Dasopis)",
@@ -17,6 +18,7 @@
     },
     "ime": "Dnevnik",
     "ime_polno": "Dnevnik, družba medijskih vsebin, d.d.",
+    "tip": "narocnik",
     "barva": "#EE4124",
     "logo_uri": "https://www.dnevnik.si/assets/images/dnevnik.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Dnevnik_(%C4%8Dasopis)"
@@ -27,6 +29,7 @@
     },
     "ime": "Večer",
     "ime_polno": "Večer mediji d.o.o.",
+    "tip": "narocnik",
     "barva": "#FB7600",
     "logo_uri": "https://vecer.com/images/vecer-logo.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Ve%C4%8Der_(%C4%8Dasopis)"
@@ -36,6 +39,7 @@
       "$oid": "5f8024542bc87c975ffc1a76"
     },
     "ime": "24ur",
+    "tip": "narocnik",
     "barva": "#404FB0",
     "logo_uri": "https://pro-plus.si/assets/img/logos/24ur-logo.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/24UR"
@@ -46,6 +50,7 @@
     },
     "ime": "RTV Slovenija",
     "ime_polno": "Radiotelevizija Slovenija",
+    "tip": "narocnik",
     "barva": "#1A307E",
     "logo_uri": "/logoti/RTV.png",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Radiotelevizija_Slovenija"
@@ -56,6 +61,7 @@
     },
     "ime": "SiolNET",
     "ime_polno": "Radiotelevizija Slovenija",
+    "tip": "medij",
     "barva": "#1A307E",
     "logo_uri": "/logoti/SiolNET.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/Siol.net"
@@ -65,6 +71,7 @@
       "$oid": "65004454132c56346b1ca0f3"
     },
     "ime": "Žurnal24",
+    "tip": "medij",
     "barva": "#9CCBE6",
     "logo_uri": "https://styria-media.si/wp-content/themes/styria/images/brands/zurnal24.svg",
     "wikipedia_uri": "https://sl.wikipedia.org/wiki/%C5%BDurnal24",

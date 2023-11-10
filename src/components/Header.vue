@@ -24,7 +24,7 @@
               <ul class="dropdown">
                 <li><router-link to="/ankete">Ankete</router-link></li>
                 <li><router-link to="/izvajalci">Izvajalci</router-link></li>
-                <li><router-link to="/narocniki">Naročniki</router-link></li>
+                <li><router-link to="/zalozniki">Založniki</router-link></li>
                 <li><router-link to="/stranke">Stranke</router-link></li>
                 <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
               </ul>

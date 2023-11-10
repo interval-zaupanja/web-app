@@ -99,8 +99,8 @@ const lokacija_shema = new mongoose.Schema({
 
 // MANJKA SHEMA: tudi ostalo dokumentacijo je potrebno posodbiti
 const vir_shema = new mongoose.Schema({
-    zaloznik_tip: { type: String, required: [true, "Potrebno je specificirati, če je založnik ali izvajalec"] }, // publisher: lahko naročnik ali izvajalec
-    zaloznik_id: { type: ObjectId, required: [true, "Enolični identifikator založnika je zahtevano polje"] },
+    objavitelj_tip: { type: String, required: [true, "Potrebno je specificirati, če je založnik ali izvajalec"] }, // objavitelj: lahko naročnik ali založnik
+    objavitelj_id: { type: ObjectId, required: [true, "Enolični identifikator založnika je zahtevano polje"] },
     lokacije: { type: [lokacija_shema], default: undefined, required: false },
     opis: { type: String, required: false },
     opombe: { type: String, required: false }
@@ -351,36 +351,40 @@ const izvajalci_shema = new mongoose.Schema({
  *    properties:
  *     _id:
  *      type: ObjectId
- *      description: <b>enolični identifikator</b> naročnika
+ *      description: <b>enolični identifikator</b> založnika
  *      example: 5f8024542bc87c975ffc1a70
  *     ime:
  *      type: string
- *      description: ime naročnika
+ *      description: ime založnika
  *     ime_polno:
  *      type: string
- *      description: polno ime naročnika
+ *      description: polno ime založnika
+ *     tip:
+ *      type: string
+ *      description: tip založnika
  *     barva:
  *      type: string
  *      description: barva določena naročniku
  *     logo_uri:
  *      type: string
- *      description: povezava do logota naročnika
+ *      description: povezava do logota založnika
  *     wikipedia_uri:
  *      type: string
- *      description: povezava do Wikipedia strani naročnika
+ *      description: povezava do Wikipedia strani založnika
  *     opis:
  *      type: string
- *      description: opis naročnika
+ *      description: opis založnika
  *     opombe:
  *      type: string
- *      description: opombe naročnika
+ *      description: opombe založnika
  *    required:
  *     - _id
  *     - ime
  */
-const narocniki_shema = new mongoose.Schema({
+const zalozniki_shema = new mongoose.Schema({
     ime: { type: String, required: [true, "Ime je zahtevano polje"] },
     ime_polno: {type: String, required: false },
+    tip: { type: String, required: [true, "Potrebno je navesti tudi tip založnika"] },
     barva: { type: String, required: false },
     logo_uri: { type: String, required: false },
     wikipedia_uri: { type: String, required: false },
@@ -555,7 +559,7 @@ mongoose.model("Glasovanje", glasovanja_shema, "Glasovanja");
 mongoose.model("Anketa", ankete_shema, "Ankete");
 mongoose.model("Vprasanje", vprasanja_shema, "Vprasanja");
 mongoose.model("Izvajalec", izvajalci_shema, "Izvajalci");
-mongoose.model("Narocnik", narocniki_shema, "Narocniki");
+mongoose.model("Zaloznik", zalozniki_shema, "Zalozniki");
 mongoose.model("Stranka", stranke_shema, "Stranke");
 mongoose.model("Oseba", osebe_shema, "Osebe");
 mongoose.model("Prijava", prijave_shema, "Prijave");

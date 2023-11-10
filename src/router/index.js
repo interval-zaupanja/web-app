@@ -8,8 +8,8 @@ import Ankete from '@/views/Ankete/Ankete.vue'
 import Anketa from '@/views/Ankete/Anketa.vue'
 import Stranke from '@/views/Stranke/Stranke.vue'
 import Stranka from '@/views/Stranke/Stranka.vue'
-import Narocniki from '@/views/Narocniki/Narocniki.vue'
-import Narocnik from '@/views/Narocniki/Narocnik.vue'
+import Zalozniki from '@/views/Zalozniki/Zalozniki.vue'
+import Narocnik from '@/views/Zalozniki/Zaloznik.vue'
 import Izvajalci from '@/views/Izvajalci/Izvajalci.vue'
 import Izvajalec from '@/views/Izvajalci/Izvajalec.vue'
 import Glasovanja from '@/views/Glasovanja/Glasovanja.vue'
@@ -66,12 +66,12 @@ const router = new createRouter({
             props: true
         },
         {
-            path: '/narocniki',
-            name: 'Narocniki',
-            component: Narocniki
+            path: '/zalozniki',
+            name: 'Zalozniki',
+            component: Zalozniki
         },
         {
-            path: '/narocniki/:id',
+            path: '/zalozniki/:id',
             name: 'Narocnik',
             component: Narocnik,
             props: true

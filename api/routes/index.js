@@ -3,7 +3,7 @@ const router = express.Router();
 
 const ctrlAnkete = require('../controllers/ankete');
 const ctrlIzvajalci =  require('../controllers/izvajalci');
-const ctrlNarocniki = require('../controllers/narocniki');
+const ctrlZalozniki = require('../controllers/zalozniki');
 const ctrlStranke = require('../controllers/stranke');
 const ctrlVprasanja = require('../controllers/vprasanja');
 const ctrlGlasovanja = require('../controllers/glasovanja');
@@ -24,12 +24,12 @@ router.delete('/izvajalci/:id', ctrlIzvajalci.izbrisiIzvajalca);
 router.post('/izvajalci/', ctrlIzvajalci.ustvariIzvajalca);
 router.put('/izvajalci/:id', ctrlIzvajalci.posodobiIzvajalca);
 
-// Narocniki storitve
-router.get('/narocniki', ctrlNarocniki.seznamNarocnikov);
-router.get('/narocniki/:id', ctrlNarocniki.podrobnostiNarocnika);
-router.delete('/narocniki/:id', ctrlNarocniki.izbrisiNarocnika);
-router.post('/narocniki/', ctrlNarocniki.ustvariNarocnika);
-router.put('/narocniki/:id', ctrlNarocniki.posodobiNarocnika);
+// Zalozniki storitve
+router.get('/zalozniki', ctrlZalozniki.seznamZaloznikov);
+router.get('/zalozniki/:id', ctrlZalozniki.podrobnostiZaloznika);
+router.delete('/zalozniki/:id', ctrlZalozniki.izbrisiZaloznika);
+router.post('/zalozniki/', ctrlZalozniki.ustvariZaloznika);
+router.put('/zalozniki/:id', ctrlZalozniki.posodobiZaloznika);
 
 // Stranke storitve
 router.get('/stranke', ctrlStranke.seznamStrank);

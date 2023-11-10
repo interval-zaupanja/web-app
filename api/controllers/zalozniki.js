@@ -1,24 +1,25 @@
 const mongoose = require("mongoose");
-const Narocniki = mongoose.model("Narocnik");
+const Zalozniki = mongoose.model("Zaloznik");
 
 /**
  * @openapi
- *  /narocniki:
+ *  /zalozniki:
  *   get:
- *    summary: Pridobi seznam vseh naročnikov.
- *    description: Pridobi seznam vseh naročnikov, ki se nahajajo v podatkovni bazi.
- *    tags: [Narocniki]
+ *    summary: Pridobi seznam vseh založnikov.
+ *    description: Pridobi seznam vseh založnikov, ki se nahajajo v podatkovni bazi.
+ *    tags: [Zalozniki]
  *    responses:
  *     '200':
- *      description: <b>OK</b>, s seznamom naročnikov.
+ *      description: <b>OK</b>, s seznamom založnikov.
  *      content:
  *       application/json:
  *        schema:
- *         $ref: '#/components/schemas/Narocnik'
+ *         $ref: '#/components/schemas/Zaloznik'
  *        example:
  *         - _id: 13153ec4d64ceb8d276eae42
  *           ime: Delo
  *           ime_polno: Delo d.o.o
+ *           tip: narocnik
  *           opis: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *           opombe: Delo izvede veliko splošnih anket, ki jih bolj redkeje vključimo na naši spletni strani. Spletna in tiskana izdaja se pogosto razlikujeta.
  *     '404':
@@ -30,8 +31,8 @@ const Narocniki = mongoose.model("Narocnik");
  *        example:
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
-const seznamNarocnikov = (req, res) => {
-    Narocniki.find().exec(function (error, seznam) {
+const seznamZaloznikov = (req, res) => {
+    Zalozniki.find().exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -41,33 +42,34 @@ const seznamNarocnikov = (req, res) => {
 };
 /**
  * @openapi
- * /narocniki/{id}:
+ * /zalozniki/{id}:
  *  get:
- *   summary: Vrni podrobnosti naročnika.
- *   description: Vrni podrobnosti naročnika na podlagi enoličnega identifikatorja.
- *   tags: [Narocniki]
+ *   summary: Vrni podrobnosti založnika.
+ *   description: Vrni podrobnosti založnika na podlagi enoličnega identifikatorja.
+ *   tags: [Zalozniki]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
- *      description: <b>enolični identifikator</b> naročnika
+ *      description: <b>enolični identifikator</b> založnika
  *      required: true
  *   responses:
  *    '200':
- *     description: <b>OK</b>, naročnik najden.
+ *     description: <b>OK</b>, založnik najden.
  *     content:
  *      application/json:
  *       schema:
- *        $ref: '#/components/schemas/Narocnik'
+ *        $ref: '#/components/schemas/Zaloznik'
  *       example:
  *        - _id: 13153ec4d64ceb8d276eae42
  *          ime: Delo
  *          ime_polno: Delo d.o.o
+ *          tip: narocnik
  *          opis: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *          opombe: Delo izvede veliko splošnih anket, ki jih bolj redkeje vključimo na naši spletni strani. Spletna in tiskana izdaja se pogosto razlikujeta.
  *    '404':
- *     description: 'Ne najdem naročnika s podanim enoličnim identifikatorjem.'
+ *     description: 'Ne najdem založnika s podanim enoličnim identifikatorjem.'
  *     content:
  *      application/json:
  *       schema:
@@ -83,34 +85,34 @@ const seznamNarocnikov = (req, res) => {
  *       example:
  *        sporocilo: "Napaka na strežniku: <opis napake>"
  */
-const podrobnostiNarocnika = (req, res) => {
-    const idNarocnika = req.params.id;
+const podrobnostiZaloznika = (req, res) => {
+    const idZaloznika = req.params.id;
 
-    Narocniki.findById(idNarocnika).exec(function (
+    Zalozniki.findById(idZaloznika).exec(function (
         error,
-        narocnik
+        zaloznik
     ) {
-        if (!narocnik) {
+        if (!zaloznik) {
             res.status(404).json({
                 sporocilo:
-                    "Ne najdem naročnika s podanim enoličnim identifikatorjem",
+                    "Ne najdem založnika s podanim enoličnim identifikatorjem",
             });
         } else if (error) {
             res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
         } else {
-            res.status(200).json(narocnik);
+            res.status(200).json(zaloznik);
         }
     });
 };
 /**
  * @openapi
- * /narocniki:
+ * /zalozniki:
  *  post:
- *   summary: Doda novega naročnika v bazo.
- *   description: Doda novega naročnika z vsemi izpolnjenimi podatki v bazo.
- *   tags: [Narocniki]
+ *   summary: Doda novega založnika v bazo.
+ *   description: Doda novega založnika z vsemi izpolnjenimi podatki v bazo.
+ *   tags: [Zalozniki]
  *   requestBody:
- *    description: Naročnik
+ *    description: Založnik
  *    required: true
  *    content:
  *     application/x-www-form-urlencoded:
@@ -123,6 +125,9 @@ const podrobnostiNarocnika = (req, res) => {
  *        ime_polno:
  *          required: false
  *          example: Delo d.o.o.
+ *        tip:
+ *          required: true
+ *          example: narocnik
  *        opis:
  *          required: true
  *          example: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
@@ -133,11 +138,11 @@ const podrobnostiNarocnika = (req, res) => {
  *        - ime
  *   responses:
  *    '201':
- *     description: Uspešno <b>ustvarjen</b> naročnik.
+ *     description: Uspešno <b>ustvarjen</b> založnik.
  *     content:
  *      application/json:
  *       schema:
- *        $ref: '#/components/schemas/Narocnik'
+ *        $ref: '#/components/schemas/Zaloznik'
  *    '400':
  *     description: <b>Napaka</b>, niso vneseni vsi zahtevani podatki.
  *     content:
@@ -157,28 +162,28 @@ const podrobnostiNarocnika = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo.
  */
-const ustvariNarocnika = (req, res) => {
+const ustvariZaloznika = (req, res) => {
     if (!req.body.ime) {
         res
             .status(400)
             .json({sporocilo: "Potrebno je vnesti vse obvezne podatke!"});
     } else {
-        const novNarocnik = {ime: req.body.ime};
+        const novZaloznik = {ime: req.body.ime};
         if (req.body.ime_polno) {
-            novNarocnik.ime_polno = req.body.ime_polno;
+            novZaloznik.ime_polno = req.body.ime_polno;
         }
         if (req.body.opis) {
-            novNarocnik.opis = req.body.opis;
+            novZaloznik.opis = req.body.opis;
         }
         if (req.body.opombe) {
-            novNarocnik.opombe = req.body.opombe;
+            novZaloznik.opombe = req.body.opombe;
         }
 
-        Narocniki.create(novNarocnik, function (error, narocnik) {
+        Zalozniki.create(novZaloznik, function (error, zaloznik) {
             if (error) {
                 res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
             } else {
-                res.status(201).json(narocnik);
+                res.status(201).json(zaloznik);
             }
         });
     }
@@ -186,22 +191,22 @@ const ustvariNarocnika = (req, res) => {
 
 /**
  * @openapi
- * /narocniki/{id}:
+ * /zalozniki/{id}:
  *  put:
- *   summary: Posodobi naročnika.
- *   description: Posodobi naročnika z izbranim enoličnim identifikatorjem.
- *   tags: [Narocniki]
+ *   summary: Posodobi založnika.
+ *   description: Posodobi založnika z izbranim enoličnim identifikatorjem.
+ *   tags: [Zalozniki]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
  *       pattern: '^[a-fA-F\d]{24}$'
- *      description: <b>enolični identifikator</b> naročnika
+ *      description: <b>enolični identifikator</b> založnika
  *      required: true
  *      example: 5f8024542bc87c975ffc1a70
  *   requestBody:
- *    description: Naročnik
+ *    description: Založnik
  *    required: true
  *    content:
  *     application/x-www-form-urlencoded:
@@ -212,6 +217,8 @@ const ustvariNarocnika = (req, res) => {
  *          example: Delo
  *        ime_polno:
  *          example: Delo d.o.o.
+ *        tip:
+ *          example: narocnik
  *        opis:
  *          example: Delo je dnevni časopis, ki je začel izhajati leta 1959, ki izhaja tako v tiskani kot v spletni izdaji.
  *        opombe:
@@ -220,11 +227,11 @@ const ustvariNarocnika = (req, res) => {
  *        - ime
  *   responses:
  *    '200':
- *     description: <b>OK</b>, pri posodabljanju naročnika
+ *     description: <b>OK</b>, pri posodabljanju založnika
  *     content:
  *      application/json:
  *       schema:
- *        $ref: '#/components/schemas/Narocnik'
+ *        $ref: '#/components/schemas/Zaloznik'
  *    '400':
  *     description: <b>Napaka</b>, niso vneseni vsi zahtevani podatki
  *     content:
@@ -236,15 +243,15 @@ const ustvariNarocnika = (req, res) => {
  *         value:
  *          message: Polje 'ime' mora biti obvezno podano
  *    '404':
- *     description: Naročnik s tem <b>enoličnim identifikatorjem</b> ne obstaja, s sporočilom napake.
+ *     description: Založnik s tem <b>enoličnim identifikatorjem</b> ne obstaja, s sporočilom napake.
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       examples:
- *        naročnik ni najden:
+ *        založnik ni najden:
  *         value:
- *          message: Ne najdem naročnika s podanim enoličnim identifikatorjem
+ *          message: Ne najdem založnika s podanim enoličnim identifikatorjem
  *    '500':
  *     description: <b>Napaka na strežniku</b>, s sporočilom napake.
  *     content:
@@ -254,42 +261,42 @@ const ustvariNarocnika = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo
  */
-const posodobiNarocnika = (req, res) => {
-    const idNarocnika = req.params.id;
+const posodobiZaloznika = (req, res) => {
+    const idZaloznika = req.params.id;
 
     if (!req.body.ime) {
         res.status(400).json({
             sporocilo: "Napaka, niso vneseni vsi zahtevani podatki"
         });
     } else {
-        Narocniki.findById(idNarocnika).exec(function (
+        Zalozniki.findById(idZaloznika).exec(function (
             error,
-            narocnik
+            zaloznik
         ) {
-            if (!narocnik) {
+            if (!zaloznik) {
                 res.status(404).json({
                     sporocilo:
-                        "Ne najdem naročnika s podanim enoličnim identifikatorjem",
+                        "Ne najdem založnika s podanim enoličnim identifikatorjem",
                 });
             } else {
-                narocnik.ime = req.body.ime;
+                zaloznik.ime = req.body.ime;
                 if (req.body.ime_polno) {
-                    narocnik.ime_polno = req.body.ime_polno;
+                    zaloznik.ime_polno = req.body.ime_polno;
                 }
                 if (req.body.opis) {
-                    narocnik.opis = req.body.opis;
+                    zaloznik.opis = req.body.opis;
                 }
                 if (req.body.opombe) {
-                    narocnik.opombe = req.body.opombe;
+                    zaloznik.opombe = req.body.opombe;
                 }
 
-                narocnik.save(function (error, narocnik) {
+                zaloznik.save(function (error, zaloznik) {
                     if (error) {
                         res
                             .status(500)
                             .json({sporocilo: "Napaka na strežniku: " + error});
                     } else {
-                        res.status(200).json(narocnik);
+                        res.status(200).json(zaloznik);
                     }
                 });
             }
@@ -299,40 +306,40 @@ const posodobiNarocnika = (req, res) => {
 
 /**
  * @openapi
- * /narocniki/{id}:
+ * /zalozniki/{id}:
  *  delete:
- *   summary: Izbriše naročnika.
- *   description: Izbriše naročnika s podanim enoličnim identifikatorjem.
- *   tags: [Narocniki]
+ *   summary: Izbriše založnika.
+ *   description: Izbriše založnika s podanim enoličnim identifikatorjem.
+ *   tags: [Zalozniki]
  *   parameters:
  *    - name: id
  *      in: path
  *      schema:
  *       type: string
- *      description: <b>enolični identifikator</b> naročnika
+ *      description: <b>enolični identifikator</b> založnika
  *      required: true
  *      example: 5f8024542bc87c975ffc1a70
  *   responses:
  *    '204':
- *     description: Naročnik je izbrisan.
+ *     description: Založnik je izbrisan.
  *    '400':
- *     description: <b>Napaka</b>, enolični identifikator naročnika je zahtevan podatek.
+ *     description: <b>Napaka</b>, enolični identifikator založnika je zahtevan podatek.
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       example:
- *        message: 'Enolični identifikator naročnika je obvezen podatek!'
+ *        message: 'Enolični identifikator založnika je obvezen podatek!'
  *    '404':
- *     description: Naročnik ni bil najden.
+ *     description: Založnik ni bil najden.
  *     content:
  *      application/json:
  *       schema:
  *        $ref: '#/components/schemas/SporociloNapake'
  *       examples:
- *        Naročnik ni bila najden:
+ *        Založnik ni bila najden:
  *         value:
- *          message: Ne najdem naročnika s podanim enoličnim identifikatorjem.
+ *          message: Ne najdem založnika s podanim enoličnim identifikatorjem.
  *    '500':
  *     description: '<b>Napaka na strežniku</b>, s sporočilom napake.'
  *     content:
@@ -342,20 +349,20 @@ const posodobiNarocnika = (req, res) => {
  *       example:
  *        message: Podatkovna baza ni na voljo.
  */
-const izbrisiNarocnika = (req, res) => {
-    const idNarocnika = req.params.id;
-    if (!idNarocnika) {
+const izbrisiZaloznika = (req, res) => {
+    const idZaloznika = req.params.id;
+    if (!idZaloznika) {
         res
             .status(400)
-            .json({sporocilo: "Identifikator naročnika je obvezen podatek!"});
+            .json({sporocilo: "Identifikator založnika je obvezen podatek!"});
     } else {
-        Narocniki.findByIdAndRemove(
-            idNarocnika,
+        Zalozniki.findByIdAndRemove(
+            idZaloznika,
             function (error, rezultat) {
                 if (!rezultat) {
                     res.status(404).json({
                         sporocilo:
-                            "Ne najdem naročnika s podanim enoličnim identifikatorjem",
+                            "Ne najdem založnika s podanim enoličnim identifikatorjem",
                     });
                 } else if (error) {
                     res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
@@ -368,9 +375,9 @@ const izbrisiNarocnika = (req, res) => {
 };
 
 module.exports = {
-    seznamNarocnikov,
-    podrobnostiNarocnika,
-    ustvariNarocnika,
-    posodobiNarocnika,
-    izbrisiNarocnika,
+    seznamZaloznikov,
+    podrobnostiZaloznika,
+    ustvariZaloznika,
+    posodobiZaloznika,
+    izbrisiZaloznika,
 };

@@ -27,8 +27,8 @@
     "opombe": "Nekateri podatki iz ankete še niso bili vneseni",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "5f8024542bc87c975ffc1a76"
         },
         "lokacije": [
@@ -64,8 +64,8 @@
     "opombe": "Nekateri podatki iz ankete še niso bili vneseni",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "13153ec4d64ceb8d276eae42"
         },
         "lokacije": [
@@ -82,8 +82,8 @@
         ]
       },
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "64f73216ca8707504d29eeb2"
         },
         "lokacije": [
@@ -122,8 +122,8 @@
     "opombe": "Nekateri podatki iz ankete še niso bili vneseni; kot vir je bil uporabljen le članek RTVSLO",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "5f8024542bc87c975ffc1a70"
         },
         "lokacije": [
@@ -135,8 +135,8 @@
         ]
       },
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "64f73216ca8707504d29eeb2"
         },
         "lokacije": [
@@ -199,8 +199,8 @@
     "opombe": "Ni jasno, če vzorec vključuje le tiste, ki se nameravajo udeležiti volitev",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "5f8024542bc87c975ffc1a76"
         },
         "lokacije": [
@@ -239,8 +239,8 @@
     "opombe": "Iz članka RTV SLO: Tako napoved udeležbe kot rezultata ne upoštevata morebitnega taktičnega glasovanja na eni ali drugi strani, zato je možno, da bo končni rezultat odstopal od te napovedi. Na drugačne rezultate v nedeljo pa lahko po pojasnilih Valicona vplivata še dva možna pojava.\nPrvi je večja abstinenca volivcev, ki podpirajo zakone, v prepričanju, da napovedani rezultat zagotavlja uspeh in jih posledično odvrne od udeležbe v nedeljo, kar bi lahko spremenilo razmerje med podporniki in nasprotniki predlaganih novel.\nDrugi je večja mobilizacija volivcev, ki nasprotujejo zakonom, ob ugotovitvi, da je vsaj pri enem od njih še možen uspeh. \"To so pojavi, ki jih z anketiranjem ni moč predvideti, saj se tovrstne odločitve pri volivcih sprejemajo dan pred ali na sam dan volitev,\" so še sporočili z Valicona.",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "64f73216ca8707504d29eeb2"
         },
         "lokacije": [
@@ -277,8 +277,8 @@
     "opombe": "Iz članka Delo: Anketa kaže na 44-odstotno volilno udeležbo, čeprav je treba biti pri tem previden, saj vprašani pogosto v anketi podajo družbeno zaželen odgovor. Lahko se torej zgodi, da bodo volivke in volivci, utrujeni od treh predhodnih letošnjih volilnih nedeljskih opravil, to nedeljo preživeli drugače in na koncu na volišče ne bodo odšli.\nOb velikem deležu še neopredeljenih, pri tem opozarja Delov javnomnenjski analitik Roman Zatler, se zdi anketna napoved udeležbe morda preveč optimistična, še posebno glede na to, da je bila na lokalnih volitvah udeležba 47,6-odstotna.\nUdeležba na referendumih, kažejo izkušnje, je sicer praviloma nižja kot na državnozborskih in predsedniških volitvah. »Po ocenah bi lahko napovedali, da bo udeležba najverjetneje bliže spodnjega roba intervala zaupanja, od 39- do 40-odstotna,« dodaja Zatler.",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "13153ec4d64ceb8d276eae42"
         },
         "lokacije": [
@@ -315,8 +315,8 @@
     "konec": "2022-11-11",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "64f73216ca8707504d29eeb2"
         },
         "lokacije": [
@@ -353,8 +353,8 @@
     "konec": "2022-11-04",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "64f73216ca8707504d29eeb2"
         },
         "lokacije": [
@@ -390,8 +390,8 @@
     "opis": "Iz članka SiolNET: Spremembam vseh treh zakonov so najbolj naklonjeni podporniki stranke Levica, nekoliko manj pa podporniki strank SD in Gibanja Svoboda, in sicer nekoliko več kot 60-odstotno pri spremembah zakona o vladi, izsledke raziskave povzema Delo. Vsem trem zakonom na drugi strani nasprotuje večina podpornikov stranke NSi, kar je po ugotovitvah časnika presenetljivo, saj stranka v referendumski kampanji sploh ne sodeluje. Po navedbah Dela 58 odstotkov podpornikov SDS odgovarja, da so tako kot njihova stranka proti spremembam zakona o dolgotrajni oskrbi.",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "13153ec4d64ceb8d276eae42"
         },
         "lokacije": [
@@ -404,8 +404,8 @@
         ]
       },
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "65000eb79ddcf15ae8f653a5"
         },
         "lokacije": [
@@ -417,8 +417,8 @@
         ]
       },
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "65004454132c56346b1ca0f3"
         },
         "lokacije": [
@@ -457,8 +457,8 @@
     "konec": "2023-10-05",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "13153ec4d64ceb8d276eae42"
         },
         "lokacije": [
@@ -501,8 +501,8 @@
     "opombe": "Podatki ankete so bili vnešeni iz oktobrske ankete Dela, ki jo je izvedla Mediana",
     "viri": [
       {
-        "zaloznik_tip": "narocnik",
-        "zaloznik_id": {
+        "objavitelj_tip": "zaloznik",
+        "objavitelj_id": {
           "$oid": "13153ec4d64ceb8d276eae42"
         },
         "lokacije": [

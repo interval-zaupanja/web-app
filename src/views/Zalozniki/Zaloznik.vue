@@ -3,7 +3,7 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded && !not_found">
-        <Breadcrumbs previous="Naročniki" previousLink="/narocniki" current="Podrobnosti naročnika" />
+        <Breadcrumbs previous="Založniki" previousLink="/zalozniki" current="Podrobnosti založnika" />
         <div style="overflow: hidden">
             <div style="display: inline-block" class="side-panel">
                 <img v-if="this.logo_uri" :src="this.logo_uri"/>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div v-if="not_found && loaded">
-        <NeObstaja ime="Naročnik"/>
+        <NeObstaja ime="Založnik"/>
     </div>
 </template>
 
@@ -36,7 +36,7 @@ import ExternalLink from '@/components/ExternalLink.vue';
 import SeznamAnket from '@/components/lists/SeznamAnket.vue';
 
 export default {
-    name: 'Narocnik',
+    name: 'Zaloznik',
     components: {
         Nalaganje,
         NeObstaja,
@@ -68,7 +68,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const { data } = await axios.get(this.apiServer + "/api/narocniki/" + this.id);
+                const { data } = await axios.get(this.apiServer + "/api/zalozniki/" + this.id);
                 this.ime = data.ime;
                 this.ime_polno = data.ime_polno;
                 this.barva = data.barva;

@@ -204,7 +204,7 @@ export default {
             // Dodajanje podrobnosti naročnikov
             for (let i = 0; i < this.narocniki.length; i++) {
                 try {
-                    const { data } =  await axios.get(this.apiServer + "/api/narocniki/" + this.narocniki[i].id);
+                    const { data } =  await axios.get(this.apiServer + "/api/zalozniki/" + this.narocniki[i].id);
                     this.narocniki[i].ime = data.ime;
                     this.narocniki[i].logo_uri = this.vrniLogoUri(data.logo_uri)
                 } catch (error) {
