@@ -34,8 +34,11 @@
                             <textarea class="form-control" name="opis" :id="'opis' + this.modalID" placeholder="Opis napake" autofocus></textarea> <!--- autofocus ne deluje -->
                             <label for="floatingTextarea">Opis napake</label>
                         </div>
-                        <p class="caption" style="text-align: center; margin: 10px 0 0 0">
+                        <p class="caption" style="text-align: center; margin: 10px 0 0 0" v-if="this.$route.name != 'Prijavljene napake'">
                             Prijave napak so javno objavljene na strani <router-link to="/prijavljene-napake" @click="this.hideModal()">prijavljene napake</router-link>! Tam lahko sporočite tudi splošno napako, ki ni vezana na posamezno anketo, vprašanje, odgovor, itd.
+                        </p>
+                        <p class="caption" style="text-align: center; margin: 10px 0 0 0" v-else>
+                            Prijave napak so javno objavljene tej strani!
                         </p>
                     </div>
                     <div class="modal-footer">

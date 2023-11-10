@@ -345,7 +345,7 @@ const izvajalci_shema = new mongoose.Schema({
  * @openapi
  * components:
  *  schemas:
- *   Narocnik:
+ *   Zaloznik:
  *    type: object
  *    description:
  *    properties:
