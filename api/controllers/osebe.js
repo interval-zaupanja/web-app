@@ -34,8 +34,29 @@ const Osebe = mongoose.model("Oseba");
  *        example:
  *         sporocilo: "Napaka pri poizvedbi: <opis napake>"
  */
+// const seznamOseb = (req, res) => {
+//     Osebe.find().exec(function (error, seznam) {
+//         if (error) {
+//             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
+//         } else {
+//             res.status(200).json(seznam);
+//         }
+//     });
+// };
+
+// BREZ SLIK
 const seznamOseb = (req, res) => {
-    Osebe.find().exec(function (error, seznam) {
+    Osebe.aggregate(
+        [
+            {
+                $unset: [
+                    'slika_vir',
+                    'slika_uri',
+                    'slika_avtor'
+                ]
+            }
+        ]
+    ).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
@@ -43,6 +64,7 @@ const seznamOseb = (req, res) => {
         }
     });
 };
+
 /**
  * @openapi
  * /osebe/{id}:
@@ -94,10 +116,45 @@ const seznamOseb = (req, res) => {
 const podrobnostiOsebe = (req, res) => {
     const idOsebe = req.params.id;
 
-    Osebe.findById(idOsebe).exec(function (
+    // S SLIKAMI
+    // Osebe.findById(idOsebe).exec(function (
+    //     error,
+    //     oseba
+    // ) {
+    //     if (!oseba) {
+    //         res.status(404).json({sporocilo: "Ne najdem osebe s podanim enoličnim identifikatorjem"});
+    //     } else if (error) {
+    //         res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
+    //     } else {
+    //         res.status(200).json(oseba);
+    //     }
+    // });
+
+    // BREZ SLIK
+    Osebe.aggregate(
+        [
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(req.params.id)
+                }
+            },
+            {
+                $unset: [
+                    'slika_vir',
+                    'slika_uri',
+                    'slika_avtor'
+                ]
+            }
+        ]
+    ).exec(function (
         error,
         oseba
     ) {
+        // ker je sicer oseba = [] in ni prazno in ne vrne sporočila "Ne najdem osebe s podanim enoličnim identifikatorjem" dodamo:
+        if (oseba.length == 0) {
+            oseba = null
+        }
+
         if (!oseba) {
             res.status(404).json({sporocilo: "Ne najdem osebe s podanim enoličnim identifikatorjem"});
         } else if (error) {
