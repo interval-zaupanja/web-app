@@ -77,12 +77,19 @@
                         </div>
                     </div>
                 </div>
-                <Odgovori
-                    v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'"
-                    :odgovori="vprasanje.odgovori"
-                    :id="this.id"
-                    :loaded="this.loaded"
-                />
+                <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'">
+                    <h3>Odgovori</h3>
+                    <div
+                        v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
+                        class="bubble bubble-list yellow-gray"
+                    >
+                        <Odgovor
+                            :odgovor="odgovor"
+                            :anketa_id="this.id"
+                            :razsiriOdgovor="false"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -97,7 +104,7 @@ import PieChart from '@/components/charts/PieChart.vue'
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 import MandatiChart from '@/components/charts/MandatiChart.vue'
 
-import Odgovori from '@/views/Ankete/Odgovori.vue'
+import Odgovor from '@/views/Ankete/Odgovor.vue'
 
 import { predelajOdgovore } from '@/scripts/predelajOdgovore.js'
 import { izracunajMandate } from  '@/scripts/izracunajMandate.js'
@@ -112,7 +119,7 @@ export default {
         PieChart,
         DoughnutChart,
         MandatiChart,
-        Odgovori,
+        Odgovor,
         Priljubljenost
     },
     data() {
