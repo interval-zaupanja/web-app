@@ -12,10 +12,10 @@
       </router-link>
 
       <!-- navbar -->
-      <div id="nav" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
-        <div style="display:flex; justify-content:center; align-items: center; line-height: 70px;"> <!-- *line*-height!!!-->
+      <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
+        <div style="display:flex; justify-content:center; align-items: center; height: inherit; line-height: 70px;"> <!-- *line*-height!!!-->
 
-          <ul id="menu-list">
+          <ul id="menu-list" style="margin: 0px">
             <li><router-link to="/glasovanja">Glasovanja</router-link></li>
             <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
             <li><router-link to="/zaupanje">Zaupanje</router-link></li>
@@ -34,13 +34,47 @@
 
         </div>
       </div>
+
+      <!-- menu bar -->
+      <div
+        v-if="!this.navbar_full"
+        id="menu-bar"
+        style="display: inline-block; margin-left: 30px; margin-right: 30px; height: inherit; float: right; vertical-align: middle; line-height: 70px;"
+      >
+        <img width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      navbar_full: true,
+      navbar_menu_expanded: false,
+      windowWidth: null
+    }
+  },
+  created() {
+    window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+    this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+  },
+  methods: {
+    toogleNavbar() {
+      this.navbar_full = !this.navbar_full
+    },
+    checkScreen() {
+      this.windowWidth = window.innerWidth
+      if (this.windowWidth <= 1025) {
+        this.navbar_full = false
+      } else {
+        this.navbar_full = true
+        this.navbar_menu_expanded = false
+      }
+    }
+  }
 }
 </script>
 
@@ -59,7 +93,6 @@ export default {
 }
 
 /* navbar */
-
 .menu-list > *  {
   padding: 0;
   margin: 0;
