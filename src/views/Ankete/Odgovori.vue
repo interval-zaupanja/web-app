@@ -4,18 +4,19 @@
         <div v-for="odgovor in this.odgovori" :key="odgovor._id" class="bubble bubble-list yellow-gray">
             <span class="anchor-inner" :id="odgovor._id"></span>
             <div>
-                <span style="float: right">
-                    <div v-if="odgovor.odgovor_stranka_logo_uri != null">
-                        <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
-                    </div>
-                    <div style="float: right; display: block; margin-top: 10px;">
-                        <Report tip="odgovor" :id="odgovor._id" :pot="'ankete/' + this.id + '#' + odgovor._id"/>
-                        <CopyLink :path="'ankete/' + this.id + '#' + odgovor._id" class="side-button"/>
-                    </div>
-                </span>
-                <div>
-                    <div class="odgovor">
-                        Odgovor:
+                <div style="display: inline-block; margin-right: 10px">
+                    <CopyLink :path="'ankete/' + this.id + '#' + odgovor._id" style="display: block; margin-bottom: 10px;"/>
+                    <Report tip="odgovor" :id="odgovor._id" :pot="'ankete/' + this.id + '#' + odgovor._id" style="display: block"/>
+                </div>
+                <div class="odgovor" style="display: inline-block; vertical-align: top;">
+                    <div>
+                        <div class="procenti" style="display: inline-block;">
+                            {{ odgovor.procent_izvajalec }}%
+                            <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
+                                ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
+                                ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
+                            </span>
+                        </div>
                         <span v-if="odgovor.stranka_id">
                             <router-link :to="'/stranke/' + odgovor.stranka_id">
                                 {{ odgovor.odgovor_stranka_ime }}
@@ -24,26 +25,22 @@
                         </span>
                         <span v-else>
                             {{
-                                this.capitalization(odgovor.odgovor, 0) ??
+                                this.capitalization(odgovor.odgovor, 1) ??
                                 this.vrniOdgovor(
                                     odgovor.odgovor_std ??
                                     odgovor.opredeljen_tip ??
                                     odgovor.tip,
-                                    false, 0
+                                    false, 1
                                 ) ??
-                                this.capitalization(odgovor.odgovor, 0)
+                                this.capitalization(odgovor.odgovor, 1)
                             }}
-                        </span>
-                    </div>
-                    <div class="procenti">
-                        {{ odgovor.procent_izvajalec }}%
-                        <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
-                            ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
-                            ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
                         </span>
                     </div>
                     <div v-if="odgovor.opis">Opis: {{ odgovor.opis}}</div>
                     <div v-if="odgovor.opombe">Opombe: {{ odgovor.opombe}}</div>
+                </div>
+                <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; float: right; vertical-align: top">
+                    <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
                 </div>
             </div>
         </div>
@@ -63,3 +60,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.procenti {
+    width: 60px;
+}
+</style>

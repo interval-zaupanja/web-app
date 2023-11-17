@@ -106,7 +106,6 @@ body {
 .side-button {
     visibility: hidden;
     display: inline-block;
-    margin: 0px 0px 10px 10px;
 }
 
 .bubble:hover .side-button {
