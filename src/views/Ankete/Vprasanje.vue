@@ -1,16 +1,20 @@
 <template>
-    <div v-if="loaded">
-        <h2 class="odmik">Vprašanja</h2>
-        <div class="odmik">
-            <div v-for="vprasanje in this.vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
-                <span class="anchor-outer" :id="vprasanje._id"></span>
+    <div v-if="loaded" class="odmik">
+        <div class="bubble bubble-outer pink-red">
+            <span class="anchor-outer" :id="vprasanje._id"></span>
+            <div>
                 <div>
-                    <div>
-                        <div style="float: right">
-                            <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id"/>
-                            <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
-                        </div>
-                        <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
+                    <div style="float: right">
+                        <ExpandCollapse
+                            :razsiri="this.razsiri"
+                            @click="this.razsiri = !this.razsiri"
+                            style="display: inline-block; margin-right: 10px;"
+                        />
+                        <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id"/>
+                        <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
+                    </div>
+                    <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
+                    <div v-if="this.razsiri">
                         <div>
                             Tip vprašanja: {{vprasanje.tip}}
                             <span v-if="vprasanje.zaupanje_tip">
@@ -78,18 +82,18 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'">
-                        <h3>Odgovori</h3>
-                        <div
-                            v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
-                            class="bubble bubble-list yellow-gray"
-                        >
-                            <Odgovor
-                                :odgovor="odgovor"
-                                :anketa_id="this.id"
-                                :razsiriOdgovor="false"
-                            />
-                        </div>
+                </div>
+                <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost' && this.razsiri">
+                    <h3>Odgovori</h3>
+                    <div
+                        v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
+                        class="bubble bubble-list yellow-gray"
+                    >
+                        <Odgovor
+                            :odgovor="odgovor"
+                            :anketa_id="this.id"
+                            :razsiriOdgovor="false"
+                        />
                     </div>
                 </div>
             </div>
@@ -102,6 +106,8 @@ import axios from 'axios'
 
 import CopyLink from '../../components/CopyLink.vue'
 import Report from '../../components/Report.vue'
+import ExpandCollapse from '@/components/ExpandCollapse.vue'
+
 import PieChart from '@/components/charts/PieChart.vue'
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 import MandatiChart from '@/components/charts/MandatiChart.vue'
@@ -122,16 +128,18 @@ export default {
         DoughnutChart,
         MandatiChart,
         Odgovor,
-        Priljubljenost
+        Priljubljenost,
+        ExpandCollapse
     },
     data() {
         return {
-            vprasanja: this.data,
-            loaded: false
+            vprasanje: this.data,
+            loaded: false,
+            razsiri: true
         }
     },
     async mounted() {
-        await this.getGlasovanja(this.vprasanja)
+        await this.getGlasovanje(this.vprasanje)
         this.loaded = true
     },
     methods: {
@@ -151,19 +159,16 @@ export default {
                     return oznaka
             }
         },
-        async getGlasovanja(vprasanja) {
-            for (let i = 0; i < vprasanja.length; i++) {
-                const vprasanje = vprasanja[i]
-                if (vprasanje.glasovanja_id.length > 0) {
-                    vprasanje.glasovanja = []
-                }
-                for (let j = 0; j < vprasanje.glasovanja_id.length; j++) {
-                    const { data } = await axios.get(this.apiServer + "/api/glasovanja/" + vprasanje.glasovanja_id[j])
-                    vprasanje.glasovanja.push({
-                        _id: vprasanje.glasovanja_id[j],
-                        ime: data.ime
-                    })
-                }
+        async getGlasovanje(vprasanje) {
+            if (vprasanje.glasovanja_id.length > 0) {
+                vprasanje.glasovanja = []
+            }
+            for (let j = 0; j < vprasanje.glasovanja_id.length; j++) {
+                const { data } = await axios.get(this.apiServer + "/api/glasovanja/" + vprasanje.glasovanja_id[j])
+                vprasanje.glasovanja.push({
+                    _id: vprasanje.glasovanja_id[j],
+                    ime: data.ime
+                })
             }
         }
     }

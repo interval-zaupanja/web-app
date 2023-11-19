@@ -6,7 +6,6 @@
         <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete" class="odmik"/>
         <div class="infobox odmik">
             <div style="display: inline-block">
-                <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
                 <p v-if="this.izvajalci.length > 0">
                     <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
                     <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
@@ -66,7 +65,12 @@
         </div>
 
         <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
-        <Vprasanja v-if="this.vprasanja" :data="this.vprasanja" :id="this.id"/>
+        <div v-if="this.vprasanja">
+            <h2 class="odmik">Vprašanja</h2>
+            <div v-for="vprasanje in this.vprasanja" :key="vprasanje._id">
+                <Vprasanje :data="vprasanje" :id="this.id"/>
+            </div>
+        </div>
     </div>
     <div v-if="not_found && loaded" class="odmik">
         <NeObstaja ime="Anketa"/>
@@ -74,7 +78,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 import { Tooltip } from 'bootstrap'
 
 
@@ -84,7 +88,7 @@ import Breadcrumbs from '@/components/BreadcrumbsBS.vue'
 import Vzorec from '@/components/Vzorec.vue'
 
 import Viri from '@/views/Ankete/Viri.vue'
-import Vprasanja from '@/views/Ankete/Vprasanja.vue'
+import Vprasanje from '@/views/Ankete/Vprasanje.vue'
 
 export default {
     components: {
@@ -93,7 +97,7 @@ export default {
         Breadcrumbs,
         Vzorec,
         Viri,
-        Vprasanja
+        Vprasanje
     },
     props: ['id'],
     data() {

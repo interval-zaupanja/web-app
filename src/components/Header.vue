@@ -31,29 +31,38 @@
         v-if="!this.navbar_full"
         id="menu-bar-button"
         style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
-        @click="this.navbar_menu_expanded = !this.navbar_menu_expanded"
       >
-        <img v-if="!this.navbar_menu_expanded" width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
-        <img v-else width="45" height="45" src="@/assets/icons/close-menu.png" alt="delete-sign--v1"/>
+        <img
+          v-if="!this.navbar_menu_expanded"
+          width="45" height="45"
+          src="@/assets/icons/menu.png" alt="menu--v1"
+          @click="navbar_menu_expanded = true"
+        />
+        <img
+          v-else
+          width="45" height="45"
+          src="@/assets/icons/close-menu.png" alt="delete-sign--v1"
+          @click="closeMenu()"
+        />
       </div>
     </div>
 
     <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink">
       <ul id="dropdown-nav" style="margin: 0px">
-        <li @click="this.navbar_menu_expanded = false"><router-link to="/glasovanja">Glasovanja</router-link></li>
-        <li @click="this.navbar_menu_expanded = false"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-        <li @click="this.navbar_menu_expanded = false"><router-link to="/zaupanje">Zaupanje</router-link></li>
+        <li @click="closeMenu()"><router-link to="/glasovanja">Glasovanja</router-link></li>
+        <li @click="closeMenu()"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
+        <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
         <li>
           <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
           <ul v-if="this.drugo_expanded">
-            <li @click="this.navbar_menu_expanded = false"><router-link to="/ankete">Ankete</router-link></li>
-            <li @click="this.navbar_menu_expanded = false"><router-link to="/izvajalci">Izvajalci</router-link></li>
-            <li @click="this.navbar_menu_expanded = false"><router-link to="/zalozniki">Založniki</router-link></li>
-            <li @click="this.navbar_menu_expanded = false"><router-link to="/stranke">Stranke</router-link></li>
-            <li @click="this.navbar_menu_expanded = false"><router-link to="/osebe">Osebe</router-link></li>
+            <li @click="closeMenu()"><router-link to="/ankete">Ankete</router-link></li>
+            <li @click="closeMenu()"><router-link to="/izvajalci">Izvajalci</router-link></li>
+            <li @click="closeMenu()"><router-link to="/zalozniki">Založniki</router-link></li>
+            <li @click="closeMenu()"><router-link to="/stranke">Stranke</router-link></li>
+            <li @click="closeMenu()"><router-link to="/osebe">Osebe</router-link></li>
           </ul>
         </li>
-        <li @click="this.navbar_menu_expanded = false"><router-link to="/o-nas">O nas</router-link></li>
+        <li @click="closeMenu()"><router-link to="/o-nas">O nas</router-link></li>
       </ul>
     </div>
   </div>
@@ -86,6 +95,10 @@ export default {
         this.navbar_full = true
         this.navbar_menu_expanded = false
       }
+    },
+    closeMenu() {
+      this.navbar_menu_expanded = false
+      this.drugo_expanded = false
     }
   }
 }
