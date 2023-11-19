@@ -38,22 +38,22 @@
       </div>
     </div>
 
-    <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink" @click="this.navbar_menu_expanded = false">
+    <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink">
       <ul id="dropdown-nav" style="margin: 0px">
-        <li><router-link to="/glasovanja">Glasovanja</router-link></li>
-        <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-        <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+        <li @click="this.navbar_menu_expanded = false"><router-link to="/glasovanja">Glasovanja</router-link></li>
+        <li @click="this.navbar_menu_expanded = false"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
+        <li @click="this.navbar_menu_expanded = false"><router-link to="/zaupanje">Zaupanje</router-link></li>
         <li>
           <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
           <ul v-if="this.drugo_expanded">
-            <li><router-link to="/ankete">Ankete</router-link></li>
-            <li><router-link to="/izvajalci">Izvajalci</router-link></li>
-            <li><router-link to="/zalozniki">Založniki</router-link></li>
-            <li><router-link to="/stranke">Stranke</router-link></li>
-            <li><router-link to="/osebe">Osebe</router-link></li>
+            <li @click="this.navbar_menu_expanded = false"><router-link to="/ankete">Ankete</router-link></li>
+            <li @click="this.navbar_menu_expanded = false"><router-link to="/izvajalci">Izvajalci</router-link></li>
+            <li @click="this.navbar_menu_expanded = false"><router-link to="/zalozniki">Založniki</router-link></li>
+            <li @click="this.navbar_menu_expanded = false"><router-link to="/stranke">Stranke</router-link></li>
+            <li @click="this.navbar_menu_expanded = false"><router-link to="/osebe">Osebe</router-link></li>
           </ul>
         </li>
-        <li><router-link to="/o-nas">O nas</router-link></li>
+        <li @click="this.navbar_menu_expanded = false"><router-link to="/o-nas">O nas</router-link></li>
       </ul>
     </div>
   </div>
