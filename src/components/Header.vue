@@ -33,7 +33,8 @@
         style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
         @click="this.navbar_menu_expanded = !this.navbar_menu_expanded"
       >
-        <img width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
+        <img v-if="!this.navbar_menu_expanded" width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
+        <img v-else width="45" height="45" src="@/assets/icons/close-menu.png" alt="delete-sign--v1"/>
       </div>
     </div>
 
@@ -43,7 +44,7 @@
         <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
         <li><router-link to="/zaupanje">Zaupanje</router-link></li>
         <li>
-          <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo ⏷</router-link>
+          <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
           <ul v-if="this.drugo_expanded">
             <li><router-link to="/ankete">Ankete</router-link></li>
             <li><router-link to="/izvajalci">Izvajalci</router-link></li>
