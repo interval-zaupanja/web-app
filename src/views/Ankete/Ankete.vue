@@ -1,7 +1,9 @@
 <template>
-    <h1>Ankete</h1>
-    <p>Ankete so razporejene od zadnje izvedene proti prvi, glede na sredino med začetkom in koncem izvajanja ankete</p>
-    <SeznamAnket/>
+    <h1 class="odmik">Ankete</h1>
+    <p class="odmik">Ankete so razporejene od zadnje izvedene proti prvi, glede na sredino med začetkom in koncem izvajanja ankete</p>
+    <div class="odmik">
+        <SeznamAnket/>
+    </div>
 </template>
 
 <script>

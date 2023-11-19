@@ -1,8 +1,8 @@
 <template>
-    <div v-if="!loaded">
+    <div v-if="!loaded" class="odmik">
         <Nalaganje/>
     </div>
-    <div v-if="loaded && !not_found">
+    <div v-if="loaded && !not_found" class="odmik">
         <Breadcrumbs previous="Glasovanja" previousLink="/glasovanja" current="Podrobnosti glasovanja"/>
         <div style="overflow: hidden">
             <h1>{{this.ime}}</h1>
@@ -29,7 +29,7 @@
             <Referendum :glasovanje_id="this.id" :pg_zacetek="this.pg_zacetek" :pg_konec="this.pg_konec" :gg="this.gg" :izid="this.izid"/>
         </div>     
     </div>
-    <div v-if="not_found && loaded">
+    <div v-if="not_found && loaded" class="odmik">
         <NeObstaja ime="Anketa"/>
     </div>
 </template>

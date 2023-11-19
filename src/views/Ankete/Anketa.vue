@@ -1,77 +1,74 @@
 <template>
-    <div v-if="!loaded">
+    <div v-if="!loaded" class="odmik">
         <Nalaganje/>
     </div>
     <div v-if="loaded && !not_found">
-        <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"/>
-        <div>
-            <div class="infobox">
-                <div style="display: inline-block">
-                    <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
-                    <p v-if="this.izvajalci.length > 0">
-                        <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
-                        <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
-                        <span v-else>Izvajalci: </span>
+        <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete" class="odmik"/>
+        <div class="infobox odmik">
+            <div style="display: inline-block">
+                <!-- <p>Identifikator ankete: {{ this.id }}</p> -->
+                <p v-if="this.izvajalci.length > 0">
+                    <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
+                    <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
+                    <span v-else>Izvajalci: </span>
 
-                        <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
-                            <router-link :to="'/izvajalci/' + izvajalec.id">
-                                {{ izvajalec.ime}}
-                            </router-link>
-                            <span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" @click="$router.push('/izvajalci/' + izvajalec.id)" style="max-height: 20px"/>
-                            </span>
-                            <span v-if="indeks + 1 < this.izvajalci.length">, </span>
+                    <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
+                        <router-link :to="'/izvajalci/' + izvajalec.id">
+                            {{ izvajalec.ime}}
+                        </router-link>
+                        <span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" @click="$router.push('/izvajalci/' + izvajalec.id)" style="max-height: 20px"/>
                         </span>
-                    </p>
-                    <p v-if="this.narocniki">
-                        <span v-if="this.narocniki.length == 1">Naročnik: </span>
-                        <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
-                        <span v-else>Naročniki: </span>
+                        <span v-if="indeks + 1 < this.izvajalci.length">, </span>
+                    </span>
+                </p>
+                <p v-if="this.narocniki">
+                    <span v-if="this.narocniki.length == 1">Naročnik: </span>
+                    <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
+                    <span v-else>Naročniki: </span>
 
-                        <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
-                            <router-link :to="'/narocniki/' + narocnik.id">
-                                {{ narocnik.ime}}
-                            </router-link>
-                            <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik.id)" style="height: 16px"/></span>
-                            <span v-if="indeks + 1 < this.narocniki.length">, </span>
-                        </span>
-                    </p>
-                    <p v-if="this.metode">
-                        <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
-                        <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
-                        <span v-else>Metode anketiranja: </span>
-                        
-                        <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
-                            {{ metoda }}
-                            <span
-                                data-bs-toggle="tooltip" data-bs-placement="right"
-                                data-bs-custom-class="custom-tooltip"
-                                :data-bs-title="this.vrniPojasniloMetode(metoda)"
-                            >
-                                <span class="material-symbols-outlined">
-                                    help
-                                </span>
+                    <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
+                        <router-link :to="'/narocniki/' + narocnik.id">
+                            {{ narocnik.ime}}
+                        </router-link>
+                        <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik.id)" style="height: 16px"/></span>
+                        <span v-if="indeks + 1 < this.narocniki.length">, </span>
+                    </span>
+                </p>
+                <p v-if="this.metode">
+                    <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
+                    <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
+                    <span v-else>Metode anketiranja: </span>
+                    
+                    <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
+                        {{ metoda }}
+                        <span
+                            data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-custom-class="custom-tooltip"
+                            :data-bs-title="this.vrniPojasniloMetode(metoda)"
+                        >
+                            <span class="material-symbols-outlined">
+                                help
                             </span>
-                            <span v-if="indeks + 1 < this.metode.length">, </span>
                         </span>
-                    </p>
-                    <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
-                    <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
-                </div>
-                <div>
-                    <Vzorec v-if="this.vzorec" style="margin: 0px 15px 15px 15px" :data="this.vzorec"/>
-                </div>
+                        <span v-if="indeks + 1 < this.metode.length">, </span>
+                    </span>
+                </p>
+                <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
+                <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+            </div>
+            <div>
+                <Vzorec v-if="this.vzorec" style="margin: 0px 15px 15px 15px" :data="this.vzorec"/>
             </div>
             <div>
                 <p v-if="this.opis">Opis: {{ this.opis }}</p>
                 <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
             </div>
-            
-            <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
-            <Vprasanja v-if="this.vprasanja" :data="this.vprasanja" :id="this.id"/>
-                
         </div>
+
+        <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
+        <Vprasanja v-if="this.vprasanja" :data="this.vprasanja" :id="this.id"/>
     </div>
-    <div v-if="not_found && loaded">
+    <div v-if="not_found && loaded" class="odmik">
         <NeObstaja ime="Anketa"/>
     </div>
 </template>

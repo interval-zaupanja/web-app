@@ -1,9 +1,11 @@
 <template>
-    <h1>Osebe</h1>
-    <div v-if="!loaded">
-        <Nalaganje/>
+    <h1 class="odmik">Osebe</h1>
+    <div class="odmik">
+        <div v-if="!loaded">
+            <Nalaganje/>
+        </div>
+        <BubbleGrid v-if="loaded" :items="this.osebe" path="/osebe/" size="large"/>
     </div>
-    <BubbleGrid v-if="loaded" :items="this.osebe" path="/osebe/" size="large"/>
 </template>
 
 <script>

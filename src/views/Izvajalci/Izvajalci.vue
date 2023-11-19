@@ -1,9 +1,11 @@
 <template>
-    <h1>Izvajalci</h1>
-    <div v-if="!loaded">
-        <Nalaganje/>
+    <h1 class="odmik">Izvajalci</h1>
+    <div class="odmik">
+        <div v-if="!loaded">
+            <Nalaganje/>
+        </div>
+        <BubbleGrid v-if="loaded" :items="this.izvajalci" path="/izvajalci/"/>
     </div>
-    <BubbleGrid v-if="loaded" :items="this.izvajalci" path="/izvajalci/"/>
 </template>
 
 <script>

@@ -1,7 +1,12 @@
 <template>
 	<div class="sidebar bubble bubble-outer pink-red">
 		<h3>Zadnje ankete</h3>
-		<div class="bubble bubble-list bubble-border yellow-gray" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
+		<div
+			class="bubble bubble-list bubble-border yellow-gray"
+			:style="this.orientation === 'horizontal' ? 'display: inline-block' : ''"
+			v-for="anketa in ankete" :key="anketa._id"
+			@click="$router.push('/ankete/' + anketa._id)"
+		>
 			Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
 			<br>
 			<span v-if="anketa.izvajalci_ime && anketa.izvajalci_ime.length > 0">
@@ -33,7 +38,8 @@ import axios from "axios";
 
 export default {
 	name: "ZadnjeAnkete",
-	data() {
+	props: ['orientation']
+,	data() {
 		return {
 			ankete: [],
 		}
@@ -79,12 +85,5 @@ export default {
 <style scoped>
 h3 {
 	text-align: center;
-}
-
-.sidebar {
-    /* display: inline-block; (to se zaradi float ignorira; drugače tudi s tem ne dela dobro) */
-    /* float: right; */
-    min-width: 350px;
-    max-width: 400px;
 }
 </style>

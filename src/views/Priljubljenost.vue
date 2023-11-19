@@ -2,7 +2,7 @@
     <div v-if="this.orientacija === 'horizontalno' && loaded">
         <BarChartHorizontal :data="this.data"/>
     </div>
-    <div v-else>
+    <div v-else class="odmik">
         <div v-if="loaded">
             <BarChart :data="this.data"/>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="odmik">
         <div>
             <h1>Zahvale</h1>
             <p>

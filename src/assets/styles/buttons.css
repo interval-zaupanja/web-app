@@ -1,0 +1,17 @@
+/* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
+.side-button {
+    visibility: hidden;
+    display: inline-block;
+}
+
+.bubble:hover .side-button {
+    visibility: visible;
+}
+
+.bubble:hover .bubble .side-button {
+    visibility: hidden;
+}
+
+.bubble .bubble:hover .side-button {
+    visibility: visible;
+}

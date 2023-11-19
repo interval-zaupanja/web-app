@@ -1,3 +1,5 @@
 <template>
-    <h1>Pogoji uporabe</h1>
+    <div class="odmik">
+        <h1>Pogoji uporabe</h1>
+    </div>
 </template>

@@ -1,20 +1,19 @@
 /* Globalni stili so bili premaknjeni sem, ker je vključevanje stilov v index.html povzročalo težave, saj se je deployment verzija zahtevala uporabo brez korena (/ na začetku), razvojna verzija pa ravno obratno */
 
-* {
-    /*font-family: 'Agdasima', sans-serif;*/
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-
-body {
+/* Side margins */
+/* Privzeto je vse edge to edge */
+body { /* odstrani privzete vrednosti brskalnika */
     margin: unset;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
+.odmik {
+    margin: 0 10%;
+}
+
+/* Besedilo */
+* {
+    /*font-family: 'Agdasima', sans-serif;*/
+    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 .caption {
@@ -22,39 +21,13 @@ body {
     color: rgb(86, 86, 86);
 }
 
-/* Colors */
-.pink-red {
-    /*background-color: #f6caca;*/
-    background-image: linear-gradient(to right, #f6caca, #fcabab);
-    /*background-image: linear-gradient(to right, #f6caca, rgba(255, 229, 200, 0.91));*/
-}
-
-.yellow-gray {
-    background-image: linear-gradient(to right,  rgba(148, 117, 108, 0.29), rgba(255, 210, 144, 0.29));
-}
-
-.white-pink {
-    /*background-color: #f10056;*/
-    /*background-color: #0080ff;*/
-    /*background-color: #f6caca;*/
-    /*background-image: linear-gradient(to bottom right, rgba(255, 166, 0, 0.8), rgba(255, 0, 59, 0.75));*/
-    /*background-image: linear-gradient(to bottom right, rgba(29, 29, 31, 0.02), #f6caca);*/
-    background-image: linear-gradient(to right, #ffffff, #e7acac);
-    /* background-image: linear-gradient(to right, #ffffffab, #e49595ab); */
-    /* backdrop-filter: blur(25px); */
-}
-
-.yellow-white {
-    background: #FFEFBA;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #fefcdf, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #fefcdf, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-/* Main view */
-.stick-to-the-left {
-    margin: 0px;
-    display: inline-block;
-    width: 60%;
+/* Icons */
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
 }
 
 /* Anchors */
@@ -72,69 +45,4 @@ body {
     height: 95px; /* header height and margin and padding of container */
     margin-top: -95px; /* negative header height and margin and padding of container */
     visibility: hidden;
-}
-
-/* Bubbles */
-.bubble {
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.bubble-outer {
-    margin: 15px;
-}
-
-.bubble-list {
-    margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
-    overflow: hidden;
-}
-
-.bubble-border {
-    border: 2px solid rgba(255, 255, 255, 0.55) /* alpha = 0 povzroči UI bug */
-}
-
-.bubble-border:hover {
-	border: 2px solid #ae1813;
-}
-
-.bubble-highlighted { /* v primeru, ko je bil polinkan fragment strani */
-	border: 2px solid #ae1813;
-}
-
-/* Buttons */
-/* To ne skrije gumba v zunanjem mehurčku ko .bubble-inner:hover */
-.side-button {
-    visibility: hidden;
-    display: inline-block;
-}
-
-.bubble:hover .side-button {
-    visibility: visible;
-}
-
-.bubble:hover .bubble .side-button {
-    visibility: hidden;
-}
-
-.bubble .bubble:hover .side-button {
-    visibility: visible;
-}
-
-/* Side panel */
-/* max-width in min-width sta specificirana dvakrat zato, da se popravijo težave z vektorskimi slikami */
-.side-panel {
-    float: right;
-    min-width: 150px;
-    max-width: 250px;
-}
-
-.side-panel img {
-    min-width: 150px;
-    max-width: 250px;
-}
-
-/* Charts (sicer namenjeno specifično DoughnutChart in PieChart, Scatter delno povozi te velikosti*/
-canvas { 
-    height: 500px;
-    width: 500px;
 }

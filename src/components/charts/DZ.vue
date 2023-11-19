@@ -11,7 +11,7 @@
             <Nalaganje size="medium"/>
         </div>
         <div v-if="loaded && !this.stranka_id">
-            <div class="bubble bubble-inner">
+            <div class="bubble bubble-inner yellow-gray">
                 <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
                     <div style="display: inline-block; margin-right: 20px; white-space: nowrap;">
                         Vključi v graf in preračunaj:

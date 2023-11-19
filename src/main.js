@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router' // ni potrebno specificirati index.js, ker to že avtomatsko povzame iz mape
 
 import '@/assets/styles/global.css'
+import '@/assets/styles/colors.css'
+import '@/assets/styles/bubbles.css'
+import '@/assets/styles/sides.css'
+import '@/assets/styles/buttons.css'
 
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"

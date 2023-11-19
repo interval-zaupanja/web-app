@@ -2,7 +2,7 @@
   <div>
     <Header/>
     <div id="full-height">
-      <div class="view">
+      <div id="view">
         <router-view></router-view>
       </div>
       <Footer/>
@@ -20,7 +20,26 @@ export default {
   components: {
     Header,
     Footer
-  }
+  },
+  data() {
+    return {
+      edge_to_edge: false
+    }
+  },
+  created() {
+        window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+        this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+    },
+    methods: {
+        checkScreen() {
+            this.windowWidth = window.innerWidth
+            if (this.windowWidth <= 600) {
+                this.edge_to_edge = true
+            } else {
+                this.edge_to_edge = false
+            }
+        }
+    }
 }
 </script>
 
@@ -40,10 +59,11 @@ export default {
   flex-direction: column;
 }
 
-.view {
-  margin: auto 0;
+#view {
   margin-top: 70px;
+  margin-bottom: auto;
   display: block;
-  padding: 30px 10%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 </style>

@@ -1,17 +1,21 @@
 <template>
     <div>
-        <h1>Volitve</h1>
-        <div v-if="!loaded">
-            <Nalaganje/>
+        <h1 class="odmik">Volitve</h1>
+        <div class="odmik">
+            <div v-if="!loaded">
+                <Nalaganje/>
+            </div>
+            <BubbleGrid v-if="loaded" :items="this.volitve" path="/glasovanja/"/>
         </div>
-        <BubbleGrid v-if="loaded" :items="this.volitve" path="/glasovanja/"/>
     </div>
     <div>
-        <h1>Referendumi</h1>
-        <div v-if="!loaded">
-            <Nalaganje/>
+        <h1 class="odmik">Referendumi</h1>
+        <div class="odmik">
+            <div v-if="!loaded">
+                <Nalaganje/>
+            </div>
+            <BubbleGrid v-if="loaded" :items="this.referendumi" path="/glasovanja/"/>
         </div>
-        <BubbleGrid v-if="loaded" :items="this.referendumi" path="/glasovanja/"/>
     </div>
 </template>
 

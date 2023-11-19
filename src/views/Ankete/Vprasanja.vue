@@ -1,93 +1,95 @@
 <template>
     <div v-if="loaded">
-        <h2>Vprašanja</h2>
-        <div v-for="vprasanje in this.vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
-            <span class="anchor-outer" :id="vprasanje._id"></span>
-            <div>
+        <h2 class="odmik">Vprašanja</h2>
+        <div class="odmik">
+            <div v-for="vprasanje in this.vprasanja" :key="vprasanje._id" class="bubble bubble-outer pink-red">
+                <span class="anchor-outer" :id="vprasanje._id"></span>
                 <div>
-                    <div style="float: right">
-                        <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id"/>
-                        <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
-                    </div>
-                    <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
                     <div>
-                        Tip vprašanja: {{vprasanje.tip}}
-                        <span v-if="vprasanje.zaupanje_tip">
-                            - {{ vprasanje.zaupanje_tip}}
-                        </span>
-                        <span v-if="vprasanje.glasovalno_tip.casovna_komponenta">
-                            - {{ vprasanje.glasovalno_tip.casovna_komponenta}}
-                        </span>
-                        <span v-if="vprasanje.glasovalno_tip.kvalitativna_meritev">
-                            - {{ this.kvalitativnaMeritev(vprasanje.glasovalno_tip.kvalitativna_meritev)}}
-                        </span>
-                    </div>
-                    <div v-if="vprasanje.glasovanja">
-                        <span v-if="vprasanje.glasovanja.length == 1">Glasovanje: </span>
-                        <span v-else-if="vprasanje.glasovanja.length == 2">Glasovanji: </span>
-                        <span v-else>Glasovanja: </span>
+                        <div style="float: right">
+                            <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id"/>
+                            <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
+                        </div>
+                        <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
+                        <div>
+                            Tip vprašanja: {{vprasanje.tip}}
+                            <span v-if="vprasanje.zaupanje_tip">
+                                - {{ vprasanje.zaupanje_tip}}
+                            </span>
+                            <span v-if="vprasanje.glasovalno_tip.casovna_komponenta">
+                                - {{ vprasanje.glasovalno_tip.casovna_komponenta}}
+                            </span>
+                            <span v-if="vprasanje.glasovalno_tip.kvalitativna_meritev">
+                                - {{ this.kvalitativnaMeritev(vprasanje.glasovalno_tip.kvalitativna_meritev)}}
+                            </span>
+                        </div>
+                        <div v-if="vprasanje.glasovanja">
+                            <span v-if="vprasanje.glasovanja.length == 1">Glasovanje: </span>
+                            <span v-else-if="vprasanje.glasovanja.length == 2">Glasovanji: </span>
+                            <span v-else>Glasovanja: </span>
 
-                        <span v-for="(glasovanje, indeks) in vprasanje.glasovanja" :key="glasovanje._id">
-                            <router-link :to="'/glasovanja/' + glasovanje._id">
-                                {{glasovanje.ime}}
-                            </router-link>
-                            <span v-if="indeks + 1 < vprasanje.glasovanja.length">, </span>
-                        </span>
+                            <span v-for="(glasovanje, indeks) in vprasanje.glasovanja" :key="glasovanje._id">
+                                <router-link :to="'/glasovanja/' + glasovanje._id">
+                                    {{glasovanje.ime}}
+                                </router-link>
+                                <span v-if="indeks + 1 < vprasanje.glasovanja.length">, </span>
+                            </span>
+                        </div>
+                        <div v-else-if="vprasanje.glasovanje_tip">
+                            Tip glasovanja:
+                            {{ vprasanje.glasovanje_tip.tip}}
+                            <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
+                                - {{ this.vrniGlasovanjeTip(vprasanje.glasovanje_tip.volitve_tip)}}
+                            </span>
+                            <span v-if="vprasanje.glasovanje_tip.tip === 'referendum'">
+                                - {{ vprasanje.glasovanje_tip.referendum_tip}}
+                            </span>
+                            ({{ vprasanje.glasovanje_tip.raven_oblasti }} raven)
+                        </div>
+                        <div v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</div>
+                        <div v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</div>
+                        <div v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</div>
+                        <div>
+                            <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'" class="charts">
+                                <DoughnutChart
+                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                                    :caption_condition="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                    caption="Delež odgovorov"
+                                    enota="%"
+                                    class="chart"
+                                />
+                                <MandatiChart v-if="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                    :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
+                                    class="chart"
+                                />
+                            </div>
+                            <div v-else-if="vprasanje.tip === 'priljubljenost'">
+                                <Priljubljenost
+                                    :podatki="vprasanje"
+                                    orientacija="horizontalno"
+                                />
+                            </div>
+                            <div v-else class="charts">
+                                <PieChart
+                                    :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
+                                    enota="%"
+                                    style="display: inline-block"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div v-else-if="vprasanje.glasovanje_tip">
-                        Tip glasovanja:
-                        {{ vprasanje.glasovanje_tip.tip}}
-                        <span v-if="vprasanje.glasovanje_tip.tip === 'volitve'">
-                            - {{ this.vrniGlasovanjeTip(vprasanje.glasovanje_tip.volitve_tip)}}
-                        </span>
-                        <span v-if="vprasanje.glasovanje_tip.tip === 'referendum'">
-                            - {{ vprasanje.glasovanje_tip.referendum_tip}}
-                        </span>
-                        ({{ vprasanje.glasovanje_tip.raven_oblasti }} raven)
-                    </div>
-                    <div v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</div>
-                    <div v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</div>
-                    <div v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</div>
-                    <div>
-                        <div v-if="vprasanje.tip === 'glasovalno' && vprasanje.glasovanje_tip.volitve_tip === 'DZ-S'" class="charts">
-                            <DoughnutChart
-                                :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                                :caption_condition="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
-                                caption="Delež odgovorov"
-                                enota="%"
-                                class="chart"
-                            />
-                            <MandatiChart v-if="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
-                                :podatki="this.predelajOdgovore(vprasanje, 'st_mandatov_izvajalec') ?? this.izracunajMandate(vprasanje, 'procent_izvajalec')"
-                                class="chart"
+                    <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'">
+                        <h3>Odgovori</h3>
+                        <div
+                            v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
+                            class="bubble bubble-list yellow-gray"
+                        >
+                            <Odgovor
+                                :odgovor="odgovor"
+                                :anketa_id="this.id"
+                                :razsiriOdgovor="false"
                             />
                         </div>
-                        <div v-else-if="vprasanje.tip === 'priljubljenost'">
-                            <Priljubljenost
-                                :podatki="vprasanje"
-                                orientacija="horizontalno"
-                            />
-                        </div>
-                        <div v-else class="charts">
-                            <PieChart
-                                :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
-                                enota="%"
-                                style="display: inline-block"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost'">
-                    <h3>Odgovori</h3>
-                    <div
-                        v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
-                        class="bubble bubble-list yellow-gray"
-                    >
-                        <Odgovor
-                            :odgovor="odgovor"
-                            :anketa_id="this.id"
-                            :razsiriOdgovor="false"
-                        />
                     </div>
                 </div>
             </div>

@@ -1,0 +1,25 @@
+.bubble {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.bubble-outer {
+    margin: 15px;
+}
+
+.bubble-list {
+    margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
+    overflow: hidden;
+}
+
+.bubble-border {
+    border: 2px solid rgba(255, 255, 255, 0.55) /* alpha = 0 povzroči UI bug */
+}
+
+.bubble-border:hover {
+	border: 2px solid #ae1813;
+}
+
+.bubble-highlighted { /* v primeru, ko je bil polinkan fragment strani */
+	border: 2px solid #ae1813;
+}

@@ -1,8 +1,8 @@
 <template>
-    <div v-if="!loaded">
+    <div v-if="!loaded" class="odmik">
         <Nalaganje/>
     </div>
-    <div v-if="loaded && !not_found">
+    <div v-if="loaded && !not_found" class="odmik">
         <Breadcrumbs previous="Stranke" previousLink="/stranke" current="Podrobnosti stranke" />
         <div style="overflow: hidden">
             <div style="display: inline-block" class="side-panel">
@@ -22,7 +22,7 @@
             <DZ :stranka_id="this.id"/>
         </div>
     </div>
-    <div v-if="not_found && loaded">
+    <div v-if="not_found && loaded" class="odmik">
         <NeObstaja ime="Anketa"/>
     </div>
 </template>

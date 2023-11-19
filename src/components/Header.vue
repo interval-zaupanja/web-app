@@ -2,8 +2,8 @@
   <div id="header" class="sticky">
     <div id="header-strip" class="white-pink">
       <!-- logo -->
-      <router-link to="/" style="display: inline-block; margin-left: 40px; margin-right: 40px; vertical-align: middle;">
-        <img src="@/assets/logo.png" style="height: 50px"/>
+      <router-link to="/" style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;">
+        <img src="@/assets/logo.png" style="max-height: 50px;"/>
       </router-link>
 
       <!-- navbar -->
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink">
+    <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink" @click="this.navbar_menu_expanded = false">
       <ul id="dropdown-nav" style="margin: 0px">
         <li><router-link to="/glasovanja">Glasovanja</router-link></li>
         <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>

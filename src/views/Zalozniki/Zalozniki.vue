@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <h1>Založniki</h1>
-        <div v-if="!loaded">
-            <Nalaganje/>
-        </div>
-        <div v-if="loaded" style="margin-left: 25px">
-            <h3>Naročniki</h3>
-            <BubbleGrid v-if="loaded" :items="this.narocniki" path="/zalozniki/"/>
-            <h3>Drugi mediji</h3>
-            <BubbleGrid v-if="loaded" :items="this.mediji" path="/zalozniki/"/>
-        </div>
+    <h1 class="odmik">Založniki</h1>
+    <div v-if="!loaded" class="odmik">
+        <Nalaganje/>
+    </div>
+    <div v-if="loaded" style="margin-left: 25px">
+        <h3 class="odmik">Naročniki</h3>
+        <BubbleGrid v-if="loaded" :items="this.narocniki" path="/zalozniki/" class="odmik"/>
+        <h3 class="odmik">Drugi mediji</h3>
+        <BubbleGrid v-if="loaded" :items="this.mediji" path="/zalozniki/" class="odmik"/>
     </div>
 </template>
 
