@@ -25,39 +25,60 @@ const router = new createRouter({
         {
             path: '/',
             name: 'Domov',
-            component: Domov
+            component: Domov,
+            meta: {
+                title: ''
+            }
         },
         {
             path: '/o-nas',
             name: 'About',
-            component: ONas
+            component: ONas,
+            meta: {
+                title: 'O nas'
+            }
         },
         {
             path: '/pogoji-uporabe',
             name: 'Pogoji uporabe',
-            component: PogojiUporabe
+            component: PogojiUporabe,
+            meta: {
+                title: 'Pogoji uporabe'
+            }
         },
         {
             path: '/prijavljene-napake',
             name: 'Prijavljene napake',
-            component: PrijavljeneNapake
+            component: PrijavljeneNapake,
+            meta: {
+                title: 'Prijavljene napake'
+            }
         },
         {
             path: '/ankete',
             name: 'Ankete',
             component: Ankete,
-            props: true
+            props: true,
+            meta: {
+                title: 'Ankete'
+            }
         },
         {
             path: '/ankete/:id',
             name: 'Anketa',
             component: Anketa,
-            props: true
+            props: true,
+            meta: {
+                title: 'Anketa'
+            }
         },
         {
             path: '/stranke',
             name: 'Stranke',
-            component: Stranke
+            component: Stranke,
+            meta: {
+                title: 'Stranke'
+            }
         },
         {
             path: '/stranke/:id',
@@ -68,7 +89,10 @@ const router = new createRouter({
         {
             path: '/zalozniki',
             name: 'Zalozniki',
-            component: Zalozniki
+            component: Zalozniki,
+            meta: {
+                title: 'Založniki'
+            }
         },
         {
             path: '/zalozniki/:id',
@@ -79,7 +103,10 @@ const router = new createRouter({
         {
             path: '/izvajalci',
             name: 'Izvajalci',
-            component: Izvajalci
+            component: Izvajalci,
+            meta: {
+                title: 'Izvajalci'
+            }
         },
         {
             path: '/izvajalci/:id',
@@ -91,6 +118,9 @@ const router = new createRouter({
             path: '/glasovanja',
             name: 'Glasovanja',
             component: Glasovanja,
+            meta: {
+                title: 'Glasovanja'
+            }
         },
         {
             path: '/glasovanja/:id',
@@ -101,7 +131,10 @@ const router = new createRouter({
         {
             path: '/osebe',
             name: 'Osebe',
-            component: Osebe
+            component: Osebe,
+            meta: {
+                title: 'Osebe'
+            }
         },
         {
             path: '/osebe/:id',
@@ -112,15 +145,30 @@ const router = new createRouter({
         {
             path: '/priljubljenost',
             name: 'Priljubljenost',
-            component: Priljubljenost
+            component: Priljubljenost,
+            meta: {
+                title: 'Priljubljenost'
+            }
         },
         // Catch all not found
         {
             path: '/:catchAll(.*)', // to je regex
             name: 'NotFound',
-            component: NotFound
+            component: NotFound,
+            meta: {
+                title: 'Stran ne obstaja'
+            }
         }
     ]
+})
+
+router.beforeEach((to) => {
+    if (to.meta?.title != null && to.meta?.title != undefined && to.meta?.title != '') {
+        document.title = 'Interval zaupanja | ' + to.meta?.title
+    } else {
+        document.title = 'Interval zaupanja'
+    }
+    
 })
 
 export default router;

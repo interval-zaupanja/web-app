@@ -60,7 +60,9 @@ export default {
     },
     async mounted() {
         const status = this.getData();
-        if (!status) {
+        if (status) {
+            document.title = `Interval zaupanja | ${this.ime}`
+        } else {
             this.not_found = true;
         }
         this.loaded = true;

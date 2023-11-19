@@ -80,6 +80,7 @@ export default {
                 this.stranka_ime_kratica = podatki.ime_kratica
                 this.stranka_logo_uri = this.vrniLogoUri(podatki.logo_uri)
             }
+            document.title = `Interval zaupanja | ${this.ime} ${this.priimek}`
         }
         this.loaded = true
     },
