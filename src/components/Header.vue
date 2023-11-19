@@ -1,50 +1,41 @@
 <template>
-  <div id="header" class="sticky white-pink">
-    <div style="margin-left: 50px; margin-right: 30px; height: inherit">
+  <div id="header" class="sticky">
+    <div id="header-strip" class="white-pink">
+        <!-- logo -->
+        <router-link to="/" style="display: inline-block; margin-left: 40px; margin-right: 40px; vertical-align: middle;">
+          <img src="@/assets/logo.png" style="height: 50px"/>
+        </router-link>
 
-      <!-- logo -->
-      <router-link to="/" style="display: inline-block; height: inherit">
-        <div style="display: inline-block; margin-left: 10px; margin-right: 10px; font-size: 40px; height: inherit">
-          <div style="display:flex; justify-content:center; align-items: center; height: inherit">
-            <img src="@/assets/logo.png" style="height: 50px"/>
-          </div>
+        <!-- navbar -->
+        <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; float: right; vertical-align: middle; align-items: center;">
+            <ul id="menu-list" style="margin: 0px">
+              <li><router-link to="/glasovanja">Glasovanja</router-link></li>
+              <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
+              <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+              <li>
+                <router-link to="">Drugo ⏷</router-link>
+                <ul class="dropdown">
+                  <li><router-link to="/ankete">Ankete</router-link></li>
+                  <li><router-link to="/izvajalci">Izvajalci</router-link></li>
+                  <li><router-link to="/zalozniki">Založniki</router-link></li>
+                  <li><router-link to="/stranke">Stranke</router-link></li>
+                  <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
+                </ul>
+              </li>
+              <li><router-link to="/o-nas">O nas</router-link></li>
+            </ul>
         </div>
-      </router-link>
 
-      <!-- navbar -->
-      <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; height: inherit; float: right">
-        <div style="display:flex; justify-content:center; align-items: center; height: inherit; line-height: 70px;"> <!-- *line*-height!!!-->
-
-          <ul id="menu-list" style="margin: 0px">
-            <li><router-link to="/glasovanja">Glasovanja</router-link></li>
-            <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-            <li><router-link to="/zaupanje">Zaupanje</router-link></li>
-            <li>
-              <router-link to="">Drugo ⏷</router-link>
-              <ul class="dropdown">
-                <li><router-link to="/ankete">Ankete</router-link></li>
-                <li><router-link to="/izvajalci">Izvajalci</router-link></li>
-                <li><router-link to="/zalozniki">Založniki</router-link></li>
-                <li><router-link to="/stranke">Stranke</router-link></li>
-                <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
-              </ul>
-            </li>
-            <li><router-link to="/o-nas">O nas</router-link></li>
-          </ul>
-
+        <!-- menu bar button -->
+        <div
+          v-if="!this.navbar_full"
+          id="menu-bar"
+          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
+        >
+          <img width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
         </div>
-      </div>
-
-      <!-- menu bar -->
-      <div
-        v-if="!this.navbar_full"
-        id="menu-bar"
-        style="display: inline-block; margin-left: 30px; margin-right: 30px; height: inherit; float: right; vertical-align: middle; line-height: 70px;"
-      >
-        <img width="45" height="45" src="@/assets/icons/menu.png" alt="menu--v1" style="vertical-align: middle;"/>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -80,9 +71,10 @@ export default {
 
 <style scoped>
 /* celotna glava */
-#header {
+#header-strip {
     display: block;
     height: 70px;
+    line-height: 70px; /* potrebno, da vertical-align deluje */
     color: #ae1813;
 }
 
