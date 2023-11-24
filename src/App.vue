@@ -27,19 +27,19 @@ export default {
     }
   },
   created() {
-        window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
-        this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
-    },
-    methods: {
-        checkScreen() {
-            var windowWidth = window.innerWidth
-            if (windowWidth <= 600) {
-                this.edge_to_edge = true
-            } else {
-                this.edge_to_edge = false
-            }
-        }
+    window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+    this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+  },
+  methods: {
+    checkScreen() {
+      var windowWidth = window.innerWidth
+      if (windowWidth <= 600) {
+          this.edge_to_edge = true
+      } else {
+          this.edge_to_edge = false
+      }
     }
+  }
 }
 </script>
 

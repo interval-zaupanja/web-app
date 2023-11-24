@@ -1,34 +1,38 @@
 <template>
 	<div class="pink-red" style="padding: 15px">
 		<h3>Zadnje ankete</h3>
-		<div
-			class="bubble bubble-list bubble-border yellow-gray"
-			:style="this.orientation === 'horizontal' ? 'display: inline-block' : ''"
-			v-for="anketa in ankete" :key="anketa._id"
-			@click="$router.push('/ankete/' + anketa._id)"
-		>
-			Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
-			<br>
-			<span v-if="anketa.izvajalci_ime && anketa.izvajalci_ime.length > 0">
-				<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
-				<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
-				<span v-else>Izvajalci: </span>
-				{{ anketa.izvajalci_ime.join(', ') }}
-				<br>
-			</span>
-			<span v-if="anketa.narocniki_ime && anketa.narocniki_ime.length > 0">
-				<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
-				<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
-				<span v-else>Naročniki: </span>
-				{{ anketa.narocniki_ime.join(', ') }}
-				<br>
-			</span>
-			<span v-if="anketa.metode && anketa.metode.length > 0">
-				<span v-if="anketa.metode.length == 1">Metoda: </span>
-				<span v-else-if="anketa.metode.length == 2">Metodi: </span>
-				<span v-else>Metode: </span>
-				{{ anketa.metode.join(', ') }}
-			</span>
+		<div :style="this.orientation === 'horizontal' ? 'display: flex; justify-content: center' : ''">
+			<div :class="this.orientation === 'horizontal' ? 'scrollmenu' : ''">
+				<div
+					class="bubble bubble-list bubble-border yellow-gray"
+					:class="this.orientation === 'horizontal' ? 'horizontal' : 'vertical'"
+					v-for="anketa in ankete" :key="anketa._id"
+					@click="$router.push('/ankete/' + anketa._id)"
+				>
+					Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
+					<br>
+					<span v-if="anketa.izvajalci_ime && anketa.izvajalci_ime.length > 0">
+						<span v-if="anketa.izvajalci_ime.length == 1">Izvajalec: </span>
+						<span v-else-if="anketa.izvajalci_ime.length == 2">Izvajalca: </span>
+						<span v-else>Izvajalci: </span>
+						{{ anketa.izvajalci_ime.join(', ') }}
+						<br>
+					</span>
+					<span v-if="anketa.narocniki_ime && anketa.narocniki_ime.length > 0">
+						<span v-if="anketa.narocniki_ime.length == 1">Naročnik: </span>
+						<span v-else-if="anketa.narocniki_ime.length == 2">Naročnika: </span>
+						<span v-else>Naročniki: </span>
+						{{ anketa.narocniki_ime.join(', ') }}
+						<br>
+					</span>
+					<span v-if="anketa.metode && anketa.metode.length > 0">
+						<span v-if="anketa.metode.length == 1">Metoda: </span>
+						<span v-else-if="anketa.metode.length == 2">Metodi: </span>
+						<span v-else>Metode: </span>
+						{{ anketa.metode.join(', ') }}
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -97,5 +101,31 @@ export default {
 <style scoped>
 h3 {
 	text-align: center;
+}
+
+/* top-margin za vertikalno postavitev določa že bubble-list */
+.scrollmenu {
+	overflow: auto;
+	white-space: nowrap;
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollmenu::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal {
+	display: inline-block;
+	/* height: 100%; */
+	min-width: 320px;
+}
+
+.horizontal:not(:last-child) {
+	margin-right: 15px;
+	margin-top: 0;
 }
 </style>
