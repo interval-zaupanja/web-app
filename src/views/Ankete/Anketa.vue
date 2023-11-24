@@ -26,10 +26,10 @@
                     <span v-else>Naročniki: </span>
 
                     <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
-                        <router-link :to="'/narocniki/' + narocnik.id">
+                        <router-link :to="'/zalozniki/' + narocnik.id">
                             {{ narocnik.ime}}
                         </router-link>
-                        <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/narocniki/' + narocnik.id)" style="height: 16px"/></span>
+                        <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/zalozniki/' + narocnik.id)" style="height: 16px"/></span>
                         <span v-if="indeks + 1 < this.narocniki.length">, </span>
                     </span>
                 </p>
