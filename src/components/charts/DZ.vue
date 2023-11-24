@@ -249,7 +249,8 @@ export default {
                 NV: true,
                 NSO: false,
                 NBG: false
-            }
+            },
+            stranke: []
         }
     },
     async mounted() {
@@ -271,7 +272,7 @@ export default {
                         data[i].glasovalno_tip.kvalitativna_meritev === 'izid' ||
                         data[i].glasovalno_tip.kvalitativna_meritev === 'izid-izrojena-udelezba'
                     ) {
-                        const { anketa_id, odgovori, _id } = data[i];
+                        const { anketa_sredina, odgovori, _id } = data[i];
                         for (let j = 0; j < odgovori.length; j++) { // odgovori
                             if (
                                 this.stranka_id != null && this.stranka_id == odgovori[j].stranka_id || // prikazati moramo le določeno stranko
@@ -296,7 +297,7 @@ export default {
                                     this.fullData.datasets.push({
                                         label: label_current,
                                         data: [{
-                                            x: await this.getDate(anketa_id),
+                                            x: moment(anketa_sredina, "YYYY-MM-DD").format("YYYY-MM-DD"),
                                             y: odgovori[j].procent_izvajalec,
                                             vprasanje_id: _id
                                         }],
@@ -307,7 +308,7 @@ export default {
                                 } else {
                                     const obstojeciVnos = this.fullData.datasets.find((element) => element.label === label_current)
                                     obstojeciVnos.data.push({
-                                        x: await this.getDate(anketa_id),
+                                        x: moment(anketa_sredina, "YYYY-MM-DD").format("YYYY-MM-DD"),
                                         y: odgovori[j].procent_izvajalec,
                                         vprasanje_id: _id
                                     })
@@ -321,15 +322,26 @@ export default {
                 return false;
             }
         },
-        async getDate(anketa_id) {
-            const { data } = await axios.get(this.apiServer + "/api/ankete/" + anketa_id)
-            return moment(data.sredina, "YYYY-MM-DD").format("YYYY-MM-DD") // sicer ni vpisan celoten data.konec format, vendar vseeno deluje
-        },
         async getLabelAndColor(stranka_id) {
-            const { data } = await axios.get(this.apiServer + "/api/stranke/" + stranka_id);
-            return { 
-                stranka_ime: data.ime_kratica ?? data.ime,
-                stranka_barva: data.barva
+            // Najprej preverimo, če imamo barvo in ime stranke že shranjene
+            const index = this.stranke.findIndex((stranka) => stranka._id === stranka_id)
+            
+            if (index == -1) { // stranke še nimamo shranjene
+                const { data } = await axios.get(this.apiServer + "/api/stranke/" + stranka_id);
+                this.stranke.push({
+                    _id: stranka_id,
+                    stranka_ime: data.ime_kratica ?? data.ime,
+                    strank_barva: data.barva
+                })
+                return { 
+                    stranka_ime: data.ime_kratica ?? data.ime,
+                    stranka_barva: data.barva
+                }
+            } else {
+                return { 
+                    stranka_ime: this.stranke[index].stranka_ime,
+                    stranka_barva: this.stranke[index].stranka_barva
+                }
             }
         },
         render() {
