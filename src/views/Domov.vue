@@ -1,11 +1,11 @@
 <template>
-    <div :style="this.sidebar ? 'display: flex; flex-wrap: nowrap' : ''" class="odmik">
-         <div style="max-width: 400px" :style="this.sidebar ? 'flex-grow: 1' : ''">
-            <h3 style="text-align: center">Volitve v Državni zbor</h3>
-            <DZ/>
+    <div>
+         <div class="odmik">
+            <h3 style="text-align: center">Katero stranko bi volili?</h3>
+            <DZ style="max-width: 800px; margin-left: auto; margin-right: auto;"/>
         </div>
-        <div :style="this.sidebar ? 'min-width: 400px; max-width: 400px' : ''">
-            <ZadnjeAnkete :orientation="sidebar ? 'vertical' : 'horizontal'"/>
+        <div style="margin: 15px 0">
+            <ZadnjeAnkete/>
         </div>
     </div>
 </template>
@@ -19,25 +19,6 @@ export default {
     components: {
 		ZadnjeAnkete,
         DZ
-    },
-    data() {
-        return {
-            sidebar: false,
-        }
-    },
-    created() {
-        window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
-        this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
-    },
-    methods: {
-        checkScreen() {
-            this.windowWidth = window.innerWidth
-            if (this.windowWidth <= 900) {
-                this.sidebar = false
-            } else {
-                this.sidebar = true
-            }
-        }
     }
 }
 </script>

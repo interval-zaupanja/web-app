@@ -1,5 +1,5 @@
 <template>
-	<div class="sidebar bubble bubble-outer pink-red">
+	<div class="pink-red" style="padding: 15px">
 		<h3>Zadnje ankete</h3>
 		<div
 			class="bubble bubble-list bubble-border yellow-gray"
@@ -38,16 +38,28 @@ import axios from "axios";
 
 export default {
 	name: "ZadnjeAnkete",
-	props: ['orientation']
-,	data() {
+	data() {
 		return {
 			ankete: [],
+			orientation: 'horizontal'
 		}
 	},
 	async mounted() {
 		this.getData()
 	},
+	created() {
+		window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+		this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+	},
 	methods: {
+		checkScreen() {
+			var windowWidth = window.innerWidth
+			if (windowWidth <= 450) {
+				this.orientation = 'vertical'
+			} else {
+				this.orientation = 'horizontal'
+			}
+		},
 		async getData() {
 			const { data } = await axios.get(this.apiServer + "/api/ankete?limit=3");
 			for (let i = 0; i < data.length; i++) { // s forEach ne deluje, ker ni async funkcija

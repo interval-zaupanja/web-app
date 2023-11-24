@@ -32,8 +32,8 @@ export default {
     },
     methods: {
         checkScreen() {
-            this.windowWidth = window.innerWidth
-            if (this.windowWidth <= 600) {
+            var windowWidth = window.innerWidth
+            if (windowWidth <= 600) {
                 this.edge_to_edge = true
             } else {
                 this.edge_to_edge = false
