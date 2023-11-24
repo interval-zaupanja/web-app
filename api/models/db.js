@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false); // dodano zaradi opozorila in istega delovanja v Mongoose 7
 
-var dbURI = "mongodb://localhost/interval-zaupanja/web-zadnjeAnkete"; // development
-if (process.env.NODE_ENV === "production")
+var dbURI = "mongodb://localhost/interval-zaupanja/db"; // development
+if (process.env.DB_ENV === "production") {
     dbURI = process.env.MONGODB_ATLAS_URI;
-else if (process.env.NODE_ENV === "test")
-    dbURI = "mongodb://interval-zaupanja/web-zadnjeAnkete";
+} else if (process.env.DB_ENV === "test") {
+    dbURI = "mongodb://interval-zaupanja/db";
+}
 mongoose.connect(dbURI);
 
 mongoose.connection.on("connected", () => {
