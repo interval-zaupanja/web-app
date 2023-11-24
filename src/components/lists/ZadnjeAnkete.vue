@@ -1,5 +1,5 @@
 <template>
-	<div class="pink-red" style="padding: 15px">
+	<div class="pink-red" :style="this.orientation === 'horizontal' ? 'padding: 15px 0' : 'padding: 15px'">
 		<h3>Zadnje ankete</h3>
 		<div :style="this.orientation === 'horizontal' ? 'display: flex; justify-content: center' : ''">
 			<div :class="this.orientation === 'horizontal' ? 'scrollmenu' : ''">
@@ -115,17 +115,19 @@ h3 {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollmenu::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .horizontal {
 	display: inline-block;
-	/* height: 100%; */
-	min-width: 320px;
+	height: 130px;
+	margin-top: 0; /* izniči efekt bubble-list */
 }
 
-.horizontal:not(:last-child) {
+.horizontal:first-child {
+	margin-left: 15px;
+}
+.horizontal {
 	margin-right: 15px;
-	margin-top: 0;
 }
 </style>
