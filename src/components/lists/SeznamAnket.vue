@@ -3,21 +3,29 @@
         <table cellspacing="0" cellpadding="0" class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Začetek anketiranja</th>
-                    <th scope="col">Konec anketiranja</th>
+                    <th scope="col" v-if="this.siroka_tabela">Začetek anketiranja</th>
+                    <th scope="col" v-if="this.siroka_tabela">Konec anketiranja</th>
+                    <th scope="col" v-if="!this.siroka_tabela">Obdobje anketiranja</th>
                     <th scope="col">Izvajalci</th>
                     <th scope="col">Naročniki</th>
-                    <th scope="col">Metode anketiranja</th>
+                    <th scope="col" v-if="this.siroka_tabela">Metode anketiranja</th>
+                    <th scope="col" v-if="!this.ozka_tabela"><span v-if="this.siroka_tabela">Velikost vzorca</span><span v-else>N</span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
-                    <th>
+                    <th v-if="this.siroka_tabela">
                         <span v-if="anketa.zacetek">{{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}</span>
                         <span v-else>Ni podatkov</span>
                     </th>
-                    <th>
+                    <th v-if="this.siroka_tabela">
                         <span v-if="anketa.konec">{{ new Date(anketa.konec).toLocaleDateString('en-GB') }}</span>
+                        <span v-else>Ni podatkov</span>
+                    </th>
+                    <th v-if="!this.siroka_tabela">
+                        <span v-if="anketa.zacetek || anekta.konec">
+                            <span v-if="anketa.zacetek">{{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}</span> - <span v-if="anketa.konec">{{ new Date(anketa.konec).toLocaleDateString('en-GB') }}</span>
+                        </span>
                         <span v-else>Ni podatkov</span>
                     </th>
                     <th>
@@ -28,9 +36,13 @@
                         <span v-if="anketa.narocniki_ime">{{ anketa.narocniki_ime.join(', ') }}</span>
                         <span v-else>Ni podatkov</span>
                     </th>
-                    <th>
+                    <th v-if="this.siroka_tabela">
                         <span v-if="anketa.metode">{{ anketa.metode.join(', ') }}</span>
                         <span v-else>Ni podatkov</span>
+                    </th>
+                    <th v-if="!this.ozka_tabela">
+                        <span v-if="anketa.vzorec[0].st_sodelujocih">{{ anketa.vzorec[0].st_sodelujocih }}</span>
+                        <span v-else>N/A</span>
                     </th>
                 </tr>
             </tbody>
@@ -55,14 +67,34 @@ export default {
 	data() {
 		return {
 			ankete: [],
-            loaded: false
+            loaded: false,
+            siroka_tabela: true,
+            ozka_tabela: false
 		}
 	},
 	async mounted() {
 		await this.getData();
         this.loaded = true;
 	},
+    created() {
+        window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+        this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+    },
 	methods: {
+        checkScreen() {
+            var windowWidth = window.innerWidth
+            if (windowWidth >= 600) {
+                this.siroka_tabela = true
+            } else {
+                this.siroka_tabela = false
+            }
+
+            if (windowWidth <= 450) {
+                this.ozka_tabela = true
+            } else {
+                this.ozka_tabela = false
+            }
+        },
 		async getData() {
             var urlParametri = {}
             if (this.parametri) {
@@ -76,9 +108,10 @@ export default {
 					konec,
 					metode,
 					izvajalci_id,
-                    narocniki_id
+                    narocniki_id,
+                    vzorec
                 } = data[i];
-				this.ankete.push({_id, zacetek, konec, metode, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id)});
+				this.ankete.push({_id, zacetek, konec, metode, izvajalci_ime: await this.getIzvajalciIme(izvajalci_id), narocniki_ime: await this.getNarocnikiIme(narocniki_id), vzorec});
 			}
 		},
 		async getIzvajalciIme(izvajalci_id) {
@@ -100,3 +133,10 @@ export default {
 	}
 }
 </script>
+
+<style>
+table { /* prepreči overflow tabele in pogleda na ožjih napravah */
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+</style>

@@ -14,6 +14,10 @@ body { /* odstrani privzete vrednosti brskalnika */
     margin: 0 5%;
 }
 
+.odmik3 {
+    margin: 0 3%;
+}
+
 /* Besedilo */
 * {
     /*font-family: 'Agdasima', sans-serif;*/
