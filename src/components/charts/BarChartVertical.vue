@@ -72,7 +72,7 @@ export default {
                             const slika = new Image()
                             slika.src = imageURI
 
-                            const { widthSrc, heightSrc } = getImageDimensions(slike[i])
+                            const { widthSrc, heightSrc } = getImageDimensions(imageURI)
 
                             var width = options.layout.padding.left // širina stolpca
                             var height = Math.floor((width / widthSrc) * heightSrc)

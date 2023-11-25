@@ -8,7 +8,6 @@
       <Footer/>
     </div>
   </div>
-  <div id="odlozisce" style="display: none"/>
 </template>
 
 <script>

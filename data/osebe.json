@@ -9,7 +9,7 @@
         "stranka_id": {
             "$oid": "651450a3a3e11c09560bfb8b"
         },
-        "slika_uri": "/osebe/dominika_svarc_pipan.png",
+        "slika_uri": "/osebe/dominika_svarc_pipan_ut_mr_600x639.png",
         "slika_vir": "https://www.gov.si/en/state-authorities/ministries/ministry-of-justice/about-the-ministry-of-justice/ministers-office/dr-dominika-svarc-pipan/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Dominika_%C5%A0varc_Pipan"
@@ -21,7 +21,7 @@
         "ime": "Nataša",
         "ime_srednje": "Pirc",
         "priimek": "Musar",
-        "slika_uri": "/osebe/natasa_pirc_musar.png",
+        "slika_uri": "/osebe/natasa_pirc_musar_ut_mr_600x660.png",
         "slika_vir": "https://www.predsednica-slo.si/sl/o-predsednici/",
         "slika_avtor": "Matjaž Klemenc / UPRS",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Nata%C5%A1a_Pirc_Musar"
@@ -35,7 +35,7 @@
         "stranka_id": {
             "$oid": "c32ae76a892c5c270a7acb1f"
         },
-        "slika_uri": "/osebe/anze_logar.png",
+        "slika_uri": "/osebe/anze_logar_ut_mr_600x560.png",
         "slika_vir": "https://anzelogar.si/",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/An%C5%BEe_Logar"
     },
@@ -45,7 +45,7 @@
         },
         "ime": "Boštjan",
         "priimek": "Šefic",
-        "slika_uri": "/osebe/bostjan_sefic.png",
+        "slika_uri": "/osebe/bostjan_sefic_ut_mr_600x596.png",
         "slika_vir": "https://siol.net/novice/slovenija/sefic-predstavljam-si-da-bo-tudi-za-mlado-druzino-selitev-tezka-video-614353",
         "slika_avtor": "Bojan Puhek"
     },
@@ -58,7 +58,7 @@
         "stranka_id": {
             "$oid": "651450a3a3e11c09560bfb8b"
         },
-        "slika_uri": "/osebe/matjaz_han.png",
+        "slika_uri": "/osebe/matjaz_han_ut_mr_600x590.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-gospodarstvo-turizem-in-sport/o-ministrstvu/matjaz-han/",
         "slika_avtor": "Danijel Novakovič / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Matja%C5%BE_Han"
@@ -72,7 +72,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/marjan_sarec.png",
+        "slika_uri": "/osebe/marjan_sarec_ut_mr_600x725.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-obrambo/o-ministrstvu/marjan-sarec/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Marjan_%C5%A0arec"
@@ -86,7 +86,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/robert_golob.png",
+        "slika_uri": "/osebe/robert_golob_ut_mr_600x566.png",
         "slika_vir": "https://www.gov.si/en/state-authorities/prime-minister/dr-robert-golob/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Robert_Golob"
@@ -100,7 +100,7 @@
         "stranka_id": {
             "$oid": "651450a3a3e11c09560bfb8b"
         },
-        "slika_uri": "/osebe/tanja_fajon.png",
+        "slika_uri": "/osebe/tanja_fajon_ut_mr_600x663.png",
         "slika_vir": "https://www.gov.si/en/state-authorities/ministries/ministry-of-foreign-and-european-affairs/about-the-ministry-of-foreign-and-european-affairs/tanja-fajon/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Tanja_Fajon"
@@ -114,7 +114,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/klemen_bostjancic.png",
+        "slika_uri": "/osebe/klemen_bostjancic_ut_mr_600x611.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-finance/o-ministrstvu/klemen-bostjancic/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Klemen_Bo%C5%A1tjan%C4%8Di%C4%8D"
@@ -129,7 +129,7 @@
         "stranka_id": {
             "$oid": "6514510050b03011ded8e2b3"
         },
-        "slika_uri": "/osebe/janez_cigler_kralj.png",
+        "slika_uri": "/osebe/janez_cigler_kralj_ut_mr_600x630.png",
         "slika_vir": "https://novice.svet24.si/clanek/novice/slovenija/6348546ff1b21/janez-cigler-kralj-oba-dedka-sta-bila-v-partizanih-po-drugi-strani-pa-sem-tudi-globoko-veren",
         "slika_avtor": "Primož Lavre",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Janez_Cigler_Kralj"
@@ -143,7 +143,7 @@
         "stranka_id": {
             "$oid": "6514510050b03011ded8e2b3"
         },
-        "slika_uri": "/osebe/matej_tonin.png",
+        "slika_uri": "/osebe/matej_tonin_ut_mr_600x692.png",
         "slika_vir": "https://web.archive.org/web/20220425213406/https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-obrambo/o-ministrstvu/mag-matej-tonin-minister-za-obrambo/",
         "slika_avtor": "Bruno Toic",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Matej_Tonin"
@@ -158,7 +158,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/urska_klakocar_zupancic.png",
+        "slika_uri": "/osebe/urska_klakocar_zupancic_ut_mr_600x666.png",
         "slika_vir": "https://siol.net/novice/slovenija/urska-klakocar-zupancic-upam-da-bodo-joc-pececnik-in-njemu-podobni-zaceli-razmisljati-manj-kapitalisticno-video-595650",
         "slika_avtor": "Bojan Puhek",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Ur%C5%A1ka_Klako%C4%8Dar_Zupan%C4%8Di%C4%8D"
@@ -172,7 +172,7 @@
         "stranka_id": {
             "$oid": "651450a3a3e11c09560bfb8b"
         },
-        "slika_uri": "/osebe/jani_prednik.png",
+        "slika_uri": "/osebe/jani_prednik_ut_mr_600x599.png",
         "slika_vir": "https://www.koroskenovice.si/novice/jani-prednik-430-izgubljenih-delovnih-mest-je-tragedija-za-korosko/",
         "slika_avtor": "Tamino Petelinšek / STA"
     },
@@ -185,7 +185,7 @@
         "stranka_id": {
             "$oid": "c32ae76a892c5c270a7acb1f"
         },
-        "slika_uri": "/osebe/jelka_godec.png",
+        "slika_uri": "/osebe/jelka_godec_ut_mr_600x567.png",
         "slika_vir": "https://www.sds.si/o-stranki/vasi-predstavniki/poslanka-jelka-godec",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Jelka_Godec"
     },
@@ -199,7 +199,7 @@
         "stranka_id": {
             "$oid": "c32ae76a892c5c270a7acb1f"
         },
-        "slika_uri": "/osebe/janez_ivan_jansa.png",
+        "slika_uri": "/osebe/janez_ivan_jansa_ut_mr_600x516.png",
         "slika_vir": "https://nova24tv.si/slovenija/revolucionarno-nasilje/jansa-ob-obletnici-hladnokrvnega-umora-ehrlicha-pozval-k-streznitvi/",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Janez_Jan%C5%A1a"
     },
@@ -212,7 +212,7 @@
         "stranka_id": {
             "$oid": "6514520bf8a6846662381457"
         },
-        "slika_uri": "/osebe/luka_mesec.png",
+        "slika_uri": "/osebe/luka_mesec_ut_mr_600x747.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-delo-druzino-socialne-zadeve-in-enake-moznosti/o-ministrstvu/luka-mesec/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Luka_Mesec"
@@ -226,7 +226,7 @@
         "stranka_id": {
             "$oid": "6514520bf8a6846662381457"
         },
-        "slika_uri": "/osebe/asta_vrečko.png",
+        "slika_uri": "/osebe/asta_vrečko_ut_mr_600x713.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kulturo/o-ministrstvu/dr-asta-vrecko/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Asta_Vre%C4%8Dko"
@@ -241,7 +241,7 @@
         "stranka_id": {
             "$oid": "6514520bf8a6846662381457"
         },
-        "slika_uri": "/osebe/matej_tasner_vatovec.png",
+        "slika_uri": "/osebe/matej_tasner_vatovec_ut_mr_600x657.png",
         "slika_vir": "https://n1info.si/novice/slovenija/se-zaradi-nevednosti-ministrov-in-azilne-zakonodaje-obeta-spor-v-koaliciji/",
         "slika_avtor": "Denis Sadiković / N1",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Matej_Ta%C5%A1ner_Vatovec"
@@ -255,7 +255,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/borut_sajovic.png",
+        "slika_uri": "/osebe/borut_sajovic_ut_mr_600x582.png",
         "slika_vir": "https://gibanjesvoboda.si/poslanec/mag-borut-sajovic/",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Borut_Sajovic"
     },
@@ -268,7 +268,7 @@
         "stranka_id": {
             "$oid": "a79677ebd4dbd3bd7642deca"
         },
-        "slika_uri": "/osebe/alenka_bratusek.png",
+        "slika_uri": "/osebe/alenka_bratusek_ut_mr_600x633.png",
         "slika_vir": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-infrastrukturo/o-ministrstvu/mag-alenka-bratusek/",
         "slika_avtor": "Tamino Petelinšek / STA",
         "wikipedia_uri": "https://sl.wikipedia.org/wiki/Alenka_Bratu%C5%A1ek"
