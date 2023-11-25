@@ -111,6 +111,7 @@ export default {
     height: 70px;
     line-height: 70px; /* potrebno, da vertical-align deluje */
     color: #ae1813;
+    overflow: hidden; /* zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico */
 }
 
 .sticky { /* poskrbi, da se glava vedno drži vrha strani */

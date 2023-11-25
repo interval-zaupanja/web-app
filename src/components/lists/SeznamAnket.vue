@@ -12,7 +12,7 @@
                     <th scope="col" v-if="!this.ozka_tabela"><span v-if="this.siroka_tabela">Velikost vzorca</span><span v-else>N</span></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="cursor: pointer;">
                 <tr class="anketa" v-for="anketa in ankete" :key="anketa._id" @click="$router.push('/ankete/' + anketa._id)">
                     <th v-if="this.siroka_tabela">
                         <span v-if="anketa.zacetek">{{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }}</span>

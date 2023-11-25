@@ -5,9 +5,10 @@
 			<div :class="this.orientation === 'horizontal' ? 'scrollmenu' : ''">
 				<div
 					class="bubble bubble-list bubble-border yellow-gray"
-					:class="this.orientation === 'horizontal' ? 'horizontal' : 'vertical'"
+					:class="this.orientation === 'horizontal' ? 'horizontal' : ''"
 					v-for="anketa in ankete" :key="anketa._id"
 					@click="$router.push('/ankete/' + anketa._id)"
+					style="cursor: pointer;"
 				>
 					Izvedena od {{ new Date(anketa.zacetek).toLocaleDateString('en-GB') }} do {{ new Date(anketa.konec).toLocaleDateString('en-GB') }}
 					<br>
@@ -31,6 +32,16 @@
 						<span v-else>Metode: </span>
 						{{ anketa.metode.join(', ') }}
 					</span>
+				</div>
+				<div :class="this.orientation === 'horizontal' ? 'horizontal' : ''" style="vertical-align: top;" :style="this.orientation === 'vertical' ? 'margin-top: 10px': ''">
+					<div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+						<div style="text-align: center; cursor: pointer;" @click="$router.push('/ankete/')">
+							<img height="40" width="40" src="@/assets/icons/more.png" alt="Več">
+							<div style="color: #ae1813">
+								Vse ankete
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
