@@ -51,7 +51,7 @@ const seznamOseb = (req, res) => {
             {
                 $unset: [
                     'slika_vir',
-                    'slika_uri',
+                    // 'slika_uri',
                     'slika_avtor'
                 ]
             }
@@ -141,7 +141,7 @@ const podrobnostiOsebe = (req, res) => {
             {
                 $unset: [
                     'slika_vir',
-                    'slika_uri',
+                    // 'slika_uri',
                     'slika_avtor'
                 ]
             }
@@ -160,7 +160,7 @@ const podrobnostiOsebe = (req, res) => {
         } else if (error) {
             res.status(500).json({sporocilo: "Napaka na strežniku: " + error});
         } else {
-            res.status(200).json(oseba);
+            res.status(200).json(oseba[0]);
         }
     });
 };

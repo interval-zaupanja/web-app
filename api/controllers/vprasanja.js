@@ -152,8 +152,7 @@ const seznamVprasanj = (req, res) => {
         })
     }
 
-
-    Vprasanja.aggregate(pipeline).exec(function (error, seznam) {
+    Vprasanja.aggregate(pipeline).limit(parseInt(req.query.limit)).exec(function (error, seznam) {
         if (error) {
             res.status(404).json({sporocilo: "Napaka pri poizvedbi: " + error});
         } else {
