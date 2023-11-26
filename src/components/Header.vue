@@ -1,69 +1,78 @@
 <template>
-  <div id="header" class="sticky">
-    <div id="header-strip" class="white-pink">
-      <!-- logo -->
-      <router-link to="/" style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;">
-        <img src="@/assets/logo.png" style="max-height: 50px;"/>
-      </router-link>
+  <div id="header" class="sticky"
+  @wheel.prevent @touchmove.prevent @scroll.prevent>
+    <div class="blur">
+      <div id="header-strip">
+        <!-- logo -->
+        <router-link
+          to="/"
+          style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;"
+          @click="closeMenu()"
+        >
+          <img src="@/assets/logo.png" style="max-height: 50px;"/>
+        </router-link>
 
-      <!-- navbar -->
-      <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; float: right; vertical-align: middle; align-items: center;">
-        <ul id="menu-list" style="margin: 0px">
-          <li><router-link to="/glasovanja">Glasovanja</router-link></li>
-          <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-          <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+        <!-- navbar -->
+        <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; float: right; vertical-align: middle; align-items: center;">
+          <ul id="menu-list" style="margin: 0px">
+            <li><router-link to="/glasovanja">Glasovanja</router-link></li>
+            <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
+            <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+            <li>
+              <router-link to="">Drugo ⏷</router-link>
+              <ul class="dropdown">
+                <li><router-link to="/ankete">Ankete</router-link></li>
+                <li><router-link to="/izvajalci">Izvajalci</router-link></li>
+                <li><router-link to="/zalozniki">Založniki</router-link></li>
+                <li><router-link to="/stranke">Stranke</router-link></li>
+                <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
+              </ul>
+            </li>
+            <li><router-link to="/o-nas">O nas</router-link></li>
+          </ul>
+        </div>
+
+        <!-- menu bar button -->
+        <div
+          v-if="!this.navbar_full"
+          id="menu-bar-button"
+          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
+        >
+          <img
+            v-if="!this.navbar_menu_expanded"
+            width="45" height="45"
+            src="@/assets/icons/menu.png" alt="menu--v1"
+            @click="navbar_menu_expanded = true"
+          />
+          <img
+            v-else
+            width="45" height="45"
+            src="@/assets/icons/close-menu.png" alt="delete-sign--v1"
+            @click="closeMenu()"
+          />
+        </div>
+      </div>
+
+      <div id="menu-bar" v-if="navbar_menu_expanded">
+        <ul id="dropdown-nav" style="margin: 0px">
+          <li @click="closeMenu()"><router-link to="/glasovanja">Glasovanja</router-link></li>
+          <li @click="closeMenu()"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
+          <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
           <li>
-            <router-link to="">Drugo ⏷</router-link>
-            <ul class="dropdown">
-              <li><router-link to="/ankete">Ankete</router-link></li>
-              <li><router-link to="/izvajalci">Izvajalci</router-link></li>
-              <li><router-link to="/zalozniki">Založniki</router-link></li>
-              <li><router-link to="/stranke">Stranke</router-link></li>
-              <li class="zadnji"><router-link to="/osebe">Osebe</router-link></li>
+            <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
+            <ul v-if="this.drugo_expanded">
+              <li @click="closeMenu()"><router-link to="/ankete">Ankete</router-link></li>
+              <li @click="closeMenu()"><router-link to="/izvajalci">Izvajalci</router-link></li>
+              <li @click="closeMenu()"><router-link to="/zalozniki">Založniki</router-link></li>
+              <li @click="closeMenu()"><router-link to="/stranke">Stranke</router-link></li>
+              <li @click="closeMenu()"><router-link to="/osebe">Osebe</router-link></li>
             </ul>
           </li>
-          <li><router-link to="/o-nas">O nas</router-link></li>
+          <li @click="closeMenu()"><router-link to="/o-nas">O nas</router-link></li>
         </ul>
       </div>
-
-      <!-- menu bar button -->
-      <div
-        v-if="!this.navbar_full"
-        id="menu-bar-button"
-        style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
-      >
-        <img
-          v-if="!this.navbar_menu_expanded"
-          width="45" height="45"
-          src="@/assets/icons/menu.png" alt="menu--v1"
-          @click="navbar_menu_expanded = true"
-        />
-        <img
-          v-else
-          width="45" height="45"
-          src="@/assets/icons/close-menu.png" alt="delete-sign--v1"
-          @click="closeMenu()"
-        />
-      </div>
     </div>
-
-    <div id="menu-bar" v-if="navbar_menu_expanded" class="white-pink">
-      <ul id="dropdown-nav" style="margin: 0px">
-        <li @click="closeMenu()"><router-link to="/glasovanja">Glasovanja</router-link></li>
-        <li @click="closeMenu()"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-        <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
-        <li>
-          <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
-          <ul v-if="this.drugo_expanded">
-            <li @click="closeMenu()"><router-link to="/ankete">Ankete</router-link></li>
-            <li @click="closeMenu()"><router-link to="/izvajalci">Izvajalci</router-link></li>
-            <li @click="closeMenu()"><router-link to="/zalozniki">Založniki</router-link></li>
-            <li @click="closeMenu()"><router-link to="/stranke">Stranke</router-link></li>
-            <li @click="closeMenu()"><router-link to="/osebe">Osebe</router-link></li>
-          </ul>
-        </li>
-        <li @click="closeMenu()"><router-link to="/o-nas">O nas</router-link></li>
-      </ul>
+    <div v-if="navbar_menu_expanded" id="blocking-element" @click="closeMenu()">
     </div>
   </div>
 </template>
@@ -202,5 +211,18 @@ ol, ul {
   flex-direction: column;
   width: 100%;
   background: #a59394be;
+}
+
+.blur {
+  background-image: linear-gradient(to right, #ffffffbf, #e7acacbf);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+#blocking-element {
+  height: 100vh;
+  background-color: #8080808a;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 </style>

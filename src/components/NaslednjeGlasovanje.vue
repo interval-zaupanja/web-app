@@ -20,10 +20,10 @@
                     <span>CC-BY-4.0: © European Union 2020 – Source: EP</span>
                 </div>
             </div>
-            <div style="position: absolute; right: 0; top: 45px; width: 70%; text-align: right; font-size: 45px; padding: 15px; z-index: 7">
+            <div style="position: absolute; right: 0; top: 45px; width: 90%; text-align: right; font-size: 45px; padding: 15px; z-index: 7">
                 <div><i>Volitve poslancev iz Slovenije v Evropski parlament</i></div>
             </div>
-            <div style="position: absolute; right: 40px; bottom: 40px; width: 70%; text-align: right; font-size: 40px; padding: 20px; z-index: 8">
+            <div style="position: absolute; right: 40px; bottom: 40px; width: 90%; text-align: right; font-size: 40px; padding: 20px; z-index: 8">
                 <i>9. maj 2024</i>
             </div>
         </div>
