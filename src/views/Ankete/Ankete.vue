@@ -1,6 +1,7 @@
 <template>
     <h1 class="odmik">Ankete</h1>
     <p class="odmik">Ankete so razporejene od zadnje izvedene proti prvi, glede na sredino med začetkom in koncem izvajanja ankete</p>
+    <br>
     <div :class="this.ozek_zaslon ? 'odmik3' : 'odmik'">
         <SeznamAnket/>
     </div>

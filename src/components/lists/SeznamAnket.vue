@@ -139,4 +139,12 @@ table { /* prepreči overflow tabele in pogleda na ožjih napravah */
     table-layout: fixed;
     word-wrap: break-word;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #fed6d6;
+}
+
+.table-hover thead tr td, .table-hover thead tr th {
+  background-color: #fe8a8a;
+}
 </style>
