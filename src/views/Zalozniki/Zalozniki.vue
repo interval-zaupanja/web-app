@@ -4,7 +4,7 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded" style="margin-left: 25px">
-        <h3 class="odmik">Naročniki</h3>
+        <h3 class="odmik">Naročniki anket</h3>
         <BubbleGrid v-if="loaded" :items="this.narocniki" path="/zalozniki/" class="odmik"/>
         <h3 class="odmik">Drugi mediji</h3>
         <BubbleGrid v-if="loaded" :items="this.mediji" path="/zalozniki/" class="odmik"/>

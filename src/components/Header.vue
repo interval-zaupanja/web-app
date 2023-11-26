@@ -185,6 +185,7 @@ ul li ul.dropdown li:hover {
 
 ul li:hover ul.dropdown {
   display: block;
+  background: #ee1c26be;
 }
 
 ol, ul {

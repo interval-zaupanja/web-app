@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div v-for="item in this.items" :key="item._id" class="bubble-outer grid-bubble">
+    <div :class="this.full_width ? '' :'container'">
+        <div v-for="item in this.items" :key="item._id" class="bubble-outer" :class="this.full_width ? '' :'grid-bubble'">
             <TextImageBubble
             :text="getText(item)"
             :image="this.vrniLogoUri(item.logo_uri ?? item.slika_uri)"
@@ -21,7 +21,24 @@ export default {
     components: {
         TextImageBubble
     },
-    methods: {
+    data() {
+        return {
+            full_width: false
+        }
+    },
+    created() {
+		window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+		this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+	},
+	methods: {
+		checkScreen() {
+			var windowWidth = window.innerWidth
+			if (windowWidth <= 600) {
+				this.full_width = true
+			} else {
+				this.full_width = false
+			}
+		},
         getText(item) {
             var text = item.ime
             if (item.ime_srednje) {
@@ -33,6 +50,10 @@ export default {
             return text
         },
         getHeight(size) {
+            if (this.full_width) { // ker je zaslon ozek, je temu tudi primerno, da se zmanjša višina mehurčka 
+                return '175px'
+            }
+
             switch (size) {
                 case 'small':
                     return "150px"
@@ -45,6 +66,10 @@ export default {
             }
         },
         getWidth(size) {
+            if (this.full_width) {
+                return '100%'
+            }
+
             switch (size) {
                 case 'small':
                     return "250px"
@@ -70,6 +95,11 @@ export default {
     flex-wrap: wrap;
     /* align-content se navezuje na wrap */
     /* align-content: space-evenly; */
+
+    /* zato, da je mehurček v isti vrstici, kjer je očitno dovolj prostora */
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
 }
 
 .grid-bubble {

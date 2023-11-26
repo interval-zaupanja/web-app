@@ -24,7 +24,7 @@
                 <div><i>Volitve poslancev iz Slovenije v Evropski parlament</i></div>
             </div>
             <div style="position: absolute; right: 40px; bottom: 40px; width: 90%; text-align: right; font-size: 40px; padding: 20px; z-index: 8">
-                <i>9. maj 2024</i>
+                <i>9. junij 2024</i>
             </div>
         </div>
     </div>

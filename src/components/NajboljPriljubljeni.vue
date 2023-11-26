@@ -25,7 +25,7 @@
                     <div><i>{{ this.ime_srednje.toUpperCase() }}</i></div>
                     <div><i>{{ this.priimek.toUpperCase() }}</i></div>
                 </div>
-                <div style="position: absolute; right: 40px; bottom: 0; width: 50%; text-align: right; font-size: 130px; margin: 20px z-index: 6">
+                <div style="position: absolute; right: 40px; bottom: 0; width: 50%; text-align: right; font-size: 130px; margin: 20px; z-index: 6">
                     <i>{{ this.ocena.toLocaleString('sl-SI') }}</i>
                 </div>
             </div>
