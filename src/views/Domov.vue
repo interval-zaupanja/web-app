@@ -7,18 +7,23 @@
         <div style="margin: 15px 0">
             <ZadnjeAnkete/>
         </div>
+        <div class="odmik">
+            <NajboljPriljubljeni/>
+        </div>
     </div>
 </template>
 
 <script>
 import ZadnjeAnkete from '../components/lists/ZadnjeAnkete.vue'
 import DZ from '../components/charts/DZ.vue'
+import NajboljPriljubljeni from '@/components/NajboljPriljubljeni.vue'
 
 export default {
-    name: 'Content',
+    name: 'Domov',
     components: {
 		ZadnjeAnkete,
-        DZ
+        DZ,
+        NajboljPriljubljeni
     },
     data() {
         return {

@@ -48,13 +48,13 @@ const Osebe = mongoose.model("Oseba");
 const seznamOseb = (req, res) => {
     Osebe.aggregate(
         [
-            {
-                $unset: [
-                    'slika_vir',
-                    // 'slika_uri',
-                    'slika_avtor'
-                ]
-            }
+            // {
+            //     $unset: [
+            //         'slika_vir',
+            //         'slika_uri',
+            //         'slika_avtor'
+            //     ]
+            // }
         ]
     ).exec(function (error, seznam) {
         if (error) {
@@ -138,13 +138,13 @@ const podrobnostiOsebe = (req, res) => {
                     _id: mongoose.Types.ObjectId(req.params.id)
                 }
             },
-            {
-                $unset: [
-                    'slika_vir',
-                    // 'slika_uri',
-                    'slika_avtor'
-                ]
-            }
+            // {
+            //     $unset: [
+            //         'slika_vir',
+            //         'slika_uri',
+            //         'slika_avtor'
+            //     ]
+            // }
         ]
     ).exec(function (
         error,

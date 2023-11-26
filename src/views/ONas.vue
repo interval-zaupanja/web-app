@@ -17,6 +17,9 @@
             <p>
                 <a target="_blank" href="https://icons8.com/icon/33945/view-more">View More</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
             </p>
+            <p>
+                <a target="_blank" href="https://icons8.com/icon/7849/forward">arrow right</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            </p>
         </div>
     </div>
 </template>
