@@ -1,7 +1,7 @@
 <template>
   <div id="header" class="sticky"
   @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <div class="blur">
+    <div class="background blur">
       <div id="header-strip">
         <!-- logo -->
         <router-link
@@ -114,26 +114,38 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  z-index: 9999;
+.sticky { /* poskrbi, da se glava vedno drži vrha strani */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
 }
-
 
 #header-strip {
     display: block;
     height: 70px;
     line-height: 70px; /* potrebno, da vertical-align deluje */
     color: #ae1813;
-    overflow: hidden; /* zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico */
+
+    /* overflow: hidden; zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico;
+    vendar sem moral odstranit, ker sicer Drugo dropdown ni deloval  */
 }
 
-.sticky { /* poskrbi, da se glava vedno drži vrha strani */
-    position: fixed;
-    top: 0;
-    width: 100%
+.background {
+  background-image: linear-gradient(to right, #ffffffbf, #e7acacbf);
 }
 
-/* navbar */
+.blur {
+  /*
+  - Ne deluje na Drugo .dropdown meniju (problem je verjetno v tem, da je to nevidni del, ki tudi ne veča velikosti #header-strip)
+  - Poskusil sem popraviti z ::before psevdoelementi (https://generatepress.com/forums/topic/blur-filter-opacity-behind-drop-down-menu-not-working/) vendar mi ne preveč uspevalo, ker je struktura preveč kompleksna
+  */
+
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+/* Navbar */
 .menu-list > *  {
   padding: 0;
   margin: 0;
@@ -161,7 +173,6 @@ ul li ul.dropdown li {
   display: block;
   text-align: center;
   background: #c8b2b3be;
-  backdrop-filter: blur(15px);
 }
 
 ul li ul.dropdown li a {
@@ -171,7 +182,6 @@ ul li ul.dropdown li a {
 ul li ul.dropdown {
   width: 100%;
   position: absolute;
-  z-index: 999;
   display: none;
 }
 
@@ -185,7 +195,6 @@ ul li ul.dropdown li:hover {
 
 ul li:hover ul.dropdown {
   display: block;
-  background: #ee1c26be;
 }
 
 ol, ul {
@@ -195,6 +204,8 @@ ol, ul {
 .zadnji {
   border-radius: 0px 0px 15px 15px;
 }
+
+/* Menu bar */
 
 #dropdown-nav {
   display: flex;
@@ -212,12 +223,6 @@ ol, ul {
   flex-direction: column;
   width: 100%;
   background: #a59394be;
-}
-
-.blur {
-  background-image: linear-gradient(to right, #ffffffbf, #e7acacbf);
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
 }
 
 #blocking-element {
