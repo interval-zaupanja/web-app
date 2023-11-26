@@ -9,6 +9,7 @@
         </div>
         <div class="odmik">
             <NajboljPriljubljeni/>
+            <NaslednjeGlasovanje/>
         </div>
     </div>
 </template>
@@ -17,13 +18,15 @@
 import ZadnjeAnkete from '../components/lists/ZadnjeAnkete.vue'
 import DZ from '../components/charts/DZ.vue'
 import NajboljPriljubljeni from '@/components/NajboljPriljubljeni.vue'
+import NaslednjeGlasovanje from '@/components/NaslednjeGlasovanje.vue'
 
 export default {
     name: 'Domov',
     components: {
 		ZadnjeAnkete,
         DZ,
-        NajboljPriljubljeni
+        NajboljPriljubljeni,
+        NaslednjeGlasovanje
     },
     data() {
         return {

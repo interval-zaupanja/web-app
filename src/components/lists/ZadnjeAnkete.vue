@@ -33,7 +33,7 @@
 						{{ anketa.metode.join(', ') }}
 					</span>
 				</div>
-				<div :class="this.orientation === 'horizontal' ? 'horizontal' : ''" style="vertical-align: top;" :style="this.orientation === 'vertical' ? 'margin-top: 10px': ''">
+				<div :class="this.orientation === 'horizontal' ? 'horizontal' : ''" style="vertical-align: top;" :style="this.orientation === 'vertical' ? 'margin-top: 10px': 'margin-left: 30px'">
 					<div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
 						<div style="text-align: center; cursor: pointer;" @click="$router.push('/ankete/')">
 							<img height="40" width="40" src="@/assets/icons/more.png" alt="Več">

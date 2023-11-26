@@ -105,7 +105,11 @@ export default {
 </script>
 
 <style scoped>
-/* celotna glava */
+#header {
+  z-index: 9999;
+}
+
+
 #header-strip {
     display: block;
     height: 70px;
