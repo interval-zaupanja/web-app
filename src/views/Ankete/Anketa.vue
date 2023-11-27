@@ -8,7 +8,7 @@
             :class="this.edgeToEdge ? 'odmik2' : 'odmik'"
         />
         <div>
-            <div :class="this.edgeToEdge ? '' : 'odmik split-view'">
+            <div id="anketa-split-view" :class="this.edgeToEdge ? '' : 'odmik split-view'">
                 <div id="info-main" style="display: inline-block" :class="this.edgeToEdge ? 'odmik2' : ''">
                     <p v-if="this.izvajalci.length > 0">
                         <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
@@ -181,6 +181,7 @@ export default {
     created() {
 		window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
         window.addEventListener('resize', this.vzorecWrap) // brez () pri funkciji
+
         // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
 		this.checkScreen()
 	},
@@ -194,14 +195,22 @@ export default {
 			}
 		},
         async vzorecWrap() {
-            let vzorecContainer = document.getElementById('vzorecContainer');
-            let infoMain = document.getElementById('info-main');
-            if (vzorecContainer.offsetTop > infoMain.offsetTop) {
+            let splitViewContainer = document.getElementById('anketa-split-view')
+            let infoMain = document.getElementById('info-main')
+            let vzorecContainer = document.getElementById('vzorecContainer')
+            let vzorecInfobox = document.getElementById('vzorec-infobox')
+            
+            if (
+                this.vzorecWrapped &&
+                vzorecInfobox.offsetWidth > 470 &&
+                splitViewContainer.offsetWidth - infoMain.offsetWidth > 530
+            ) {
+                this.vzorecWrapped = false // prisili Vzorec, da gre nazaj na desno stran v primeru, da ima v sebi veliko besedila in ima poleg infoMain dovolj prostora
+            } else if (vzorecContainer.offsetTop > infoMain.offsetTop) {
                 this.vzorecWrapped = true
             } else {
                 this.vzorecWrapped = false
             }
-            console.log(this.vzorecWrapped)
         },
         async getData() {
             try {
