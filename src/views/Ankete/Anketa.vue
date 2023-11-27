@@ -3,62 +3,72 @@
         <Nalaganje/>
     </div>
     <div v-if="loaded && !not_found">
-        <Breadcrumbs previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete" class="odmik"/>
-        <div class="infobox odmik">
-            <div style="display: inline-block">
-                <p v-if="this.izvajalci.length > 0">
-                    <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
-                    <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
-                    <span v-else>Izvajalci: </span>
+        <Breadcrumbs
+            previous="Ankete" previousLink="/ankete" current="Podrobnosti ankete"
+            :class="this.edgeToEdge ? 'odmik2' : 'odmik'"
+        />
+        <div>
+            <div :class="this.edgeToEdge ? '' : 'odmik split-view'">
+                <div id="info-main" style="display: inline-block" :class="this.edgeToEdge ? 'odmik2' : ''">
+                    <p v-if="this.izvajalci.length > 0">
+                        <span v-if="this.izvajalci.length == 1">Izvajalec: </span>
+                        <span v-else-if="this.izvajalci.length == 2">Izvajalca: </span>
+                        <span v-else>Izvajalci: </span>
 
-                    <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
-                        <router-link :to="'/izvajalci/' + izvajalec.id">
-                            {{ izvajalec.ime}}
-                        </router-link>
-                        <span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" @click="$router.push('/izvajalci/' + izvajalec.id)" style="max-height: 20px"/>
-                        </span>
-                        <span v-if="indeks + 1 < this.izvajalci.length">, </span>
-                    </span>
-                </p>
-                <p v-if="this.narocniki">
-                    <span v-if="this.narocniki.length == 1">Naročnik: </span>
-                    <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
-                    <span v-else>Naročniki: </span>
-
-                    <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
-                        <router-link :to="'/zalozniki/' + narocnik.id">
-                            {{ narocnik.ime}}
-                        </router-link>
-                        <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/zalozniki/' + narocnik.id)" style="height: 16px"/></span>
-                        <span v-if="indeks + 1 < this.narocniki.length">, </span>
-                    </span>
-                </p>
-                <p v-if="this.metode">
-                    <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
-                    <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
-                    <span v-else>Metode anketiranja: </span>
-                    
-                    <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
-                        {{ metoda }}
-                        <span
-                            data-bs-toggle="tooltip" data-bs-placement="right"
-                            data-bs-custom-class="custom-tooltip"
-                            :data-bs-title="this.vrniPojasniloMetode(metoda)"
-                        >
-                            <span class="material-symbols-outlined">
-                                help
+                        <span v-for="(izvajalec, indeks) in this.izvajalci" :key="izvajalec.id">
+                            <router-link :to="'/izvajalci/' + izvajalec.id">
+                                {{ izvajalec.ime}}
+                            </router-link>
+                            <span v-if="izvajalec.logo_uri != null">&nbsp;<img v-if="izvajalec.logo_uri != null" :src="izvajalec.logo_uri" @click="$router.push('/izvajalci/' + izvajalec.id)" style="max-height: 20px"/>
                             </span>
+                            <span v-if="indeks + 1 < this.izvajalci.length">, </span>
                         </span>
-                        <span v-if="indeks + 1 < this.metode.length">, </span>
-                    </span>
-                </p>
-                <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
-                <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+                    </p>
+                    <p v-if="this.narocniki">
+                        <span v-if="this.narocniki.length == 1">Naročnik: </span>
+                        <span v-else-if="this.narocniki.length == 2">Naročnika: </span>
+                        <span v-else>Naročniki: </span>
+
+                        <span v-for="(narocnik, indeks) in this.narocniki" :key="narocnik.id">
+                            <router-link :to="'/zalozniki/' + narocnik.id">
+                                {{ narocnik.ime}}
+                            </router-link>
+                            <span v-if="narocnik.logo_uri != null">&nbsp;<img v-if="narocnik.logo_uri != null" :src="narocnik.logo_uri" @click="$router.push('/zalozniki/' + narocnik.id)" style="height: 16px"/></span>
+                            <span v-if="indeks + 1 < this.narocniki.length">, </span>
+                        </span>
+                    </p>
+                    <p v-if="this.metode">
+                        <span v-if="this.metode.length == 1">Metoda anketiranja: </span>
+                        <span v-else-if="this.metode.length == 2">Metodi anketiranja: </span>
+                        <span v-else>Metode anketiranja: </span>
+                        
+                        <span v-for="(metoda, indeks) in this.metode" :key="metoda.id">
+                            {{ metoda }}
+                            <span
+                                data-bs-toggle="tooltip" data-bs-placement="right"
+                                data-bs-custom-class="custom-tooltip"
+                                :data-bs-title="this.vrniPojasniloMetode(metoda)"
+                            >
+                                <span class="material-symbols-outlined">
+                                    help
+                                </span>
+                            </span>
+                            <span v-if="indeks + 1 < this.metode.length">, </span>
+                        </span>
+                    </p>
+                    <p>Začetek anketiranja: {{ new Date(this.zacetek).toLocaleDateString('en-GB') }}</p>
+                    <p>Konec anketiranja: {{ new Date(this.konec).toLocaleDateString('en-GB') }}</p>
+                </div>
+                <div id="vzorecContainer" v-if="this.vzorec" style="flex-grow: 1">
+                    <Vzorec
+                        style="margin: 0px 15px 15px 15px"
+                        :style="!this.vzorecWrapped ? 'float: right; max-width: 500px' : (!this.edgeToEdge ? 'max-width: 100%' : 'max-width: 100%; margin: 0 0 15px 0')"
+                        :data="this.vzorec"
+                        :edgeToEdge="this.edgeToEdge"
+                    />
+                </div>
             </div>
-            <div>
-                <Vzorec v-if="this.vzorec" style="margin: 0px 15px 15px 15px" :data="this.vzorec"/>
-            </div>
-            <div>
+            <div :class="this.edgeToEdge ? 'odmik2' : 'odmik'">
                 <p v-if="this.opis">Opis: {{ this.opis }}</p>
                 <p v-if="this.opombe">Opombe: {{ this.opombe }}</p>
             </div>
@@ -115,7 +125,8 @@ export default {
             loaded: false,
             not_found: false,
             hash: this.$route.hash,
-            edgeToEdge: false
+            edgeToEdge: false,
+            vzorecWrapped: false
         }
     },
     async mounted() { // vse preko API klica pridobljene podatke dobimo v tem pogledu, zato, da se Nalaganje prikaže le enkrat
@@ -169,7 +180,9 @@ export default {
     },
     created() {
 		window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
-		this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+        window.addEventListener('resize', this.vzorecWrap) // brez () pri funkciji
+        // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+		this.checkScreen()
 	},
 	methods: {
 		checkScreen() {
@@ -180,6 +193,16 @@ export default {
 				this.edgeToEdge = false
 			}
 		},
+        async vzorecWrap() {
+            let vzorecContainer = document.getElementById('vzorecContainer');
+            let infoMain = document.getElementById('info-main');
+            if (vzorecContainer.offsetTop > infoMain.offsetTop) {
+                this.vzorecWrapped = true
+            } else {
+                this.vzorecWrapped = false
+            }
+            console.log(this.vzorecWrapped)
+        },
         async getData() {
             try {
                 const { data } = await axios.get(this.apiServer + "/api/ankete/" + this.id);
@@ -250,12 +273,8 @@ export default {
 </script>
 
 <style scoped>
-.infobox {
+.split-view {
     display: flex;
     flex-wrap: wrap;
-}
-
-.infobox > * {
-    flex-grow: 1;
 }
 </style>

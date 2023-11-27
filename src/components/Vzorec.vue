@@ -1,5 +1,5 @@
 <template>
-    <div class="bubble pink-red">
+    <div class="pink-red content-container" :class="this.edgeToEdge ? '' : 'bubble bubble-outer'">
         <h4 v-if="this.data.length == 1">Vzorec</h4>
         <h4 v-else-if="this.data.length == 2">Vzorca</h4>
         <h4 v-else>Vzorci</h4>
@@ -17,7 +17,7 @@
             <span v-if="vzorec.st_ni_ustrezalo_vzorcnim_dolocilom">Izmed sodelujočih, število, ki jih ni ustrezalo vzorčnim določilom: {{vzorec.st_ni_ustrezalo_vzorcnim_dolocilom}}<br/></span>
             <span v-if="vzorec.st_sodelujocih &&
                 (vzorec.st_izbranih || vzorec.st_nedosegljivih || vzorec.st_noce_sodelovati || vzorec.st_ni_ustrezalo_vzorcnim_dolocilom)">
-                Število sodelujočih (velikost končnega vzorca): {{vzorec.st_sodelujocih}}
+                Število sodelujočih (velikost končnega vzorca oz. N): {{vzorec.st_sodelujocih}}
                 <br/>
             </span>
             <span v-else-if="vzorec.st_sodelujocih">Velikost: {{vzorec.st_sodelujocih}}<br/></span>
@@ -34,7 +34,10 @@
 <script>
 export default {
     name: 'Vzorec',
-    props: ['data'],
+    props: ['data', 'edgeToEdge'],
+    mounted() {
+        this.$parent.vzorecWrap()
+    },
     methods: {
         starost(razpon) {
             var odgovor;

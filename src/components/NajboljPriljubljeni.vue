@@ -82,7 +82,6 @@ export default {
             this.slika_uri = data.slika_uri
             this.slika_avtor = data.slika_avtor
             this.slika_vir = data.slika_vir
-            console.log(this.slika_avtor, this.slika_vir)
         }
 
     }
