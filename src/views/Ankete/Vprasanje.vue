@@ -1,6 +1,6 @@
 <template>
-    <div v-if="loaded" class="odmik">
-        <div class="bubble bubble-outer pink-red">
+    <div v-if="loaded" :class="{odmik: !this.edgeToEdge}">
+        <div class="pink-red content-container" :class="this.edgeToEdge ? '' : 'bubble bubble-outer'">
             <span class="anchor-outer" :id="vprasanje._id"></span>
             <div>
                 <div>
@@ -120,7 +120,7 @@ import Priljubljenost from '../Priljubljenost.vue'
 
 export default {
     name: 'Vprasanja',
-    props: ['data', 'id'],
+    props: ['data', 'id', 'edgeToEdge'],
     components: {
         CopyLink,
         Report,

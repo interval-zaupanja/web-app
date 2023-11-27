@@ -1,12 +1,15 @@
 <template>
     <div v-if="this.loaded">
-        <div class="odmik">
+        <div :class="this.edgeToEdge ? 'odmik2' : 'odmik'">
             <h3 v-if="this.viri.length == 1">Vir</h3>
             <h3 v-else-if="this.viri.length == 2">Vira</h3>
             <h3 v-else>Viri</h3>
         </div>
-        <div class="odmik">
-            <div v-for="vir in this.viri" :key="vir._id" class="bubble bubble-outer pink-red">
+        <div :class="{odmik: !this.edgeToEdge}">
+            <div 
+                v-for="vir in this.viri" :key="vir._id"
+                class="pink-red content-container" :class="this.edgeToEdge ? '' : 'bubble bubble-outer'"
+            >
                 <span class="anchor-outer" :id="vir._id"></span>
                 <!-- <CopyLink :path="'ankete/' + this.id + '#' + vir._id" class="side-button"/> -->
                 <div>
@@ -55,7 +58,7 @@ import ExternalLink from '@/components/ExternalLink.vue'
 
 export default {
     name: 'Viri',
-    props: ['data', 'izvajalci', 'narocniki'],
+    props: ['data', 'izvajalci', 'narocniki', 'edgeToEdge'],
     components: {
         Label,
         ExternalLink

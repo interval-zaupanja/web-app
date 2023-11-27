@@ -18,6 +18,11 @@ body { /* odstrani privzete vrednosti brskalnika */
     margin: 0 3%;
 }
 
+.content-container { /* obstaja poleg bubble in bubble-outer */
+    padding: 15px;
+    margin: 15px 0;
+}
+
 /* Besedilo */
 * {
     /*font-family: 'Agdasima', sans-serif;*/

@@ -139,6 +139,7 @@ export default {
   /*
   - Ne deluje na Drugo .dropdown meniju (problem je verjetno v tem, da je to nevidni del, ki tudi ne veča velikosti #header-strip)
   - Poskusil sem popraviti z ::before psevdoelementi (https://generatepress.com/forums/topic/blur-filter-opacity-behind-drop-down-menu-not-working/) vendar mi ne preveč uspevalo, ker je struktura preveč kompleksna
+  - Izgleda da ni (enostavnega) načina za popravek tega
   */
 
   -webkit-backdrop-filter: blur(15px);

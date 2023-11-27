@@ -4,14 +4,14 @@
     display: inline-block;
 }
 
-.bubble:hover .side-button {
+.content-container:hover .side-button {
     visibility: visible;
 }
 
-.bubble:hover .bubble .side-button {
+.content-container:hover .bubble .side-button {
     visibility: hidden;
 }
 
-.bubble .bubble:hover .side-button {
+.content-container .bubble:hover .side-button {
     visibility: visible;
 }

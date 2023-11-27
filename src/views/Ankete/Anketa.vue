@@ -64,11 +64,11 @@
             </div>
         </div>
 
-        <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki"/>
+        <Viri v-if="this.viri" :data="this.viri" :izvajalci="this.izvajalci" :narocniki="this.narocniki" :edgeToEdge="this.edgeToEdge"/>
         <div v-if="this.vprasanja">
-            <h2 class="odmik">Vprašanja</h2>
+            <h2 :class="this.edgeToEdge ? 'odmik2' : 'odmik'">Vprašanja</h2>
             <div v-for="vprasanje in this.vprasanja" :key="vprasanje._id">
-                <Vprasanje :data="vprasanje" :id="this.id"/>
+                <Vprasanje :data="vprasanje" :id="this.id" :edgeToEdge="this.edgeToEdge"/>
             </div>
         </div>
     </div>
@@ -114,7 +114,8 @@ export default {
             vprasanja: null,
             loaded: false,
             not_found: false,
-            hash: this.$route.hash
+            hash: this.$route.hash,
+            edgeToEdge: false
         }
     },
     async mounted() { // vse preko API klica pridobljene podatke dobimo v tem pogledu, zato, da se Nalaganje prikaže le enkrat
@@ -166,7 +167,19 @@ export default {
             selector: "[data-bs-toggle='tooltip']",
         })
     },
-    methods: {
+    created() {
+		window.addEventListener('resize', this.checkScreen) // brez () pri funkciji
+		this.checkScreen() // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
+	},
+	methods: {
+		checkScreen() {
+			var windowWidth = window.innerWidth
+			if (windowWidth <= 600) {
+				this.edgeToEdge = true
+			} else {
+				this.edgeToEdge = false
+			}
+		},
         async getData() {
             try {
                 const { data } = await axios.get(this.apiServer + "/api/ankete/" + this.id);
