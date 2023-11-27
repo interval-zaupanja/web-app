@@ -140,19 +140,28 @@ table { /* prepreči overflow tabele in pogleda na ožjih napravah */
     word-wrap: break-word;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #fed6d6;
-}
-
 .table-hover thead tr td, .table-hover thead tr th {
-  background-color: #fe8a8a;
+  background-color: #ae1813;
+  color: white
 }
 
 .table-hover thead tr td:first-child, .table-hover thead tr th:first-child {
-  border-radius: 15px 0 0 8px;
+  border-radius: 10px 0 0 10px;
 }
 
 .table-hover thead tr td:last-child, .table-hover thead tr th:last-child {
-  border-radius: 0 15px 8px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ffa5a5;
+}
+
+.table-hover tbody tr:hover td:first-child, .table-hover tbody tr:hover th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.table-hover tbody tr:hover td:last-child, .table-hover tbody tr:hover th:last-child {
+  border-radius: 0 10px 10px 0;
 }
 </style>
