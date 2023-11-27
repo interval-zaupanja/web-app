@@ -185,6 +185,10 @@ export default {
         // požene tudi, ko se ustvari aplikacija, ne le ko event listener zazna spremembo velikosti zaslona
 		this.checkScreen()
 	},
+    unmounted() { // odstranimo event listenerje, da ne povzročajo problemov na drugih straneh
+        window.removeEventListener('resize', this.checkScreen)
+        window.removeEventListener('resize', this.vzorecWrap)
+    },
 	methods: {
 		checkScreen() {
 			var windowWidth = window.innerWidth
@@ -194,7 +198,7 @@ export default {
 				this.edgeToEdge = false
 			}
 		},
-        async vzorecWrap() {
+        vzorecWrap() {
             let splitViewContainer = document.getElementById('anketa-split-view')
             let infoMain = document.getElementById('info-main')
             let vzorecContainer = document.getElementById('vzorecContainer')
