@@ -147,4 +147,12 @@ table { /* prepreči overflow tabele in pogleda na ožjih napravah */
 .table-hover thead tr td, .table-hover thead tr th {
   background-color: #fe8a8a;
 }
+
+.table-hover thead tr td:first-child, .table-hover thead tr th:first-child {
+  border-radius: 15px 0 0 8px;
+}
+
+.table-hover thead tr td:last-child, .table-hover thead tr th:last-child {
+  border-radius: 0 15px 8px 0;
+}
 </style>
