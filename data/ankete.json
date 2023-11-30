@@ -151,28 +151,6 @@
   },
   {
     "_id": {
-      "$oid": "8de77b45a6a5236288aa264f"
-    },
-    "izvajalci_id": [
-      {
-        "$oid": "14dcac4803f6df6ffe905704"
-      }
-    ],
-    "narocniki_id": [
-      {
-        "$oid": "5f8024542bc87c975ffc1a70"
-      }
-    ],
-    "vzorec": [{
-      "st_sodelujocih": 900
-    }],
-    "metode": ["CATI"],
-    "zacetek": "2023-04-22",
-    "sredina": "2023-04-25",
-    "konec": "2023-04-27"
-  },
-  {
-    "_id": {
       "$oid": "8de77b45a6a5236288ab264a"
     },
     "izvajalci_id": [

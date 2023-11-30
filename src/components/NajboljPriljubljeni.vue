@@ -1,35 +1,43 @@
 <template>
     <div
-        class="bubble bubble-outer"
+        v-if="this.loaded"
+        class="bubble"
         :style="'background-color: ' + this.barve.spekter_1"
-        style="color: white; font-family: graphik; font-weight: 900; position: relative; padding-bottom: 0; overflow: hidden; cursor: pointer;"
+        style="color: white; font-family: graphik; font-weight: 900; position: relative; padding: 0; overflow: hidden; cursor: pointer; display: flex; flex-direction: column;"
     >
-        <div v-if="this.loaded">
-            <router-link to="/priljubljenost" style="font-size: 30px; color: white;">
+        <div style="padding: 15px;">
+            <router-link to="/priljubljenost" :style="'font-size:' + this.topTextFontSize + 'px; color: white;'">
                 <span class="link-text">Na vrhu lestvice priljubljenosti</span><img height="20" style="position: relative; bottom: 3px" src="@/assets/icons/arrow-right.png" alt="">
             </router-link>
-            <div @click="$router.push('/osebe/' + this.id)">
-                <div>
-                    <img
-                        :src="this.vrniLogoUri(this.slika_uri)"
-                        style="max-width: 70%; z-index: 4; position: relative; top: 40px; left: -50px"
-                        class="slika"
-                        draggable="false"
-                    >
-                    <div v-if="this.slika_avtor && this.slika_vir" style="color: rgb(181, 181, 181); font-weight: normal; text-align: center; max-width: 70%; z-index: 5; padding-bottom: 15px;">
-                        <span v-if="this.slika_avtor">{{ this.slika_avtor }}</span> <a v-if="this.slika_vir" :href="this.slika_vir">Vir</a>
-                    </div>
-                </div>
-                <div style="position: absolute; right: 0; top: 120px; width: 50%; text-align: right; font-size: 60px; margin: 0 20px 20px 20px;; z-index: 3">
+        </div>
+        <div @click="$router.push('/osebe/' + this.id)" style="flex-grow: 1;">
+            <div style="position: relative; height: 100%; width: 100%;">
+                <!-- nujno position: relative, da se lahko otroci absolutno pozicionirajo znotraj tega vsebnika -->
+                <img
+                    :src="this.vrniLogoUri(this.slika_uri)"
+                    style="height: 100%; max-width: 80%; bottom: 0; left: -50px; z-index: 4;"
+                    :style="this.$parent.sideElements ? 'position: absolute': 'position: relative'"
+                    class="slika"
+                    draggable="false"
+                >
+                
+                <div style="height: inherit; width: 100%"></div>
+                <div :style="'position: absolute; top: 0; right: 0; text-align: right; font-size:' + this.NPnameFontSize + 'px; margin: 0 20px 20px 0; z-index: 3'">
                     <div><i>{{ this.ime.toUpperCase() }}</i></div>
                     <div><i>{{ this.ime_srednje.toUpperCase() }}</i></div>
                     <div><i>{{ this.priimek.toUpperCase() }}</i></div>
                 </div>
-                <div style="position: absolute; right: 40px; bottom: 0; width: 50%; text-align: right; font-size: 130px; margin: 20px; z-index: 6">
+                <div :style="'position: absolute; right: 0; bottom: 15px; max-width: 50%; margin: 0 30px 20px; text-align: right; line-height: ' + this.NPratingFontSize + 'px; font-size: ' + this.NPratingFontSize + 'px; z-index: 6'">
                     <i>{{ this.ocena.toLocaleString('sl-SI') }}</i>
                 </div>
+                </div>
             </div>
-        </div>
+            <div
+                v-if="this.slika_avtor && this.slika_vir"
+                style="color: rgb(181, 181, 181); font-weight: normal; text-align: center; width: 70%; z-index: 5; position: absolute; bottom: 15px; left: 0;"
+            >
+                <span v-if="this.slika_avtor">{{ this.slika_avtor }}</span> <a v-if="this.slika_vir" :href="this.slika_vir">Vir</a>
+            </div>
     </div>
 </template>
 
@@ -38,6 +46,7 @@ import axios from 'axios'
 
 export default {
     name: 'NajboljPriljubljeni',
+    props: ['topTextFontSize', 'NPnameFontSize', 'NPratingFontSize'],
     data() {
         return {
             id: null,
