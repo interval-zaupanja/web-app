@@ -1,3 +1,7 @@
+a, a:active, a:visited, a:hover {
+    color: #ae1813;
+}
+
 .pink-red {
     /*background-color: #f6caca;*/
     background-image: linear-gradient(to right, #f6caca, #fcabab);

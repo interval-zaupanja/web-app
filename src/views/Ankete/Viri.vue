@@ -97,4 +97,10 @@ export default {
 p {
     margin: 0px
 }
+
+.btn, .btn:hover, .btn:active, .btn:visited, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ae1813 !important;
+    border-color: #ae1813 !important;
+    color: white;
+}
 </style>
