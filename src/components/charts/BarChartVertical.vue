@@ -34,7 +34,7 @@ export default {
             options: {
                 layout: {
                     padding: {
-                        left: 90
+                        left: this.data.datasets[0].images.length > 0 ? 90 : 0
                     }
                 },
                 responsive: true,

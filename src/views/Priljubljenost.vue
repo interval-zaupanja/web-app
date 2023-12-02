@@ -101,7 +101,9 @@ export default {
                 }
                 full_name += ' ' + data.priimek
                 imenaOseb.push(full_name)
-                imageURIs.push(this.vrniLogoUri(data.slika_uri))
+                if (data.slika_uri) {
+                    imageURIs.push(this.vrniLogoUri(data.slika_uri))
+                }
             }
 
             return { imenaOseb, imageURIs }

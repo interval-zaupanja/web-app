@@ -3,7 +3,7 @@
     <div class="bubble bubble-list yellow-gray">
         <div :style="odgovor.odgovor_stranka_logo_uri != null ? 'height: 40px': ''">
             <!-- Procenti -->
-            <div style="width: 40px; display: inline-block; text-align: right; vertical-align: top; height: 100%; margin-right: 15px">
+            <div style="width: 50px; display: inline-block; text-align: right; vertical-align: top; height: 100%; margin-right: 15px">
                 <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
                     <div>
                         {{ odgovor.procent_izvajalec }}%

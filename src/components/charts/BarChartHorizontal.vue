@@ -114,12 +114,10 @@ export default {
                 }
             },
             plugins: [
-                // /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
                 {
                     id: 'imageItems',
                     afterDatasetsDraw(chart) {
                         const { ctx, data, scales: { x } } = chart
-
                         ctx.save()
                         const slike = data.datasets[0].images
                         
@@ -132,10 +130,10 @@ export default {
                             var width = 70 // širina stolpca
                             var height = (width / widthSrc) * heightSrc
                             ctx.drawImage(slika, x.getPixelForValue(i) - width / 2, x.top - height, width, height) // x, y, w, h
-                        }                        
+                        }
+                                   
                     }
                 },
-                // */
                ChartDataLabels
             ],
         }
