@@ -85,16 +85,11 @@
                 </div>
                 <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost' && this.razsiri">
                     <h3>Odgovori</h3>
-                    <div
-                        v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
-                        class="bubble bubble-list yellow-gray"
-                    >
                         <Odgovor
+                            v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
                             :odgovor="odgovor"
                             :anketa_id="this.id"
-                            :razsiriOdgovor="false"
                         />
-                    </div>
                 </div>
             </div>
         </div>

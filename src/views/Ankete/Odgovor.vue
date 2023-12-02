@@ -1,68 +1,64 @@
 <template>
     <span class="anchor-inner" :id="odgovor._id"></span>
-    <div>
-        <div class="odgovor" style="display: inline-block; vertical-align: top;">
-            <div>
-                <div class="procenti" style="display: inline-block;">
-                    {{ odgovor.procent_izvajalec }}%
-                    <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
-                        ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
-                        ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
-                    </span>
+    <div class="bubble bubble-list yellow-gray">
+        <div style="height: 40px">
+            <!-- Procenti -->
+            <div style="width: 40px; display: inline-block; text-align: right; vertical-align: top; height: 100%; margin-right: 15px">
+                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                    <div>
+                        {{ odgovor.procent_izvajalec }}%
+                        <span v-if="(odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) > 0">
+                            ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
+                            ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
+                        </span>
+                    </div>
                 </div>
-                <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; vertical-align: top">
-                    <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
-                </div>
-                <span v-if="odgovor.stranka_id">
-                    <router-link :to="'/stranke/' + odgovor.stranka_id">
-                        {{ odgovor.odgovor_stranka_ime }}
-                        <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
-                    </router-link>
-                </span>
-                <span v-else>
-                    {{
-                        this.capitalization(odgovor.odgovor, 1) ??
-                        this.vrniOdgovor(
-                            odgovor.odgovor_std ??
-                            odgovor.opredeljen_tip ??
-                            odgovor.tip,
-                            false, 1
-                        ) ??
-                        this.capitalization(odgovor.odgovor, 1)
-                    }}
-                </span>
-                <span
-                    v-if="
-                        (odgovor.opis || odgovor.opombe)
-                        && this.razsiri == false"
-                    style="text-align: center; margin-left: 15px"
-                >
-                    ...
-                </span>
             </div>
-            <div style="display: inline-block; margin-right: 10px">
-            <ExpandCollapse
-                :razsiri="this.razsiri"
-                @click="this.razsiri = !this.razsiri"
-                style="display: block; margin-bottom: 10px;"
-            />
-            <CopyLink
-                v-if="this.razsiri"
-                :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
-                style="display: block; margin-bottom: 10px;"
-            />
-            <Report
-                v-if="this.razsiri"
-                tip="odgovor"
-                :id="odgovor._id"
-                :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
-                style="display: block"
-            />
+
+            <!-- Slika (logo stranke ali slika kandidata) -->
+            <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; vertical-align: baseline; margin-right: 10px;">
+                <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
+            </div>
+
+            <!-- Odgovori -->
+            <div style="display: inline-block; height: 100%; vertical-align: top;">
+                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                    <div>
+                        <router-link v-if="odgovor.stranka_id" :to="'/stranke/' + odgovor.stranka_id">
+                            {{ odgovor.odgovor_stranka_ime }}
+                            <span v-if="odgovor.odgovor_stranka_ime_kratica != null"> ({{ odgovor.odgovor_stranka_ime_kratica}})</span>
+                        </router-link>
+                        <span v-else>
+                            {{
+                                this.capitalization(odgovor.odgovor, 1) ??
+                                this.vrniOdgovor(
+                                    odgovor.odgovor_std ??
+                                    odgovor.opredeljen_tip ??
+                                    odgovor.tip,
+                                    false, 1
+                                ) ??
+                                this.capitalization(odgovor.odgovor, 1)
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+           
+            <div style="display: inline-block; float: right;">
+                <Report
+                    tip="odgovor"
+                    :id="odgovor._id"
+                    :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
+                />
+                <CopyLink
+                    :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
+                    style="margin-left: 5px"
+                />
+            </div>
         </div>
-            <div v-if="this.razsiri">
-                <div v-if="odgovor.opis">Opis: {{ odgovor.opis}}</div>
-                <div v-if="odgovor.opombe">Opombe: {{ odgovor.opombe}}</div>
-            </div>
+        <div>
+            <div v-if="odgovor.opis">Opis: {{ odgovor.opis}}</div>
+            <div v-if="odgovor.opombe">Opombe: {{ odgovor.opombe}}</div>
         </div>
     </div>
 </template>
@@ -70,26 +66,13 @@
 <script>
 import Report from '@/components/Report.vue'
 import CopyLink from '../../components/CopyLink.vue'
-import ExpandCollapse from '@/components/ExpandCollapse.vue'
 
 export default {
     name: 'Odgovor',
-    props: ['odgovor', 'anketa_id', 'razsiriOdgovor'],
+    props: ['odgovor', 'anketa_id'],
     components: {
         Report,
-        CopyLink,
-        ExpandCollapse
+        CopyLink
     },
-    data() {
-        return {
-            razsiri: this.razsiriOdgovor
-        }
-    }
 }
 </script>
-
-<style>
-.procenti {
-    width: 60px;
-}
-</style>

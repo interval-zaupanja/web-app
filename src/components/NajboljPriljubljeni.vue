@@ -90,7 +90,6 @@ export default {
     async mounted() {
         await this.getData()
         this.loaded = true
-        console.log(this.slika_uri)
     },
     methods: {
         async getData() {
