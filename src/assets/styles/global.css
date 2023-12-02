@@ -34,6 +34,10 @@ body { /* odstrani privzete vrednosti brskalnika */
     color: rgb(86, 86, 86);
 }
 
+::selection {
+    background-color: transparent;
+}
+
 /* Icons */
 .material-symbols-outlined {
     font-variation-settings:

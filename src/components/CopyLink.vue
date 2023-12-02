@@ -1,6 +1,5 @@
 <template>
     <button
-        class="side-button"
         type="button"
         data-bs-toggle="tooltip"
         data-bs-placement="top"

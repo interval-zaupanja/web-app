@@ -1,7 +1,7 @@
 <template>
     <span class="anchor-inner" :id="odgovor._id"></span>
     <div class="bubble bubble-list yellow-gray">
-        <div style="height: 40px">
+        <div :style="odgovor.odgovor_stranka_logo_uri != null ? 'height: 40px': ''">
             <!-- Procenti -->
             <div style="width: 40px; display: inline-block; text-align: right; vertical-align: top; height: 100%; margin-right: 15px">
                 <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
@@ -17,7 +17,11 @@
 
             <!-- Slika (logo stranke ali slika kandidata) -->
             <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; vertical-align: baseline; margin-right: 10px;">
-                <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
+                <img
+                    :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)"
+                    style="max-height: 40px; max-width: 160px; float: right; cursor: pointer;"
+                    draggable="false"
+                />
             </div>
 
             <!-- Odgovori -->
@@ -46,11 +50,13 @@
            
             <div style="display: inline-block; float: right;">
                 <Report
+                    :showOnHover="true"
                     tip="odgovor"
                     :id="odgovor._id"
                     :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
                 />
                 <CopyLink
+                    class="side-button"
                     :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
                     style="margin-left: 5px"
                 />

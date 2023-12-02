@@ -4,10 +4,9 @@ data-bs-title="Razširi"
 @click="bootstrap.Tooltip(this.$refs[this.id + '_2']).hide()"
 
 <template>
-    <div>
+    <div style="display: inline-block;">
         <button
             v-if="this.razsiri == true"
-            class="side-button"
             type="button"
             data-bs-toggle="tooltip1"
             data-bs-placement="top"
@@ -17,7 +16,6 @@ data-bs-title="Razširi"
         </button>
         <button
             v-if="this.razsiri == false"
-            class="side-button"
             type="button"
             data-bs-toggle="tooltip2"
             data-bs-placement="top"

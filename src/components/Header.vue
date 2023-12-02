@@ -9,7 +9,7 @@
           style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;"
           @click="closeMenu()"
         >
-          <img src="@/assets/logo.png" style="max-height: 50px;"/>
+          <img src="@/assets/logo.png" style="max-height: 50px; cursor: pointer;" draggable="false"/>
         </router-link>
 
         <!-- navbar -->
@@ -36,7 +36,7 @@
         <div
           v-if="!this.navbar_full"
           id="menu-bar-button"
-          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px;"
+          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px; cursor: pointer;"
         >
           <img
             v-if="!this.navbar_menu_expanded"

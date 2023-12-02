@@ -10,7 +10,12 @@
                             @click="this.razsiri = !this.razsiri"
                             style="display: inline-block; margin-right: 10px;"
                         />
-                        <Report tip="vprasanje" :id="vprasanje._id" :pot="'ankete/' + this.id + '#' + vprasanje._id"/>
+                        <Report
+                            tip="vprasanje"
+                            :id="vprasanje._id"
+                            :pot="'ankete/' + this.id + '#' + vprasanje._id"
+                            :showOnHover="false"
+                        />
                         <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
                     </div>
                     <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
@@ -84,12 +89,23 @@
                     </div>
                 </div>
                 <div v-if="vprasanje.odgovori && vprasanje.tip != 'priljubljenost' && this.razsiri">
-                    <h3>Odgovori</h3>
+                    <div>
+                        <div style="display: inline-block;">
+                            <h3 style="margin: 0">Odgovori</h3>
+                        </div>
+                        <ExpandCollapse
+                            :razsiri="this.razsiriOdgovore"
+                            @click="this.razsiriOdgovore = !this.razsiriOdgovore"
+                            style="float: right"
+                        />
+                    </div>
+                    <div v-if="this.razsiriOdgovore">
                         <Odgovor
                             v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
                             :odgovor="odgovor"
                             :anketa_id="this.id"
                         />
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,7 +146,8 @@ export default {
         return {
             vprasanje: this.data,
             loaded: false,
-            razsiri: true
+            razsiri: true,
+            razsiriOdgovore: true
         }
     },
     async mounted() {

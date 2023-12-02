@@ -3,7 +3,8 @@
         Prijavi splošno napako
     </button>
     <button v-else
-        class="side-button prijaviNapakoGumb"
+        class="prijaviNapakoGumb"
+        :class="{'side-button': showOnHover}"
         type="button"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
@@ -76,7 +77,7 @@ import axios from 'axios'
 
 export default {
     name: 'CopyLink',
-    props: [ 'id', 'pot', 'tip'],
+    props: [ 'id', 'pot', 'tip', 'showOnHover'],
     data() {
         return {
             modalID: 'prijaviNapakoModal' + this.tip + this.id,
