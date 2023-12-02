@@ -48,15 +48,15 @@
                 </div>
             </div>
            
-            <div style="display: inline-block; float: right;">
+            <div  v-if="!this.isTouchDevice()" style="display: inline-block; float: right;">
                 <Report
-                    :showOnHover="true"
+                    :showOnHover="!this.isTouchDevice()"
                     tip="odgovor"
                     :id="odgovor._id"
                     :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
                 />
                 <CopyLink
-                    class="side-button"
+                    :class="{'side-button': !this.isTouchDevice()}"
                     :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
                     style="margin-left: 5px"
                 />

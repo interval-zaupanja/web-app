@@ -20,6 +20,12 @@ if (process.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue 
     app.config.globalProperties.apiServer = "http://localhost:4000"
 }
 
+app.config.globalProperties.isTouchDevice = function () {
+    return ('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0)
+}
+
 // STANDARDI
 
 app.config.globalProperties.razlage = {
