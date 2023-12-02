@@ -1,25 +1,6 @@
 <template>
     <span class="anchor-inner" :id="odgovor._id"></span>
     <div>
-        <div style="display: inline-block; margin-right: 10px">
-            <ExpandCollapse
-                :razsiri="this.razsiri"
-                @click="this.razsiri = !this.razsiri"
-                style="display: block; margin-bottom: 10px;"
-            />
-            <CopyLink
-                v-if="this.razsiri"
-                :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
-                style="display: block; margin-bottom: 10px;"
-            />
-            <Report
-                v-if="this.razsiri"
-                tip="odgovor"
-                :id="odgovor._id"
-                :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
-                style="display: block"
-            />
-        </div>
         <div class="odgovor" style="display: inline-block; vertical-align: top;">
             <div>
                 <div class="procenti" style="display: inline-block;">
@@ -28,6 +9,9 @@
                         ± {{ (odgovor.procent_zgornja_meja_izvajalec - odgovor.procent_spodnja_meja_izvajalec) / 2 }}%
                         ({{ odgovor.procent_spodnja_meja_izvajalec }}% - {{ odgovor.procent_zgornja_meja_izvajalec }}%)
                     </span>
+                </div>
+                <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; vertical-align: top">
+                    <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
                 </div>
                 <span v-if="odgovor.stranka_id">
                     <router-link :to="'/stranke/' + odgovor.stranka_id">
@@ -56,13 +40,29 @@
                     ...
                 </span>
             </div>
+            <div style="display: inline-block; margin-right: 10px">
+            <ExpandCollapse
+                :razsiri="this.razsiri"
+                @click="this.razsiri = !this.razsiri"
+                style="display: block; margin-bottom: 10px;"
+            />
+            <CopyLink
+                v-if="this.razsiri"
+                :path="'ankete/' + this.anketa_id + '#' + odgovor._id"
+                style="display: block; margin-bottom: 10px;"
+            />
+            <Report
+                v-if="this.razsiri"
+                tip="odgovor"
+                :id="odgovor._id"
+                :pot="'ankete/' + this.anketa_id + '#' + odgovor._id"
+                style="display: block"
+            />
+        </div>
             <div v-if="this.razsiri">
                 <div v-if="odgovor.opis">Opis: {{ odgovor.opis}}</div>
                 <div v-if="odgovor.opombe">Opombe: {{ odgovor.opombe}}</div>
             </div>
-        </div>
-        <div v-if="odgovor.odgovor_stranka_logo_uri != null" style="display: inline-block; float: right; vertical-align: top">
-            <img :src="odgovor.odgovor_stranka_logo_uri" @click="$router.push('/stranke/' + odgovor.stranka_id)" style="max-height: 40px; max-width: 160px; float: right"/>
         </div>
     </div>
 </template>

@@ -19,7 +19,7 @@
             <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
             <li><router-link to="/zaupanje">Zaupanje</router-link></li>
             <li>
-              <router-link to="">Drugo ⏷</router-link>
+              <router-link to="">Drugo <img height="15" src="../assets/icons/arrow-down.png" style="vertical-align: baseline;"/></router-link>
               <ul class="dropdown">
                 <li><router-link to="/ankete">Ankete</router-link></li>
                 <li><router-link to="/izvajalci">Izvajalci</router-link></li>
@@ -59,7 +59,10 @@
           <li @click="closeMenu()"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
           <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
           <li>
-            <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo <span v-if="!this.drugo_expanded">⏷</span><span v-else>⏶</span></router-link>
+            <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo
+              <img v-if="!this.drugo_expanded" height="15" src="../assets/icons/arrow-down.png" style="vertical-align: baseline;"/>
+              <img v-else height="15" src="../assets/icons/arrow-up.png" style="vertical-align: baseline;"/>
+            </router-link>
             <ul v-if="this.drugo_expanded">
               <li @click="closeMenu()"><router-link to="/ankete">Ankete</router-link></li>
               <li @click="closeMenu()"><router-link to="/izvajalci">Izvajalci</router-link></li>
