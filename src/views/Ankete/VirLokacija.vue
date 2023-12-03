@@ -69,13 +69,15 @@ export default {
     },
     methods: {
         externalLinkWrap() {
-            let infoMain = document.getElementById('vir-' + this.virIndex + '_lokacija-' + this.lokacijaIndex + '_info-main')
-            let externalLink = document.getElementById('vir-' + this.virIndex + '_lokacija-' + this.lokacijaIndex + '_external-link')
+            if (this.data.uri) {
+                let infoMain = document.getElementById('vir-' + this.virIndex + '_lokacija-' + this.lokacijaIndex + '_info-main')
+                let externalLink = document.getElementById('vir-' + this.virIndex + '_lokacija-' + this.lokacijaIndex + '_external-link')
 
-            if (externalLink.offsetTop > infoMain.offsetTop) {
-                this.externalLinkWrapped = true
-            } else {
-                this.externalLinkWrapped = false
+                if (externalLink.offsetTop > infoMain.offsetTop) {
+                    this.externalLinkWrapped = true
+                } else {
+                    this.externalLinkWrapped = false
+                }
             }
         },
     }

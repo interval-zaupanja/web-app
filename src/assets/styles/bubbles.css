@@ -21,7 +21,6 @@
 
 .bubble-list {
     margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
-    overflow: hidden;
 }
 
 .bubble-border {
@@ -34,4 +33,8 @@
 
 .bubble-highlighted { /* v primeru, ko je bil polinkan fragment strani */
 	border: 2px solid #ae1813;
+}
+
+.prevent-overflow {
+    overflow: hidden;
 }

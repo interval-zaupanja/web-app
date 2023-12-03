@@ -1,5 +1,14 @@
 a, a:active, a:visited, a:hover {
-    color: #ae1813;
+    color: #ae1813 !important; /* !important potreben, da povozi Bootstrap */
+}
+
+a.btn, a.btn:active, a.btn:visited, a.btn:hover {
+    color: white !important; /* !important potreben, da povozi Bootstrap */
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn-primary:hover {
+    background-color: #ae1813 !important;
+    border-color: #ae1813 !important;
 }
 
 .pink-red {

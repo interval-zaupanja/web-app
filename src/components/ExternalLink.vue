@@ -21,7 +21,7 @@ export default {
                 }  else {
                     textColor = "#ffffff"
                 }
-                return "background: " + this.color + "; border-color: " + this.color + "; color: " + textColor
+                return "background-color: " + this.color + " !important; border-color: " + this.color + " !important; color: " + textColor + ' !important' // !important potreben, da povozi Bootstrap in ostale nastavitve
             } else {
                 return ""
             }
@@ -35,6 +35,5 @@ export default {
 a {
     float: right;
     width: 100%;
-    
 }
 </style>

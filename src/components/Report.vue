@@ -146,4 +146,10 @@ img {
   top: 90px;
   right: 20px;
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ae1813 !important;
+    border-color: #ae1813 !important;
+    color: white;
+}
 </style>

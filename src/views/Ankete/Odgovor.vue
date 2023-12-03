@@ -1,7 +1,7 @@
 <template>
     <div class="bubble bubble-inner yellow-gray" :class="{'container-selected': this.$route.hash === '#' + this.vprasanje_id + '_' + index}">
         <span class="anchor-inner" :id="this.vprasanje_id + '_' + index"></span>
-        <div>
+        <div class="prevent-overflow">
             <div :style="odgovor.odgovor_stranka_logo_uri != null ? 'height: 40px': ''">
                 <!-- Procenti -->
                 <div style="width: 50px; display: inline-block; text-align: right; vertical-align: top; height: 100%; margin-right: 15px">

@@ -6,10 +6,10 @@
 			</div>
 			<div style="display: inline-block; margin: 0px 20px">
 				<div style="display: flex; justify-content: center; flex-wrap: wrap">
-					<router-link to="/vop" class="link" style="display: inline-block">Varstvo osebnih podatkov</router-link>
-					<router-link to="/pogoji-uporabe" class="link" style="display: inline-block">Pogoji uporabe</router-link>
-					<router-link to="/prijavljene-napake" class="link" style="display: inline-block">Prijavljene napake</router-link>
-					<router-link to="/kontakt" class="link" style="display: inline-block">Kontakt</router-link>
+					<router-link to="/vop" style="display: inline-block">Varstvo osebnih podatkov</router-link>
+					<router-link to="/pogoji-uporabe" style="display: inline-block">Pogoji uporabe</router-link>
+					<router-link to="/prijavljene-napake" style="display: inline-block">Prijavljene napake</router-link>
+					<router-link to="/kontakt" style="display: inline-block">Kontakt</router-link>
 				</div>
 			</div>
 		</div>
@@ -31,17 +31,12 @@ export default {
 	padding: 15px;
 }
 
-.link {
-	color: #d0d0d0;
+a {
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-.link:visited {
-	color: #d0d0d0;
-}
-
-.link:active {
-	color: #d0d0d0;
+a, a:visited, a:active, a:hover {
+	color: #d0d0d0 !important; /* !important potreben, da povozi Bootstrap in ostale nastavitve */
 }
 </style>

@@ -4,7 +4,7 @@
 		<div :style="this.orientation === 'horizontal' ? 'display: flex; justify-content: center' : ''">
 			<div :class="this.orientation === 'horizontal' ? 'scrollmenu' : ''">
 				<div
-					class="bubble bubble-list bubble-border yellow-gray"
+					class="bubble bubble-border yellow-gray prevent-overflow"
 					:class="this.orientation === 'horizontal' ? 'horizontal' : ''"
 					v-for="anketa in ankete" :key="anketa._id"
 					@click="$router.push('/ankete/' + anketa._id)"

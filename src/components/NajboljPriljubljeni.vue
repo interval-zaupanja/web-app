@@ -7,7 +7,7 @@
     >
         <div style="padding: 15px;">
             <router-link to="/priljubljenost" :style="'font-size:' + this.topTextFontSize + 'px; color: white;'">
-                <span class="link-text">Na vrhu lestvice priljubljenosti</span><img height="20" style="position: relative; bottom: 3px" src="@/assets/icons/arrow-right.png" alt="">
+                <span>Na vrhu lestvice priljubljenosti</span><img height="20" style="position: relative; bottom: 3px" src="@/assets/icons/arrow-right.png" alt="">
             </router-link>
         </div>
         <div @click="$router.push('/osebe/' + this.id)" style="flex-grow: 1;">
@@ -47,7 +47,7 @@
     >
         <div style="padding: 15px;">
             <router-link to="/priljubljenost" :style="'font-size:' + this.topTextFontSize + 'px; color: white;'">
-                <span class="link-text">Na vrhu lestvice priljubljenosti</span><img height="20" style="position: relative; bottom: 3px" src="@/assets/icons/arrow-right.png" alt="">
+                <span>Na vrhu lestvice priljubljenosti</span><img height="20" style="position: relative; bottom: 3px" src="@/assets/icons/arrow-right.png" alt="">
             </router-link>
         </div>
         <div @click="$router.push('/osebe/' + this.id)" style="flex-grow: 1;">
@@ -133,15 +133,14 @@ export default {
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1) 60%, rgba(0,0,0,0));
 }
 
-/* Ni mi uspelo podčrtati povezavo on hover */
-.link-text {
+a, a:visited, a:active {
     text-decoration: none;
 }
-.link-text:hover {
+a:hover {
     text-decoration: underline;
 }
 
-.link-text:visited {
-    text-decoration: underline;
+a, a:visited, a:active, a:hover {
+    color: white !important
 }
 </style>
