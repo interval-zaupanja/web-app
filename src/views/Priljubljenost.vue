@@ -1,17 +1,18 @@
 <template>
-    <div v-if="this.orientacija === 'horizontalno' && loaded">
-        <BarChartHorizontal :data="this.data"/>
+    <div v-if="this.orientacija === 'horizontalno'">
+        <BarChartHorizontal v-if="this.loaded" :data="this.data"/>
+        <Nalaganje v-else size="medium"/>
     </div>
     <div v-else class="odmik">
-        <div v-if="loaded">
-            <BarChart :data="this.data"/>
-        </div>
+        <BarChart v-if="this.loaded" :data="this.data"/>
+        <Nalaganje v-else/>
     </div>
 </template>
 
 <script>
 import BarChart from '@/components/charts/BarChartVertical.vue'
 import BarChartHorizontal from '@/components/charts/BarChartHorizontal.vue'
+import Nalaganje from '@/components/Nalaganje.vue'
 
 import axios from 'axios'
 
@@ -20,7 +21,8 @@ export default {
     props: ['podatki', 'orientacija'],
     components: {
         BarChart,
-        BarChartHorizontal
+        BarChartHorizontal,
+        Nalaganje
     },
     data() {
         return {

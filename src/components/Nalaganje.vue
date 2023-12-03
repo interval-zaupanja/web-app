@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%">
     <div v-if="this.size === 'medium'">
-      <img src="@/assets/LoadingAnimation.gif" style="height: 150px; margin: 200px; margin-left: auto; margin-right: auto"/>
+      <img src="@/assets/LoadingAnimation.gif" style="height: 150px; margin: 100px; margin-left: auto; margin-right: auto"/>
     </div>
     <div v-else-if="this.size === 'medium-small'">
       <img src="@/assets/LoadingAnimation.gif" style="height: 100px; margin: 50px; margin-left: auto; margin-right: auto"/>

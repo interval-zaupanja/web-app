@@ -58,7 +58,6 @@ export default {
                 }
             },
             plugins: [
-                // /* NALAGANJE SLIK ZAČASNO IZKLJUČENO    
                 {
                     id: 'imageItems',
                     beforeDatasetsDraw(chart) {
@@ -88,7 +87,6 @@ export default {
                         }                        
                     }
                 }
-                // */
             ]
         }
     }

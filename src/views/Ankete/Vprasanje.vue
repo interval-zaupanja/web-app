@@ -88,6 +88,7 @@
                                     :podatki="this.predelajOdgovore(vprasanje, 'procent_izvajalec')"
                                     enota="%"
                                     style="display: inline-block"
+                                    class="chart"
                                 />
                             </div>
                         </div>
@@ -199,10 +200,13 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 15px 0;
 }
 
-.chart, canvas {
-    max-width: 500px;
-    margin: 30px
+.chart {
+    max-height: 600px;
+    min-height: 400px;
+    width: 500px;
+    margin: 15px 30px
 }
 </style>
