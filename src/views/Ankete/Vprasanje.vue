@@ -207,6 +207,7 @@ export default {
     max-height: 600px;
     min-height: 400px;
     width: 500px;
+    max-width: 100%;
     margin: 15px 30px
 }
 </style>

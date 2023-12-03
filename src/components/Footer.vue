@@ -6,9 +6,10 @@
 			</div>
 			<div style="display: inline-block; margin: 0px 20px">
 				<div style="display: flex; justify-content: center; flex-wrap: wrap">
-					<router-link to="/vop" style="display: inline-block">Varstvo osebnih podatkov</router-link>
+					<router-link to="/politika-zasebnosti" style="display: inline-block">Politika zasebnosti</router-link>
 					<router-link to="/pogoji-uporabe" style="display: inline-block">Pogoji uporabe</router-link>
 					<router-link to="/prijavljene-napake" style="display: inline-block">Prijavljene napake</router-link>
+					<a :href="this.apiServer + '/api/docs/'" style="display: inline-block">API dokumentacija</a>
 					<router-link to="/kontakt" style="display: inline-block">Kontakt</router-link>
 				</div>
 			</div>
