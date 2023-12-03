@@ -7,7 +7,7 @@
         </div>
         <div :class="{odmik: !this.edgeToEdge}">
             <div 
-                v-for="vir in this.viri" :key="vir._id"
+                v-for="(vir, virIndex) in this.viri" :key="virIndex"
                 class="pink-red content-container" :class="this.edgeToEdge ? '' : 'bubble bubble-outer'"
             >
                 <span class="anchor-outer" :id="vir._id"></span>
@@ -26,24 +26,8 @@
                     <p v-if="vir.opis">Opis: {{vir.opis}}</p>
                     <p v-if="vir.opombe">Opombe: {{vir.opombe}}</p>
                 </div>
-                <div v-for="lokacija in vir.lokacije" :key="lokacija._id" class="bubble bubble-list yellow-gray">
-                    <span class="anchor-inner" :id="lokacija._id"></span>
-                    <div>
-                        <!-- <CopyLink :path="'ankete/' + this.id + '#' + lokacija._id" class="side-button"/> -->
-                        <div style="display: inline-block">
-                            <p style="margin: 0px">Tip: {{lokacija.tip}}</p>
-                            <p v-if="lokacija.datum_in_cas_objave" style="margin: 0px">Objavljeno
-                                {{new Date(lokacija.datum_in_cas_objave).toLocaleDateString('en-GB')}}
-                                ob
-                                {{new Date(lokacija.datum_in_cas_objave).toLocaleTimeString('en-GB',{ timeStyle: 'short' })}}
-                            </p>
-                            <p v-if="lokacija.opis">Opis: {{lokacija.opis}}</p>
-                            <p v-if="lokacija.opombe">Opombe: {{lokacija.opombe}}</p>
-                        </div>
-                        <div v-if="lokacija.tip === 'splet'" style="display: inline-block; float: right">
-                            <ExternalLink :link="lokacija.uri" label="Odpri spletno stran"/>
-                        </div> 
-                    </div>
+                <div v-for="(lokacija, lokacijaIndex) in vir.lokacije" :key="lokacijaIndex">
+                    <VirLokacija :data="lokacija" :virIndex="virIndex" :lokacijaIndex="lokacijaIndex"/>
                 </div>
             </div>
         </div>
@@ -54,19 +38,19 @@
 import axios from 'axios'
 
 import Label from '@/components/Label.vue'
-import ExternalLink from '@/components/ExternalLink.vue'
+import VirLokacija from './VirLokacija.vue'
 
 export default {
     name: 'Viri',
     props: ['data', 'izvajalci', 'narocniki', 'edgeToEdge'],
     components: {
         Label,
-        ExternalLink
+        VirLokacija
     },
     data() {
         return {
             viri: null,
-            loaded: false
+            loaded: false,
         }
     },
     async mounted() {
@@ -96,11 +80,5 @@ export default {
 <style scoped>
 p {
     margin: 0px
-}
-
-.btn, .btn:hover, .btn:active, .btn:visited, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #ae1813 !important;
-    border-color: #ae1813 !important;
-    color: white;
 }
 </style>
