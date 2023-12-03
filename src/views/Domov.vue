@@ -1,8 +1,13 @@
 <template>
     <div>
         <div :class="this.edge_to_edge ? 'yellow-gray edge-to-edge' : ''">
-            <h3 style="text-align: center" class="odmik" >Katero stranko bi volili?</h3>
-            <DZ style="max-width: 800px; margin-left: auto; margin-right: auto;" :bubble="this.edge_to_edge"/>
+            <h3 style="text-align: center" class="odmik">Katero stranko bi volili?</h3>
+            <div :class="{ 'odmik' : !this.edge_to_edge, 'odmik2': this.screenWidth < 800 && !this.edge_to_edge }">
+                <DZ
+                    style="max-width: 800px; height: 100%; min-height: 500px; margin-left: auto; margin-right: auto;"
+                    :bubble="!this.edge_to_edge"
+                />
+            </div>
         </div>
         <div style="margin: 15px 0">
             <ZadnjeAnkete/>
@@ -45,6 +50,7 @@ export default {
     data() {
         return {
             edge_to_edge: false,
+            screenWidth: 0,
             sideElements: true,
             topTextFontSize: 25,
             NPratingFontSize: 100,
@@ -60,6 +66,7 @@ export default {
     methods: {
         checkScreen() {
             var windowWidth = window.innerWidth
+            this.screenWidth = windowWidth
 
             if (windowWidth <= 600) {
                 this.edge_to_edge = true

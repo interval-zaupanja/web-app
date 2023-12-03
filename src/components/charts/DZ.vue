@@ -1,18 +1,18 @@
 <template>
-    <div style="height: 100%; min-height: 400px; max-width: 100%">
+    <div>
         <Scatter
             v-if="loaded"
             :options="options"
             :plugins="plugins"
             :data="data"
-            style="max-height: 400px"
-            class="odmik"
+            style="max-height: 500px"
+            :class="{ 'odmik2' : !this.bubble }"
         />
         <div v-if="!loaded">
             <Nalaganje size="medium"/>
         </div>
         <div v-if="loaded && !this.stranka_id">
-            <div :class="this.bubble ? 'odmik2' : 'bubble bubble-inner yellow-gray odmik'" style="margin-top: 10px">
+            <div :class="!this.bubble ? 'odmik2' : 'bubble bubble-inner yellow-gray odmik'" style="margin-top: 10px">
                 <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
                     <div style="display: inline-block; margin-right: 20px; white-space: nowrap;">
                         Vključi v graf in preračunaj:
@@ -226,7 +226,7 @@ export default {
             plugins: [
                 {
                     id: 'hoverLine',
-                    beforeDatasetsDraw(chart) {
+                    afterDatasetsDraw(chart) {
                         const { ctx, tooltip, chartArea: {top, bottom}} = chart
 
                         if (tooltip._active[0]) {

@@ -7,7 +7,6 @@ import '@/assets/styles/colors.css'
 import '@/assets/styles/bubbles.css'
 import '@/assets/styles/sides.css'
 import '@/assets/styles/buttons.css'
-import '@/assets/styles/charts.css'
 
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
