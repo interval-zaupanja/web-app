@@ -7,6 +7,18 @@
     margin: 15px;
 }
 
+.bubble-inner {
+    margin: 10px 0;
+}
+
+.bubble-inner:last-of-type {
+    margin-bottom: 0;
+}
+
+.container-selected {
+    border: 3px solid #ae1813
+}
+
 .bubble-list {
     margin-top: 10px; /* tudi zunanji mehurčki imajo ta margin */
     overflow: hidden;

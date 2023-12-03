@@ -158,8 +158,6 @@ export default {
         this.loaded = true;
 
         // Navigacija do fragmenta
-
-        // IMPLEMENTACIJA 1: ne deluje za odgovore
         setTimeout(function (hash) {
             if (hash) {
                 const el_id = hash.replace('#', '')

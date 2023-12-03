@@ -1,6 +1,9 @@
 <template>
     <div v-if="loaded" :class="{odmik: !this.edgeToEdge}">
-        <div class="pink-red content-container" :class="this.edgeToEdge ? '' : 'bubble bubble-outer'">
+        <div
+            class="pink-red content-container"
+            :class="{'bubble bubble-outer': !this.edgeToEdge, 'container-selected': this.$route.hash === '#' + vprasanje._id}"
+        >
             <span class="anchor-outer" :id="vprasanje._id"></span>
             <div>
                 <div>
@@ -19,7 +22,7 @@
                         <CopyLink :path="'ankete/' + this.id + '#' + vprasanje._id" style="margin-left: 10px"/>
                     </div>
                     <div v-if="vprasanje.vprasanje">Vprašanje: {{vprasanje.vprasanje}}</div>
-                    <div v-if="this.razsiri">
+                    <div>
                         <div>
                             Tip vprašanja: {{vprasanje.tip}}
                             <span v-if="vprasanje.zaupanje_tip">
@@ -55,6 +58,8 @@
                             </span>
                             ({{ vprasanje.glasovanje_tip.raven_oblasti }} raven)
                         </div>
+                    </div>
+                    <div v-if="this.razsiri">
                         <div v-if="vprasanje.predpostavljena_udelezba_procent">Predpostavljena udeležba: {{vprasanje.predpostavljena_udelezba_procent}}%</div>
                         <div v-if="vprasanje.opis">Opis: {{vprasanje.opis}}</div>
                         <div v-if="vprasanje.opombe">Opombe: {{vprasanje.opombe}}</div>
@@ -101,8 +106,10 @@
                     </div>
                     <div v-if="this.razsiriOdgovore">
                         <Odgovor
-                            v-for="odgovor in vprasanje.odgovori" :key="odgovor._id"
+                            v-for="(odgovor, index) in vprasanje.odgovori" :key="index"
                             :odgovor="odgovor"
+                            :vprasanje_id="vprasanje._id"
+                            :index="index"
                             :anketa_id="this.id"
                         />
                     </div>

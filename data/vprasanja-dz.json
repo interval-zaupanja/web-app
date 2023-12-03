@@ -17,7 +17,7 @@
         },
         "opombe": "Stranka Naša prihodnost vključuje tudi odgovor za skupno listo s stranko Dobra država. Predpostavljeno je, da se anketa navezuje na volitve v Državni zbor. Ni jasno, če se anketiranci nameravajo volitev tudi udeležiti.",
         "odgovori": [
-            {
+            {   
                 "tip": "O",
                 "opredeljen_tip": "doloceno",
                 "doloceno_tip": "stranka",

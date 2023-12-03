@@ -546,7 +546,7 @@ const osebe_shema = new mongoose.Schema({
  */
 const prijave_shema = new mongoose.Schema({
     tip: { type: String, required: [true, "Tip je zahtevano polje"] },
-    id: { type: ObjectId, required: false },
+    id: { type: String, required: false },
     pot: { type: String, required: false },
     opis : { type: String, required: false },
     razreseno: { type: Boolean, required: true },

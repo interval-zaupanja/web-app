@@ -3,7 +3,7 @@
         <h4 v-if="this.data.length == 1">Vzorec</h4>
         <h4 v-else-if="this.data.length == 2">Vzorca</h4>
         <h4 v-else>Vzorci</h4>
-        <div v-for="vzorec in this.data" :key="vzorec._id" :class="this.data.length > 1 ? 'bubble bubble-list yellow-gray' : ''" style="width: fit-content" id="vzorec-infobox">
+        <div v-for="vzorec in this.data" :key="vzorec._id" :class="this.data.length > 1 ? 'bubble bubble-inner yellow-gray' : ''" style="width: fit-content" id="vzorec-infobox">
             <span v-if="vzorec.metode">
                 <span v-if="vzorec.metode.length == 1">Metoda: </span>
                 <span v-else-if="vzorec.metode.length == 2">Metodi: </span>
