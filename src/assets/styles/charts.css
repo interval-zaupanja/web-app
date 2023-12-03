@@ -1,5 +1,7 @@
 /* Charts (sicer namenjeno specifično DoughnutChart in PieChart, Scatter delno povozi te velikosti*/
 canvas { 
-    height: 500px;
-    width: 500px;
+    height: unset !important;
+    width: unset !important;
+    max-width: 100%;
+    max-height: 600px;
 }

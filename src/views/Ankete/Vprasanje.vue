@@ -201,8 +201,8 @@ export default {
     flex-wrap: wrap;
 }
 
-.chart {
-    max-width: 40%;
+.chart, canvas {
+    max-width: 500px;
     margin: 30px
 }
 </style>
