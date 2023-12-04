@@ -17,7 +17,7 @@
           <ul id="menu-list" style="margin: 0px">
             <li><router-link to="/glasovanja">Glasovanja</router-link></li>
             <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
-            <li><router-link to="/zaupanje">Zaupanje</router-link></li>
+            <!-- <li><router-link to="/zaupanje">Zaupanje</router-link></li> -->
             <li>
               <router-link to="">Drugo <img height="15" src="../assets/icons/arrow-down.png" style="vertical-align: baseline;"/></router-link>
               <ul class="dropdown">
