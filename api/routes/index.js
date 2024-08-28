@@ -13,30 +13,30 @@ const ctrlPrijave = require('../controllers/prijave');
 // Ankete storitve
 router.get('/ankete', ctrlAnkete.seznamAnket);
 router.get('/ankete/:id', ctrlAnkete.podrobnostiAnkete);
-router.delete('/ankete/:id', ctrlAnkete.izbrisiAnketo);
-router.post('/ankete', ctrlAnkete.ustvariAnketo);
-router.put('/ankete/:id', ctrlAnkete.posodobiAnketo);
+// router.delete('/ankete/:id', ctrlAnkete.izbrisiAnketo);
+// router.post('/ankete', ctrlAnkete.ustvariAnketo);
+// router.put('/ankete/:id', ctrlAnkete.posodobiAnketo);
 
 // izvajalci storitve
 router.get('/izvajalci', ctrlIzvajalci.seznamIzvajalcev);
 router.get('/izvajalci/:id', ctrlIzvajalci.podrobnostiIzvajalca);
-router.delete('/izvajalci/:id', ctrlIzvajalci.izbrisiIzvajalca);
-router.post('/izvajalci/', ctrlIzvajalci.ustvariIzvajalca);
-router.put('/izvajalci/:id', ctrlIzvajalci.posodobiIzvajalca);
+// router.delete('/izvajalci/:id', ctrlIzvajalci.izbrisiIzvajalca);
+// router.post('/izvajalci/', ctrlIzvajalci.ustvariIzvajalca);
+// router.put('/izvajalci/:id', ctrlIzvajalci.posodobiIzvajalca);
 
 // Zalozniki storitve
 router.get('/zalozniki', ctrlZalozniki.seznamZaloznikov);
 router.get('/zalozniki/:id', ctrlZalozniki.podrobnostiZaloznika);
-router.delete('/zalozniki/:id', ctrlZalozniki.izbrisiZaloznika);
-router.post('/zalozniki/', ctrlZalozniki.ustvariZaloznika);
-router.put('/zalozniki/:id', ctrlZalozniki.posodobiZaloznika);
+// router.delete('/zalozniki/:id', ctrlZalozniki.izbrisiZaloznika);
+// router.post('/zalozniki/', ctrlZalozniki.ustvariZaloznika);
+// router.put('/zalozniki/:id', ctrlZalozniki.posodobiZaloznika);
 
 // Stranke storitve
 router.get('/stranke', ctrlStranke.seznamStrank);
 router.get('/stranke/:id', ctrlStranke.podrobnostiStranke);
-router.delete('/stranke/:id', ctrlStranke.izbrisiStranko);
-router.post('/stranke/', ctrlStranke.ustvariStranko);
-router.put('/stranke/:id', ctrlStranke.posodobiStranko);
+// router.delete('/stranke/:id', ctrlStranke.izbrisiStranko);
+// router.post('/stranke/', ctrlStranke.ustvariStranko);
+// router.put('/stranke/:id', ctrlStranke.posodobiStranko);
 
 // Vprasanja storitve
 router.get('/vprasanja', ctrlVprasanja.seznamVprasanj);
@@ -50,22 +50,22 @@ router.get('/vprasanja/glasovanje/:id', ctrlVprasanja.seznamVprasanjGlasovanje);
 // Glasovanja storitve
 router.get('/glasovanja', ctrlGlasovanja.seznamGlasovanj);
 router.get('/glasovanja/:id', ctrlGlasovanja.podrobnostiGlasovanja);
-router.delete('/glasovanja/:id', ctrlGlasovanja.izbrisiGlasovanje);
-router.post('/glasovanja', ctrlGlasovanja.ustvariGlasovanje);
-router.put('/glasovanja/:id', ctrlGlasovanja.posodobiGlasovanje);
+// router.delete('/glasovanja/:id', ctrlGlasovanja.izbrisiGlasovanje);
+// router.post('/glasovanja', ctrlGlasovanja.ustvariGlasovanje);
+// router.put('/glasovanja/:id', ctrlGlasovanja.posodobiGlasovanje);
 
 // Osebe storitve
 router.get('/osebe', ctrlOsebe.seznamOseb);
 router.get('/osebe/:id', ctrlOsebe.podrobnostiOsebe);
-router.delete('/osebe/:id', ctrlOsebe.izbrisiOsebo);
-router.post('/osebe', ctrlOsebe.ustvariOsebo);
-router.put('/osebe/:id', ctrlOsebe.posodobiOsebo);
+// router.delete('/osebe/:id', ctrlOsebe.izbrisiOsebo);
+// router.post('/osebe', ctrlOsebe.ustvariOsebo);
+// router.put('/osebe/:id', ctrlOsebe.posodobiOsebo);
 
 // Prijave storitve (MOGOČE TE POTI NISO RAVNO NAJBOLJ SKLADNE)
 router.get('/prijave', ctrlPrijave.seznamPrijav);
 router.get('/prijave/:id', ctrlPrijave.podrobnostiPrijave);
-router.delete('/prijave/:id', ctrlPrijave.izbrisiPrijavo);
-router.post('/prijave', ctrlPrijave.ustvariPrijavo);
-router.put('/prijave/:id', ctrlPrijave.posodobiPrijavo);
+// router.delete('/prijave/:id', ctrlPrijave.izbrisiPrijavo);
+// router.post('/prijave', ctrlPrijave.ustvariPrijavo);
+// router.put('/prijave/:id', ctrlPrijave.posodobiPrijavo);
 
 module.exports = router;
