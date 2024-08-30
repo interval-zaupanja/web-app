@@ -2,7 +2,7 @@
 
 ![Logo](src/assets/logo.png)
 
-Interval zaupanja je agregator in vizualizator sociopolitičnih javnomenjskih anket v Sloveniji. Za čelni del (frontend) se uporablja ogrodje Vue, za zaledni del pa node.js API strežnik `https://interval-zaupanja.onrender.com/api/` (gostujoč na OnRender), ki je povezan z MongoDB (Atlas) dokumentno podatkovno bazo. Poleg tega je na povezavi [https://https://interval-zaupanja.onrender.com/api/docs/](https://https://interval-zaupanja.onrender.com/api/docs/) na voljo dokumentacija napisana s pomočjo orodja Swagger in v OpenAPI specifikaciji. Projekt je trenutno v **BETA** fazi.
+Interval zaupanja je agregator in vizualizator sociopolitičnih javnomenjskih anket v Sloveniji. Za čelni del (frontend) se uporablja ogrodje Vue, za zaledni del pa node.js API strežnik `https://interval-zaupanja.onrender.com/api/` (gostujoč na OnRender), ki je povezan z MongoDB (Atlas) dokumentno podatkovno bazo. Poleg tega je na povezavi [https://interval-zaupanja.onrender.com/api/docs/](https://interval-zaupanja.onrender.com/api/docs/) na voljo dokumentacija napisana s pomočjo orodja Swagger in v OpenAPI specifikaciji. Projekt je trenutno v **BETA** fazi.
 
 Spletna stran gosti na GitHub Pages na povezavi [https://interval-zaupanja.github.io/web-app](https://interval-zaupanja.github.io/web-app)
 
