@@ -34,7 +34,7 @@ const swaggerDocument = swaggerJsDoc({
                 description: "Lokalni strežnik za razvoj in testiranje",
             },
             {
-                url: "https://interval-zaupanja.onrender.com/api",
+                url: "https://web-app-fu3b.onrender.com/api",
                 description: "Produkcijski strežnik gostujoč na oblaku Render",
             },
         ],
