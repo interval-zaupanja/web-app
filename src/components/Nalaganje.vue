@@ -1,14 +1,8 @@
 <template>
-  <div style="width: 100%">
-    <div v-if="this.size === 'medium'">
-      <img src="@/assets/LoadingAnimation.gif" style="height: 150px; margin: 100px; margin-left: auto; margin-right: auto"/>
-    </div>
-    <div v-else-if="this.size === 'medium-small'">
-      <img src="@/assets/LoadingAnimation.gif" style="height: 100px; margin: 50px; margin-left: auto; margin-right: auto"/>
-    </div>
-    <div v-else>
-      <img src="@/assets/LoadingAnimation.gif" style="height: 200px; margin: 300px; margin-left: auto; margin-right: auto"/>
-    </div>
+  <div style="width: 100%; margin-top: auto; margin-bottom: auto" :class="this.getSize()">
+    <img src="@/assets/LoadingAnimation.gif" :class="this.getSizeImg()"/>
+    <div class="loading-message caption" v-if="longLoading && !serverUnresponsive">Prosimo počakajte. Včasih lahko traja nekaj časa (tudi do minuto) preden se API strežnik ogreje.</div>
+    <div class="loading-message caption" v-if="serverUnresponsive">API strežnik se ne odziva ☹️</div>
   </div>
 </template>
 
@@ -17,7 +11,35 @@
 
 export default {
   name: 'Nalaganje',
-  props: ['size']
+  props: ['size'],
+  data() {
+    return {
+      longLoading: false,
+      serverUnresponsive: false
+    }
+  },
+  methods: { // for some reason couldn't this to work with the nullish coalescing operator inside the template
+    getSize() {
+      return this.size == undefined ? 'medium' : this.size
+    },
+    getSizeImg() {
+      return this.getSize() + '-img'
+    }
+  },
+  mounted() {
+    console.log(this.size)
+
+    setTimeout(() => {
+        this.longLoading = true
+    }, 3000, this.hash);
+
+    setTimeout(() => {
+        this.serverUnresponsive = true
+    }, 80000, this.hash); // if the server does not respond within 80 seconds, it is deemed to be unresponsive
+  },
+  beforeUnmount() {
+    clearTimeout(this.timeoutId); // prevents unnecessary side-effects
+  }
 }
 </script>
 
@@ -27,4 +49,36 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
+
+.loading-message {
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+/* Loading icon sizes */
+.large-img {
+  height: 200px;
+}
+.large {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.medium-img {
+  height: 150px;
+}
+.medium {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.medium-small-img {
+  height: 100px;
+}
+.medium-small {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 </style>

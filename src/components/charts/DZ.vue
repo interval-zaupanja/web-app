@@ -1,16 +1,15 @@
 <template>
-    <div>
+    <div
+        v-if="loaded"
+        style="max-width: 800px; height: 100%; min-height: 500px; margin-left: auto; margin-right: auto;"
+    >
         <Scatter
-            v-if="loaded"
             :options="options"
             :plugins="plugins"
             :data="data"
             style="max-height: 500px"
             :class="{ 'odmik2' : !this.bubble }"
         />
-        <div v-if="!loaded">
-            <Nalaganje size="medium"/>
-        </div>
         <div v-if="loaded && !this.stranka_id">
             <div :class="!this.bubble ? 'odmik2' : 'bubble bubble-inner yellow-gray odmik'" style="margin-top: 10px">
                 <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
@@ -53,7 +52,10 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <div v-else>
+        <Nalaganje size="large"/>
+    </div>
 </template>
 
 <script>
