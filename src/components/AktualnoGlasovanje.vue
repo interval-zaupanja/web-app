@@ -7,7 +7,7 @@
     >
         <div style="height: 100%; width: 100%">
             <div :style="'font-size:' + this.topTextFontSize + 'px; color: white; position: absolute; left: 0; top: 0; z-index: 6; margin: 15px'">
-                Naslednje glasovanje
+                Zadnje glasovanje
             </div>
             <div id="imgContainer" style="height: 100%; width: 100%">
                 <img
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-    name: 'NaslednjeGlasovanje',
+    name: 'AktualnoGlasovanje',
     props: ['topTextFontSize', 'NGmainTextFontSize', 'NGDateFontSize']
 }
 </script>

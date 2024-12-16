@@ -18,8 +18,8 @@
                         :NPnameFontSize="this.NPnameFontSize"
                     />
                 </div>
-                <div id="naslednjeGlasovanjeContainer">
-                    <NaslednjeGlasovanje
+                <div id="aktualnoGlasovanjeContainer">
+                    <AktualnoGlasovanje
                         :topTextFontSize="this.topTextFontSize"
                         :NGmainTextFontSize="this.NGmainTextFontSize"
                         :NGDateFontSize="this.NGDateFontSize"
@@ -34,7 +34,7 @@
 import ZadnjeAnkete from '../components/lists/ZadnjeAnkete.vue'
 import DZ from '../components/charts/DZ.vue'
 import NajboljPriljubljeni from '@/components/NajboljPriljubljeni.vue'
-import NaslednjeGlasovanje from '@/components/NaslednjeGlasovanje.vue'
+import AktualnoGlasovanje from '@/components/AktualnoGlasovanje.vue'
 
 export default {
     name: 'Domov',
@@ -42,7 +42,7 @@ export default {
 		ZadnjeAnkete,
         DZ,
         NajboljPriljubljeni,
-        NaslednjeGlasovanje
+        AktualnoGlasovanje
     },
     data() {
         return {
@@ -154,7 +154,7 @@ export default {
     padding: 15px 0;
 }
 
-#naslednjeGlasovanjeContainer, #najboljPriljubljeniContainer {
+#aktualnoGlasovanjeContainer, #najboljPriljubljeniContainer {
     padding: 15px;
 }
 
@@ -163,7 +163,7 @@ export default {
     flex-wrap: nowrap;
 }
 
-.side-elements #naslednjeGlasovanjeContainer, .side-elements #najboljPriljubljeniContainer {
+.side-elements #aktualnoGlasovanjeContainer, .side-elements #najboljPriljubljeniContainer {
     width: 50%;
     aspect-ratio: 1 / 1;
 }
@@ -172,7 +172,7 @@ export default {
     height: 100%
 }
 
-.list-elements #naslednjeGlasovanjeContainer {
+.list-elements #aktualnoGlasovanjeContainer {
     height: 400px;
 }
 </style>
