@@ -164,7 +164,7 @@ export default {
                 var el
                 try {
                     el = document.getElementById(el_id)
-                    console.log("Pravilno prebrano: ", el)
+                    // console.log("Pravilno prebrano: ", el)
                 } catch (e) {
                     console.error("Napaka: ", e)
                 }
