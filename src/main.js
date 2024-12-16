@@ -13,7 +13,8 @@ import "bootstrap/dist/js/bootstrap.js"
 
 let app = createApp(App)
 
-console.log("main.js process.env.NODE_ENV", process.env.NODE_ENV)
+console.log("main.js import.meta.env.MODE:", import.meta.env.MODE)
+console.log("main.js process.env.NODE_ENV:", process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue sam
     // app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
