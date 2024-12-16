@@ -13,8 +13,11 @@ import "bootstrap/dist/js/bootstrap.js"
 
 let app = createApp(App)
 
+console.log("main.js process.env.NODE_ENV", process.env.NODE_ENV)
+
 if (process.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue sam
-    app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
+    // app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
+    app.config.globalProperties.apiServer = "http://localhost:4000"
 } else {
     app.config.globalProperties.apiServer = "http://localhost:4000"
 }

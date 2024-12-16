@@ -77,8 +77,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", function (req, res) {
     app.engine("html", require("ejs").renderFile);
     app.set("view engine", "html");
-    app.set('views', path.join(__dirname, '.'));
-    res.render("index.html");
+    // app.set('views', path.join(__dirname, 'dist')); // setting '.' instead of 'dist' caused issues with the '/web-app' base URL, but there are no issues if this code is removed entirely
+    res.render("index.html"); // somehow all of this worked before even though index.html was replaced by domov.html
 });
 
 // API routing
