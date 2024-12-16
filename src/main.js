@@ -17,8 +17,7 @@ console.log("main.js import.meta.env.MODE:", import.meta.env.MODE)
 console.log("main.js process.env.NODE_ENV:", process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue sam
-    // app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
-    app.config.globalProperties.apiServer = "http://localhost:4000"
+    app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
 } else {
     app.config.globalProperties.apiServer = "http://localhost:4000"
 }
