@@ -3,22 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "node_modules/.bin/vue-cli-service serve",
-    "build": "node_modules/.bin/vue-cli-service build",
-    "lint": "node_modules/.bin/vue-cli-service lint"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@vitejs/plugin-vue": "^5.2.1",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
-    "bootstrap-vue": "^2.23.1",
     "chart.js": "^4.3.2",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-annotation": "^3.0.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "cookie-parser": "^1.4.6",
-    "core-js": "^3.8.3",
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
     "dhondt-calculator": "^2.0.0",
@@ -32,17 +32,13 @@
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.6.0",
     "utf8-encoder": "^1.0.1",
+    "vite": "^6.0.3",
     "vue": "^3.3.4",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.4",
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "typescript": "^4.9.5"
@@ -50,15 +46,13 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "es2022": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
     "rules": {
       "vue/multi-word-component-names": "off"
     }

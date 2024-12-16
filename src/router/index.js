@@ -20,7 +20,7 @@ import Priljubljenost from '@/views/Priljubljenost.vue'
 import NotFound from '@/views/NiNajdeno.vue'
 
 const router = new createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
