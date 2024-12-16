@@ -1,19 +1,17 @@
 <template>
-  <div id="header" class="sticky"
-  @wheel.prevent @touchmove.prevent @scroll.prevent>
+  <div id="header" class="sticky" @wheel.prevent @touchmove.prevent @scroll.prevent>
     <div class="background blur">
       <div id="header-strip">
         <!-- logo -->
-        <router-link
-          to="/"
-          style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;"
-          @click="closeMenu()"
-        >
-          <img src="@/assets/logo-white.png" style="max-height: 50px; cursor: pointer;" draggable="false"/>
-        </router-link>
+        <div class="logo" @click="$router.push('/'); closeMenu()">
+          <div>
+            <img src="@/assets/logo-white.png" />
+          </div>
+        </div>
 
         <!-- navbar -->
-        <div v-if="this.navbar_full" id="navbar" style="display: inline-block; margin-left: 40px; margin-right: 40px; float: right; vertical-align: middle; align-items: center;">
+        <div v-if="this.navbar_full" id="navbar"
+          style="display: inline-block; margin-left: 40px; margin-right: 40px; float: right; vertical-align: middle; align-items: center;">
           <ul id="menu-list" style="margin: 0px">
             <li><router-link to="/glasovanja">Glasovanja</router-link></li>
             <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
@@ -36,25 +34,13 @@
         </div>
 
         <!-- menu bar button -->
-        <div
-          v-if="!this.navbar_full"
-          id="menu-bar-button"
-          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px; cursor: pointer;"
-        >
-          <span
-            v-if="!this.navbar_menu_expanded"
-            class="material-symbols-outlined menu-icon"
-            alt="menu--v1"
-            @click="navbar_menu_expanded = true"
-          >
+        <div v-if="!this.navbar_full" id="menu-bar-button"
+          style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px; cursor: pointer;">
+          <span v-if="!this.navbar_menu_expanded" class="material-symbols-outlined menu-icon" alt="menu--v1"
+            @click="navbar_menu_expanded = true">
             menu
           </span>
-          <span
-            v-else
-            class="material-symbols-outlined menu-icon"
-            alt="delete-sign--v1"
-            @click="closeMenu()"
-          >
+          <span v-else class="material-symbols-outlined menu-icon" alt="delete-sign--v1" @click="closeMenu()">
             close
           </span>
         </div>
@@ -124,20 +110,22 @@ export default {
 </script>
 
 <style scoped>
-.sticky { /* poskrbi, da se glava vedno drži vrha strani */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
+.sticky {
+  /* poskrbi, da se glava vedno drži vrha strani */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 #header-strip {
-    display: block;
-    height: 70px;
-    line-height: 70px; /* potrebno, da vertical-align deluje */
-    color: white;
+  display: block;
+  height: 70px;
+  line-height: 70px;
+  /* potrebno, da vertical-align deluje */
+  color: white;
 
-    /* overflow: hidden; zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico;
+  /* overflow: hidden; zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico;
     vendar sem moral odstranit, ker sicer Drugo dropdown ni deloval  */
 }
 
@@ -146,18 +134,41 @@ export default {
 }
 
 /* .blur { */
-  /*
+/*
   - Ne deluje na Drugo .dropdown meniju (problem je verjetno v tem, da je to nevidni del, ki tudi ne veča velikosti #header-strip)
   - Poskusil sem popraviti z ::before psevdoelementi (https://generatepress.com/forums/topic/blur-filter-opacity-behind-drop-down-menu-not-working/) vendar mi ne preveč uspevalo, ker je struktura preveč kompleksna
   - Izgleda da ni (enostavnega) načina za popravek tega
   */
 
-  /* -webkit-backdrop-filter: blur(15px);
+/* -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
 } */
 
+/* Logo */
+.logo {
+  margin-left: 40px;
+  margin-right: 40px;
+  max-width: 50%;
+  height: 100%;
+  
+  display: inline-block;
+  
+  cursor: pointer;
+}
+
+.logo div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo div img {
+  max-height: 65%;
+}
+
 /* Navbar */
-.menu-list > *  {
+.menu-list>* {
   padding: 0;
   margin: 0;
 }
@@ -216,7 +227,8 @@ ul li:hover ul.dropdown {
   background-color: #721714;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 0;
 }
 
@@ -228,7 +240,8 @@ ol, ul {
 
 .material-symbols-outlined {
   display: inline-block;
-  vertical-align: middle; /* Optional: Align it vertically */
+  vertical-align: middle;
+  /* Optional: Align it vertically */
 }
 
 .menu-icon {
@@ -253,9 +266,7 @@ ol, ul {
   background: #ae1813;
 }
 
-.dropdown-nav-submenu {
-
-}
+.dropdown-nav-submenu {}
 
 #blocking-element {
   height: 100vh;
