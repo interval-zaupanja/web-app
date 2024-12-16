@@ -65,7 +65,7 @@
           <li @click="closeMenu()"><router-link to="/glasovanja">Glasovanja</router-link></li>
           <li @click="closeMenu()"><router-link to="/priljubljenost">Priljubljenost</router-link></li>
           <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
-          <li>
+          <li class="dropdown-nav-submenu">
             <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo
               <span v-if="!this.drugo_expanded" class="material-symbols-outlined">keyboard_arrow_down</span>
               <span v-else class="material-symbols-outlined">keyboard_arrow_up</span>
@@ -145,16 +145,16 @@ export default {
   background-color: #ae1813;
 }
 
-.blur {
+/* .blur { */
   /*
   - Ne deluje na Drugo .dropdown meniju (problem je verjetno v tem, da je to nevidni del, ki tudi ne veča velikosti #header-strip)
   - Poskusil sem popraviti z ::before psevdoelementi (https://generatepress.com/forums/topic/blur-filter-opacity-behind-drop-down-menu-not-working/) vendar mi ne preveč uspevalo, ker je struktura preveč kompleksna
   - Izgleda da ni (enostavnega) načina za popravek tega
   */
 
-  -webkit-backdrop-filter: blur(15px);
+  /* -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-}
+} */
 
 /* Navbar */
 .menu-list > *  {
@@ -183,7 +183,7 @@ ul li a {
 ul li ul.dropdown li {
   display: block;
   text-align: center;
-  background: #c8b2b3be;
+  background: #8E1C18;
 }
 
 ul li ul.dropdown li a {
@@ -197,15 +197,23 @@ ul li ul.dropdown {
 }
 
 ul li:hover {
-  background: #1d1d1f38;
+  background-color: #1d1d1f38;
 }
 
 ul li ul.dropdown li:hover {
-  background: #a59394be;
+  background-color: #721714;
 }
 
 ul li:hover ul.dropdown {
   display: block;
+}
+
+.dropdown-nav-submenu li {
+  background-color: #1d1d1f38;
+}
+
+.dropdown-nav-submenu li:hover {
+  background-color: #721714;
 }
 
 ol, ul {
@@ -243,6 +251,10 @@ ol, ul {
   flex-direction: column;
   width: 100%;
   background: #ae1813;
+}
+
+.dropdown-nav-submenu {
+
 }
 
 #blocking-element {
