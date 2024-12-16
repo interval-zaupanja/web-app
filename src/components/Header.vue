@@ -9,7 +9,7 @@
           style="display: inline-block; margin-left: 40px; margin-right: 40px; max-width: 50%; vertical-align: middle;"
           @click="closeMenu()"
         >
-          <img src="@/assets/logo.png" style="max-height: 50px; cursor: pointer;" draggable="false"/>
+          <img src="@/assets/logo-white.png" style="max-height: 50px; cursor: pointer;" draggable="false"/>
         </router-link>
 
         <!-- navbar -->
@@ -19,7 +19,10 @@
             <li><router-link to="/priljubljenost">Priljubljenost</router-link></li>
             <!-- <li><router-link to="/zaupanje">Zaupanje</router-link></li> -->
             <li>
-              <router-link to="">Drugo <img height="15" src="../assets/icons/arrow-down.png" style="vertical-align: baseline;"/></router-link>
+              <router-link to="">
+                Drugo
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </router-link>
               <ul class="dropdown">
                 <li><router-link to="/ankete">Ankete</router-link></li>
                 <li><router-link to="/izvajalci">Izvajalci</router-link></li>
@@ -38,18 +41,22 @@
           id="menu-bar-button"
           style="display: inline-block; margin-left: 30px; margin-right: 30px; float: right; vertical-align: middle; line-height: 70px; cursor: pointer;"
         >
-          <img
+          <span
             v-if="!this.navbar_menu_expanded"
-            width="45" height="45"
-            src="@/assets/icons/menu.png" alt="menu--v1"
+            class="material-symbols-outlined menu-icon"
+            alt="menu--v1"
             @click="navbar_menu_expanded = true"
-          />
-          <img
+          >
+            menu
+          </span>
+          <span
             v-else
-            width="45" height="45"
-            src="@/assets/icons/close-menu.png" alt="delete-sign--v1"
+            class="material-symbols-outlined menu-icon"
+            alt="delete-sign--v1"
             @click="closeMenu()"
-          />
+          >
+            close
+          </span>
         </div>
       </div>
 
@@ -60,8 +67,8 @@
           <li @click="closeMenu()"><router-link to="/zaupanje">Zaupanje</router-link></li>
           <li>
             <router-link to="" @click="this.drugo_expanded = !this.drugo_expanded">Drugo
-              <img v-if="!this.drugo_expanded" height="15" src="../assets/icons/arrow-down.png" style="vertical-align: baseline;"/>
-              <img v-else height="15" src="../assets/icons/arrow-up.png" style="vertical-align: baseline;"/>
+              <span v-if="!this.drugo_expanded" class="material-symbols-outlined">keyboard_arrow_down</span>
+              <span v-else class="material-symbols-outlined">keyboard_arrow_up</span>
             </router-link>
             <ul v-if="this.drugo_expanded">
               <li @click="closeMenu()"><router-link to="/ankete">Ankete</router-link></li>
@@ -128,14 +135,14 @@ export default {
     display: block;
     height: 70px;
     line-height: 70px; /* potrebno, da vertical-align deluje */
-    color: #ae1813;
+    color: white;
 
     /* overflow: hidden; zato, da na zelo majhnih zaslonih ne gre gumb za meni v naslednjo vrstico;
     vendar sem moral odstranit, ker sicer Drugo dropdown ni deloval  */
 }
 
 .background {
-  background-image: linear-gradient(to right, #ffffffbf, #e7acacbf);
+  background-color: #ae1813;
 }
 
 .blur {
@@ -168,7 +175,7 @@ ul li a {
   display: block;
   padding: 0px 20px;
   text-decoration: none;
-  color: #ae1813;
+  color: white !important;
   font-size: 20px;
   text-align: center;
 }
@@ -211,6 +218,15 @@ ol, ul {
 
 /* Menu bar */
 
+.material-symbols-outlined {
+  display: inline-block;
+  vertical-align: middle; /* Optional: Align it vertically */
+}
+
+.menu-icon {
+  font-size: 45px;
+}
+
 #dropdown-nav {
   display: flex;
   flex-direction: column;
@@ -226,7 +242,7 @@ ol, ul {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #a59394be;
+  background: #ae1813;
 }
 
 #blocking-element {

@@ -300,7 +300,7 @@ const posodobiPrijavo = (req, res) => { // NI IMPLEMENTIRANO!!!
                 if (req.body.barva) {
                     novaPrijava.opis = req.body.barva;
                 }
-                if (req.body.logo_uri) {
+                if (req.body.logo_uri) { // TODO: remove?
                     novaPrijava.opis = req.body.logo_uri;
                 }
                 if (req.body.opis) {
