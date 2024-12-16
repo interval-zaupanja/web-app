@@ -64,7 +64,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const http = require("http");
 
-const port = process.env.PORT || 4000;
+const port = import.meta.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
@@ -101,7 +101,7 @@ indexApi.use(
 app.listen(port, () => {
     console.log(
         `App started in '${
-            process.env.NODE_ENV || "development"
+            import.meta.env.NODE_ENV || "development"
         } mode' listening on port ${port}!`
     );
 });

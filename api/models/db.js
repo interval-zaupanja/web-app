@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 mongoose.set('strictQuery', false); // dodano zaradi opozorila in istega delovanja v Mongoose 7
 
 var dbURI = "mongodb://localhost/interval-zaupanja/db"; // development
-if (process.env.DB_ENV === "production") {
-    dbURI = process.env.MONGODB_ATLAS_URI;
-} else if (process.env.DB_ENV === "test") {
+if (import.meta.env.DB_ENV === "production") {
+    dbURI = import.meta.env.MONGODB_ATLAS_URI;
+} else if (import.meta.env.DB_ENV === "test") {
     dbURI = "mongodb://interval-zaupanja/db";
 }
 mongoose.connect(dbURI);
@@ -27,19 +27,19 @@ const gracefulShutdown = (msg, callback) => {
         callback();
     });
 };
-process.once("SIGUSR2", () => {
+import.meta.once("SIGUSR2", () => {
     gracefulShutdown("nodemon restart", () => {
-        process.kill(process.pid, "SIGUSR2");
+        import.meta.kill(import.meta.pid, "SIGUSR2");
     });
 });
-process.on("SIGINT", () => {
+import.meta.on("SIGINT", () => {
     gracefulShutdown("zadnjeAnkete termination", () => {
-        process.exit(0);
+        import.meta.exit(0);
     });
 });
-process.on("SIGTERM", () => {
+import.meta.on("SIGTERM", () => {
     gracefulShutdown("Cloud-based zadnjeAnkete shutdown", () => {
-        process.exit(0);
+        import.meta.exit(0);
     });
 });
 require("./schemas");

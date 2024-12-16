@@ -13,7 +13,7 @@ import "bootstrap/dist/js/bootstrap.js"
 
 let app = createApp(App)
 
-if (process.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue sam
+if (import.meta.env.NODE_ENV === "production") { // NODE_ENV nastavi oz. povozi Vue sam
     app.config.globalProperties.apiServer = "https://web-app-fu3b.onrender.com"
 } else {
     app.config.globalProperties.apiServer = "http://localhost:4000"
@@ -206,7 +206,7 @@ app.config.globalProperties.vrniLogoUri = function (uri) {
     if (uri == undefined) {
         return undefined
     } else if (uri.charAt(0) != 'h' || uri.charAt(0) === '/') { // gre za interno povezavo (ker se ne začne s http oz. https); če se začne z '/' to pomeni, da je bila interna predpona v nekem prejšnjem koraku že dodana
-        return process.env.BASE_URL + 'assets' + uri // v tem primeru je URI le ime datoteke
+        return import.meta.env.BASE_URL + 'assets' + uri // v tem primeru je URI le ime datoteke
     } else {
         return uri
     }

@@ -3,7 +3,7 @@
         <h1 class="odmik">Volitve</h1>
         <div class="odmik">
             <div v-if="!loaded">
-                <Nalaganje :size="medium"/>
+                <Nalaganje size="medium"/>
             </div>
             <BubbleGrid v-if="loaded" :items="this.volitve" path="/glasovanja/"/>
         </div>

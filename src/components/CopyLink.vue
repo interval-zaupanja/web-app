@@ -19,7 +19,7 @@ export default {
     props: [ "path"],
     methods: {
         copyURL() {
-            const url = window.location.origin + process.env.BASE_URL + this.path;
+            const url = window.location.origin + import.meta.env.BASE_URL + this.path;
             navigator.clipboard.writeText(url);
         }
     },

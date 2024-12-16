@@ -27,8 +27,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.size)
-
     setTimeout(() => {
         this.longLoading = true
     }, 3000, this.hash);

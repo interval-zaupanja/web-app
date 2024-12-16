@@ -4,7 +4,7 @@ module.exports = defineConfig({
 })
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
+  publicPath: import.meta.env.NODE_ENV === 'production'
     ? '/web-app/'
     : '/'
 }
