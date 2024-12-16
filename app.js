@@ -77,7 +77,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", function (req, res) {
     app.engine("html", require("ejs").renderFile);
     app.set("view engine", "html");
-    app.set('views', path.join(__dirname, 'public'));
+    app.set('views', path.join(__dirname, '.'));
     res.render("index.html");
 });
 
