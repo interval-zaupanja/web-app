@@ -4,7 +4,8 @@
 set -e
 
 # build
-npm run build
+# need to set NODE_ENV because GitHub Pages environment variables don't work
+NODE_ENV=production npm run build
 
 # navigate into the build output directory
 cd dist
